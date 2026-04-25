@@ -1,0 +1,101 @@
+\chapter{Technische Grundlagen}
+
+\section{Übersicht verwendeter Technologien}
+
+In diesem Kapitel werden die technischen Grundlagen und der verwendete Technologie-Stack von petappoint erläutert. Die Tabelle gibt zunächst einen Überblick über alle relevanten Technologien nach Schichten (Datenbank, Backend, Frontend) und deren Funktion in der Systemarchitektur. 
+
+\textbf{Datenbank}
+
+\begin{tabular}{|p{5cm}|p{9,2cm}|}
+\hline
+\textbf{Technologie} & \textbf{Zweck} \\
+\hline
+PostgreSQL (v15) & Relationale Datenbank \\
+\hline
+Prisma & Object Relational Mapper für Datenbankzugriff und Schemaverwaltung \\
+\hline
+Docker & Datenbank Container lokal startbar \\
+\hline
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{Backend}
+
+\begin{tabular}{|p{5cm}|p{9,2cm}|}
+\hline
+\textbf{Technologie} & \textbf{Zweck} \\
+\hline
+Node.js & JavaScript Laufzeitumgebung \\
+\hline
+Express.js (v5) & HTTP server / REST API framework \\
+\hline
+TypeScript & Statische Typisierung \\
+\hline
+Prisma Client & Typensichere Datenbankabfragung \\
+\hline
+Zod & Validierung vom Client Request und Server Response \\
+\hline
+JSON Web Tokens (JWT) & Authentifizierung \\
+\hline
+bcrypt & hashen der Passwörter  \\
+\hline
+Multer & Verarbeitung der Daten Uploads \\
+\hline
+CORS & Behandlung von Cross Origin Anfragen \\
+\hline
+node-cron & Geplante Hintergrundaufgaben \\
+\hline
+Brevo (@getbrevo/brevo) & Email Service \\
+\hline
+Handlebars & Darstellung von E-mail Anfragen \\
+\hline
+Vitest + Supertest & Unit- und Integrationsstest \\
+\hline
+\end{tabular}
+
+\vspace{6em}
+
+\textbf{Frontend (React Native)}
+
+\begin{tabular}{|p{5cm}|p{9,2cm}|}
+\hline
+\textbf{Technology} & \textbf{Zweck} \\
+\hline
+React Native & Plattformübergreifendes Framework für mobile Anwendungen \\
+\hline
+Expo & Entwicklungsplattform und native Build-Tools \\
+\hline
+TypeScript & Statische Typisierung \\
+\hline
+Expo Router & Dateibasierte Navigation/Routing \\
+\hline
+Zustand & Clientseitige Zustandsverwaltung \\
+\hline
+TanStack React Query & Server Status / Daten Abrufe \& Zwischenspeicherung \\
+\hline
+NativeWind + Tailwind CSS & Utility-first Styling für React Native \\
+\hline
+Gluestack UI & UI Komponenten Bibliothek \\
+\hline
+React Navigation & Tabs- und Bildschirm Navigation \\
+\hline
+i18next / react-i18next & Internationalization (multi-language support) \\
+\hline
+Zod & Runtime schema Validierung \\
+\hline
+expo-secure-store & Sichere lokale Speicherung\\
+\hline
+expo-image-picker & Bild auswählen vom Gerät \\
+\hline
+React Native Reanimated & Flüssige Animationen \\
+\hline
+EAS (Expo Application Services) & Entwicklung von Apps sowie Veröffentlichung \\
+\hline
+Jest + jest-expo & Unit Tests \\
+\hline
+\end{tabular}
+
+\section{Technische Grundlagen in der Datenbankschicht}
+
+    

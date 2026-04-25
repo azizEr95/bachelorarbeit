@@ -1,35 +1,56 @@
-\chapter{Einführung}
-Das Wichtigste zuerst: Gib dem GitHub-Repository\footnote{\url{https://github.com/julianbht/bht-thesis-template-latex}} einen Stern!!! 
+\chapter{Einleitung}
 
-Aber im Ernst - die Idee ist, dass jeder ein bisschen zum Repository beiträgt. Wenn du eine Verbesserung hast, einen Fehler entdeckst oder auch nur einen Rechtschreibfehler findest, erstelle bitte einen Pull Request. Ziel ist es, dass alle gemeinsam beitragen, damit die Vorlage mit der Zeit immer besser wird.
+\section{Hintergrund und Motivation}
 
-Diese Vorlage richtet sich an Studierende der \gls{bht} und erzeugt am Ende ein \gls{pdf}-Dokument im offiziellen BHT-Layout.
+Die Digitalisierung ist heute allgegenwärtig und stellt einen unverzichtbaren Bestandteil 
+der Kommunikation zwischen Unternehmen und Kunden dar. Insbesondere im Bereich der 
+Humanmedizin wird deutlich, wie digitale Technologien im Kontext der Kommunikation einen 
+Vorteil bieten. Unternehmen wie Doctolib haben sich bereits früh das Ziel gesetzt, die 
+Terminverwaltung zwischen Arztpraxen und Patienten durch den Einsatz digitaler 
+Terminverwaltungssysteme effizienter und nutzerfreundlicher zu gestalten. Dieses Ziel haben 
+sie weitgehend erreicht: Die digitale Terminbuchung ist heute nicht mehr wegzudenken und 
+wird von vielen Patienten als entscheidender Faktor für die Inanspruchnahme von ärztlichen 
+Leistungen wahrgenommen.
 
-Wenn du diese Anleitung zum ersten Mal liest, solltest du folgende Schritte abarbeiten:
+Vor diesem Hintergrund drängt sich die Frage auf, wie die Situation im 
+veterinärmedizinischen Bereich aussieht. In Deutschland gibt es rund 10.500 
+Tierarztpraxen, von denen über die Hälfte Kleintierpraxen sind, die sich auf Haustiere 
+spezialisiert haben (Bundestierärztekammer, 2024). Viele Tierarztpraxen nutzen bereits 
+Praxisverwaltungssoftware, um interne Aufgaben wie Terminplanung, Abrechnung und 
+Dokumentation zu organisieren. Allerdings existiert bisher kein etabliertes Unternehmen, 
+das den Markt für die Terminverwaltung zwischen Tierbesitzern und Tierarztpraxen ähnlich 
+beherrscht wie etwa Doctolib in der Humanmedizin.
 
-\begin{enumerate}
-    \item Erstelle einen Zeitplan mit einigen Meilensteinen und sende ihn Siamak über Discord.\footnote{\url{TODO: Discord Link}}
+Zudem gibt es bisher keine repräsentativen Studien, die ermitteln, wie viele 
+Tierarztpraxen bereits eine Terminverwaltungssoftware mit Online-Terminbuchung für 
+Tierbesitzer in ihren Alltag integriert haben. Dennoch lassen Marktberichte darauf 
+schließen, dass sich die Digitalisierung der Veterinärmedizin der der Humanmedizin 
+zunehmend annähert: Der globale Markt für Veterinärpraxis-Managementsoftware wird für 
+2023/24 auf etwa 1,8 bis 2,0~Milliarden US-Dollar geschätzt und soll bis etwa 2032 auf 
+rund 3,2~Milliarden US-Dollar wachsen, mit einer jährlichen Wachstumsrate von etwa 6--7~\%. 
+Auf dieser Grundlage lässt sich plausibel argumentieren, dass die Digitalisierung der 
+Veterinärbranche sich in jeglichen digitalen Bereichen weiterentwickeln wird -- damit ist 
+auch die Terminverwaltung zwischen Tierarztpraxen und Tierbesitzern gemeint.
 
-    \item Lies dir das FAQ durch.
+\section{Zielsetzung}
 
-    \item Da dies ein Template Repository ist, kannst du über die GitHub-Oberfläche mit dem Button \emph{Use This Template} deine eigene Version erstellen (siehe \cref{fig:step-1}).
+Vor diesem Hintergrund zielt die vorliegende Bachelorarbeit darauf ab, eine 
+Terminverwaltungssoftware zu konzipieren, umzusetzen und zu evaluieren, um 
+Tierbesitzerinnen die Terminbuchung zu erleichtern. Die Software soll ermöglichen, 
+Haustiere anzulegen, Tierpraxen in der Nähe zu suchen und Termine jederzeit online zu 
+buchen. Der zentrale Mehrwert liegt in der flexiblen, ortsunabhängigen Online-Terminvergabe, 
+die die Telefonlast reduziert und eine einfache Verwaltung für Nutzende bietet. Im 
+Vergleich zu bestehenden Lösungen hebt sich \textit{Petappoint} durch seinen Fokus auf 
+die Terminverwaltung ab. Onlineberatungsgespräche oder das Tracken der Tiergesundheit 
+sind nicht Teil der Software.
 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=\textwidth]{figures/step-1.png}
-        \caption{Schritt 3: Template Repository verwenden}
-        \label{fig:step-1}
-    \end{figure}
+Die Arbeit grenzt sich bewusst ab: Eine Tierpraxenansicht mit Funktionen für das Personal 
+wird nicht umgesetzt. Der Schwerpunkt liegt ausschließlich auf der Konzeption, Umsetzung und 
+Evaluation der Software aus Sicht der Tierbesitzer.
 
-    \item Füge Siamak zu dem Repository hinzu. Dieser importiert anschließend dein GitHub-Projekt nach Overleaf und fügt dich bei dem Overleaf Projekt hinzu (siehe \cref{fig:step-2}).
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=\textwidth]{figures/step-2.png}
-        \caption{Schritt 4: Siamak hinzufügen}
-        \label{fig:step-2}
-    \end{figure}
-
-    \item Lösche den Erklärungskram und lege los!
-\end{enumerate}
+Die Arbeit gliedert sich wie folgt: \cref{ch:grundlagen} erläutert die technischen 
+Grundlagen. \cref{ch:anforderungen} analysiert Nutzergruppen, Anforderungen und 
+Abgrenzungen. \cref{ch:design} beschreibt Design, Architektur und Datenschutz. 
+\cref{ch:implementierung} dokumentiert die Implementierung. \cref{ch:evaluation} evaluiert 
+die Lösung. \cref{ch:fazit} fasst zusammen und gibt einen Ausblick.
 
