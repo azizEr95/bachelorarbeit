@@ -2,7 +2,7 @@
 
 \section{Übersicht verwendeter Technologien}
 
-In diesem Kapitel werden die technischen Grundlagen und der verwendete Technologie-Stack von petappoint erläutert. Die Tabelle gibt zunächst einen Überblick über alle relevanten Technologien nach Schichten  (Datenbank, Backend, Frontend) und deren Funktion in der Systemarchitektur. Die nachfolgenden Abschnitte erläutern die einzelnen Technologien
+In diesem Kapitel werden die technischen Grundlagen und der verwendete Technologie-Stack von petappoint erläutert. Die Tabelle gibt zunächst einen Überblick über alle relevanten Technologien nach Schichten  (Datenbank, Backend, Frontend) und deren Funktion in der Systemarchitektur. Die nachfolgenden Abschnitte erläutern die einzelnen Technologien.
 
 \textbf{Datenbank}
 
@@ -96,14 +96,74 @@ Jest + jest-expo & Unit-Tests \\
 \hline
 \end{tabular}
 
-\subsection{Technologie in der Datenbankschicht}
+\subsection{Technologien in der Datenbankschicht}
 
-Die Datenbankschicht bildet die Grundlage für die Speicherung der Anwendungsdaten, so dass der Verlust von jeglichen Daten vermieden wird. Die Daten in einer Datenbank werden anhand des Datenbankmodell geordnet und struktuiert. Diese Sammlung wird üblicherweise von einem Datenbankmanagementsystem verwaltet. Zusammen werden die Daten und das DBMS sowie die damit verbundenen Anwendungen als Datenbanksystem bezeichnet. Die meist übliche Datenbank ist die Relationale Datenbank \cite[p.~1]{halvorsen2014database}.
+Die Datenbankschicht bildet die Grundlage für die Speicherung der Anwendungsdaten, sodass der Verlust jeglicher Daten vermieden wird. Die Daten in einer Datenbank werden anhand des Datenbankmodells geordnet und nach einem vordefinierten Schema strukturiert. In diesen werden einzelne Entitäten und ihre Beziehungen zueinander beschrieben. Diese Sammlung wird üblicherweise von einem Datenbankmanagementsystem (DBMS) verwaltet. Zusammen werden die Daten und das DBMS als Datenbanksystem bezeichnet. Die üblicherweise verwendete Datenbank ist die Relationale Datenbank \cite{halvorsen2017database}. In der relationalen Datenbank werden die Entitäten in Form von Tabellen beschrieben. Jede Entität besitzt einen einzigartigen Primärschlüssel, und dieser Primärschlüssel kann sich in anderen Entitäten wiederfinden. Dieser heißt in der Tabelle Fremschlüssel und zeigt auf einer abstrakten Ebene die Beziehung zwischen zwei oder mehreren Tabellen. Dadurch lassen sich Daten ohne Duplikation organisieren \cite{}.
 
 \subsubsection{PostgreSQL}
 
-PostgreSQL ist eine relationale Datenbank. Das heißt.
-
+Eine relationale Datenbank ist PostgreSQL, das sich durch ein breites Spektrum an fortgeschrittenen Funktionalitäten auszeichnet. Das System gewährleistet die Einhaltung der ACID-Eigenschaften (Atomicity, Consistency, Isolation, Durability), welche seit 2001 die Grundlage für sichere und zuverlässige Transaktionen in der Datenban bilden \cite{postgresql_about}. In PostgreSQL sind Multi-Table-Transaktionen ebenfalls möglich. Das heißt Änderungen an mehreren Tabellen werden gemeinsam ausgeführt. Scheitert einer diese Änderungen werden alle anderen in der Transaktion zurückgenommen oder nicht weiter ausgeführt \cite{postgresql_transactions}. Außerdem ist die Nutzung von PostgreSQL kostenlos \cite{postgresql_free} und profitiert von einer großen unterstützenden Gemeinde, die für Zuverlässigkeit in der Produktion sorgt \cite{postgresql_community}.
 
 \subsubsection{Prisma}
+Prisma ist ein typsicheres Object-Relational Mapping für Node.js und TypeScript, das die Datenbankinteraktion durch deklarative Schemadefinitionen und generierten Client-Code vereinfacht. Es trennt das Datenbankschema in einer verständlichen Prisma Schema Language von der Anwendungslogik und generiert daraus einen typsicheren Prisma Client für Abfragen, Mutationen und Schema-Migrationen \cite{prisma-docs}.
+
 \subsubsection{Docker}
+Docker ist eine Plattform zur Containerisierung, die Anwendungen mit allen Abhängigkeiten in portablen Containern kapselt. Diese Container laufen unabhängig vom zugrunde liegenden System. Docker bietet isolierte Ausführungsumgebungen mit hoher Portabilität und Reproduzierbarkeit \cite{docker-docs}. Für petappoint wird Docker zur lokalen PostgreSQL-Bereitstellung eingesetzt. Dies schafft einheitliche Entwicklungsumgebungen ohne manuelle Installation
+
+\subsection{Technologien in der Backendschicht}
+Die Backendschicht dient als zentrale Schnittstelle zwischen Frontend und Datenbank, verarbeitet Anfragen, gewährleistet Sicherheit und orchestriert Geschäftslogik. Sie basiert auf einem Node.js-Stack mit REST-API.
+
+\subsubsection{Node.js und Express}
+Node.js ist eine ereignisgesteuerte, asynchrone Laufzeitumgebung für JavaScript, die auf der V8-Engine von Chrome basiert und nicht-blockierende I/O-Operationen durch einen Event-Loop ermöglicht. Dies führt zu hohem Durchsatz bei gleichzeitigen Anfragen, wie sie in Softwaren mit vielen Nutzern vorkommen, und unterscheidet sich von thread-basierten Ansätzen wie in Java oder Python. Die offizielle Dokumentation hebt die Eignung für skalierbare Netzwerkanwendungen hervor \cite{nodejs-docs}.
+
+Express erweitert Node.js als minimalistisches Web-Framework mit Routing, Middleware-Unterstützung und nativem async/await-Support. Es vereinfacht die Erstellung von RESTful APIs durch deklarative Routendefinitionen und integrierte Fehlerbehandlung \cite{express-docs}.
+
+\subsubsection{TypeScript}
+TypeScript erweitert JavaScript um statische Typisierung, Interfaces und Generics, wodurch Laufzeitfehler in der Entwicklung vermieden und die Code-Wartbarkeit bei wachsenden Projekten gesteigert wird. Studien zeigen eine Reduktion von Produktionsfehlern um bis zu 15\% durch besseres Refactoring und Autocomplete \cite{typescript-docs}. 
+
+\subsubsection{Validierung und Sicherheit (Zod, JWT, bcrypt, CORS)}
+Zod ist eine TypeScript-first Schema-Validierungs-Bibliothek, die deklarative Schemata für Eingabe-, Ausgabe- und Datenstrukturen definiert und zur Laufzeit überprüft. Sie integriert nahtlos mit TypeScript-Inferenz und schützt vor ungültigen Payloads in API-Endpunkten \cite{zod-docs}.
+
+JWT ermöglicht stateless Authentifizierung \cite{jwt-docs}.
+
+Bcrypt hasht Passwörter sicher mit adaptivem Work-Factor \cite{bcrypt-docs}.
+
+CORS sichert Cross-Origin-Zugriffe vom Mobile-Frontend \cite{cors-docs}.
+
+\subsubsection{Hintergrundaufgaben und E-Mails (Brevo, Handlebars)}
+Brevo ist ein skalierbarer Transaktions-E-Mail-Dienst mit hoher Delivery-Rate und Analytics, der nahtlos in Node.js integriert \cite{brevo-docs}. Handlebars rendert dynamische Vorlagen (z.,B. mit Tiername und Uhrzeit) serverseitig für personalisierte Kommunikation \cite{handlebars-docs}.
+
+\subsubsection{Vitest mit Supertest}
+Vitest ist ein Vite-basiertes Testing-Framework mit ESM-Support und hoher Geschwindigkeit, das Unit-Tests für Geschäftslogik parallelisiert \cite{vitest-docs}. Supertest erweitert es um Integrationstests mit simulierten HTTP-Requests, um API-Endpunkte wie Authentifizierung und Buchungen zu validieren \cite{supertest-docs}.
+
+\subsection{Technologien in der Frontendschicht}
+
+\subsubsection{React Native und Expo als Plattform-Stack}
+
+Die Frontend als mobile Anwendungen von \textit{petappoint} basiert auf React Native in Kombination mit Expo, um eine plattformübergreifende Mobile‑App für Android und iOS zu realisieren. React Native ermöglicht die Nutzung nativer UI‑Komponenten über eine gemeinsame JavaScript‑/TypeScript‑Codebasis, wodurch die Entwicklungskosten und die Wartbarkeit im Vergleich zu zwei separaten nativen Apps reduziert werden.
+
+Expo als auf React Native aufbauender Managed‑Workflow‑Stack vereinfacht die Initialisierung, das Management von Abhängigkeiten sowie den Zugriff auf plattformspezifische APIs wie Kamera, Speicher oder Biometrie, ohne dass Entwickler tiefer in die nativen Build‑Konfigurationen von iOS und Android eingreifen müssen. Darüber hinaus unterstützt Expo durch EAS (Expo Application Services) automatisierte, cloudbasierte Builds, wodurch die Release‑ und Wartungskette effizienter und reproduzierbarer gestaltet wird. Für die vorliegende Arbeit wurde diese Kombination gewählt, um den Fokus auf die Anwendungs‑ und Geschäftslogik zu legen, statt auf niedrigschwellige infrastrukturelle Komplexität.
+
+\subsubsection{Navigation und Routing (Expo Router)}
+
+Als Routing‑ und Navigations‑System kommt Expo Router zum Einsatz, das ein dateibasiertes Routing‑Modell für React Native‑Anwendungen bereitstellt. Die Struktur der App‑Navigation wird dabei direkt über das Dateiverzeichnis abgebildet, was die Wartbarkeit und Nachvollziehbarkeit der Navigationslogik erhöht. 
+Expo Router integriert sich nahtlos in den Expo‑Eco‑System‑Stack und erlaubt deklarative Definition von Screens, Tab‑Layouts und zustandsbasierten Routing‑Pfaden, was die Umsetzung vereinfacht.
+
+\subsubsection{State-Management (TanStack React Query)}
+
+Für das Management von Server‑State ´ wird TanStack React Query verwendet. Dieses Framework trennt explizit zwischen Server‑State und lokalem UI‑State und übernimmt das Fetching, Caching, Hintergrund‑Refetching und manuelle oder automatisierte Aktualisierung von Daten.
+React Query reduziert Boilerplate‑Code, wie manuelles Handling von Ladezuständen, Fehler‑ und Zwischenspeicher‑Logik, und verbessert dadurch sowohl die Lesbarkeit als auch die Wartbarkeit des Frontend‑Codes.
+
+\subsubsection{Styling und UI-Komponenten (NativeWind, Tailwind CSS, Gluestack UI)}
+
+Die visuelle Gestaltung der App erfolgt durch eine Kombination aus NativeWind, Tailwind CSS und der UI‑Bibliothek Gluestack UI. NativeWind ermöglicht die Nutzung von Tailwind‑Styling‑Klassen in React Native‑Komponenten, indem es Tailwind‑Klassennamen in plattformgerechte `StyleSheet`‑Objekte übersetzt. Dies schafft einen einheitlichen, utility‑first‑Styling‑Workflow, der sowohl in Web‑ als auch in Mobile‑Kontexten einsetzbar ist und die Wieder‑verwendbarkeit von Design‑Prinzipien erhöht.
+
+Gluestack UI bietet eine Sammlung an vorgefertigten, zugänglichkeits‑orientierten UI‑Komponenten, die für React Native optimiert sind und Design‑Themen, System‑Dark‑Mode‑Unterstützung sowie thematische Tokens liefern. Durch eine modular aufgebaute Architektur lassen sich Komponenten selektiv nutzen, ohne unnötigen Bundle‑Overhead zu erzeugen, während gleichzeitig Cross‑Platform‑Konsistenz in der Darstellung gewährleistet wird. 
+
+\subsubsection{Internationalisierung, Sicherheit und Testing}
+
+Für die Internationalisierung kommt i18next in Kombination mit react‑i18next zum Einsatz, um Mehrsprachigkeit in der App zu realisieren. Die Bibliothek ermöglicht die Verwaltung von Übersetzungs‑Dateien, dynamisches Laden von Sprach‑Ressourcen sowie die automatische Anpassung der Oberfläche an die Systemsprache des Nutzers.´Durch diese Architektur kann die App flexibel weitere Sprachen integrieren, ohne dass die Basisstruktur des Frontends verändert werden muss, was die Erweiterbarkeit und Wartbarkeit erhöht. 
+
+Sicherheits‑relevante Daten wie Authentifizierungstokens werden über \texttt{expo‑secure‑store} lokal auf dem Gerät gespeichert. Diese Bibliothek verschlüsselt Key‑Value‑Paare und nutzt die jeweilige Plattform‑Sicherheitsinfrastruktur (z.B. Android‑KeyStore, iOS‑Keychain), um unberechtigten Zugriff zu erschweren. Optional lässt sich die Nutzung zusätzlich durch biometrische Authentifizierung schützen, was die Sicherheit sensibler Benutzerdaten weiter erhöht.
+
+Zur Qualitätssicherung im Frontend‑Bereich wird Jest in Kombination mit \texttt{jest‑expo} für Unit‑ und Snapshot‑Tests verwendet. Diese Setup‑Kombination ermöglicht das Testen von React‑Native‑Komponenten und Business‑Logik in einer simulierte Umgebung, unterstützt Mocking von externen Abhängigkeiten und fördert die Früh‑Erkennung von Fehlern. Durch automatisierte Tests lassen sich Regressionen in der Benutzeroberfläche und in der Datenverarbeitung reduzieren, was insgesamt die Zuverlässigkeit und Wartbarkeit der Anwendung stärkt. 
