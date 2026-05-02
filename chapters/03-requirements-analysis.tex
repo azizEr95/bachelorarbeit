@@ -1,0 +1,113 @@
+\chapter{Anforderungsermittlung}
+
+Die Anforderungsermittlung dieser Arbeit folgt den Prinzipien des Requirements 
+Engineering. Das ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse 
+aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. 
+Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die 
+Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Eine Anforderung wird 
+dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die 
+Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
+
+Die Analyse der Anforderungen bildet die Grundlage für Konzeption und Entwicklung der vorliegenden Anwendung und Arbeit. Ziel dieses Kapitels ist es, ein vollständiges Bild der Anforderungen zu erarbeiten und diese strukturiert zu dokumentieren.
+
+Zu Beginn wird die Zielgruppe der Anwendung identifiziert und charakterisiert. Darauf aufbauend werden die relevanten funktionalen sowie nicht-funktionalen Anforderungen hergeleitet und gegliedert dargestellt. Abschließend werden ausgewählte Anforderungen durch Use Cases konkretisiert und in ihrem praktischen Kontext veranschaulicht.
+
+\section{Zielgruppe}
+Die Anwendung richtet sich an zwei primäre Zielgruppen: Tierbesitzerinnen und Tierbesitzer sowie Tierarztpraxen und deren Mitarbeitende. Im Rahmen der Analyse bestehender Softwarelösungen in Kapitel 2 wurde deutlich, dass in diesem Bereich keine spezialisierte Terminverwaltungslösung existiert, die beide gleichermaßen adressiert.
+
+Die Anforderungen beider Zielgruppen lassen sich durch folgende Aspekte charakterisieren:
+
+\textbf{Tierbesitzerinnen und Tierbesitzer}
+
+\begin{itemize}
+    \item \textbf{Einfache Bedienbarkeit:} Da die Nutzerinnen und Nutzer in der Regel über keine spezifischen technischen Vorkenntnisse verfügen, muss die Anwendung intuitiv bedienbar sein und ohne umfangreiche Einarbeitung genutzt werden können.
+    \item \textbf{Verfügbarkeit rund um die Uhr:} Da berufstätige Tierhalter häufig tagsüber keine Möglichkeit haben, telefonisch einen Termin zu vereinbaren, muss die Buchung zu jeder Tages- und Nachtzeit möglich sein.
+    \item \textbf{Haustierzentrierte Verwaltung:} Die Anwendung muss die Anlage mehrerer Haustierprofile mit relevanten Informationen wie Tierart, Rasse, Geburtsdatum und Impfstatus unterstützen.
+    \item \textbf{Benachrichtigungen:} Automatische Erinnerungen vor bevorstehenden Terminen per E-Mail oder Push-Benachrichtigung sollen vergessene Arztbesuche reduzieren.
+    \item \textbf{Datensicherheit:} Da personenbezogene Daten sowie Gesundheitsdaten der Tiere verarbeitet werden, dürfen diese ausschließlich für die jeweilige Nutzerin bzw. den jeweiligen Nutzer zugänglich sein.
+\end{itemize}
+
+\textbf{Tierarztpraxen und Mitarbeitende}
+
+\begin{itemize}
+    \item \textbf{Digitale Kalender- und Terminverwaltung:} Praxen benötigen ein flexibles System zur Definition von Öffnungszeiten, Terminarten und Kapazitäten, das eine manuelle Terminvergabe per Telefon überflüssig macht.
+    \item \textbf{Übersichtliche Tagesplanung:} Ein Dashboard mit Tages- und Wochenansicht aller gebuchten Termine inklusive relevanter Patientendaten ist für einen reibungslosen Praxisablauf erforderlich.
+    \item \textbf{Praxisprofil und Auffindbarkeit:} Praxen müssen ihre Leistungen, behandelten Tierarten und Spezialisierungen pflegen können, um von Tierhaltern gezielt gefunden zu werden.
+    \item \textbf{Plattformunabhängigkeit:} Die Anwendung soll über gängige Webbrowser nutzbar sein, ohne dass eine lokale Installation erforderlich ist.
+\end{itemize}
+
+Zusammenfassend zeigt die Zielgruppenanalyse, dass die Anwendung sowohl für nicht technische Nutzer auf der Seite der Tierbesitzenden als auch für den professionellen Einsatz in tierärztlichen Praxen konzipiert werden muss. Die Berücksichtigung beider Perspektiven ist entscheidend für die Akzeptanz und den nachhaltigen Erfolg des Systems.
+
+\section{Funktionale Anforderungen}
+
+Grundlegend wird zwischen zwei Arten von Anforderungen unterschieden auf die man Einfluss hat: Funktionale Anforderungen und Nicht Funktionale Anforderungen.
+
+Funktionale Anforderungen (FA) beschreiben, welche Funktionen und Fähigkeiten das System den Nutzenden zur Verfügung stellen soll \cite[S.~3]{pohl2021}.
+
+\section{Funktionale Anforderungen}
+
+Zur eindeutigen Formulierung der funktionalen Anforderungen werden 
+Satzschablonen eingesetzt. Eine Satzschablone ist ein Bauplan für die 
+syntaktische Struktur einer einzelnen Anforderung in natürlicher Sprache 
+\cite[S.~X]{pohl2021}. Die funktionalen Anforderungen wurden aus der 
+Perspektive beider Zielgruppen abgeleitet:
+
+\textbf{Tierbesitzerinnen und Tierbesitzer}
+
+\begin{itemize}
+    \item \textbf{FA\#01} Das System \textbf{muss} Nutzerinnen und Nutzern 
+    ermöglichen, sich mit einer E-Mail-Adresse und einem Passwort zu 
+    registrieren und anzumelden.
+    \item \textbf{FA\#02} Das System \textbf{muss} Nutzerinnen und Nutzern 
+    ermöglichen, Haustierprofile mit Attributen wie Name, Tierart, Rasse, 
+    Geburtsdatum und Impfinformationen zu erstellen, zu bearbeiten und zu löschen.
+    \item \textbf{FA\#03} Das System \textbf{muss} Nutzerinnen und Nutzern 
+    ermöglichen, Tierarztpraxen anhand von Standort oder behandelter Tierart 
+    zu suchen und zu filtern.
+    \item \textbf{FA\#04} Das System \textbf{muss} Nutzerinnen und Nutzern 
+    ermöglichen, freie Terminslots einzusehen und unter Angabe von Termingrund 
+    und Haustier zu buchen.
+    \item \textbf{FA\#05} Das System \textbf{muss} Nutzerinnen und Nutzern 
+    ermöglichen, gebuchte Termine einzusehen, zu stornieren und umzubuchen.
+    \item \textbf{FA\#06} Das System \textbf{muss} Nutzerinnen und Nutzern 
+    automatische Erinnerungen per E-Mail vor bevorstehenden Terminen zusenden.
+\end{itemize}
+
+\textbf{Tierarztpraxen und Mitarbeitende}
+
+\begin{itemize}
+    \item \textbf{FA\#07} Das System \textbf{muss} Praxen ermöglichen, 
+    Stammdaten, Öffnungszeiten, behandelte Tierarten und Spezialisierungen 
+    eigenständig zu verwalten.
+    \item \textbf{FA\#08} Das System \textbf{muss} Praxen ermöglichen, 
+    verfügbare Terminslots zu definieren und Zeiträume zu sperren.
+    \item \textbf{FA\#09} Das System \textbf{muss} Praxen ermöglichen, 
+    alle Buchungen in einer Tages- und Wochenansicht einzusehen.
+    \item \textbf{FA\#10} Das System \textbf{muss} Praxen ermöglichen, 
+    Termine abzusagen, wobei betroffene Tierbesitzerinnen und Tierbesitzer 
+    automatisch benachrichtigt werden.
+\end{itemize}
+
+\section{Nicht-funktionale Anforderungen}
+
+Nicht-funktionale Anforderungen sind Qualitätsanforderungen, die sich auf 
+die Qualitätsmerkmale des Systems beziehen \cite[S.~4] {pohl2021}.
+
+\begin{itemize}
+    \item \textbf{NFA\#01} Das System \textbf{muss} Seiteninhalte unter 
+    Normallast in unter zwei Sekunden laden.
+    \item \textbf{NFA\#02} Das System \textbf{muss} eine Verfügbarkeit von 
+    mindestens 99{,}5 Prozent gewährleisten.
+    \item \textbf{NFA\#03} Das System \textbf{muss} alle Datenübertragungen 
+    per HTTPS verschlüsseln und Passwörter ausschließlich in gehashter Form 
+    speichern.
+    \item \textbf{NFA\#04} Das System \textbf{muss} personenbezogene Daten 
+    in Übereinstimmung mit der Datenschutz-Grundverordnung (DSGVO) verarbeiten.
+    \item \textbf{NFA\#05} Das System \textbf{muss} den Buchungsvorgang in 
+    maximal vier Schritten abschließbar machen.
+    \item \textbf{NFA\#06} Das System \textbf{muss} auf Endgeräten mit einer 
+    Mindestbildschirmbreite von 320 Pixeln vollständig nutzbar sein.
+    \item \textbf{NFA\#07} Das System \textbf{soll} ein Wachstum der 
+    Nutzerzahlen um den Faktor zehn ohne grundlegende Anpassung der 
+    Systemarchitektur tragen können.
+\end{itemize}

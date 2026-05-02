@@ -1,0 +1,150 @@
+\chapter{Technische Grundlagen}
+
+\section{Übersicht verwendeter Technologien}
+
+In diesem Kapitel werden die technischen Grundlagen und der verwendete Technologie-Stack von petappoint erläutert. Die Tabelle gibt zunächst einen Überblick über alle relevanten Technologien nach Schichten  (Datenbank, Backend, Frontend) und deren Funktion in der Systemarchitektur. Die nachfolgenden Abschnitte erläutern die einzelnen Technologien.
+
+\textbf{Datenbank}
+
+\begin{tabular}{|p{5cm}|p{9,2cm}|}
+\hline
+\textbf{Technologie} & \textbf{Zweck} \\
+\hline
+PostgreSQL 15 & Relationale Datenbank \\
+\hline
+Prisma ORM & Datenbankzugriff, Schema-Verwaltung, Migrationen \\
+\hline
+Docker & Lokales Ausführen des Datenbank-Containers \\
+\hline
+\end{tabular}
+
+\vspace{1em}
+
+\textbf{Backend}
+
+\begin{tabular}{|p{5cm}|p{9,2cm}|}
+\hline
+\textbf{Technologie} & \textbf{Zweck} \\
+\hline
+Node.js & JavaScript-Laufzeitumgebung \\
+\hline
+Express & HTTP-Server / REST-API-Framework \\
+\hline
+TypeScript & Statische Typisierung \\
+\hline
+Zod & Schema-Validierung für Anfragen und Antworten \\
+\hline
+bcrypt & Passwort-Hashing \\
+\hline
+Brevo & Transaktionaler E-Mail-Dienst \\
+\hline
+Handlebars & Rendering von E-Mail-Vorlagen \\
+\hline
+Vitest + Supertest & Unit- und Integrationstests \\
+\hline
+\end{tabular}
+
+\vspace{6em}
+
+\textbf{Frontend-App (React Native / Mobile)}
+
+\begin{tabular}{|p{5cm}|p{9,2cm}|}
+\hline
+\textbf{Technologie} & \textbf{Zweck} \\
+\hline
+React Native & Plattformübergreifendes mobiles Framework \\
+\hline
+Expo & Entwicklungsplattform und natives Build-Tooling \\
+\hline
+EAS (Expo Application Services) & Natives App-Building und Deployment \\
+\hline
+Expo Router & Dateibasiertes Navigations-/Routing-System \\
+\hline
+expo-secure-store & Sicherer lokaler Speicher (z.\,B. Tokens) \\
+\hline
+TypeScript & Statische Typisierung \\
+\hline
+TanStack Query & Server-State / Datenabruf \& Caching \\
+\hline
+NativeWind + Tailwind + Gluestack UI & Styling mit UI Komponentenbibliothek \\
+\hline
+i18next & Internationalisierung (Mehrsprachigkeit) \\
+\hline
+Zod & Laufzeit-Schema-Validierung \\
+\hline
+Jest + Jest-Expo & Unit-Tests \\
+\hline
+\end{tabular}
+
+\subsection{Technologien in der Datenbankschicht}
+
+Die Datenbankschicht bildet die Grundlage für die Speicherung der Anwendungsdaten, sodass der Verlust jeglicher Daten vermieden wird. Die Daten in einer Datenbank werden anhand des Datenbankmodells geordnet und nach einem vordefinierten Schema strukturiert. In diesen werden einzelne Entitäten und ihre Beziehungen zueinander beschrieben. Diese Sammlung wird üblicherweise von einem Datenbankmanagementsystem (DBMS) verwaltet. Zusammen werden die Daten und das DBMS als Datenbanksystem bezeichnet. Die üblicherweise verwendete Datenbank ist die Relationale Datenbank \cite{halvorsen2017database}. In der relationalen Datenbank werden die Entitäten in Form von Tabellen beschrieben. Jede Entität besitzt einen einzigartigen Primärschlüssel, und dieser Primärschlüssel kann sich in anderen Entitäten wiederfinden. Dieser heißt in der Tabelle Fremsdchlüssel und zeigt auf einer abstrakten Ebene die Beziehung zwischen zwei oder mehreren Tabellen. Dadurch lassen sich Daten ohne Duplikation organisieren \cite{relational_database_explanation}.
+
+\subsubsection{PostgreSQL}
+
+Eine relationale Datenbank ist PostgreSQL, das sich durch ein breites Spektrum an fortgeschrittenen Funktionalitäten auszeichnet. Das System gewährleistet die Einhaltung der ACID-Eigenschaften (Atomicity, Consistency, Isolation, Durability), welche seit 2001 die Grundlage für sichere und zuverlässige Transaktionen in der Datenban bilden \cite{postgresql_about}. In PostgreSQL sind Multi-Table-Transaktionen ebenfalls möglich. Das heißt Änderungen an mehreren Tabellen werden gemeinsam ausgeführt. Scheitert einer diese Änderungen werden alle anderen in der Transaktion zurückgenommen oder nicht weiter ausgeführt \cite{postgresql_transactions}. Außerdem ist die Nutzung von PostgreSQL kostenlos \cite{postgresql_free} und profitiert von einer großen unterstützenden Gemeinde, die für Zuverlässigkeit in der Produktion sorgt \cite{postgresql_community}. Bei petappoint spielen komplexe Transaktionen eine wichtige große Rolle, da mehrere Entitäten auf einmal erstellt, geändert oder gelöscht werden. Schlägt eins davon fehl muss die Transaktion abgebrochen werden.
+
+\subsubsection{Prisma}
+Prisma ist ein typsicheres Object-Relational Mapper (ORM), welches eine Abstraktionsschicht zwischen Code und der Datenbank darstellt. Es trennt das Datenbankschema in einer verständlichen Prisma Schema Language von der Anwendungslogik. Bei Datenbankabfragen erhält man typisierte Entitäten zurück, die dem generierten Schema entsprechen. Dadurch werden Typisierungsfehler schon zu Kompilierzeit verhindert \cite{prisma-docs}.
+
+Die Entwicklung von petappoint erfolgt unter Verwendung von TypeScript. Um eine hohe Softwarequalität und Konsistenz zu gewährleisten, wird das Typsystem von Prisma in die Backendschicht genutzt was dazu führt, dass Typsicherheit über die gesamte Anwendung sichergstellt wird.
+
+\subsubsection{Docker}
+Docker ist eine Plattform zur Containerisierung, die Anwendungen mit allen Abhängigkeiten in Containern kapselt. Diese Container laufen unabhängig vom zugrunde liegenden System. Docker bietet isolierte Ausführungsumgebungen mit hoher Portabilität und Reproduzierbarkeit \cite{docker-docs}. Für petappoint wird Docker zur lokalen Bereitstellung von PostgreSQL eingesetzt. Dies schafft einheitliche Entwicklungsumgebungen ohne manuelle Installation.
+
+\subsection{Technologien in der Backendschicht}
+Die Backendschicht dient als zentrale Schnittstelle zwischen Frontend und Datenbank. Sie ist der Kernschicht einer jeden Anwendung, da sie die Geschäftslogik beinhaltet, die Anfragen vom Frontend bearbeitet und dabei gleichzeitig für Sicherheit durch Authentifizierung und Authorisierung sorgt. Zuletzt wird über die Funktionen der Datenbankzugriff geregelt \cite{backend_explanation}.
+
+\subsubsection{Node.js}
+Node.js ist eine asynchrone ereignisgesteuerte Javascript-Laufzeitumgebung, die darauf ausgelegt ist skalierbare Netzwerkanwendungen zu entwickeln. Innerhalb einer Anfrage können viele Aufgaben gleichzeitig verarbeitet werden. Bei jeder Aufgabe wird eventuell ein Callback ausgelöst. Dabei können Anfragen abgearbeitet werden ohne auf den Abschluss vorheriger Aufgaben zu warten. Dies unterscheidet sich von thread-basierten Ansätzen wie in Java oder Python. \cite{nodejs-docs}. Das macht Node.js besonders geeignet für petappoint, da die Anwendung mehrere gleichzeitige Anfragen effizient verarbeiten muss. Das asynchrone sorgt dafür, dass der Server auch bei parallelen Zugriffen reaktionsfähig bleibt. Dadurch eignet sich Node.js besonders für skalierbare Webanwendungen mit viel Nutzerinteraktionen.
+
+\subsubsection{Express}
+Da Node.js grundlegende Webentwicklungsaufgaben nicht vollständig abdeckt, wird es für die Verarbeitung von HTTP-Anfragen durch Express ergänzt. Als Web-Framework erweitert Express Node.js um Routing und Middleware, wodurch die Entwicklung von petappoint vereinfacht und eine effiziente, nachvollziehbare Verarbeitung von Anfragen ermöglicht wird \cite{express-docs}.
+
+\subsubsection{TypeScript}
+TypeScript ist eine auf JavaScript aufbauende Sprache, die statische Typprüfung für Programme bereitstellt. Im Unterschied zu reinem JavaScript bietet TypeScript Typsicherung und somit eine frühzeitige Fehlererkennung während der Entwicklung \cite{typescript-docs}. Für petappoint ist TypeScript sinnvoll, weil das Projekt mehrere Datenmodelle, Schnittstellen und wiederverwendbare Komponenten enthält. Die Typisierung verbessert die Wartbarkeit und reduziert Fehler bei wachsendem Projektumfang.
+
+\subsubsection{Zod}
+Zod ist eine Validierungs-Bibliothek, die deklarative Schemata für Eingabe-, Ausgabe- und Datenstrukturen definiert und zur Laufzeit überprüft. Besonders ist die enge Verbindung zu TypeScript. Das macht die Nutzung von Zod im Rahmen von petappoint als optimal gilt. Zod wird in allen API-Routen In allen API-Routen zur Validierung der Anfragen genutzt.
+
+\subsubsection{bcrypt}
+bcrypt ist eine Passwort-Hashing-Bibliothek, die Passwörter nicht im Klartext speichert, sondern als Hash mit Salt verarbeitet \cite{bcrypt-docs}. Benutzerpasswörter müssen sicher gespeichert werden. So werden Anmeldedaten besser Angriffe geschützt.
+
+\subsubsection{Brevo und Handlebars}
+Brevo ist ein Dienst für den automatisierten Versand transaktionaler E-Mails oder SMS über eine API, etwa für Benachrichtigungen oder Statusmeldungen \cite{brevo-docs}. Mit Handlebars werden die Vorlagen dynamisch gerendert. Da sheißt serverseitig werdne die Vorlagen mit den enstprechenden Werten gefüllt, sodass dann von Brevo versendet werden können \cite{handlebars-docs}. Für PetAppoint ist Brevo + Handlebars sinnvoll, weil Buchungsbestätigungen, Erinnerungen und andere systemseitige E-Mails zuverlässig und automatisiert verschickt werden können.
+
+\subsubsection{Vitest und Supertest}
+ Vitest ist ein modernes, Vite-natives Testing-Framework mit Typescriptunterstützung. Was es so besonders macht ist die Schnelligkeit des Testingframeworks. \cite{vitest-docs}. Supertest erweitert es um Integrationstests mit simulierten HTTP-Requests, um API-Endpunkte wie Authentifizierung und Buchungen zu validieren \cite{supertest-docs}. Die Kombinationen erleichtern die Entwicklung von petappoint, da sich jegliche Aspekte in der Backendschicht schnell und zuverlässig testen lassen.
+
+\subsection{Technologien in der Frontendschicht}
+
+Die Frontendschicht stellt die Benutzerschnittstelle einer Anwendung dar und ermöglicht die Interaktion zwischen Nutzer und System. Sie ist dafür verantwortlich, Informationen visuell darzustellen und Benutzereingaben entgegenzunehmen. Dabei werden Inhalte gestaltet und dynamisch aktualisiert, um eine möglichst intuitive und effiziente Bedienung zu gewährleisten. \cite{frontend_explanation} 
+
+\subsubsection{React Native und Expo}
+
+React Native ist eine JavaScript-Bibliothek, die die Verwendung nativer Benutzeroberflächen-Komponenten ermöglicht. Der entscheidende Vorteil von React Native liegt darin, dass die Entwicklung mobiler Anwendungen nicht getrennt für iOS und Android erfolgen muss, sondern innerhalb einer einzigen Codebasis stattfindet. Dadurch werden sowohl die Entwicklungskosten gesenkt als auch die Wartbarkeit der Anwendung langfristig verbessert \cite{react-native-docs}.
+
+\subsubsection{Expo}
+Ergänzend hierzu fungiert Expo als ein umfassendes Framework, das die plattformübergreifende Ausführung von Anwendungen auf Android, iOS und im Web unterstützt \cite{expo-docs}. Expo optimiert das Management von Abhängigkeiten und bietet standardisierte Schnittstellen für den Zugriff auf gerätespezifische Hardware-Funktionalitäten wie Kamera- oder Biometrie-Module, wodurch die Komplexität der nativen Build-Konfigurationen abstrahiert wird \cite{why-expo}. Zudem ermöglichen die Expo Application Services (EAS) eine skalierbare Automatisierung und Bereitstellung des gesamten Entwicklungs- und Build-Lebenszyklus \cite{expo-service}.
+
+\subsubsection{Expo Router}
+
+Expo besitzt ein Routing und Navigationssystem, dass speziell für React Native Anwendungen gedacht ist. Die Struktur der App‑Navigation wird dabei direkt über das Dateiverzeichnis abgebildet \cite{expo-router}. Durch Expo Routeer wird die Wartbarkeit des Quellcodes gesteigert sowie die Nachvollziehbarkeit der Navigationslogik.
+
+\subsubsection{TanStack Query}
+
+TanStack Query ist eine spezialisierte Bibliothek für das Management asynchroner Datenabrufe und des sogenannten Server-State in React-Anwendungen. Es übernimmt das fetching, caching und Datensynchronisierung ab. Statt diese Punkte manuell zuschreiben reduziert Tanstack solchen Boilerplate-Code \cite{tanstack-docs}. Für die Entwicklung von petappoint bietet dies den Vorteil, die Quellcode-Lesbarkeit zu erhöhen und den Wartungsaufwand bei der Implementierung der Datenschnittstellen effizient zu minimieren.
+
+\subsubsection{NativeWind, Tailwind CSS und Gluestack UI)}
+
+Die visuelle Gestaltung der Anwendung erfolgt durch eine Kombination aus NativeWind, Tailwind CSS und der UI‑Bibliothek Gluestack UI. Tailwind CSS ist ein CSS-Framework, das Entwicklern hilft, Webseiten schnell zu gestalten, ohne ständig zwischen verschiedenen Seiten für HTML und CSS hin- und herwechseln zu müssen. Tailwind CSS enthält keine vorgefertigten Komponenten, sondern bietet eine Reihe von Utility-Klassen, mit denen HTML-Elemente direkt gestylt werden können \cite{tailwind-explanation}. NativeWind nutzt Tailwind CSS als Skriptsprache, um ein universelles Styling-System zu schaffen. Gestaltete Formen können in allen React Native Komponenten genutzt werden \cite{nativewind-explanation}. Gluestack UI bietet eine Sammlung an vorgefertigten, UI‑Komponenten, die für React Native optimiert sind und Design‑Themen und Dark Mode Unterstützung liefern \cite{gluestack-explanation}. Für die Anwendung wird diese Kombination gewählt, um eine schnelle, konsistente UI Entwicklung zu gewährleisten, die plattformunabhängig sich gleicht.
+
+\subsubsection{i18next}
+
+Für die Internationalisierung kommt i18next in Kombination mit react‑i18next zum Einsatz, um Mehrsprachigkeit in der App zu realisieren. Die Bibliothek ermöglicht die Verwaltung von Übersetzungs‑Dateien. Sie ist besonders praktisch für die Anwendung geeignet, da Sie sich automatisch an die Anpassung der Oberfläche des Nutzers anpasst \cite{i18n-explanation}. Durch diese Architektur kann die App flexibel weitere Sprachen integrieren, ohne dass die Basisstruktur des Frontends verändert werden muss.
+
+\subsubsection{Expo Secure Store}
+Für die Speicherung sicherheitsrelevanter Daten, wie beispielsweise Authentifizierungstokens, nutzt petappoint expo-secure-store. Die Bibliothek legt Daten verschlüsselt als Key-Value-Paare ab und greift dafür direkt auf die systemeigenen Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain oder den Android-KeyStore. Das stellt sicher, dass sensible Informationen lokal auf dem Gerät geschützt bleiben und der Zugriff durch unbefugte Dritte effektiv unterbunden wird \cite{expo-secure-store-docs}.
+
+\subsubsection{Jest + Jest Expo}
+Zur Qualitätssicherung wird Jest in Kombination jest‑expo verwendet. Diese Kombination erlaubt es, React-Native-Komponenten in einer simulierten Umgebung zu testen und externe Abhängigkeiten gezielt zu mocken, um Fehler bereits frühzeitig aufzudecken. Durch automatisierte Testabläufe lassen sich Regressionen bei UI-Anpassungen oder in der Logik der Datenverarbeitung effektiv minimieren, was die allgemeine Stabilität und Wartbarkeit von petappoint nachhaltig absichert \cite{jest-expo-docs}.
