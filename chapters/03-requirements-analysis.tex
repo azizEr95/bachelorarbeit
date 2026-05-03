@@ -1,33 +1,27 @@
 \chapter{Anforderungsermittlung}
 
-Die Anforderungsermittlung dieser Arbeit folgt den Prinzipien des Requirements 
-Engineering. Das ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse 
-aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. 
-Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die 
-Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Eine Anforderung wird 
-dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die 
-Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
+Die Anforderungsermittlung dieser Arbeit folgt den Prinzipien des Requirements Engineering. Das ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Dazu zählen auch die Nutzenden von petappoint. Eine Anforderung wird dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
 
 Die Analyse der Anforderungen bildet die Grundlage für Konzeption und Entwicklung der vorliegenden Anwendung und Arbeit. Ziel dieses Kapitels ist es, ein vollständiges Bild der Anforderungen zu erarbeiten und diese strukturiert zu dokumentieren.
 
-Zu Beginn wird die Zielgruppe der Anwendung identifiziert und charakterisiert. Darauf aufbauend werden die relevanten funktionalen sowie nicht-funktionalen Anforderungen hergeleitet und gegliedert dargestellt. Abschließend werden ausgewählte Anforderungen durch Use Cases konkretisiert und in ihrem praktischen Kontext veranschaulicht.
+Zu Beginn wird die Zielgruppe der Anwendung identifiziert und charakterisiert. Darauf aufbauend werden die relevanten funktionalen sowie nicht funktionalen Anforderungen hergeleitet und gegliedert dargestellt. Abschließend werden ausgewählte Anforderungen durch Use Cases konkretisiert und in ihrem praktischen Kontext veranschaulicht.
 
 \section{Zielgruppe}
-Die Anwendung richtet sich an zwei primäre Zielgruppen: Tierbesitzerinnen und Tierbesitzer sowie Tierarztpraxen und deren Mitarbeitende. Im Rahmen der Analyse bestehender Softwarelösungen in Kapitel 2 wurde deutlich, dass in diesem Bereich keine spezialisierte Terminverwaltungslösung existiert, die beide gleichermaßen adressiert.
+Die Anwendung richtet sich an zwei primäre Zielgruppen: Tierhalter sowie Tierarztpraxen. Im Rahmen der Analyse bestehender Softwarelösungen in Kapitel 2 wurde deutlich, dass in diesem Bereich keine spezialisierte Terminverwaltungslösung existiert, die beide gleichermaßen adressiert.
 
 Die Anforderungen beider Zielgruppen lassen sich durch folgende Aspekte charakterisieren:
 
-\textbf{Tierbesitzerinnen und Tierbesitzer}
+\textbf{Tierhalter}
 
 \begin{itemize}
-    \item \textbf{Einfache Bedienbarkeit:} Da die Nutzerinnen und Nutzer in der Regel über keine spezifischen technischen Vorkenntnisse verfügen, muss die Anwendung intuitiv bedienbar sein und ohne umfangreiche Einarbeitung genutzt werden können.
+    \item \textbf{Einfache Bedienbarkeit:} Da die Nutzende in der Regel über keine spezifischen technischen Vorkenntnisse verfügen, muss die Anwendung intuitiv bedienbar sein und ohne umfangreiche Einarbeitung genutzt werden können.
     \item \textbf{Verfügbarkeit rund um die Uhr:} Da berufstätige Tierhalter häufig tagsüber keine Möglichkeit haben, telefonisch einen Termin zu vereinbaren, muss die Buchung zu jeder Tages- und Nachtzeit möglich sein.
-    \item \textbf{Haustierzentrierte Verwaltung:} Die Anwendung muss die Anlage mehrerer Haustierprofile mit relevanten Informationen wie Tierart, Rasse, Geburtsdatum und Impfstatus unterstützen.
+    \item \textbf{Haustierzentrierte Verwaltung:} Die Anwendung muss die Anlage mehrerer Haustierprofile mit relevanten Informationen wie Tierart, Rasse und Geburtsdatum unterstützen.
     \item \textbf{Benachrichtigungen:} Automatische Erinnerungen vor bevorstehenden Terminen per E-Mail oder Push-Benachrichtigung sollen vergessene Arztbesuche reduzieren.
-    \item \textbf{Datensicherheit:} Da personenbezogene Daten sowie Gesundheitsdaten der Tiere verarbeitet werden, dürfen diese ausschließlich für die jeweilige Nutzerin bzw. den jeweiligen Nutzer zugänglich sein.
+    \item \textbf{Datensicherheit:} Da personenbezogene Daten sowie Gesundheitsdaten der Tiere verarbeitet werden, dürfen diese ausschließlich für die jeweiligen Nutzenden zugänglich sein.
 \end{itemize}
 
-\textbf{Tierarztpraxen und Mitarbeitende}
+\textbf{Tierarztpraxen}
 
 \begin{itemize}
     \item \textbf{Digitale Kalender- und Terminverwaltung:} Praxen benötigen ein flexibles System zur Definition von Öffnungszeiten, Terminarten und Kapazitäten, das eine manuelle Terminvergabe per Telefon überflüssig macht.
@@ -36,78 +30,539 @@ Die Anforderungen beider Zielgruppen lassen sich durch folgende Aspekte charakte
     \item \textbf{Plattformunabhängigkeit:} Die Anwendung soll über gängige Webbrowser nutzbar sein, ohne dass eine lokale Installation erforderlich ist.
 \end{itemize}
 
-Zusammenfassend zeigt die Zielgruppenanalyse, dass die Anwendung sowohl für nicht technische Nutzer auf der Seite der Tierbesitzenden als auch für den professionellen Einsatz in tierärztlichen Praxen konzipiert werden muss. Die Berücksichtigung beider Perspektiven ist entscheidend für die Akzeptanz und den nachhaltigen Erfolg des Systems.
+Zusammenfassend zeigt die Zielgruppenanalyse, dass die Anwendung sowohl für nicht technische Nutzende auf der Seite der Tierhalter als auch für den professionellen Einsatz in tierärztlichen Praxen konzipiert werden muss. Die Berücksichtigung beider Perspektiven ist entscheidend für die Akzeptanz und den nachhaltigen Erfolg des Systems.
 
 \section{Funktionale Anforderungen}
 
-Grundlegend wird zwischen zwei Arten von Anforderungen unterschieden auf die man Einfluss hat: Funktionale Anforderungen und Nicht Funktionale Anforderungen.
-
-Funktionale Anforderungen (FA) beschreiben, welche Funktionen und Fähigkeiten das System den Nutzenden zur Verfügung stellen soll \cite[S.~3]{pohl2021}.
-
-\section{Funktionale Anforderungen}
-
-Zur eindeutigen Formulierung der funktionalen Anforderungen werden 
+Grundlegend wird zwischen zwei Arten von Anforderungen unterschieden auf die man Einfluss hat: Funktionale Anforderungen und Nicht Funktionale Anforderungen. Funktionale Anforderungen (FA) beschreiben, welche Funktionen und Fähigkeiten das System den Nutzenden zur Verfügung stellen soll \cite[S.~3]{pohl2021}. Zur eindeutigen Formulierung der funktionalen Anforderungen werden 
 Satzschablonen eingesetzt. Eine Satzschablone ist ein Bauplan für die 
 syntaktische Struktur einer einzelnen Anforderung in natürlicher Sprache 
-\cite[S.~X]{pohl2021}. Die funktionalen Anforderungen wurden aus der 
+\cite[S.~71]{pohl2021}. Die funktionalen Anforderungen wurden aus der 
 Perspektive beider Zielgruppen abgeleitet:
 
-\textbf{Tierbesitzerinnen und Tierbesitzer}
+\textbf{Tierhalter}
 
 \begin{itemize}
-    \item \textbf{FA\#01} Das System \textbf{muss} Nutzerinnen und Nutzern 
-    ermöglichen, sich mit einer E-Mail-Adresse und einem Passwort zu 
-    registrieren und anzumelden.
-    \item \textbf{FA\#02} Das System \textbf{muss} Nutzerinnen und Nutzern 
-    ermöglichen, Haustierprofile mit Attributen wie Name, Tierart, Rasse, 
-    Geburtsdatum und Impfinformationen zu erstellen, zu bearbeiten und zu löschen.
-    \item \textbf{FA\#03} Das System \textbf{muss} Nutzerinnen und Nutzern 
-    ermöglichen, Tierarztpraxen anhand von Standort oder behandelter Tierart 
-    zu suchen und zu filtern.
-    \item \textbf{FA\#04} Das System \textbf{muss} Nutzerinnen und Nutzern 
-    ermöglichen, freie Terminslots einzusehen und unter Angabe von Termingrund 
+    \item \textbf{FA\#01} Die mobile Anwendung \textbf{muss} Nutzenden 
+    ermöglichen, sich mit einer E-Mail-Adresse oder Telefonnummer sowie 
+    einem Passwort zu registrieren und anzumelden.
+
+    \item \textbf{FA\#02} Die mobile Anwendung \textbf{muss} eine Anmeldung per biometrischer Authentifizierung (Face~ID / Fingerabdruck) unterstützen.
+
+    \item \textbf{FA\#03} Die mobile Anwendung \textbf{muss} Nutzenden 
+    ermöglichen, Haustierprofile mit Attributen wie Name, Tierart, Rasse 
+    und Geburtsdatum zu erstellen, zu bearbeiten und zu löschen.
+
+    \item \textbf{FA\#04} Die mobile Anwendung \textbf{muss} das Hochladen 
+    von Profilbildern direkt über die Gerätekamera oder Galerie ermöglichen.
+
+    \item \textbf{FA\#05} Die mobile Anwendung \textbf{muss} Nutzenden 
+    ermöglichen, Tierarztpraxen anhand von Standort, Tierart oder Behandlung zu suchen und zu filtern.
+
+    \item \textbf{FA\#06} Die mobile Anwendung \textbf{muss} Nutzenden 
+    ermöglichen, freie Terminslots in einer scrollbaren Kalenderansicht 
+    einzusehen.
+
+    \item \textbf{FA\#07} Die mobile Anwendung \textbf{muss} Nutzenden 
+    ermöglichen, einen freien Terminslot unter Angabe von Behandlungsart 
     und Haustier zu buchen.
-    \item \textbf{FA\#05} Das System \textbf{muss} Nutzerinnen und Nutzern 
+
+    \item \textbf{FA\#08} Die mobile Anwendung \textbf{muss} Nutzenden 
     ermöglichen, gebuchte Termine einzusehen, zu stornieren und umzubuchen.
-    \item \textbf{FA\#06} Das System \textbf{muss} Nutzerinnen und Nutzern 
-    automatische Erinnerungen per E-Mail vor bevorstehenden Terminen zusenden.
+
+    \item \textbf{FA\#09} Die mobile Anwendung \textbf{muss} Nutzende 
+    per Push-Benachrichtigung über Änderungen oder Stornierungen 
+    gebuchter Termine informieren.
+
+    \item \textbf{FA\#10} Die mobile Anwendung \textbf{muss} Nutzenden 
+    automatische Terminerinnerungen per E-Mail und Push-Benachrichtigung zusenden.
 \end{itemize}
 
-\textbf{Tierarztpraxen und Mitarbeitende}
-
+\textbf{Tierarztpraxen}
 \begin{itemize}
-    \item \textbf{FA\#07} Das System \textbf{muss} Praxen ermöglichen, 
-    Stammdaten, Öffnungszeiten, behandelte Tierarten und Spezialisierungen 
-    eigenständig zu verwalten.
-    \item \textbf{FA\#08} Das System \textbf{muss} Praxen ermöglichen, 
-    verfügbare Terminslots zu definieren und Zeiträume zu sperren.
-    \item \textbf{FA\#09} Das System \textbf{muss} Praxen ermöglichen, 
-    alle Buchungen in einer Tages- und Wochenansicht einzusehen.
-    \item \textbf{FA\#10} Das System \textbf{muss} Praxen ermöglichen, 
-    Termine abzusagen, wobei betroffene Tierbesitzerinnen und Tierbesitzer 
-    automatisch benachrichtigt werden.
+    \item \textbf{FA\#11} Die mobile Anwendung \textbf{muss} Tierarztpraxen ermöglichen, Stammdaten, Öffnungszeiten, behandelte Tierarten und Spezialisierungen eigenständig zu verwalten.
+
+    \item \textbf{FA\#12} Die mobile Anwendung \textbf{muss} Tierarztpraxen ermöglichen, verfügbare Terminslots über eine Kalenderoberfläche zu definieren und Zeiträume zu sperren.
+
+    \item \textbf{FA\#13} Die mobile Anwendung \textbf{muss} Praxen 
+    ermöglichen, alle Buchungen in einer Tages- und 
+    Wochenansicht einzusehen.
+
+    \item \textbf{FA\#14} Die mobile Anwendung \textbf{muss} Praxen 
+    ermöglichen, Termine abzusagen.
+
+    \item \textbf{FA\#15} Die mobile Anwendung \textbf{muss} betroffene 
+    Tierhalter bei einer Terminabsage durch die Praxis automatisch per 
+    Push-Benachrichtigung und E-Mail benachrichtigen.
 \end{itemize}
 
-\section{Nicht-funktionale Anforderungen}
+\section{Nicht funktionale Anforderungen}
 
-Nicht-funktionale Anforderungen sind Qualitätsanforderungen, die sich auf 
+Nicht funktionale Anforderungen sind Qualitätsanforderungen, die sich auf 
 die Qualitätsmerkmale des Systems beziehen \cite[S.~4] {pohl2021}.
 
 \begin{itemize}
-    \item \textbf{NFA\#01} Das System \textbf{muss} Seiteninhalte unter 
-    Normallast in unter zwei Sekunden laden.
-    \item \textbf{NFA\#02} Das System \textbf{muss} eine Verfügbarkeit von 
-    mindestens 99{,}5 Prozent gewährleisten.
-    \item \textbf{NFA\#03} Das System \textbf{muss} alle Datenübertragungen 
-    per HTTPS verschlüsseln und Passwörter ausschließlich in gehashter Form 
-    speichern.
-    \item \textbf{NFA\#04} Das System \textbf{muss} personenbezogene Daten 
-    in Übereinstimmung mit der Datenschutz-Grundverordnung (DSGVO) verarbeiten.
-    \item \textbf{NFA\#05} Das System \textbf{muss} den Buchungsvorgang in 
-    maximal vier Schritten abschließbar machen.
-    \item \textbf{NFA\#06} Das System \textbf{muss} auf Endgeräten mit einer 
-    Mindestbildschirmbreite von 320 Pixeln vollständig nutzbar sein.
-    \item \textbf{NFA\#07} Das System \textbf{soll} ein Wachstum der 
-    Nutzerzahlen um den Faktor zehn ohne grundlegende Anpassung der 
-    Systemarchitektur tragen können.
+    \item \textbf{NFA\#01} Die mobile Anwendung \textbf{muss} Seiteninhalte unter Normallast in unter drei Sekunden laden, gemessen unter einer 4G-Mobilfunkverbindung (LTE).
+
+    \item \textbf{NFA\#02} Die mobile Anwendung \textbf{muss} eine 
+    Verfügbarkeit von mindestens 99{,}5 Prozent gewährleisten, einschließlich der zugehörigen Backend-Dienste und APIs.
+
+    \item \textbf{NFA\#03} Die mobile Anwendung \textbf{muss} alle 
+    Datenübertragungen per Hypertext Transfer Protocol Secure (HTTPS) verschlüsseln.
+
+    \item \textbf{NFA\#04} Die mobile Anwendung \textbf{muss} Passwörter 
+    ausschließlich in gehashter Form speichern und sensible Daten nicht im Klartext auf dem Gerät ablegen.
+
+    \item \textbf{NFA\#05} Die mobile Anwendung \textbf{muss} 
+    personenbezogene Daten in Übereinstimmung mit der 
+    Datenschutz-Grundverordnung (DSGVO) verarbeiten.
+
+    \item \textbf{NFA\#06} Die mobile Anwendung \textbf{muss} vor dem 
+    Zugriff auf Gerätedaten eine explizite Einwilligung der Nutzenden einholen.
+
+    \item \textbf{NFA\#07} Die mobile Anwendung \textbf{muss} den 
+    Buchungsvorgang in maximal fünf Schritten abschließbar machen, die 
+    jeweils ohne horizontales Scrollen darstellbar sind.
+
+    \item \textbf{NFA\#08} Die mobile Anwendung \textbf{muss} auf 
+    Endgeräten mit einer Mindestbildschirmbreite von 320 Pixeln 
+    vollständig nutzbar sein.
+
+    \item \textbf{NFA\#09} Alle interaktiven Elemente \textbf{müssen} 
+    eine Mindestgröße von 44\,×\,44\,px (iOS) bzw. 48\,×\,48\,dp 
+    (Android) aufweisen.
+
+    \item \textbf{NFA\#10} Die mobile Anwendung \textbf{soll} ein 
+    Wachstum der Nutzerzahlen um den Faktor zehn durch skalierbare 
+    Cloud-Infrastruktur ohne Anpassung der Systemarchitektur tragen können.
 \end{itemize}
+
+\section{Use Cases}
+
+Use Cases stellen das Verhalten eines Systems aus dem Blickwinkel der Nutzenden dar. Sie beschreiben, wie das System auf eine Interaktion reagiert, welche Ziele damit verfolgt werden und welche alternativen Abläufe dabei auftreten können \cite[S.~15]{cockburn2001}. Aufgrund ihrer textuellen Form eignen sie sich besonders zur klaren und verständlichen Beschreibung funktionaler Anforderungen und ermöglichen eine verständliche Kommunikation ohne besondere fachliche Vorkenntnisse \cite[S.~15]{cockburn2001}. Zur besseren Dokumentation werden sie im Folgenden durch ein Use-Case-Diagramm ergänzt \cite[S.~75]{pohl2021}.
+
+\subsection{Konto registrieren}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-01: Konto registrieren \\
+\hline
+\textbf{Kurzbeschreibung} & Ein Tierhalter möchte sich registrieren \\
+\hline
+\textbf{Akteure} & Tierhalter \\
+\hline
+\textbf{Vorbedingungen} & 
+Der Tierhalter besitzt noch kein Konto in der Anwendung. \newline
+Der Tierhalter besitzt eine gültige E-Mail-Adresse oder Telefonnummer. \\
+\hline
+\textbf{Auslösendes Ereignis} & Der Tierhalter möchte die Anwendung 
+erstmalig nutzen und besitzt noch kein Konto. \\
+\hline
+\textbf{Hauptszenario} &
+1. Der Tierhalter öffnet die mobile Anwendung von petappoint. \newline
+2. Der Tierhalter tippt auf „Registrieren". \newline
+3. Die Anwendung zeigt ein Registrierungsformular. \newline
+4. Der Tierhalter gibt Vorname, Nachname, E-Mail-Adresse oder 
+Telefonnummer, Passwort, Straße und PLZ an. \newline
+5. Der Tierhalter tippt auf „Konto erstellen". \newline
+6. Die Anwendung validiert die Eingaben. \newline
+7. Die Anwendung versendet einen Verifizierungscode an die angegebene 
+E-Mail-Adresse oder Telefonnummer. \newline
+8. Der Tierhalter wird zur Eingabe des Verifizierungscodes weitergeleitet. \newline
+9. Der Tierhalter gibt den Code ein und tippt auf „Bestätigen". \newline
+10. Der Tierhalter wird automatisch eingeloggt und zur 
+Startübersicht weitergeleitet. \\
+\hline
+\textbf{Alternativszenario} &
+1. Die E-Mail-Adresse oder die Telefonnummer ist bereits vergeben 
+$\rightarrow$ Die Anwendung zeigt eine Fehlermeldung. \newline
+2. Das Passwort erfüllt nicht die Mindestanforderungen 
+$\rightarrow$ Die Anwendung zeigt einen Hinweis. \newline
+3. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \newline
+4. Der Tierhalter möchte sich bei einem Folgebesuch anmelden 
+$\rightarrow$ Die Anwendung bietet eine Anmeldung per 
+biometrischer Authentifizierung (Face~ID / Fingerabdruck) an. \\
+\hline
+\textbf{Nachbedingungen} &
+Das Konto des Tierhalters ist in der Anwendung gespeichert. \newline
+Der Tierhalter ist eingeloggt. \\
+\hline
+\end{tabular}
+
+\subsection{Haustier anlegen}
+
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-02: Haustier anlegen \\
+\hline
+\textbf{Kurzbeschreibung} & Der Tierhalter legt ein neues Haustierprofil 
+in der Anwendung an. \\
+\hline
+\textbf{Akteure} & Tierhalter \\
+\hline
+\textbf{Vorbedingungen} & 
+Der Tierhalter ist eingeloggt. \\
+\hline
+\textbf{Auslösendes Ereignis} & Der Tierhalter möchte ein neues Haustier 
+in der Anwendung erfassen. \\
+\hline
+\textbf{Hauptszenario} &
+1. Der Tierhalter öffnet den Tab „Meine Haustiere". \newline
+2. Der Tierhalter tippt auf „Haustier hinzufügen". \newline
+3. Die Anwendung öffnet einen neuen Screen mit Eingabefeldern. \newline
+4. Der Tierhalter gibt die Daten des Haustieres ein. \newline
+5. Der Tierhalter tippt optional auf „Profilbild hinzufügen" und 
+wählt ein Bild über die Gerätekamera oder Galerie aus. \newline
+6. Der Tierhalter tippt auf „Haustier anlegen". \newline
+7. Die Anwendung validiert die Daten. \newline
+8. Die Anwendung speichert das Haustier. \newline
+9. Der Tierhalter wird zum Tab 'Meine Haustiere' weitergeleitet. \\
+\hline
+\textbf{Alternativszenario} &
+1. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \newline
+2. Der Tierhalter verweigert den Kamerazugriff $\rightarrow$ Die Anwendung 
+zeigt einen Hinweis und erlaubt die Auswahl aus der Galerie. \newline
+3. Der Tierhalter verweigert auch den Galerie-Zugriff $\rightarrow$ Das Haustier kann auch ohne Profilbild angelegt werden. \\
+\hline
+\textbf{Nachbedingungen} &
+Das neue Haustier ist unter „Meine Haustiere" sichtbar. \\
+\hline
+\end{tabular}
+
+\subsection{Haustier bearbeiten}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-03: Haustier bearbeiten \\
+\hline
+\textbf{Kurzbeschreibung} & Der Tierhalter bearbeitet die Daten eines 
+bestehenden Haustierprofils. \\
+\hline
+\textbf{Akteure} & Tierhalter \\
+\hline
+\textbf{Vorbedingungen} & 
+Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter hat mindestens ein Haustier angelegt. \\
+\hline
+\textbf{Auslösendes Ereignis} & Der Tierhalter möchte die Daten eines 
+Haustieres aktualisieren. \\
+\hline
+\textbf{Hauptszenario} &
+1. Der Tierhalter öffnet den Tab „Meine Haustiere". \newline
+2. Der Tierhalter tippt auf „Bearbeiten" in der Karte des gewünschten 
+Haustieres. \newline
+3. Die Anwendung öffnet einen neuen Screen mit den aktuellen Daten 
+des Haustieres. \newline
+4. Der Tierhalter ändert die gewünschten Daten. \newline
+5. Der Tierhalter tippt optional auf „Profilbild ändern" und wählt 
+ein neues Bild über die Gerätekamera oder Galerie aus. \newline
+6. Der Tierhalter tippt auf „Speichern". \newline
+7. Die Anwendung validiert die Daten. \newline
+8. Die Anwendung speichert die Änderungen und leitet zurück zu 
+„Meine Haustiere". \\
+\hline
+\textbf{Alternativszenario} &
+1. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \newline
+2. Der Tierhalter verweigert den Kamerazugriff $\rightarrow$ Die Anwendung 
+zeigt einen Hinweis und erlaubt die Auswahl aus der Galerie. \newline
+3. Der Tierhalter verweigert auch den Galerie-Zugriff $\rightarrow$ Die 
+Anwendung zeigt einen Hinweis und das Profilbild bleibt unverändert. \\
+\hline
+\textbf{Nachbedingungen} &
+Das Haustier wird unter „Meine Haustiere" mit den aktualisierten 
+Daten angezeigt. \\
+\hline
+\end{tabular}
+
+\subsection{Haustier löschen}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-04: Haustier löschen \\
+\hline
+\textbf{Kurzbeschreibung} & Der Tierhalter löscht ein bestehendes 
+Haustierprofil aus der Anwendung. \\
+\hline
+\textbf{Akteure} & Tierhalter \\
+\hline
+\textbf{Vorbedingungen} & 
+Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter hat mindestens ein Haustier angelegt. \\
+\hline
+\textbf{Auslösendes Ereignis} & Der Tierhalter möchte ein Haustierprofil 
+dauerhaft entfernen. \\
+\hline
+\textbf{Hauptszenario} &
+1. Der Tierhalter öffnet den Tab „Meine Haustiere". \newline
+2. Der Tierhalter tippt auf Bearbeiten im Bereich des gewünschten 
+Haustieres. \newline
+3. Der Tierhalter tippt auf „Haustier löschen". \newline
+4. Die Anwendung öffnet einen Bestätigungs-Bottom-Sheet mit einer 
+Warnmeldung. \newline
+5. Der Tierhalter bestätigt den Löschvorgang. \newline
+6. Die Anwendung löscht das Haustierprofil. \newline
+7. Der Tierhalter wird zum Tab „Meine Haustiere" weitergeleitet. \\
+\hline
+\textbf{Alternativszenario} &
+1. Der Tierhalter bricht den Bestätigungs-Bottom-Sheet ab 
+$\rightarrow$ Das Haustier bleibt erhalten. \\
+\hline
+\textbf{Nachbedingungen} &
+Das gelöschte Haustier ist nicht mehr unter „Meine Haustiere" sichtbar. \\
+\hline
+\end{tabular}
+
+\subsection{Termin buchen}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-05: Termin buchen \\
+\hline
+\textbf{Kurzbeschreibung} & Der Tierhalter bucht einen Termin bei einer 
+Tierarztpraxis für sein Haustier. \\
+\hline
+\textbf{Akteure} & Tierhalter \\
+\hline
+\textbf{Vorbedingungen} & 
+Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter hat mindestens ein Haustier angelegt. \\
+\hline
+\textbf{Auslösendes Ereignis} & Der Tierhalter möchte einen Tierarzttermin 
+für sein Haustier vereinbaren. \\
+\hline
+\textbf{Hauptszenario} &
+1. Der Tierhalter tippt auf „Termin buchen". \newline
+2. Der Tierhalter gibt optional einen Ort, ein Haustier und eine 
+Behandlungsart an. \newline
+3. Der Tierhalter tippt auf „Suchen". \newline
+4. Die Anwendung zeigt passende Tierarztpraxen in der Nähe in einer 
+scrollbaren Liste an. \newline
+5. Der Tierhalter tippt auf eine Praxis. \newline
+6. Die Anwendung zeigt die Praxisdetails sowie verfügbare Termine 
+in einer scrollbaren Kalenderansicht. \newline
+7. Der Tierhalter wählt ein Datum und eine Uhrzeit aus. \newline
+8. Der Tierhalter tippt auf „Bestätigen". \newline
+9. Die Anwendung zeigt eine Buchungsübersicht. \newline
+10. Der Tierhalter tippt auf „Termin buchen". \newline
+11. Die Anwendung speichert den Termin. \newline
+12. Der Tierhalter erhält eine Push-Benachrichtigung als 
+Buchungsbestätigung. \newline
+13. Der Tierhalter wird zum Tab „Meine Termine" weitergeleitet. \\
+\hline
+\textbf{Alternativszenario} &
+1. Kein Ort angegeben $\rightarrow$ Die Anwendung ermittelt den 
+Standort automatisch per GPS und zeigt nahegelegene Praxen. \newline
+2. Der Tierhalter verweigert den GPS-Zugriff $\rightarrow$ Die Anwendung 
+fordert den Tierhalter zur manuellen Ortseingabe auf. \newline
+3. Keine freien Termine verfügbar $\rightarrow$ Die Anwendung zeigt 
+einen entsprechenden Hinweis. \\
+\hline
+\textbf{Nachbedingungen} &
+Der gebuchte Termin ist unter „Meine Termine" sichtbar. \\
+\hline
+\end{tabular}
+
+\subsection{Termin bearbeiten}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-06: Termin bearbeiten \\
+\hline
+\textbf{Kurzbeschreibung} & Der Tierhalter ändert einen bestehenden 
+gebuchten Termin. \\
+\hline
+\textbf{Akteure} & Tierhalter \\
+\hline
+\textbf{Vorbedingungen} & 
+Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter hat mindestens einen gebuchten Termin. \\
+\hline
+\textbf{Auslösendes Ereignis} & Der Tierhalter möchte Datum, Uhrzeit 
+oder Haustier eines Termins ändern. \\
+\hline
+\textbf{Hauptszenario} &
+1. Der Tierhalter öffnet den Tab „Meine Termine". \newline
+2. Der Tierhalter tippt auf den gewünschten Termin. \newline
+3. Der Tierhalter tippt auf „Termin bearbeiten". \newline
+4. Die Anwendung öffnet einen neuen Screen mit den aktuellen 
+Termindaten. \newline
+5. Der Tierhalter ändert die gewünschten Daten in einer 
+scrollbaren Kalenderansicht. \newline
+6. Der Tierhalter tippt auf „Speichern". \newline
+7. Die Anwendung validiert die Daten. \newline
+8. Die Anwendung speichert die Änderungen und leitet zurück 
+zu „Meine Termine". \newline
+9. Der Tierhalter erhält eine Push-Benachrichtigung als 
+Bestätigung der Änderung. \\
+\hline
+\textbf{Alternativszenario} &
+1. Der gewünschte Termin ist nicht mehr verfügbar $\rightarrow$ 
+Die Anwendung zeigt eine Fehlermeldung und schlägt alternative 
+freie Termine vor. \\
+\hline
+\textbf{Nachbedingungen} &
+Der Termin wird unter „Meine Termine" mit den aktualisierten 
+Daten angezeigt. \\
+\hline
+\end{tabular}
+
+\subsection{Termin stornieren}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-07: Termin stornieren \\
+\hline
+\textbf{Kurzbeschreibung} & Der Tierhalter storniert einen bestehenden 
+gebuchten Termin. \\
+\hline
+\textbf{Akteure} & Tierhalter \\
+\hline
+\textbf{Vorbedingungen} & 
+Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter hat mindestens einen gebuchten Termin. \\
+\hline
+\textbf{Auslösendes Ereignis} & Der Tierhalter möchte einen gebuchten 
+Termin absagen. \\
+\hline
+\textbf{Hauptszenario} &
+1. Der Tierhalter öffnet den Tab „Meine Termine". \newline
+2. Der Tierhalter tippt auf den gewünschten Termin. \newline
+3. Der Tierhalter tippt auf „Termin stornieren". \newline
+4. Die Anwendung öffnet einen Bestätigungs-Bottom-Sheet mit 
+einer Warnmeldung. \newline
+5. Der Tierhalter bestätigt die Stornierung. \newline
+6. Die Anwendung hebt die Buchungsverbindung auf und gibt 
+den Termin frei. \newline
+7. Der Tierhalter erhält eine Push-Benachrichtigung als 
+Bestätigung der Stornierung. \newline
+8. Der Tierhalter wird zum Tab „Meine Termine" weitergeleitet. \\
+\hline
+\textbf{Alternativszenario} &
+1. Der Tierhalter bricht den Bestätigungs-Bottom-Sheet ab 
+$\rightarrow$ Der Termin bleibt gebucht. \\
+\hline
+\textbf{Nachbedingungen} &
+Der stornierte Termin ist nicht mehr unter „Meine Termine" sichtbar. \\
+\hline
+\end{tabular}
+
+\subsection{Terminslots verwalten}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-08: Terminslots verwalten \\
+\hline
+\textbf{Kurzbeschreibung} & Die Tierarztpraxis definiert verfügbare 
+Terminslots und sperrt Zeiträume in der mobilen Anwendung. \\
+\hline
+\textbf{Akteure} & Tierarztpraxis \\
+\hline
+\textbf{Vorbedingungen} & 
+Die Tierarztpraxis ist eingeloggt. \\
+\hline
+\textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte verfügbare 
+Terminslots festlegen oder Zeiträume sperren. \\
+\hline
+\textbf{Hauptszenario} &
+1. Die Tierarztpraxis öffnet den Tab „Terminverwaltung". \newline
+2. Die Anwendung zeigt eine scrollbare Kalenderansicht mit den 
+aktuellen Terminslots. \newline
+3. Die Tierarztpraxis tippt auf einen freien Zeitraum. \newline
+4. Die Anwendung öffnet einen neuen Screen zur Konfiguration 
+des Terminslots. \newline
+5. Die Tierarztpraxis gibt Datum, Uhrzeit, Dauer und Behandlungsart an. \newline
+6. Die Tierarztpraxis tippt auf „Slot speichern". \newline
+7. Die Anwendung validiert die Eingaben. \newline
+8. Die Anwendung speichert den Terminslot und aktualisiert 
+die Kalenderansicht. \\
+\hline
+\textbf{Alternativszenario} &
+1. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \newline
+2. Die Tierarztpraxis möchte einen Zeitraum sperren $\rightarrow$ 
+Die Tierarztpraxis tippt auf „Zeitraum sperren", wählt Start und 
+Ende aus und bestätigt. Die Anwendung markiert den Zeitraum 
+als nicht verfügbar. \\
+\hline
+\textbf{Nachbedingungen} &
+Der neue Terminslot ist in der Kalenderansicht sichtbar und 
+für Tierhalter buchbar. \\
+\hline
+\end{tabular}
+
+\subsection{Buchungen einsehen}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-09: Buchungen einsehen \\
+\hline
+\textbf{Kurzbeschreibung} & Die Tierarztpraxis sieht alle gebuchten 
+Termine in einer Tages- und Wochenansicht ein. \\
+\hline
+\textbf{Akteure} & Tierarztpraxis \\
+\hline
+\textbf{Vorbedingungen} & 
+Die Tierarztpraxis ist eingeloggt. \\
+\hline
+\textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte einen 
+Überblick über alle anstehenden Buchungen erhalten. \\
+\hline
+\textbf{Hauptszenario} &
+1. Die Tierarztpraxis öffnet den Tab „Kalender". \newline
+2. Die Anwendung zeigt eine Tagesansicht mit allen gebuchten 
+Terminen des aktuellen Tages. \newline
+3. Die Tierarztpraxis tippt auf „Wochenansicht" um zur 
+Wochenübersicht zu wechseln. \newline
+4. Die Tierarztpraxis tippt auf einen Termin. \newline
+5. Die Anwendung zeigt die Detailansicht des Termins mit 
+Name des Tierhalters, Tierart, Rasse und Behandlungsart. \\
+\hline
+\textbf{Alternativszenario} &
+1. Keine Buchungen vorhanden $\rightarrow$ Die Anwendung zeigt 
+einen entsprechenden Hinweis. \\
+\hline
+\textbf{Nachbedingungen} &
+Die Tierarztpraxis hat einen vollständigen Überblick über 
+alle anstehenden Termine. \\
+\hline
+\end{tabular}
+
+\subsection{Termin absagen}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-10: Termin absagen \\
+\hline
+\textbf{Kurzbeschreibung} & Die Tierarztpraxis sagt einen gebuchten 
+Termin ab und der betroffene Tierhalter wird automatisch benachrichtigt. \\
+\hline
+\textbf{Akteure} & Tierarztpraxis \\
+\hline
+\textbf{Vorbedingungen} & 
+Die Tierarztpraxis ist eingeloggt. \newline
+Es existiert mindestens ein gebuchter Termin. \\
+\hline
+\textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte einen 
+gebuchten Termin absagen. \\
+\hline
+\textbf{Hauptszenario} &
+1. Die Tierarztpraxis öffnet den Tab „Kalender". \newline
+2. Die Tierarztpraxis tippt auf den gewünschten Termin. \newline
+3. Die Tierarztpraxis tippt auf „Termin absagen". \newline
+4. Die Anwendung öffnet einen Bestätigungs-Bottom-Sheet mit 
+einer Warnmeldung. \newline
+5. Die Tierarztpraxis bestätigt die Absage. \newline
+6. Die Anwendung gibt den Terminslot frei. \newline
+7. Die Anwendung benachrichtigt den betroffenen Tierhalter 
+automatisch per Push-Benachrichtigung und E-Mail. \\
+\hline
+\textbf{Alternativszenario} &
+1. Die Tierarztpraxis bricht den Bestätigungs-Bottom-Sheet ab 
+$\rightarrow$ Der Termin bleibt gebucht. \\
+\hline
+\textbf{Nachbedingungen} &
+Der abgesagte Termin ist nicht mehr in der Kalenderansicht sichtbar. \newline
+Der betroffene Tierhalter wurde über die Absage informiert. \\
+\hline
+\end{tabular}

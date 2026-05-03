@@ -2,48 +2,16 @@
 
 \section{Hintergrund und Motivation}
 
-Die Digitalisierung ist heute allgegenwärtig und stellt einen unverzichtbaren Bestandteil 
-der Kommunikation zwischen Unternehmen und Kunden dar. Insbesondere im Bereich der 
-Humanmedizin wird deutlich, wie digitale Technologien im Kontext der Kommunikation einen 
-Vorteil bieten. Unternehmen wie Doctolib haben bereits früh das Ziel gesetzt, die 
-Terminverwaltung zwischen Arztpraxen und Patienten durch den Einsatz digitaler 
-Terminverwaltungssysteme effizienter und nutzerfreundlicher zu gestalten. Dieses Ziel haben 
-sie weitgehend erreicht: Die digitale Terminbuchung ist heute nicht mehr wegzudenken und 
-wird von vielen Patienten als entscheidender Faktor für die Inanspruchnahme von ärztlichen 
-Leistungen wahrgenommen.
+Die Digitalisierung ist heute allgegenwärtig und stellt einen unverzichtbaren Bestandteil der Kommunikation zwischen Unternehmen und Kunden dar. Insbesondere im Bereich der Humanmedizin wird deutlich, wie digitale Technologien im Kontext der Kommunikation einen Vorteil bieten. Unternehmen wie Doctolib haben sich früh zum Ziel gesetzt, die 
+Terminverwaltung zwischen Arztpraxen und Patienten durch den Einsatz digitaler Terminverwaltungssysteme effizienter und nutzerfreundlicher zu gestalten. Durch die Corona-Pandemie als Katalysator konnten DoctoLib dieses Ziel weitgehend erreichen \cite{doctolibreport} und in der aktuellen Zeit ist die digitale Terminbuchung nicht mehr wegzudenken und wird von vielen Patienten als entscheidender Faktor für die Inanspruchnahme von ärztlichen Leistungen wahrgenommen.
 
 Vor diesem Hintergrund drängt sich die Frage auf, wie die Situation im 
-veterinärmedizinischen Bereich aussieht. In Deutschland gibt es rund 10.500 
-Tierarztpraxen, von denen über die Hälfte Kleintierpraxen sind, die sich auf Haustiere 
-spezialisiert haben (Bundestierärztekammer, 2024). Viele Tierarztpraxen nutzen bereits 
-Praxisverwaltungssoftware, um interne Aufgaben wie Terminplanung, Abrechnung und 
-Dokumentation zu organisieren. Allerdings existiert bisher kein etabliertes Unternehmen, 
-das den Markt für die Terminverwaltung zwischen Tierbesitzern und Tierarztpraxen ähnlich 
-beherrscht wie etwa Doctolib in der Humanmedizin.
+veterinärmedizinischen Bereich aussieht. Die Anzahl der tierärztlich Tätigen ist auf 34.364 gestiegen \cite{btk2025}. Viele Tierarztpraxen nutzen bereits Praxisverwaltungssoftware, um interne Aufgaben wie Terminplanung, Abrechnung und Dokumentation zu organisieren. Allerdings existiert bisher kein etabliertes Unternehmen, das den Markt für die Terminverwaltung zwischen Tierbesitzern und Tierarztpraxen ähnlich beherrscht wie etwa Doctolib in der Humanmedizin.
 
-Zudem gibt es bisher keine repräsentativen Studien, die ermitteln, wie viele 
-Tierarztpraxen bereits eine Terminverwaltungssoftware mit Online-Terminbuchung für 
-Tierbesitzer in ihren Alltag integriert haben. Dennoch lassen Marktberichte darauf 
-schließen, dass sich die Digitalisierung der Veterinärmedizin der der Humanmedizin 
-zunehmend annähert: Der globale Markt für Veterinärpraxis-Managementsoftware wird für 
-2023/24 auf etwa 1,8 bis 2,0~Milliarden US-Dollar geschätzt und soll bis etwa 2032 auf 
-rund 3,2~Milliarden US-Dollar wachsen, mit einer jährlichen Wachstumsrate von etwa 6--7~\%. 
-Auf dieser Grundlage lässt sich plausibel argumentieren, dass die Digitalisierung der 
-Veterinärbranche sich in jeglichen digitalen Bereichen weiterentwickeln wird -- damit ist 
-auch die Terminverwaltung zwischen Tierarztpraxen und Tierbesitzern gemeint.
+Zudem gibt es bisher keine repräsentativen Studien, die ermitteln, wie viele Tierarztpraxen bereits eine Terminverwaltungssoftware mit Online-Terminbuchung für Tierbesitzer in ihren Alltag integriert haben. Dennoch lassen Marktberichte darauf schließen, dass sich die Digitalisierung der Veterinärmedizin jener der Humanmedizin zunehmend annähert: Der globale Markt für Veterinärpraxis-Managementsoftware wird für 2023/24 auf etwa 1,8 bis 2,0~Milliarden US-Dollar geschätzt und soll bis etwa 2032 auf rund 3,2~Milliarden US-Dollar wachsen, mit einer jährlichen Wachstumsrate von etwa 6--7~\% \cite{vsmreport}. Auf dieser Grundlage lässt sich plausibel argumentieren, dass die Digitalisierung der Veterinärbranche sich in jeglichen digitalen Bereichen weiterentwickeln wird. Damit ist auch die Terminverwaltung zwischen Tierarztpraxen und Tierhaltern gemeint.
 
 \section{Zielsetzung}
+Vor diesem Hintergrund zielt die vorliegende Bachelorarbeit darauf ab, auf Basis des bestehenden Backends von \textit{petappoint} eine mobile Anwendung zu konzipieren, umzusetzen und zu evaluieren, die Tierhaltern die Terminbuchung bei Tierarztpraxen erleichtert. Das Backend von \textit{petappoint} wurde im Rahmen eines vorangegangenen Projektmoduls in Teamarbeit entwickelt, an der der Autor dieser Arbeit maßgeblich beteiligt war. Es bildet die technische Grundlage der vorliegenden Bachelorarbeit. Der Fokus dieser Arbeit liegt jedoch ausschließlich auf der Konzeption, Umsetzung und Evaluation einer mobilen Anwendung, die auf diesem Backend aufbaut. Die Eigenleistung umfasst somit die gesamte mobile Anwendung sowie deren Integration in die bestehende Backend-Infrastruktur. Funktionen wie Onlineberatung oder Gesundheits-Tracking sind nicht Gegenstand dieser Arbeit.
 
-Vor diesem Hintergrund zielt die vorliegende Bachelorarbeit darauf ab, eine 
-Terminverwaltungssoftware zu konzipieren, umzusetzen und zu evaluieren, um 
-Tierbesitzerinnen die Terminbuchung zu erleichtern. Die Software soll ermöglichen, 
-Haustiere anzulegen, Tierpraxen in der Nähe zu suchen und Termine jederzeit online zu 
-buchen. Der zentrale Mehrwert liegt in der flexiblen, ortsunabhängigen Online-Terminvergabe, 
-die die Telefonlast reduziert und eine einfache Verwaltung für Nutzende bietet. Im 
-Vergleich zu bestehenden Lösungen hebt sich \textit{Petappoint} durch seinen Fokus auf 
-die Terminverwaltung ab. Onlineberatungsgespräche oder das Tracken der Tiergesundheit 
-sind nicht Teil der Software.
-
-Die Arbeit grenzt sich bewusst ab: Eine Tierpraxenansicht mit Funktionen für das Personal 
-wird nicht umgesetzt. Der Schwerpunkt liegt ausschließlich auf der Konzeption, Umsetzung und 
-Evaluation der Software aus Sicht der Tierbesitzer.
+Die Anwendung soll es Tierhaltern ermöglichen, Haustiere anzulegen, Tierpraxen in der Nähe zu suchen und Termine jederzeit ortsunabhängig online zu buchen. Der zentrale Mehrwert liegt in der flexiblen Online-Terminvergabe, die die Telefonlast für Praxen reduziert und Tierhaltern eine unkomplizierte Verwaltung ihrer Termine bietet. Im Vergleich zu bestehenden Lösungen konzentriert sich \textit{petappoint} bewusst auf die Kernfunktion der Terminverwaltung und verzichtet auf 
+Funktionen wie Onlineberatung oder Gesundheits-Tracking.
