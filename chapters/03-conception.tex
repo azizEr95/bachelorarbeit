@@ -1,0 +1,168 @@
+\chapter{Konzeption}
+Die in Kapitel~2 erarbeiteten funktionalen und nicht funktionalen Anforderungen sowie die definierten Use Cases bilden die Grundlage für die Konzeption der mobilen Anwendung. In diesem Kapitel wird 
+zunächst die Softwarearchitektur sowie die bestehende 
+Backend-Infrastruktur als Ausgangspunkt beschrieben. Darauf aufbauend werden das Komponentendiagramm, das Navigationskonzept, die Mockups der Benutzeroberfläche sowie abschließend ein Aktivitätsdiagramm zum Terminbuchungsprozess vorgestellt.
+
+\section{Softwarearchitektur}
+
+Selbst innerhalb der Informatik existiert keine einheitlich
+anerkannte Definition des Begriffs Softwarearchitektur~\cite[S.~1]{richards2021softwarearchitektur}. Dennoch lässt sich der Begriff inhaltlich eingrenzen. Softwarearchitektur umfasst die zentralen Grundsätze und Vorgaben, nach denen ein System gegliedert und in Komponenten sowie Schnittstellen aufgeteilt wird. Sie beschreibt zudem, wie diese Elemente untereinander und mit ihrer Umgebung
+interagieren. Auf dieser Basis werden verbindliche Leitlinien für alle Phasen des Systemlebens definiert, von der Anforderungsanalyse über den Entwurf und die Implementierung bis hin zum Betrieb und zur Pflege des Systems, ebenso wie für die zugehörigen Entwicklungs- und Betriebsstrukturen~\cite[S.~21]{gharbi2020basiswissen}. Der Schwerpunkt dieses Kapitels liegt auf dem Entwurf der Software.
+
+\subsection{Architekturübersicht}
+\label{sec:architektur}
+
+Die Architektur von \textit{petappoint} basiert auf einer Schichtenarchitektur. Bei einer Schichtenarchitektur werden
+Komponenten in hierarchischen Ebenen angeordnet, wobei eine Komponente einer höheren Schicht Anfragen an eine Komponente einer niedrigeren Schicht stellen und auf deren Antwort warten kann~\cite[S.~57]{tanenbaum2007distributed}. Innerhalb dieser Struktur herrscht das Client-Server Prinzip. Der Server, der bestimmte Dienste bereitstellt, und der Client bzw. mehrere Clients, die diese Dienste durch das Senden von Anfragen in Anspruch nehmen und anschließend auf die Antwort des Servers warten~\cite[S.~79]{tanenbaum2007distributed}. Die Kommunikation zwischen Client und Server erfolgt über eine 
+REST-API (Representational State Transfer). RESTful-Architekturen 
+zeichnen sich dadurch aus, dass Ressourcen über ein einheitliches 
+Benennungsschema identifiziert werden, alle Dienste dieselbe 
+Schnittstelle mit den vier Operationen PUT, POST, GET und DELETE anbieten, Nachrichten vollständig selbstbeschreibend sind und  Dienste nach der Ausführung einer Operation keinerlei Informationen 
+über den Aufrufer speichern~\cite[S.~66]{tanenbaum2007distributed}.
+
+Die Schichtenarchitektur gliedert sich in drei Schichten: 
+\begin{itemize}
+    \item \textbf{Präsentationsschicht (Frontend):} Zuständig für die Darstellung 
+    der Benutzeroberfläche und repräsentiert den Client des Systems.
+    \item \textbf{Anwendungsschicht (Backend):} Verarbeitet eingehende 
+    HTTP-Anfragen, validiert Eingabedaten und steuert den Datenbankzugriff. 
+    Diese Schicht übernimmt die Rolle des Servers.
+    \item \textbf{Datenschicht (Datenbank):} Verantwortlich für die Speicherung 
+    und Verwaltung aller persistenten Daten der Anwendung.
+\end{itemize}
+
+Die mobile Anwendung wird in der Präsentationsschicht ergänzt und ist somit ausschließlich für die Darstellung und Nutzerinteraktion zuständig. Da das 
+Backend von \textit{petappoint} im Rahmen eines vorangegangenen Projektmoduls bereits entwickelt wurde, beschränkt sich der Fokus dieser Arbeit auf die Konzeption und Umsetzung der Präsentationsschicht. Abbildung~\ref{fig:softwarearchitecture} veranschaulicht den beschriebenen Aufbau grafisch.
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.8\linewidth]{figures/software-architecture.svg}
+    \caption{Schichtenarchitektur von petappoint}
+    \label{fig:softwarearchitecture}
+\end{figure}
+\end{landscape}
+
+\subsection{Bestehende Backend-Architektur als Grundlage}
+
+Das Backend von \textit{petappoint} wurde im Rahmen eines vorangegangenen Projektmoduls entwickelt und bildet die technische Grundlage dieser Arbeit. Es stellt sämtliche Geschäftslogik und Datenhaltung bereit, auf die die mobile Anwendung über die REST-API zugreift.
+
+Die zugrunde liegende Datenbankstruktur ist in Abbildung~\ref{fig:erdiagramm} als ER-Diagramm dargestellt. Ein Entity-Relationship-Diagramm (ER-Diagramm) ist eine grafische Methode zur Darstellung der logischen Struktur einer Datenbank. Das Modell basiert auf drei Grundkonzepten: Entitäten repräsentieren reale Objekte oder Konzepte, 
+Attribute beschreiben deren Eigenschaften, und Beziehungen stellen die  Verbindungen zwischen den Entitäten dar~\cite[S.~29]{watt2014dbdesign}. Die Kardinalitäten geben dabei an, wie viele Instanzen einer Entität mit wie vielen Instanzen einer anderen Entität in Beziehung stehen können und werden in der Krähenfuß-Notation durch spezielle Symbole dargestellt, wie in Abbildung~\ref{fig:crowsfoot} gezeigt. 
+
+Das Schema umfasst die zentralen Entitäten \textit{persons}, \textit{animals} und \textit{veterinarypractices}, die den Kern der Anwendungslogik bilden. Tierhalter werden als \textit{persons} erfasst und können keine oder mehrere Tiere (\textit{animals}) anlegen, aber ein Tier kann nicht ohne eine Person exitieren, sodass eine $1{:}n$-Beziehung zwischen \textit{persons} und \textit{animals} besteht. Jedes Tier ist dabei genau einem Tiertyp (\textit{animal\_types}) zugeordnet und ein Tiertyp kann vielen Tieren zugeordnet werden. 1 Tiertyp kann wiederum mehrere Rassen (\textit{animal\_races}) umfassen, aber mehrere 1 Rassen entstehen aus 1 Tiertyp, was einer $1{:}n$-Beziehung zwischen \textit{animal\_types} und \textit{animal\_races} entspricht.
+
+Tierarztpraxen werden über \textit{veterinarypractices} abgebildet und stehen in einer $1{:}n$-Beziehung zu den zugehörigen Tierärzten 
+(\textit{veterinarians}), da eine Praxis mehrere Tierärzte beschäftigen kann, aber eine Tierärzte genau 1 Tierarztpraxis zugeordnet werden kann. Termine werden in der Tabelle \textit{appointments} gespeichert und können optional einem Tier, einem Tierarzt sowie einer gebuchten Leistung (\textit{services}) zugeordnet werden, was einer 
+$0{:}n$-Beziehung zu diesen Entitäten entspricht. Ein Termin kann allerdings nicht ohne Tierarztpraxis existieren, aber eine Praxis kann mehrere Termine besitzen, was einer $1{:}n$-Beziehung entspricht.
+
+Darüber hinaus enthält das Schema eine Favoritenfunktion, die über die 
+Relationstabelle \textit{person\_has\_favorized\_veterinarypractice} abgebildet wird. Da ein Tierhalter mehrere Praxen als Favoriten speichern kann und eine Praxis gleichzeitig von mehreren Tierhaltern favorisiert werden kann, liegt hier eine $n{:}m$-Beziehung vor.
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[inkscapelatex=false, width=0.8\linewidth]{figures/ER-Diagramm-petappoint.svg}
+    \caption{ER-Diagramm der Datenbankstruktur von petappoint}
+    \label{fig:erdiagramm}
+\end{figure}
+\end{landscape}
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.4\linewidth]{figures/kraehenfuß-notation.svg}
+    \caption{genutze Krähenfuß-Notationen}
+    \label{fig:crowsfoot}
+\end{figure}
+\end{landscape}
+
+\subsection{Kritische Betrachtung der Backend-Infrastruktur}
+Das bestehende Backend bildet eine solide Grundlage für die Entwicklung der mobilen Anwendung, weist jedoch einige Schwachstellen auf, die im Rahmen einer Weiterentwicklung berücksichtigt werden sollten.
+
+Ein erster Kritikpunkt betrifft die Rollentrennung zwischen 
+\textit{veterinarians} und \textit{persons}. Da Tierärzte über einen Fremdschlüssel auf \textit{persons} verweisen, teilen beide Entitäten dieselbe Tabelle, was die Abgrenzung der Rollen im System erschwert und zu Inkonsistenzen führen kann. Eine klarere Trennung der Nutzerrollen wäre für die Wartbarkeit und Erweiterbarkeit des Systems vorteilhafter.
+
+Eng damit verbunden ist das Fehlen einer Rollenhierarchie innerhalb einer Tierarztpraxis. Im aktuellen Schema verfügen alle Tierärzte einer Praxis über dieselben Zugriffsrechte, ohne dass zwischen einem Praxisadministrator und einem regulären Tierarzt unterschieden wird. In der Praxis wäre jedoch eine solche Hierarchie sinnvoll, da etwa ein Praxisinhaber andere 
+Verwaltungsrechte benötigt als ein angestellter Tierarzt.
+
+Darüber hinaus fehlen in der Entität \textit{veterinarians} fachspezifische Informationen wie Fachgebiet oder Qualifikationen. Da \textit{veterinarians} zwar über \textit{persons} grundlegende Personendaten wie Name und Kontaktinformationen erbt, fehlen jedoch tiermedizinisch relevante Attribute, was die Darstellung und Filterung von Tierärzten nach Fachgebiet in der Anwendung einschränkt.
+
+Außerdem fehlt in der Tabelle \textit{appointments} ein Statusattribut, das den aktuellen Zustand eines Termins abbildet, wie etwa reserviert, ausstehend oder storniert. Ein solches Attribut wäre für den Buchungsprozess essenziell, da ohne eine klare Zustandsverwaltung keine eindeutige Unterscheidung zwischen freien, gebuchten und stornierten Terminen möglich ist.
+
+Schließlich fehlt im Datenbankschema eine Tabelle für die Öffnungszeiten der Tierarztpraxen. Für ein Terminbuchungssystem ist dies eine wesentliche Lücke, da ohne diese Information keine automatische Validierung stattfinden kann, ob ein gebuchter Termin innerhalb der Öffnungszeiten einer Praxis liegt. Diese Funktionalität müsste daher vollständig in der Anwendungslogik des 
+Backends abgebildet werden, was die Komplexität erhöht und fehleranfälliger ist.
+
+Da die Korrektur dieser Schwachstellen den Umfang dieser Arbeit übersteigt, werden sie lediglich identifiziert und als Empfehlungen für eine zukünftige Weiterentwicklung festgehalten.
+
+\section{Komponentendiagramm des Frontends}
+Das Komponentendiagramm in Abbildung~\ref{fig:komponentendiagramm} zeigt den strukturellen Aufbau des Frontends von \textit{petappoint}. Die Architektur gliedert sich in drei Schichten, die dem in Abschnitt~\ref{sec:architektur} 
+beschriebenen Schichtenmodell entsprechen. Durch diese klare Trennung der Verantwortlichkeiten wird eine hohe Wartbarkeit und Erweiterbarkeit der Anwendung gewährleistet.
+
+Die \textbf{Präsentationsschicht} umfasst alle Screens der Anwendung und ist ausschließlich für die Darstellung der Benutzeroberfläche und die Nutzerinteraktion zuständig. Sie enthält keinerlei Geschäftslogik, sondern delegiert alle Operationen an die darunterliegende Business-Schicht. Die Screens sind in zwei Kategorien unterteilt: Tab-Screens, die über eine persistente Tab-Navigation erreichbar sind, und Modal-Screens, die kontextabhängig als überlagernde Ansichten geöffnet werden. Die konkreten 
+Screens, deren Aufbau sowie das Navigationskonzept werden in den 
+nachfolgenden Abschnitten detailliert beschrieben.
+
+Die \textbf{Business-Schicht} kapselt die gesamte Geschäftslogik der Anwendung in Form von Hooks. Diese sind thematisch gruppiert und stellen den Screens die benötigten Daten und Operationen zur Verfügung. Durch die Kapselung der Logik in Hooks wird sichergestellt, dass dieselbe Logik von mehreren Screens wiederverwendet werden kann, ohne dass Code dupliziert 
+werden muss. Die Hooks kommunizieren ausschließlich mit der 
+Datenzugriffsschicht und haben keinen direkten Zugriff auf das Backend.
+
+Die \textbf{Datenzugriffsschicht} besteht aus spezialisierten API-Modulen, die jeweils für einen bestimmten Fachbereich zuständig sind, wie etwa Authentifizierung, Terminverwaltung oder Tierarztpraxen. Alle Module kommunizieren ausschließlich über einen zentralen \textit{ApiClient}, der als einziger Kommunikationspunkt zum Backend fungiert. Der \textit{ApiClient} übernimmt dabei die Aufgabe eines HTTPS-Adapters, der Anfragen über die 
+RES-API des Backends weiterleitet und die Antworten an die jeweiligen API-Module zurückgibt. Durch diese zentrale Stelle lassen sich übergreifende Aspekte wie Authentifizierungs-Header oder Fehlerbehandlung einheitlich verwalten.
+
+\clearpage
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1.0\linewidth]{figures/komponentendiagramm.svg}
+    \caption{Komponentendiagramm des Frontends}
+    \label{fig:komponentendiagramm}
+\end{figure}
+\end{landscape}
+
+\section{Navigationskonzeptdiagramme des Frontends}
+
+Das Navigationskonzept beschreibt die Struktur und den Ablauf der 
+Navigation innerhalb von \textit{petappoint} und bildet die Grundlage für die spätere Implementierung der Benutzeroberfläche. Die Navigation gliedert sich in drei hierarchische Bereiche: den Auth Stack, die Tab Navigation sowie die Modal Stacks. Da \textit{petappoint} zwei Nutzerrollen unterstützt (Tierhalter und Tierarztpraxis), unterscheiden sich Tab Navigation und Modal Stacks rollenabhängig voneinander, während der Auth Stack für beide Rollen identisch ist. Die Navigationsdiagramme sind in Abbildung~\ref{fig:nav-tierhalter} sowie Abbildung~\ref{fig:nav-tierarzt} dargestellt.
+
+\subsection{Auth Stack}
+
+Beim Start der Anwendung wird geprüft, ob der Nutzer bereits 
+authentifiziert ist. Ist dies nicht der Fall, wird er in den Auth Stack geleitet, der den vollständigen Authentifizierungsfluss abbildet. Von der zentralen Authentifizierungskomponente aus stehen zwei Pfade zur Verfügung: Login und Registrierung. Über den Login-Screen kann der Nutzer bei vergessenem Passwort einen Zurücksetzungsprozess anstoßen, nach dessen Abschluss er wieder zum Login zurückgeführt wird. Nach erfolgreichem Login wird der Nutzer unmittelbar zur Tab Navigation weitergeleitet. Die Registrierung umfasst hingegen zwei zusätzliche Verifikationsschritte: die Bestätigung der E-Mail-Adresse sowie die Verifizierung der Telefonnummer. Erst nach erfolgreichem Durchlaufen beider Schritte erhält der Nutzer Zugang zur Tab Navigation.
+
+\subsection{Tab Navigation und Modal Stacks}
+
+Nach erfolgreicher Authentifizierung bildet die Tab Navigation den 
+zentralen Einstiegspunkt der Anwendung. Sie ist dauerhaft am unteren Bildschirmrand sichtbar und ermöglicht den direkten Wechsel zwischen den Hauptbereichen. Welche Tab-Screens und Modal Stacks bereitgestellt werden, ist abhängig von der Nutzerrolle.
+
+Für die Rolle \textbf{Tierhalter} stehen vier Tab-Screens zur Verfügung: \textit{Home}, \textit{Haustiere}, \textit{Termine} und \textit{Profil}. Der Home-Screen bildet den zentralen Ausgangspunkt der Anwendung. Der Haustiere-Screen dient der Verwaltung der eigenen Tiere, der Termine-Screen gibt einen Überblick über bestehende Buchungen und der Profil-Screen ermöglicht die Verwaltung der Nutzerdaten. Die Modal Stacks dieser Rolle umfassen mehrere kontextabhängige Abläufe. Der zentrale Buchungsfluss ist vom Home- sowie vom Termine-Screen aus zugänglich und 
+führt den Nutzer schrittweise über die Terminsuche, die Suchergebnisse und die Praxisdetailansicht bis zur Buchungsübersicht und abschließenden Buchungsbestätigung, nach der er zur Tab Navigation zurückgeleitet wird. Weitere Modal Stacks ermöglichen das Hinzufügen und Bearbeiten von Haustieren, das Bearbeiten und Stornieren von Terminen sowie die Anpassung des Nutzerprofils und die Einsicht in gespeicherte Praxisfavoriten.
+
+Für die Rolle \textbf{Tierarztpraxis} stehen zwei Tab-Screens zur 
+Verfügung: \textit{Buchungsübersicht} und \textit{Terminslots}. Die 
+Buchungsübersicht listet alle eingehenden Buchungen und ermöglicht 
+das Einsehen der jeweiligen Buchungsdetails. Der Terminslots-Screen 
+dient der Verwaltung des eigenen Terminangebots, wobei neue Slots 
+angelegt sowie bestehende Termine bearbeitet oder storniert werden 
+können.
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.8\linewidth]{figures/Tierhalter-navigationsdiagramm.svg}
+    \caption{Navigationsdiagramm der Tierhalter-Rolle}
+    \label{fig:nav-tierhalter}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1.0\linewidth]{figures/Tierarztpraxis-navigationsdiagramm.svg}
+    \caption{Navigationsdiagramm der Tierarztpraxis-Rolle}
+    \label{fig:nav-tierarzt}
+\end{figure}
+\end{landscape}
+
+\section{Mockups zu Darstellung des User Interface}
+
+\section{Aktivitätsdiagramm  der Terminbuchung}

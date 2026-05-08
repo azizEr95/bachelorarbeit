@@ -1,6 +1,6 @@
 \chapter{Anforderungsermittlung}
 
-Die Anforderungsermittlung dieser Arbeit folgt den Prinzipien des Requirements Engineering. Das ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Dazu zählen auch die Nutzenden von petappoint. Eine Anforderung wird dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
+In der Einleitung wurde deutlich, dass \textit{petappoint} eine fokussierte Lösung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen darstellt. Um diese Lösung zielgerichtet umzusetzen, folgt die Anforderungsermittlung dieser Arbeit den Prinzipien des Requirements Engineering. Das ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Dazu zählen auch die Nutzenden von petappoint. Eine Anforderung wird dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
 
 Die Analyse der Anforderungen bildet die Grundlage für Konzeption und Entwicklung der vorliegenden Anwendung und Arbeit. Ziel dieses Kapitels ist es, ein vollständiges Bild der Anforderungen zu erarbeiten und diese strukturiert zu dokumentieren.
 
@@ -131,71 +131,27 @@ die Qualitätsmerkmale des Systems beziehen \cite[S.~4] {pohl2021}.
     \item \textbf{NFA\#09} Alle interaktiven Elemente \textbf{müssen} 
     eine Mindestgröße von 44\,×\,44\,px (iOS) bzw. 48\,×\,48\,dp 
     (Android) aufweisen.
-
-    \item \textbf{NFA\#10} Die mobile Anwendung \textbf{soll} ein 
-    Wachstum der Nutzerzahlen um den Faktor zehn durch skalierbare 
-    Cloud-Infrastruktur ohne Anpassung der Systemarchitektur tragen können.
 \end{itemize}
-
 \section{Use Cases}
 
-Use Cases stellen das Verhalten eines Systems aus dem Blickwinkel der Nutzenden dar. Sie beschreiben, wie das System auf eine Interaktion reagiert, welche Ziele damit verfolgt werden und welche alternativen Abläufe dabei auftreten können \cite[S.~15]{cockburn2001}. Aufgrund ihrer textuellen Form eignen sie sich besonders zur klaren und verständlichen Beschreibung funktionaler Anforderungen und ermöglichen eine verständliche Kommunikation ohne besondere fachliche Vorkenntnisse \cite[S.~15]{cockburn2001}. Zur besseren Dokumentation werden sie im Folgenden durch ein Use-Case-Diagramm ergänzt \cite[S.~75]{pohl2021}.
+Use Cases stellen das Verhalten eines Systems aus dem Blickwinkel der Nutzenden dar. Sie beschreiben, wie das System auf eine Interaktion reagiert, welche Ziele damit verfolgt werden und welche alternativen Abläufe dabei auftreten können \cite[S.~15]{cockburn2001}. Aufgrund ihrer textuellen Form eignen sie sich besonders zur klaren und verständlichen Beschreibung funktionaler Anforderungen und ermöglichen eine verständliche Kommunikation ohne besondere fachliche Vorkenntnisse \cite[S.~15]{cockburn2001}. Zur besseren Dokumentation und zur Vollständigkeit werden Sie im Folgenden durch ein Use-Case-Diagramm ergänzt \cite[S.~75]{pohl2021}.
 
-\subsection{Konto registrieren}
-
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{|p{5cm}|p{9.2cm}|}
-\hline
-\textbf{Name} & UC-01: Konto registrieren \\
-\hline
-\textbf{Kurzbeschreibung} & Ein Tierhalter möchte sich registrieren \\
-\hline
-\textbf{Akteure} & Tierhalter \\
-\hline
-\textbf{Vorbedingungen} & 
-Der Tierhalter besitzt noch kein Konto in der Anwendung. \newline
-Der Tierhalter besitzt eine gültige E-Mail-Adresse oder Telefonnummer. \\
-\hline
-\textbf{Auslösendes Ereignis} & Der Tierhalter möchte die Anwendung 
-erstmalig nutzen und besitzt noch kein Konto. \\
-\hline
-\textbf{Hauptszenario} &
-1. Der Tierhalter öffnet die mobile Anwendung von petappoint. \newline
-2. Der Tierhalter tippt auf „Registrieren". \newline
-3. Die Anwendung zeigt ein Registrierungsformular. \newline
-4. Der Tierhalter gibt Vorname, Nachname, E-Mail-Adresse oder 
-Telefonnummer, Passwort, Straße und PLZ an. \newline
-5. Der Tierhalter tippt auf „Konto erstellen". \newline
-6. Die Anwendung validiert die Eingaben. \newline
-7. Die Anwendung versendet einen Verifizierungscode an die angegebene 
-E-Mail-Adresse oder Telefonnummer. \newline
-8. Der Tierhalter wird zur Eingabe des Verifizierungscodes weitergeleitet. \newline
-9. Der Tierhalter gibt den Code ein und tippt auf „Bestätigen". \newline
-10. Der Tierhalter wird automatisch eingeloggt und zur 
-Startübersicht weitergeleitet. \\
-\hline
-\textbf{Alternativszenario} &
-1. Die E-Mail-Adresse oder die Telefonnummer ist bereits vergeben 
-$\rightarrow$ Die Anwendung zeigt eine Fehlermeldung. \newline
-2. Das Passwort erfüllt nicht die Mindestanforderungen 
-$\rightarrow$ Die Anwendung zeigt einen Hinweis. \newline
-3. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \newline
-4. Der Tierhalter möchte sich bei einem Folgebesuch anmelden 
-$\rightarrow$ Die Anwendung bietet eine Anmeldung per 
-biometrischer Authentifizierung (Face~ID / Fingerabdruck) an. \\
-\hline
-\textbf{Nachbedingungen} &
-Das Konto des Tierhalters ist in der Anwendung gespeichert. \newline
-Der Tierhalter ist eingeloggt. \\
-\hline
-\end{tabular}
+\subsection{Use Case Diagramm}
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.4\linewidth]{figures/use-case-diagram.svg}
+    \caption{Use-Case-Diagramm petappoint}
+    \label{fig:usecase-gesamt}
+\end{figure}
+\end{landscape}
 
 \subsection{Haustier anlegen}
 
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
-\textbf{Name} & UC-02: Haustier anlegen \\
+\textbf{Name} & UC-01: Haustier anlegen \\
 \hline
 \textbf{Kurzbeschreibung} & Der Tierhalter legt ein neues Haustierprofil 
 in der Anwendung an. \\
@@ -235,7 +191,7 @@ Das neue Haustier ist unter „Meine Haustiere" sichtbar. \\
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
-\textbf{Name} & UC-03: Haustier bearbeiten \\
+\textbf{Name} & UC-02: Haustier bearbeiten \\
 \hline
 \textbf{Kurzbeschreibung} & Der Tierhalter bearbeitet die Daten eines 
 bestehenden Haustierprofils. \\
@@ -280,7 +236,7 @@ Daten angezeigt. \\
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
-\textbf{Name} & UC-04: Haustier löschen \\
+\textbf{Name} & UC-03: Haustier löschen \\
 \hline
 \textbf{Kurzbeschreibung} & Der Tierhalter löscht ein bestehendes 
 Haustierprofil aus der Anwendung. \\
@@ -318,7 +274,7 @@ Das gelöschte Haustier ist nicht mehr unter „Meine Haustiere" sichtbar. \\
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
-\textbf{Name} & UC-05: Termin buchen \\
+\textbf{Name} & UC-04: Termin buchen \\
 \hline
 \textbf{Kurzbeschreibung} & Der Tierhalter bucht einen Termin bei einer 
 Tierarztpraxis für sein Haustier. \\
@@ -368,7 +324,7 @@ Der gebuchte Termin ist unter „Meine Termine" sichtbar. \\
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
-\textbf{Name} & UC-06: Termin bearbeiten \\
+\textbf{Name} & UC-05: Termin bearbeiten \\
 \hline
 \textbf{Kurzbeschreibung} & Der Tierhalter ändert einen bestehenden 
 gebuchten Termin. \\
@@ -412,7 +368,7 @@ Daten angezeigt. \\
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
-\textbf{Name} & UC-07: Termin stornieren \\
+\textbf{Name} & UC-06: Termin stornieren \\
 \hline
 \textbf{Kurzbeschreibung} & Der Tierhalter storniert einen bestehenden 
 gebuchten Termin. \\
@@ -448,54 +404,11 @@ Der stornierte Termin ist nicht mehr unter „Meine Termine" sichtbar. \\
 \hline
 \end{tabular}
 
-\subsection{Terminslots verwalten}
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{|p{5cm}|p{9.2cm}|}
-\hline
-\textbf{Name} & UC-08: Terminslots verwalten \\
-\hline
-\textbf{Kurzbeschreibung} & Die Tierarztpraxis definiert verfügbare 
-Terminslots und sperrt Zeiträume in der mobilen Anwendung. \\
-\hline
-\textbf{Akteure} & Tierarztpraxis \\
-\hline
-\textbf{Vorbedingungen} & 
-Die Tierarztpraxis ist eingeloggt. \\
-\hline
-\textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte verfügbare 
-Terminslots festlegen oder Zeiträume sperren. \\
-\hline
-\textbf{Hauptszenario} &
-1. Die Tierarztpraxis öffnet den Tab „Terminverwaltung". \newline
-2. Die Anwendung zeigt eine scrollbare Kalenderansicht mit den 
-aktuellen Terminslots. \newline
-3. Die Tierarztpraxis tippt auf einen freien Zeitraum. \newline
-4. Die Anwendung öffnet einen neuen Screen zur Konfiguration 
-des Terminslots. \newline
-5. Die Tierarztpraxis gibt Datum, Uhrzeit, Dauer und Behandlungsart an. \newline
-6. Die Tierarztpraxis tippt auf „Slot speichern". \newline
-7. Die Anwendung validiert die Eingaben. \newline
-8. Die Anwendung speichert den Terminslot und aktualisiert 
-die Kalenderansicht. \\
-\hline
-\textbf{Alternativszenario} &
-1. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \newline
-2. Die Tierarztpraxis möchte einen Zeitraum sperren $\rightarrow$ 
-Die Tierarztpraxis tippt auf „Zeitraum sperren", wählt Start und 
-Ende aus und bestätigt. Die Anwendung markiert den Zeitraum 
-als nicht verfügbar. \\
-\hline
-\textbf{Nachbedingungen} &
-Der neue Terminslot ist in der Kalenderansicht sichtbar und 
-für Tierhalter buchbar. \\
-\hline
-\end{tabular}
-
 \subsection{Buchungen einsehen}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
-\textbf{Name} & UC-09: Buchungen einsehen \\
+\textbf{Name} & UC-07: Buchungen einsehen \\
 \hline
 \textbf{Kurzbeschreibung} & Die Tierarztpraxis sieht alle gebuchten 
 Termine in einer Tages- und Wochenansicht ein. \\
@@ -528,7 +441,90 @@ alle anstehenden Termine. \\
 \hline
 \end{tabular}
 
-\subsection{Termin absagen}
+\subsection{Terminslot anlegen}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-08: Terminslot anlegen \\
+\hline
+\textbf{Kurzbeschreibung} & Die Tierarztpraxis legt einen neuen 
+verfügbaren Terminslot in der Anwendung an. \\
+\hline
+\textbf{Akteure} & Tierarztpraxis \\
+\hline
+\textbf{Vorbedingungen} & 
+Die Tierarztpraxis ist eingeloggt. \\
+\hline
+\textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte einen 
+neuen Terminslot für Tierhalter verfügbar machen. \\
+\hline
+\textbf{Hauptszenario} &
+1. Die Tierarztpraxis öffnet den Tab „Terminverwaltung". \newline
+2. Die Anwendung zeigt eine scrollbare Kalenderansicht mit den 
+aktuellen Terminslots. \newline
+3. Die Tierarztpraxis tippt auf einen freien Zeitraum. \newline
+4. Die Anwendung öffnet einen neuen Screen zur Konfiguration 
+des Terminslots. \newline
+5. Die Tierarztpraxis gibt Datum, Uhrzeit, Dauer und Behandlungsart an. \newline
+6. Die Tierarztpraxis tippt auf „Slot speichern". \newline
+7. Die Anwendung validiert die Eingaben. \newline
+8. Die Anwendung speichert den Terminslot und aktualisiert 
+die Kalenderansicht. \\
+\hline
+\textbf{Alternativszenario} &
+1. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \\
+\hline
+\textbf{Nachbedingungen} &
+Der neue Terminslot ist in der Kalenderansicht sichtbar und 
+für Tierhalter buchbar. \\
+\hline
+\end{tabular}
+
+\subsection{Terminslot bearbeiten}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{5cm}|p{9.2cm}|}
+\hline
+\textbf{Name} & UC-09: Terminslot bearbeiten \\
+\hline
+\textbf{Kurzbeschreibung} & Die Tierarztpraxis bearbeitet einen 
+bestehenden Terminslot oder sperrt einen Zeitraum. \\
+\hline
+\textbf{Akteure} & Tierarztpraxis \\
+\hline
+\textbf{Vorbedingungen} & 
+Die Tierarztpraxis ist eingeloggt. \newline
+Es existiert mindestens ein Terminslot. \\
+\hline
+\textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte einen 
+bestehenden Terminslot anpassen oder einen Zeitraum sperren. \\
+\hline
+\textbf{Hauptszenario} &
+1. Die Tierarztpraxis öffnet den Tab „Terminverwaltung". \newline
+2. Die Anwendung zeigt eine scrollbare Kalenderansicht mit den 
+aktuellen Terminslots. \newline
+3. Die Tierarztpraxis tippt auf den gewünschten Terminslot. \newline
+4. Die Anwendung öffnet einen neuen Screen mit den aktuellen 
+Daten des Terminslots. \newline
+5. Die Tierarztpraxis ändert die gewünschten Daten. \newline
+6. Die Tierarztpraxis tippt auf „Speichern". \newline
+7. Die Anwendung validiert die Eingaben. \newline
+8. Die Anwendung speichert die Änderungen und aktualisiert 
+die Kalenderansicht. \\
+\hline
+\textbf{Alternativszenario} &
+1. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \newline
+2. Die Tierarztpraxis möchte einen Zeitraum sperren $\rightarrow$ 
+Die Tierarztpraxis tippt auf „Zeitraum sperren", wählt Start und 
+Ende aus und bestätigt. Die Anwendung markiert den Zeitraum 
+als nicht verfügbar. \\
+\hline
+\textbf{Nachbedingungen} &
+Der Terminslot wird in der Kalenderansicht mit den aktualisierten 
+Daten angezeigt. \\
+\hline
+\end{tabular}
+
+\subsection{gebuchten Termin absagen}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
