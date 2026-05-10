@@ -148,7 +148,7 @@ können.
 \begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=0.8\linewidth]{figures/Tierhalter-navigationsdiagramm.svg}
+    \includesvg[width=0.6\linewidth]{figures/Tierhalter-navigationsdiagramm.svg}
     \caption{Navigationsdiagramm der Tierhalter-Rolle}
     \label{fig:nav-tierhalter}
 \end{figure}
@@ -157,7 +157,7 @@ können.
 \begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=1.0\linewidth]{figures/Tierarztpraxis-navigationsdiagramm.svg}
+    \includesvg[width=0.6\linewidth]{figures/Tierarztpraxis-navigationsdiagramm.svg}
     \caption{Navigationsdiagramm der Tierarztpraxis-Rolle}
     \label{fig:nav-tierarzt}
 \end{figure}
@@ -165,4 +165,181 @@ können.
 
 \section{Mockups zu Darstellung des User Interface}
 
-\section{Aktivitätsdiagramm  der Terminbuchung}
+Zur Veranschaulichung der geplanten Benutzeroberfläche wurden Mockups 
+für alle Screens von \textit{petappoint} erstellt. Sie dienen als 
+visuelle Grundlage für die spätere Implementierung und zeigen den 
+strukturellen Aufbau sowie die Anordnung der UI-Elemente. Die Mockups sind entsprechend der Navigationsstruktur in drei Gruppen unterteilt: Authentifizierung, Tab-Ansichten und modale Abläufe. Für die Erstellung 
+der Mockups wurde das KI-gestützte Prototyping-Tool \textit{v0} von 
+Vercel eingesetzt, das auf Basis textueller Beschreibungen detaillierte 
+UI-Entwürfe generiert und eine schnelle visuelle Ausarbeitung der 
+geplanten Screens ermöglicht.
+
+\subsection{Mockups zur Authentifizierung}
+
+Abbildung~\ref{fig:mockup-auth} zeigt die Screens des Auth Stacks, 
+der für beide Nutzerrollen identisch ist. Der Einloggen-Screen 
+enthält Eingabefelder für E-Mail-Adresse und Passwort sowie einen 
+Link zum Zurücksetzen des Passworts. Über diesen Link gelangt der 
+Nutzer zum Passwort-zurücksetzen-Screen, auf dem er seine 
+E-Mail-Adresse eingeben kann, um einen Zurücksetzungslink zu 
+erhalten. Der Konto-erstellen-Screen erfasst alle für die 
+Registrierung erforderlichen Nutzerdaten. Abhängig vom gewählten 
+Registrierungspfad folgt anschließend entweder der 
+E-Mail-Verifizierungs- oder der Telefonnummer-Verifizierungsscreen, 
+auf dem der Nutzer einen zugesandten Code eingeben muss, um seine 
+Identität zu bestätigen.
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1.0\linewidth]{figures/mockups-authentication}
+    \caption{Mockups für die Authentifizierung}
+    \label{fig:mockup-auth}
+\end{figure}
+\end{landscape}
+
+\subsection{Tab-Ansichten der Tierhalter}
+
+Abbildung~\ref{fig:mockup-tabs-tierhalter} zeigt die vier Tab-Screens 
+der Tierhalter-Rolle. Ein persistenter Suchbutton zur gezielten Suche 
+nach einer Tierarztpraxis ist auf allen Screens verfügbar und ermöglicht 
+den schnellen Zugang zum Buchungsfluss. Am unteren Bildschirmrand ist 
+durchgehend die Tab-Leiste sichtbar.
+
+Der \textit{Home}-Screen begrüßt den Nutzer mit seinen wichtigsten 
+persönlichen Informationen, darunter Name, Adresse und Profilbild. 
+Darunter wird eine kompakte Vorschau des nächsten anstehenden Termins 
+angezeigt. Den unteren Bereich des Screens nehmen Tierarztpraxen in 
+der Nähe des Nutzers ein.
+
+Der \textit{Termine}-Screen unterteilt sich in zwei Bereiche: Im 
+Bereich der bevorstehenden Termine werden die wichtigsten Informationen 
+je Termin in einer Karte dargestellt, von der aus der Termin bearbeitet 
+oder storniert werden kann. Ein zweiter Bereich listet vergangene 
+Termine auf, die der Nutzer direkt erneut buchen kann.
+
+Der \textit{Haustiere}-Screen zeigt eine Übersicht aller angelegten 
+Tiere mit den jeweiligen Kerninformationen sowie einem Tierbild. 
+Über dedizierte Buttons kann jedes Tier bearbeitet oder ein neues 
+Tier hinzugefügt werden.
+
+Der \textit{Profil}-Screen zeigt dem Nutzer zunächst eine 
+Kurzübersicht mit der Anzahl seiner Termine und Haustiere. Darunter 
+befindet sich eine Liste mit Einstellungsbereichen, darunter 
+persönliche Daten, Benachrichtigungen und Zahlungsmethoden.
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=0.7\linewidth]{figures/mockups-tabs-tierhalter}
+    \caption{Mockups der Tab-Ansichten des Tierhalters}
+    \label{fig:mockup-tabs-tierhalter}
+\end{figure}
+\end{landscape}
+
+\subsection{Buchungsprozess}
+
+Abbildung~\ref{fig:mockup-buchung} zeigt den modalen Buchungsfluss 
+der Tierhalter-Rolle. Der Buchungsprozess wird über den persistenten 
+Suchbutton gestartet, woraufhin sich ein Modal öffnet, in dem der 
+Nutzer den gewünschten Ort, das betreffende Tier sowie die gewünschte 
+Behandlung eingeben kann.
+
+Die Suchergebnisse werden anschließend als modaler Screen dargestellt, 
+der die gefundenen Tierarztpraxen in einer Liste aufführt. Je Eintrag 
+werden die wichtigsten Informationen wie Name, Ort und Entfernung 
+angezeigt. Wählt der Nutzer eine Praxis aus, öffnet sich die 
+Praxisdetailansicht mit weiterführenden Informationen: Öffnungszeiten, 
+angebotene Leistungen, verfügbare Tierärzte sowie ein Kalender zur 
+Auswahl eines freien Termins.
+
+Nach der Auswahl von Datum und Uhrzeit wird dem Nutzer eine 
+Buchungsübersicht präsentiert, die die gewählte Praxis, das 
+betreffende Tier sowie die gewünschte Behandlung zusammenfasst. 
+Tier und Behandlung können an dieser Stelle noch nachträglich 
+angepasst werden. Nach dem Bestätigen der Buchung erscheint 
+abschließend der Buchungsbestätigungsscreen mit einer Zusammenfassung 
+aller relevanten Termininformationen.
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1.0\linewidth]{figures/mockups-buchungsprozess}
+    \caption{Mockups des Buchungsprozesses}
+    \label{fig:mockup-buchung}
+\end{figure}
+\end{landscape}
+
+\subsection{Tab-Ansichten der Tierarztpraxis}
+
+Abbildung~\ref{fig:mockup-tierarzt} zeigt die Screens der 
+Tierarztpraxis-Rolle. Die Tab Navigation umfasst zwei Bereiche: 
+\textit{Buchungen} und \textit{Terminslots}.
+
+Der \textit{Buchungen}-Screen listet alle eingegangenen Buchungen 
+der Praxis auf. Die Liste lässt sich nach Status filtern – bestätigt, 
+ausstehend oder storniert – um einen gezielten Überblick zu 
+ermöglichen. Tippt der Nutzer auf eine Buchung, öffnet sich ein 
+modaler Screen mit allen relevanten Informationen zum jeweiligen 
+Termin. Über einen Button am unteren Rand dieses Screens kann der 
+Termin bei Bedarf storniert werden.
+
+Der \textit{Terminslots}-Screen zeigt die Terminslots des aktuellen 
+Tages in einer tagesbasierten Ansicht, die sich durch Navigation 
+vor- und zurückblättern lässt. Für jeden Slot stehen die Aktionen 
+Bearbeiten und Löschen zur Verfügung. Zudem können neue Slots 
+hinzugefügt werden. Jede dieser Aktionen öffnet einen eigenen 
+modalen Screen, über den die jeweilige Operation durchgeführt wird.
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1.0\linewidth]{figures/mockups-tierarztpraxis}
+    \caption{Mockups der Tierarztpraxis}
+    \label{fig:mockup-tierarzt}
+\end{figure}
+\end{landscape}
+
+\section{Aktivitätsdiagramm der Terminbuchung}
+
+Das Aktivitätsdiagramm in Abbildung~\ref{fig:aktivitaet-buchung} 
+beschreibt den vollständigen Ablauf des Terminbuchungsprozesses aus 
+Sicht des Tierhalters. Der Prozess beginnt mit dem Öffnen des 
+Suchscreens, auf dem der Nutzer zwischen drei Suchmöglichkeiten 
+wählen kann: der Suche nach Standort, nach einer konkreten 
+Tierarztpraxis oder nach einem Tierarzt beziehungsweise einer 
+Behandlung. Auf Basis der eingegebenen Suchkriterien werden die 
+entsprechenden Tierarztpraxen als Ergebnisliste angezeigt, aus der 
+der Nutzer eine Praxis auswählt. Optional kann die Praxis an dieser 
+Stelle favorisiert werden.
+
+Im nächsten Schritt wählt der Nutzer einen verfügbaren Termin aus 
+dem Kalender der Praxis aus. Anschließend wird geprüft, ob die 
+Suche nach einer Behandlung gefiltert wurde. Wurde nur eine 
+Behandlung gefiltert, wird diese direkt übernommen. Wurden mehrere 
+Behandlungen gefiltert oder kein Filter gesetzt, wählt der Nutzer 
+die gewünschte Behandlung manuell aus.
+
+Daraufhin wird geprüft, ob für den Nutzer bereits ein Tier 
+angelegt wurde. Ist dies nicht der Fall, wird der Nutzer zunächst 
+aufgefordert, ein Tier anzulegen, bevor er fortfahren kann. 
+Andernfalls wählt er direkt eines seiner vorhandenen Tiere aus. 
+Nach der Tierauswahl wird dem Nutzer eine Terminzusammenfassung 
+präsentiert, die die gewählte Praxis, den Termin, die Behandlung 
+sowie das ausgewählte Tier aufführt. Der Nutzer hat an dieser 
+Stelle die Möglichkeit, Behandlung, Termin oder Tier nachträglich 
+zu bearbeiten, woraufhin der jeweilige Auswahlschritt erneut 
+durchlaufen wird. Bestätigt der Nutzer die Zusammenfassung, wird 
+die Buchung abgeschlossen und er wird zur Terminübersicht 
+weitergeleitet. Der Prozess kann zu jedem Zeitpunkt abgebrochen 
+werden, wodurch der Buchungsvorgang beendet und der Nutzer 
+ebenfalls zur Terminübersicht zurückgeführt wird.
+
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[width=1.0\linewidth]{figures/aktivitaetsdiagramm.svg}
+    \caption{Aktivitätsdiagramm des Terminbuchungsprozesses}
+    \label{fig:aktivitaet-buchung}
+\end{figure}
+\end{landscape}
