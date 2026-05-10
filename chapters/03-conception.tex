@@ -1,24 +1,16 @@
 \chapter{Konzeption}
-Die in Kapitel~2 erarbeiteten funktionalen und nicht funktionalen Anforderungen sowie die definierten Use Cases bilden die Grundlage für die Konzeption der mobilen Anwendung. In diesem Kapitel wird 
-zunächst die Softwarearchitektur sowie die bestehende 
-Backend-Infrastruktur als Ausgangspunkt beschrieben. Darauf aufbauend werden das Komponentendiagramm, das Navigationskonzept, die Mockups der Benutzeroberfläche sowie abschließend ein Aktivitätsdiagramm zum Terminbuchungsprozess vorgestellt.
+Die in Kapitel~2 erarbeiteten funktionalen und nicht funktionalen Anforderungen sowie die definierten Use Cases bilden die Grundlage für die Konzeption der mobilen Anwendung. In diesem Kapitel wird zunächst die Softwarearchitektur sowie die bestehende Backend-Infrastruktur als Ausgangspunkt beschrieben. Darauf aufbauend werden das Komponentendiagramm, das Navigationskonzept, die Mockups der Benutzeroberfläche sowie abschließend ein Aktivitätsdiagramm zum Terminbuchungsprozess vorgestellt.
 
 \section{Softwarearchitektur}
 
-Selbst innerhalb der Informatik existiert keine einheitlich
-anerkannte Definition des Begriffs Softwarearchitektur~\cite[S.~1]{richards2021softwarearchitektur}. Dennoch lässt sich der Begriff inhaltlich eingrenzen. Softwarearchitektur umfasst die zentralen Grundsätze und Vorgaben, nach denen ein System gegliedert und in Komponenten sowie Schnittstellen aufgeteilt wird. Sie beschreibt zudem, wie diese Elemente untereinander und mit ihrer Umgebung
+Selbst innerhalb der Informatik existiert keine einheitlich anerkannte Definition des Begriffs Softwarearchitektur~\cite[S.~1]{richards2021softwarearchitektur}. Dennoch lässt sich der Begriff inhaltlich eingrenzen. Softwarearchitektur umfasst die zentralen Grundsätze und Vorgaben, nach denen ein System gegliedert und in Komponenten sowie Schnittstellen aufgeteilt wird. Sie beschreibt zudem, wie diese Elemente untereinander und mit ihrer Umgebung
 interagieren. Auf dieser Basis werden verbindliche Leitlinien für alle Phasen des Systemlebens definiert, von der Anforderungsanalyse über den Entwurf und die Implementierung bis hin zum Betrieb und zur Pflege des Systems, ebenso wie für die zugehörigen Entwicklungs- und Betriebsstrukturen~\cite[S.~21]{gharbi2020basiswissen}. Der Schwerpunkt dieses Kapitels liegt auf dem Entwurf der Software.
 
 \subsection{Architekturübersicht}
 \label{sec:architektur}
 
-Die Architektur von \textit{petappoint} basiert auf einer Schichtenarchitektur. Bei einer Schichtenarchitektur werden
-Komponenten in hierarchischen Ebenen angeordnet, wobei eine Komponente einer höheren Schicht Anfragen an eine Komponente einer niedrigeren Schicht stellen und auf deren Antwort warten kann~\cite[S.~57]{tanenbaum2007distributed}. Innerhalb dieser Struktur herrscht das Client-Server Prinzip. Der Server, der bestimmte Dienste bereitstellt, und der Client bzw. mehrere Clients, die diese Dienste durch das Senden von Anfragen in Anspruch nehmen und anschließend auf die Antwort des Servers warten~\cite[S.~79]{tanenbaum2007distributed}. Die Kommunikation zwischen Client und Server erfolgt über eine 
-REST-API (Representational State Transfer). RESTful-Architekturen 
-zeichnen sich dadurch aus, dass Ressourcen über ein einheitliches 
-Benennungsschema identifiziert werden, alle Dienste dieselbe 
-Schnittstelle mit den vier Operationen PUT, POST, GET und DELETE anbieten, Nachrichten vollständig selbstbeschreibend sind und  Dienste nach der Ausführung einer Operation keinerlei Informationen 
-über den Aufrufer speichern~\cite[S.~66]{tanenbaum2007distributed}.
+Die Architektur von \textit{petappoint} basiert auf einer Schichtenarchitektur. Bei einer Schichtenarchitektur werden Komponenten in hierarchischen Ebenen angeordnet, wobei eine Komponente einer höheren Schicht Anfragen an eine Komponente einer niedrigeren Schicht stellen und auf deren Antwort warten kann~\cite[S.~57]{tanenbaum2007distributed}. Innerhalb dieser Struktur herrscht das Client-Server Prinzip. Der Server, der bestimmte Dienste bereitstellt, und der Client bzw. mehrere Clients, die diese Dienste durch das Senden von Anfragen in Anspruch nehmen und anschließend auf die Antwort des Servers warten~\cite[S.~79]{tanenbaum2007distributed}. Die Kommunikation zwischen Client und Server erfolgt über eine REST-API (Representational State Transfer). RESTful-Architekturen zeichnen sich dadurch aus, dass Ressourcen über ein einheitliches 
+Benennungsschema identifiziert werden, alle Dienste dieselbe Schnittstelle mit den vier Operationen POST, PUT, GET und DELETE (Erstellen, Bearbeiten, Bearbeiten, Löschen) anbieten, Nachrichten vollständig selbstbeschreibend sind und Dienste nach der Ausführung einer Operation keinerlei Informationen über den Aufrufer speichern~\cite[S.~66]{tanenbaum2007distributed}.
 
 Die Schichtenarchitektur gliedert sich in drei Schichten: 
 \begin{itemize}
@@ -32,7 +24,7 @@ Die Schichtenarchitektur gliedert sich in drei Schichten:
 \end{itemize}
 
 Die mobile Anwendung wird in der Präsentationsschicht ergänzt und ist somit ausschließlich für die Darstellung und Nutzerinteraktion zuständig. Da das 
-Backend von \textit{petappoint} im Rahmen eines vorangegangenen Projektmoduls bereits entwickelt wurde, beschränkt sich der Fokus dieser Arbeit auf die Konzeption und Umsetzung der Präsentationsschicht. Abbildung~\ref{fig:softwarearchitecture} veranschaulicht den beschriebenen Aufbau grafisch.
+Backend von \textit{petappoint} im Rahmen eines vorangegangenen Projektmoduls bereits entwickelt wurde, beschränkt sich der Fokus auf die Konzeption und Umsetzt der Präsentationsschicht. Abbildung~\ref{fig:softwarearchitecture} veranschaulicht den beschriebenen Aufbau grafisch.
 
 \begin{landscape}
 \begin{figure}[H]
@@ -95,19 +87,17 @@ Backends abgebildet werden, was die Komplexität erhöht und fehleranfälliger i
 Da die Korrektur dieser Schwachstellen den Umfang dieser Arbeit übersteigt, werden sie lediglich identifiziert und als Empfehlungen für eine zukünftige Weiterentwicklung festgehalten.
 
 \section{Komponentendiagramm des Frontends}
-Das Komponentendiagramm in Abbildung~\ref{fig:komponentendiagramm} zeigt den strukturellen Aufbau des Frontends von \textit{petappoint}. Die Architektur gliedert sich in drei Schichten, die dem in Abschnitt~\ref{sec:architektur} 
-beschriebenen Schichtenmodell entsprechen. Durch diese klare Trennung der Verantwortlichkeiten wird eine hohe Wartbarkeit und Erweiterbarkeit der Anwendung gewährleistet.
+Das Komponentendiagramm in Abbildung~\ref{fig:komponentendiagramm} zeigt den strukturellen Aufbau des Frontends von \textit{petappoint}. Ein Komponentendiagramm zeigt die Organisation und die Abhängigkeiten von Softwarekomponenten innerhalb eines Systems und Komponenten sind widerum austauschbare Teile eines Systems, die eine bestimmte Funktionalität erfüllen und ihre Dienste über definierte Schnittstellen anbieten \cite{komponentendiagramm-explanation}. Die Architektur gliedert sich in drei Schichten, die dem in Abschnitt~\ref{sec:architektur} 
+beschriebenen Schichtenmodell entsprechen. Durch diese klare Trennung wird die Austauschbarkeit einzelner Schichten gewährleistet, solange die definierten Schnittstellen erhalten bleiben~\cite[S.~168]{sommerville2018}.
 
-Die \textbf{Präsentationsschicht} umfasst alle Screens der Anwendung und ist ausschließlich für die Darstellung der Benutzeroberfläche und die Nutzerinteraktion zuständig. Sie enthält keinerlei Geschäftslogik, sondern delegiert alle Operationen an die darunterliegende Business-Schicht. Die Screens sind in zwei Kategorien unterteilt: Tab-Screens, die über eine persistente Tab-Navigation erreichbar sind, und Modal-Screens, die kontextabhängig als überlagernde Ansichten geöffnet werden. Die konkreten 
-Screens, deren Aufbau sowie das Navigationskonzept werden in den 
+Die \textbf{Präsentationsschicht} umfasst alle Screens der Anwendung und ist ausschließlich für die Darstellung der Benutzeroberfläche und die Nutzerinteraktion zuständig. Sie enthält keinerlei Geschäftslogik, sondern delegiert alle Operationen an die darunterliegende Business-Schicht. Die Screens sind in zwei Kategorien unterteilt: Tab-Screens, die über eine persistente Tab-Navigation erreichbar sind, und Modal-Screens, die kontextabhängig als überlagernde Ansichten geöffnet werden. Die konkreten Screens, deren Aufbau sowie das Navigationskonzept werden in den 
 nachfolgenden Abschnitten detailliert beschrieben.
 
-Die \textbf{Business-Schicht} kapselt die gesamte Geschäftslogik der Anwendung in Form von Hooks. Diese sind thematisch gruppiert und stellen den Screens die benötigten Daten und Operationen zur Verfügung. Durch die Kapselung der Logik in Hooks wird sichergestellt, dass dieselbe Logik von mehreren Screens wiederverwendet werden kann, ohne dass Code dupliziert 
-werden muss. Die Hooks kommunizieren ausschließlich mit der 
-Datenzugriffsschicht und haben keinen direkten Zugriff auf das Backend.
+Die \textbf{Business-Schicht} kapselt die gesamte Geschäftslogik der Anwendung in Form von Funktionen, die in der Abbildung als Custom Hooks bezeichnet werden. Diese sind thematisch gruppiert und stellen den Screens die benötigten Daten und Operationen zur Verfügung. Durch die Kapselung der Logik in Funktionen wird sichergestellt, dass dieselbe Logik von mehreren Screens wiederverwendet werden kann, ohne dass Code dupliziert 
+werden muss. Die Custom Hooks kommunizieren ausschließlich mit der Datenzugriffsschicht und haben keinen direkten Zugriff auf das Backend.
 
-Die \textbf{Datenzugriffsschicht} besteht aus spezialisierten API-Modulen, die jeweils für einen bestimmten Fachbereich zuständig sind, wie etwa Authentifizierung, Terminverwaltung oder Tierarztpraxen. Alle Module kommunizieren ausschließlich über einen zentralen \textit{ApiClient}, der als einziger Kommunikationspunkt zum Backend fungiert. Der \textit{ApiClient} übernimmt dabei die Aufgabe eines HTTPS-Adapters, der Anfragen über die 
-RES-API des Backends weiterleitet und die Antworten an die jeweiligen API-Module zurückgibt. Durch diese zentrale Stelle lassen sich übergreifende Aspekte wie Authentifizierungs-Header oder Fehlerbehandlung einheitlich verwalten.
+Die \textbf{Datenzugriffsschicht} besteht aus spezialisierten API-Modulen, die jeweils für einen bestimmten Fachbereich zuständig sind, wie etwa Authentifizierung, Terminverwaltung oder Tierarztpraxen. Alle Module kommunizieren ausschließlich über einen zentralen API-Client, der als einziger Kommunikationspunkt zum Backend fungiert. Der API-Client übernimmt dabei die Aufgabe eines HTTPS-Adapters, der Anfragen über die 
+REST-API des Backends weiterleitet und die Antworten an die jeweiligen API-Module zurückgibt. Durch diese zentrale Stelle lassen sich übergreifende Aspekte wie Fehlerbehandlung einheitlich verwalten.
 
 \clearpage
 \begin{landscape}
@@ -121,10 +111,9 @@ RES-API des Backends weiterleitet und die Antworten an die jeweiligen API-Module
 
 \section{Navigationskonzeptdiagramme des Frontends}
 
-Das Navigationskonzept beschreibt die Struktur und den Ablauf der 
-Navigation innerhalb von \textit{petappoint} und bildet die Grundlage für die spätere Implementierung der Benutzeroberfläche. Die Navigation gliedert sich in drei hierarchische Bereiche: den Auth Stack, die Tab Navigation sowie die Modal Stacks. Da \textit{petappoint} zwei Nutzerrollen unterstützt (Tierhalter und Tierarztpraxis), unterscheiden sich Tab Navigation und Modal Stacks rollenabhängig voneinander, während der Auth Stack für beide Rollen identisch ist. Die Navigationsdiagramme sind in Abbildung~\ref{fig:nav-tierhalter} sowie Abbildung~\ref{fig:nav-tierarzt} dargestellt.
+Das Navigationskonzept beschreibt die Struktur und den Ablauf der Navigation innerhalb von \textit{petappoint} und bildet die Grundlage für die spätere Implementierung der Benutzeroberfläche. Die Navigation gliedert sich in drei hierarchische Bereiche: den Auth Stack, die Tab Navigation sowie die Modal Stacks. Da \textit{petappoint} zwei Nutzerrollen unterstützt (Tierhalter und Tierarztpraxis), unterscheiden sich Tab Navigation und Modal Stacks rollenabhängig voneinander, während der Auth Stack für beide Rollen identisch ist. Die Navigationsdiagramme sind in Abbildung~\ref{fig:nav-tierhalter} sowie Abbildung~\ref{fig:nav-tierarzt} dargestellt.
 
-\subsection{Auth Stack}
+\subsection{Authentication Stack}
 
 Beim Start der Anwendung wird geprüft, ob der Nutzer bereits 
 authentifiziert ist. Ist dies nicht der Fall, wird er in den Auth Stack geleitet, der den vollständigen Authentifizierungsfluss abbildet. Von der zentralen Authentifizierungskomponente aus stehen zwei Pfade zur Verfügung: Login und Registrierung. Über den Login-Screen kann der Nutzer bei vergessenem Passwort einen Zurücksetzungsprozess anstoßen, nach dessen Abschluss er wieder zum Login zurückgeführt wird. Nach erfolgreichem Login wird der Nutzer unmittelbar zur Tab Navigation weitergeleitet. Die Registrierung umfasst hingegen zwei zusätzliche Verifikationsschritte: die Bestätigung der E-Mail-Adresse sowie die Verifizierung der Telefonnummer. Erst nach erfolgreichem Durchlaufen beider Schritte erhält der Nutzer Zugang zur Tab Navigation.
@@ -166,27 +155,16 @@ können.
 \section{Mockups zu Darstellung des User Interface}
 
 Zur Veranschaulichung der geplanten Benutzeroberfläche wurden Mockups 
-für alle Screens von \textit{petappoint} erstellt. Sie dienen als 
-visuelle Grundlage für die spätere Implementierung und zeigen den 
-strukturellen Aufbau sowie die Anordnung der UI-Elemente. Die Mockups sind entsprechend der Navigationsstruktur in drei Gruppen unterteilt: Authentifizierung, Tab-Ansichten und modale Abläufe. Für die Erstellung 
-der Mockups wurde das KI-gestützte Prototyping-Tool \textit{v0} von 
-Vercel eingesetzt, das auf Basis textueller Beschreibungen detaillierte 
-UI-Entwürfe generiert und eine schnelle visuelle Ausarbeitung der 
-geplanten Screens ermöglicht.
+für alle Screens von \textit{petappoint} erstellt. Mockups dienen als visuelle Grundlage \cite{mockups-explanation}für die spätere Implementierung und zeigen  zeigen den strukturellen Aufbau sowie die Anordnung der UI-Elemente (engl. \textit{User Interface Elements}), also der visuellen und interaktiven Komponenten einer digitalen 
+Benutzeroberfläche~\cite{ui-elements}.Die Mockups sind entsprechend der Navigationsstruktur in drei Gruppen unterteilt: Authentifizierung, Tab-Ansichten und modale Abläufe. Für die Erstellung der Mockups wurde das KI-gestützte Prototyping-Tool \textit{v0} von Vercel eingesetzt \cite{v0-vercel}, das auf Basis textueller Beschreibungen detaillierte UI-Entwürfe generiert und eine schnelle visuelle Ausarbeitung der geplanten Screens ermöglicht.
 
 \subsection{Mockups zur Authentifizierung}
 
-Abbildung~\ref{fig:mockup-auth} zeigt die Screens des Auth Stacks, 
-der für beide Nutzerrollen identisch ist. Der Einloggen-Screen 
-enthält Eingabefelder für E-Mail-Adresse und Passwort sowie einen 
-Link zum Zurücksetzen des Passworts. Über diesen Link gelangt der 
-Nutzer zum Passwort-zurücksetzen-Screen, auf dem er seine 
-E-Mail-Adresse eingeben kann, um einen Zurücksetzungslink zu 
-erhalten. Der Konto-erstellen-Screen erfasst alle für die 
-Registrierung erforderlichen Nutzerdaten. Abhängig vom gewählten 
+Abbildung~\ref{fig:mockup-auth} zeigt die Screens des Authentication Stacks, der für beide Nutzerrollen identisch ist. Der Einloggen-Screen 
+enthält Eingabefelder für E-Mail-Adresse und Passwort sowie einen Link zum Zurücksetzen des Passworts. Über diesen Link gelangt der 
+Nutzer zum Passwort-zurücksetzen-Screen, auf dem er seine E-Mail-Adresse eingeben kann, um einen Zurücksetzungslink zu erhalten. Der Konto-erstellen-Screen erfasst alle für die Registrierung erforderlichen Nutzerdaten. Abhängig vom gewählten 
 Registrierungspfad folgt anschließend entweder der 
-E-Mail-Verifizierungs- oder der Telefonnummer-Verifizierungsscreen, 
-auf dem der Nutzer einen zugesandten Code eingeben muss, um seine 
+E-Mail-Verifizierungs- oder der Telefonnummer-Verifizierungsscreen, auf dem der Nutzer einen zugesandten Code eingeben muss, um seine 
 Identität zu bestätigen.
 
 \begin{landscape}
@@ -200,33 +178,16 @@ Identität zu bestätigen.
 
 \subsection{Tab-Ansichten der Tierhalter}
 
-Abbildung~\ref{fig:mockup-tabs-tierhalter} zeigt die vier Tab-Screens 
-der Tierhalter-Rolle. Ein persistenter Suchbutton zur gezielten Suche 
-nach einer Tierarztpraxis ist auf allen Screens verfügbar und ermöglicht 
-den schnellen Zugang zum Buchungsfluss. Am unteren Bildschirmrand ist 
+Abbildung~\ref{fig:mockup-tabs-tierhalter} zeigt die vier Tab-Screens der Tierhalter-Rolle. Ein persistenter Suchbutton zur gezielten Suche nach einer Tierarztpraxis ist auf allen Screens verfügbar und ermöglicht den schnellen Zugang zum Buchungsfluss. Am unteren Bildschirmrand ist 
 durchgehend die Tab-Leiste sichtbar.
 
-Der \textit{Home}-Screen begrüßt den Nutzer mit seinen wichtigsten 
-persönlichen Informationen, darunter Name, Adresse und Profilbild. 
-Darunter wird eine kompakte Vorschau des nächsten anstehenden Termins 
-angezeigt. Den unteren Bereich des Screens nehmen Tierarztpraxen in 
-der Nähe des Nutzers ein.
+Der \textit{Home}-Screen begrüßt den Nutzer mit seinen wichtigsten persönlichen Informationen, darunter Name, Adresse und Profilbild. Darunter wird eine kompakte Vorschau des nächsten anstehenden Termins angezeigt. Den unteren Bereich des Screens nehmen Tierarztpraxen in der Nähe des Nutzers ein.
 
-Der \textit{Termine}-Screen unterteilt sich in zwei Bereiche: Im 
-Bereich der bevorstehenden Termine werden die wichtigsten Informationen 
-je Termin in einer Karte dargestellt, von der aus der Termin bearbeitet 
-oder storniert werden kann. Ein zweiter Bereich listet vergangene 
-Termine auf, die der Nutzer direkt erneut buchen kann.
+Der \textit{Termine}-Screen unterteilt sich in zwei Bereiche: Im Bereich der bevorstehenden Termine werden die wichtigsten Informationen je Termin in einer Karte dargestellt, von der aus der Termin bearbeitet oder storniert werden kann. Ein zweiter Bereich listet vergangene Termine auf, die der Nutzer direkt erneut buchen kann.
 
-Der \textit{Haustiere}-Screen zeigt eine Übersicht aller angelegten 
-Tiere mit den jeweiligen Kerninformationen sowie einem Tierbild. 
-Über dedizierte Buttons kann jedes Tier bearbeitet oder ein neues 
-Tier hinzugefügt werden.
+Der \textit{Haustiere}-Screen zeigt eine Übersicht aller angelegten Tiere mit den jeweiligen Kerninformationen sowie einem Tierbild. Über dedizierte Buttons kann jedes Tier bearbeitet oder ein neues Tier hinzugefügt werden.
 
-Der \textit{Profil}-Screen zeigt dem Nutzer zunächst eine 
-Kurzübersicht mit der Anzahl seiner Termine und Haustiere. Darunter 
-befindet sich eine Liste mit Einstellungsbereichen, darunter 
-persönliche Daten, Benachrichtigungen und Zahlungsmethoden.
+Der Profil-Screen zeigt dem Nutzer zunächst eine Kurzübersicht mit der Anzahl seiner Termine und Haustiere. Darunter befindet sich eine Liste mit Einstellungsbereichen.
 
 \begin{landscape}
 \begin{figure}[H]
@@ -239,27 +200,15 @@ persönliche Daten, Benachrichtigungen und Zahlungsmethoden.
 
 \subsection{Buchungsprozess}
 
-Abbildung~\ref{fig:mockup-buchung} zeigt den modalen Buchungsfluss 
-der Tierhalter-Rolle. Der Buchungsprozess wird über den persistenten 
-Suchbutton gestartet, woraufhin sich ein Modal öffnet, in dem der 
-Nutzer den gewünschten Ort, das betreffende Tier sowie die gewünschte 
+Abbildung~\ref{fig:mockup-buchung} zeigt den modalen Buchungsfluss der Tierhalter-Rolle. Der Buchungsprozess wird über den persistenten 
+Suchbutton gestartet, woraufhin sich ein Modal öffnet, in dem der Nutzer den gewünschten Ort, das betreffende Tier sowie die gewünschte 
 Behandlung eingeben kann.
 
-Die Suchergebnisse werden anschließend als modaler Screen dargestellt, 
-der die gefundenen Tierarztpraxen in einer Liste aufführt. Je Eintrag 
-werden die wichtigsten Informationen wie Name, Ort und Entfernung 
-angezeigt. Wählt der Nutzer eine Praxis aus, öffnet sich die 
-Praxisdetailansicht mit weiterführenden Informationen: Öffnungszeiten, 
-angebotene Leistungen, verfügbare Tierärzte sowie ein Kalender zur 
-Auswahl eines freien Termins.
+Die Suchergebnisse werden anschließend als modaler Screen dargestellt, der die gefundenen Tierarztpraxen in einer Liste aufführt. Je Eintrag 
+werden die wichtigsten Informationen wie Name, Ort und Entfernung angezeigt. Wählt der Nutzer eine Praxis aus, öffnet sich die Praxisdetailansicht mit weiterführenden Informationen: Öffnungszeiten, 
+angebotene Leistungen, verfügbare Tierärzte sowie ein Kalender zur Auswahl eines freien Termins.
 
-Nach der Auswahl von Datum und Uhrzeit wird dem Nutzer eine 
-Buchungsübersicht präsentiert, die die gewählte Praxis, das 
-betreffende Tier sowie die gewünschte Behandlung zusammenfasst. 
-Tier und Behandlung können an dieser Stelle noch nachträglich 
-angepasst werden. Nach dem Bestätigen der Buchung erscheint 
-abschließend der Buchungsbestätigungsscreen mit einer Zusammenfassung 
-aller relevanten Termininformationen.
+Nach der Auswahl von Datum und Uhrzeit wird dem Nutzer eine Buchungsübersicht präsentiert, die die gewählte Praxis, das betreffende Tier sowie die gewünschte Behandlung zusammenfasst. Tier und Behandlung können an dieser Stelle noch nachträglich angepasst werden. Nach dem Bestätigen der Buchung erscheint abschließend der Buchungsbestätigungsscreen mit einer Zusammenfassung aller relevanten Termininformationen.
 
 \begin{landscape}
 \begin{figure}[H]
@@ -272,23 +221,14 @@ aller relevanten Termininformationen.
 
 \subsection{Tab-Ansichten der Tierarztpraxis}
 
-Abbildung~\ref{fig:mockup-tierarzt} zeigt die Screens der 
-Tierarztpraxis-Rolle. Die Tab Navigation umfasst zwei Bereiche: 
+Abbildung~\ref{fig:mockup-tierarzt} zeigt die Screens der Tierarztpraxis-Rolle. Die Tab Navigation umfasst zwei Bereiche: 
 \textit{Buchungen} und \textit{Terminslots}.
 
-Der \textit{Buchungen}-Screen listet alle eingegangenen Buchungen 
-der Praxis auf. Die Liste lässt sich nach Status filtern – bestätigt, 
-ausstehend oder storniert – um einen gezielten Überblick zu 
-ermöglichen. Tippt der Nutzer auf eine Buchung, öffnet sich ein 
-modaler Screen mit allen relevanten Informationen zum jeweiligen 
-Termin. Über einen Button am unteren Rand dieses Screens kann der 
-Termin bei Bedarf storniert werden.
+Der \textit{Buchungen}-Screen listet alle eingegangenen Buchungen der Praxis auf. Die Liste lässt sich nach Status filtern (bestätigt, ausstehend oder storniert), um einen gezielten Überblick zu ermöglichen. Tippt der Nutzer auf eine Buchung, öffnet sich ein modaler Screen mit allen relevanten Informationen zum jeweiligen 
+Termin. Über einen Button am unteren Rand dieses Screens kann der Termin bei Bedarf storniert werden.
 
-Der \textit{Terminslots}-Screen zeigt die Terminslots des aktuellen 
-Tages in einer tagesbasierten Ansicht, die sich durch Navigation 
-vor- und zurückblättern lässt. Für jeden Slot stehen die Aktionen 
-Bearbeiten und Löschen zur Verfügung. Zudem können neue Slots 
-hinzugefügt werden. Jede dieser Aktionen öffnet einen eigenen 
+Der \textit{Terminslots}-Screen zeigt die Terminslots des aktuellen Tages in einer tagesbasierten Ansicht, die sich durch Navigation 
+vor- und zurückblättern lässt. Für jeden Slot stehen die Aktionen Bearbeiten und Löschen zur Verfügung. Zudem können neue Slots hinzugefügt werden. Jede dieser Aktionen öffnet einen eigenen 
 modalen Screen, über den die jeweilige Operation durchgeführt wird.
 
 \begin{landscape}
@@ -303,37 +243,16 @@ modalen Screen, über den die jeweilige Operation durchgeführt wird.
 \section{Aktivitätsdiagramm der Terminbuchung}
 
 Das Aktivitätsdiagramm in Abbildung~\ref{fig:aktivitaet-buchung} 
-beschreibt den vollständigen Ablauf des Terminbuchungsprozesses aus 
-Sicht des Tierhalters. Der Prozess beginnt mit dem Öffnen des 
-Suchscreens, auf dem der Nutzer zwischen drei Suchmöglichkeiten 
-wählen kann: der Suche nach Standort, nach einer konkreten 
-Tierarztpraxis oder nach einem Tierarzt beziehungsweise einer 
-Behandlung. Auf Basis der eingegebenen Suchkriterien werden die 
-entsprechenden Tierarztpraxen als Ergebnisliste angezeigt, aus der 
-der Nutzer eine Praxis auswählt. Optional kann die Praxis an dieser 
-Stelle favorisiert werden.
+beschreibt den vollständigen Ablauf des Terminbuchungsprozesses aus Sicht des Tierhalters. Der Prozess beginnt mit dem Öffnen des Suchscreens, auf dem der Nutzer zwischen drei Suchmöglichkeiten 
+wählen kann: der Suche nach Standort, nach einer konkreten Tierarztpraxis oder nach einem Tierarzt beziehungsweise einer Behandlung. Auf Basis der eingegebenen Suchkriterien werden die entsprechenden Tierarztpraxen als Ergebnisliste angezeigt, aus der der Nutzer eine Praxis auswählt. Optional kann die Praxis an dieser Stelle favorisiert werden.
 
-Im nächsten Schritt wählt der Nutzer einen verfügbaren Termin aus 
-dem Kalender der Praxis aus. Anschließend wird geprüft, ob die 
-Suche nach einer Behandlung gefiltert wurde. Wurde nur eine 
-Behandlung gefiltert, wird diese direkt übernommen. Wurden mehrere 
-Behandlungen gefiltert oder kein Filter gesetzt, wählt der Nutzer 
-die gewünschte Behandlung manuell aus.
+Im nächsten Schritt wählt der Nutzer einen verfügbaren Termin aus dem Kalender der Praxis aus. Anschließend wird geprüft, ob die Suche nach einer Behandlung gefiltert wurde. Wurde nur eine 
+Behandlung gefiltert, wird diese direkt übernommen. Wurden mehrere Behandlungen gefiltert oder kein Filter gesetzt, wählt der Nutzer die gewünschte Behandlung manuell aus.
 
-Daraufhin wird geprüft, ob für den Nutzer bereits ein Tier 
-angelegt wurde. Ist dies nicht der Fall, wird der Nutzer zunächst 
-aufgefordert, ein Tier anzulegen, bevor er fortfahren kann. 
-Andernfalls wählt er direkt eines seiner vorhandenen Tiere aus. 
-Nach der Tierauswahl wird dem Nutzer eine Terminzusammenfassung 
-präsentiert, die die gewählte Praxis, den Termin, die Behandlung 
-sowie das ausgewählte Tier aufführt. Der Nutzer hat an dieser 
-Stelle die Möglichkeit, Behandlung, Termin oder Tier nachträglich 
-zu bearbeiten, woraufhin der jeweilige Auswahlschritt erneut 
-durchlaufen wird. Bestätigt der Nutzer die Zusammenfassung, wird 
-die Buchung abgeschlossen und er wird zur Terminübersicht 
-weitergeleitet. Der Prozess kann zu jedem Zeitpunkt abgebrochen 
-werden, wodurch der Buchungsvorgang beendet und der Nutzer 
-ebenfalls zur Terminübersicht zurückgeführt wird.
+Daraufhin wird geprüft, ob für den Nutzer bereits ein Tier angelegt wurde. Ist dies nicht der Fall, wird der Nutzer zunächst aufgefordert, ein Tier anzulegen, bevor er fortfahren kann. Andernfalls wählt er direkt eines seiner vorhandenen Tiere aus. 
+Nach der Tierauswahl wird dem Nutzer eine Terminzusammenfassung präsentiert, die die gewählte Praxis, den Termin, die Behandlung sowie das ausgewählte Tier aufführt. Der Nutzer hat an dieser 
+Stelle die Möglichkeit, Behandlung, Termin oder Tier nachträglich zu bearbeiten, woraufhin der jeweilige Auswahlschritt erneut durchlaufen wird. Bestätigt der Nutzer die Zusammenfassung, wird 
+die Buchung abgeschlossen und er wird zur Terminübersicht weitergeleitet. Der Prozess kann zu jedem Zeitpunkt abgebrochen werden, wodurch der Buchungsvorgang beendet und der Nutzer ebenfalls zur Terminübersicht zurückgeführt wird.
 
 \begin{landscape}
 \begin{figure}[H]

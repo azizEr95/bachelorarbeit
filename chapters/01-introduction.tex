@@ -13,14 +13,9 @@ Zudem gibt es bisher keine repräsentativen Studien, die ermitteln, wie viele Ti
 Dieser Wachstumstrend macht deutlich, dass auch die Erwartungen der Tierhalter an digitale Lösungen steigen. Studien zeigen, dass ein ca. 56\,\% aller Online-Terminbuchungen heute über mobile Endgeräte erfolgt \cite{doctolib2020}. Eine andere Umfrage unter 362 deutschen Tierhaltern bestätigt den hohen Bedarf in der Veterinärbranche: 75,41\,\% bevorzugen Online-Scheduling für Impfungen, 61,60\,\% für Nachuntersuchungen bzw. Follow-ups und 57,73\,\% für allgemeine Untersuchungen. Wartezeiten sind mit 59,21\,\% das Hauptproblem \cite{diez2023}. 
 Daraus ergibt sich für Terminverwaltungslösungen im Veterinärbereich die Anforderung, Tierhalter plattformübergreifend zu erreichen, also sowohl auf iOS- als auch auf Android-Geräten.
 
-Die Entwicklung nativer Apps für beide Plattformen ist jedoch mit einem  doppelten Aufwand verbunden. Sie erfordert separate Codebasen, unterschiedliche Entwicklungsumgebungen und spezialisierte Kenntnisse 
-jeweils für die iOS- und die Android Plattform. Für ein kleines Entwicklungsteam stellt dies eine Herausforderung dar, da Ressourcen und Zeit begrenzt sind.
+Die Entwicklung nativer Apps für beide Plattformen sollte jedoch nicht mit doppeltem Aufwand verbunden sein. Eine einheitliche Codebase sollte ausreichen, sodass die Anwendung auf beiden Plattformen läuft. Andernfalls würde dies für ein kleines Entwicklungsteam eine große Herausforderung darstellen, da Ressourcen und Zeit begrenzt sind. Hier könnten React Native, Flutter oder Xamarin als plattformübergreifende Frameworks eine Rolle spielen
 
-An dieser Stelle setzt React Native als Cross-Platform-Framework an. React Native ermöglicht die Entwicklung einer einzigen Codebasis, die sowohl auf iOS als auch auf Android ausgeführt werden kann. Dabei werden keine WebViews verwendet, sondern native UI-Komponenten gerendert, was ein einheitliches Look \& Feel auf allen Plattformen gewährleistet. Darüber hinaus ermöglicht React Native durch seine komponentenbasierte 
-Architektur eine hohe Code-Wiederverwendung und damit eine effiziente Entwicklung durch ein kleines Team.
-
-Vor diesem Hintergrund stellt sich die Frage, wie eine mobile Anwendung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen konzipiert und umgesetzt werden kann, die plattformübergreifend nutzbar 
-ist und eine hohe Benutzerfreundlichkeit aufweist, damit sowohl Tierhaltern die Terminbuchungen als auch Tierarztpraxen Terminverwaltung leicht fallen.
+Vor diesem Hintergrund stellt sich die Frage, wie eine mobile Anwendung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen konzipiert und umgesetzt werden kann, die plattformübergreifend nutzbar ist und eine hohe Benutzerfreundlichkeit aufweist, damit sowohl Tierhaltern die Terminbuchungen als auch Tierarztpraxen Terminverwaltung leicht fallen.
 
 \section{Terminverwaltungen im Veterinärbereich}
 Um diese Lücke besser einzuordnen, lohnt sich ein Blick auf bestehende Lösungen im Veterinärbereich. Dabei kennzeichnen sich zwei Typen von Terminverwaltungssystemen auf dem Markt.Zum einen sind es die vorhandenen Online-Terminlösungen wie Petleo~\cite{petleo-info} oder 

@@ -1,17 +1,10 @@
 \chapter{Technische Grundlagen}
 
-Aufbauend auf der im vorherigen Kapitel erarbeiteten Konzeption werden 
-in diesem Kapitel die technischen Grundlagen erläutert, die für die 
-Umsetzung von petappoint eingesetzt werden.
+Aufbauend auf der im vorherigen Kapitel erarbeiteten Konzeption werden in diesem Kapitel die technischen Grundlagen erläutert, die für die Umsetzung von petappoint eingesetzt werden.
 
 \section{Technologien im bereits bestehenden Backend}
 
-Das Backend von petappoint wurde im Rahmen eines vorangegangenen 
-Projektmoduls entwickelt und bildet die technische Grundlage für die in dieser Arbeit umgesetzte mobile Anwendung. Es basiert auf Node.js und Express, die gemeinsam eine REST-API bereitstellen, über die das Frontend sämtliche Daten abruft und verwaltet \cite{nodejs-docs, express-docs}. Als Datenbank kommt PostgreSQL zum Einsatz, das die ACID-Eigenschaften gewährleistet. ACID steht 
-für Atomicity, Consistency, Isolation und Durability und beschreibt 
-die Anforderungen an sichere und zuverlässige Datenbanktransaktionen. 
-Jegliche angefragte Änderungen werden entweder vollständig oder gar nicht ausgeführt, die Datenkonsistenz bleibt stets gewahrt, parallele Transaktionen 
-beeinflussen sich nicht gegenseitig und abgeschlossene Transaktionen bleiben dauerhaft gespeichert \cite{postgresql_about}. Die Geschäftslogik ist durchgängig in TypeScript implementiert, wodurch Typsicherheit über alle Schichten der Anwendung sichergestellt wird \cite{typescript-docs}. Eingehende API-Anfragen werden mithilfe von Zod validiert \cite{zod-docs}. Für den automatisierten Versand von Buchungsbestätigungen und -erinnerungen wird Brevo als transaktionaler E-Mail-Dienst eingesetzt \cite{brevo-docs}.
+Das Backend von petappoint wurde im Rahmen eines vorangegangenen Projektmoduls entwickelt und bildet die technische Grundlage für die in dieser Arbeit umgesetzte mobile Anwendung. Es basiert auf Node.js und Express, die gemeinsam eine REST-API bereitstellen, über die das Frontend sämtliche Daten abruft und verwaltet \cite{nodejs-docs, express-docs}. Als Datenbank kommt PostgreSQL zum Einsatz, das die ACID-Eigenschaften gewährleistet. ACID steht für Atomicity, Consistency, Isolation und Durability und beschreibt die Anforderungen an sichere und zuverlässige Datenbanktransaktionen \cite{postgresql_transactions}. Jegliche angefragte Änderungen werden entweder vollständig oder gar nicht ausgeführt, die Datenkonsistenz bleibt stets gewahrt, parallele Transaktionen beeinflussen sich nicht gegenseitig und abgeschlossene Transaktionen bleiben dauerhaft gespeichert \cite{postgresql_about}. Die Geschäftslogik ist durchgängig in TypeScript implementiert, wodurch Typsicherheit über alle Schichten der Anwendung sichergestellt wird \cite{typescript-docs}. Eingehende API-Anfragen werden mithilfe von Zod validiert \cite{zod-docs}. Für den automatisierten Versand von Buchungsbestätigungen und -erinnerungen wird Brevo als transaktionaler E-Mail-Dienst eingesetzt \cite{brevo-docs}.
 
 \begin{table}[h]
 \begin{tabular}{|p{5cm}|p{9cm}|}
@@ -40,46 +33,26 @@ Brevo & Transaktionaler E-Mail-Dienst \\
 
 React Native ist ein von Meta entwickeltes Open-Source-Framework, das 
 die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von 
-JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche, wie Buttons, Textelemente oder Eingabefelder, die von der jeweiligen Plattform nativ bereitgestellt werden. Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten 
-App mit iOS oder Android.
+JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren UI-Elementen \cite{ui-elements} Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten App mit iOS oder Android.
 
-Ein Vorteil von React Native ist die Verwendung von JavaScript bzw. 
-TypeScript, wodurch Entwickler mit bestehenden Webkenntnissen direkt 
-in die mobile Entwicklung einsteigen können. Darüber hinaus ermöglicht 
-eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, 
-was den Entwicklungsaufwand erheblich reduziert. Da React Native auf 
-denselben Konzepten wie React aufbaut, können Kenntnisse und 
-Codestrukturen zwischen Web und Mobile geteilt werden.
+Ein Vorteil von React Native ist die Verwendung von JavaScript bzw. TypeScript, wodurch Entwickler mit bestehenden Webkenntnissen direkt in die mobile Entwicklung einsteigen können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand erheblich reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden\cite{react-native-docs}.
 
-Als Nachteil ist zu nennen, dass React Native für sehr 
-performance-kritische Anwendungen wie aufwendige Animationen oder 
-Spiele an seine Grenzen stoßen kann, da die Kommunikation zwischen 
-JavaScript und der nativen Ebene einen gewissen Overhead mit sich 
-bringt.
+Als Nachteil älterer Versionen ist zu nennen, dass React Native Anwendungen mit hohen aufwendigen Animationen oder Spielen an seine Grenzen stoßen konnte, da die Kommunikation zwischen 
+JavaScript und der nativen Ebene einen gewissen Aufwand mit sich brachte. Mit der neuen Architektur in der das JavaScript Interface (JSI) hinzukam, wurde dieses Problem jedoch 
+deutlich reduziert~\cite{react-native-new-arch}.
 
 \subsection{Flutter}
 
-Flutter ist ein von Google entwickeltes Open-Source-Framework für die 
-plattformübergreifende Entwicklung mobiler Anwendungen. Es basiert auf 
-der Programmiersprache Dart und verwendet eine eigene Rendering-Engine 
-namens Impeller, die alle UI-Elemente auf einem Canvas (digitalen Zeichenfläche) selbst Pixel für Pixel zeichnet, anstatt die vom 
-Betriebssystem bereitgestellten nativen Komponenten zu verwenden 
-\cite{flutter-docs}. Ein Vorteil von Flutter ist die vollständige Kontrolle über das Erscheinungsbild der Anwendung, was für Produkte mit einem eigenen 
-Design-System von Vorteil sein kann. Darüber hinaus unterstützt Flutter 
-neben iOS und Android auch Web und Desktop aus einer einzigen Codebasis. Als Nachteil erfordert Flutter die Verwendung von Dart, die zwingend erforderlich ist und nicht durch JavaScript oder TypeScript ersetzt werden kann. Zudem entsprechen UI-Elemente nicht dem plattformspezifischen Design des Betriebssystems, da Flutter alles selbst zeichnet.
+Flutter ist ein von Google entwickeltes Open-Source-Framework für die plattformübergreifende Entwicklung mobiler Anwendungen. Es basiert auf 
+der Programmiersprache Dart und verwendet eine eigene Rendering-Engine namens Impeller, die alle UI-Elemente auf einem Canvas (digitalen Zeichenfläche) selbst Pixel für Pixel zeichnet, anstatt die vom Betriebssystem bereitgestellten nativen Komponenten zu verwenden 
+\cite{flutter-docs}. Ein Vorteil von Flutter ist die vollständige Kontrolle über das Erscheinungsbild der Anwendung, was für Produkte mit einem eigenen Design-System von Vorteil sein kann. Darüber hinaus unterstützt Flutter 
+neben iOS und Android auch Web und Desktop aus einer einzigen Codebasis. Als Nachteil erfordert Flutter die Verwendung von Dart, die zwingend erforderlich ist und nicht durch JavaScript oder TypeScript ersetzt werden kann. Zudem entsprechen UI-Elemente nicht dem plattformspezifischen Design des Betriebssystems, da Flutter alles selbst zeichnet \cite{flutter-docs}.
 
-\subsection{Xamarin}
-
-Xamarin ist ein von Microsoft entwickeltes Framework für die 
-plattformübergreifende mobile Entwicklung auf Basis von C\# und dem 
-.NET-Ökosystem. Mit .NET MAUI wurde Xamarin als Nachfolger 
-weiterentwickelt und auf weitere Plattformen ausgedehnt 
-\cite{maui-docs}. Ein Vorteil von Xamarin ist die Nutzung nativer UI-Komponenten, sodass die Anwendung auf jeder Plattform dem vertrauten Design des Betriebssystems entspricht. Für Entwickler die bereits Erfahrung mit 
-C\# und dem .NET-Ökosystem haben, bietet Xamarin zudem den Vorteil, 
-bestehende Kenntnisse direkt in der mobilen Entwicklung einsetzen 
-zu können. Als Nachteil erfordert Xamarin wie Flutter einen vollständigen 
-Sprachwechsel zu C\#, was für Teams ohne .NET-Erfahrung einen 
-erheblichen Einarbeitungsaufwand bedeutet.
+\subsection{.NET MAUI}
+.NET MAUI (Multi-platform App UI) ist ein von Microsoft entwickeltes Open-Source-Framework für die plattformübergreifende Entwicklung mobiler und Desktop-Anwendungen auf Basis von C\# und dem 
+.NET-Ökosystem~\cite{maui-docs}. Es ist der offizielle Nachfolger von Xamarin, dessen Support im Mai 2024 eingestellt wurde~\cite{maui-docs}. Ein Vorteil von .NET MAUI ist die Nutzung nativer UI-Komponenten, sodass die Anwendung auf jeder Plattform dem vertrauten Design des 
+Betriebssystems entspricht. Für Entwickler, die bereits Erfahrung mit C\# und dem .NET-Ökosystem haben, bietet .NET MAUI zudem den Vorteil, bestehende Kenntnisse direkt in der mobilen Entwicklung einsetzen zu können. Als Nachteil erfordert .NET MAUI einen vollständigen Sprachwechsel zu C\#, was für Teams ohne .NET-Erfahrung einen 
+erheblichen Einarbeitungsaufwand bedeutet~\cite{maui-docs}.
 
 \subsection{Auswertung und Begründung der Wahl von React Native}
 
@@ -115,18 +88,17 @@ Bibliotheken und Diensten bereit, die den Einstieg in die
 React-Native-Entwicklung erheblich erleichtern \cite{expo-docs}. Expo 
 abstrahiert dabei viele der komplexen nativen Konfigurationsschritte 
 und bietet stattdessen eine einheitliche Entwicklungsumgebung für 
-iOS und Android.
+iOS und Android .
 
 Für das Testen auf einem physischen Gerät wurde in dieser Arbeit ein 
 Development Build eingesetzt. Dabei wird ein individuell konfigurierter 
 nativer Build der Anwendung erstellt, der den Expo Dev Client enthält 
-und direkt auf dem Gerät installiert wird \cite{expo-docs}. Im Gegensatz 
-zur Expo Go App erlaubt der Development Build die Verwendung beliebiger 
-nativer Module und spiegelt das Verhalten der finalen Produktionsanwendung 
+und direkt auf dem Gerät installiert wird \cite{expo-build}. Dadruch wird die Verwendung beliebiger 
+nativer Module erlaubt und spiegelt das Verhalten der finalen Produktionsanwendung 
 deutlich genauer wider. Darüber hinaus bietet das Expo SDK eine 
 umfangreiche Sammlung an vorgefertigten Modulen für den Zugriff auf 
 native Gerätefunktionen wie Kamera, Standort oder Benachrichtigungen 
-\cite{expo-docs}.
+\cite{expo-build}.
 
 Expo beinhaltet mit Expo Router ein dateibasiertes Navigations- und 
 Routing-System, das speziell für React Native Anwendungen entwickelt 
@@ -141,7 +113,7 @@ Authentifizierungstokens, stellt das Expo SDK mit expo-secure-store
 eine integrierte Lösung bereit. Die Bibliothek legt Daten verschlüsselt 
 als Key-Value-Paare ab und greift dabei direkt auf die systemeigenen 
 Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain 
-oder den Android-KeyStore \cite{expo-secure-store-docs}.
+oder den Android-KeyStore \cite{expo-service}.
 
 \subsection{Auswertung und Begründung der Wahl von Expo}
 
@@ -186,7 +158,7 @@ Als Nachteil ist zu nennen, dass TanStack Query ausschließlich für
 Server-State konzipiert ist und keine Lösung für die Verwaltung von 
 lokalem Client-State bietet. Für Anwendungen, die sowohl umfangreichen 
 Server-State als auch komplexen Client-State verwalten müssen, ist 
-daher eine zusätzliche State-Management-Lösung erforderlich.
+daher eine zusätzliche State-Management-Lösung erforderlich \cite{tanstack-query-docs}.
 
 \subsection{Redux Toolkit}
 
@@ -329,14 +301,14 @@ i18next ist eine Internationalisierungsbibliothek für JavaScript, die
 in Kombination mit react-i18next für React Native Anwendungen eingesetzt 
 wird. Sie ermöglicht die Verwaltung von Übersetzungsdateien und passt 
 die Sprache der Oberfläche automatisch an die Systemsprache des Geräts 
-an \cite{i18n-explanation}.
+an \cite{i18n-docs}.
 
 Im Vergleich zu react-intl, einer weiteren verbreiteten 
 Internationalisierungsbibliothek, zeichnet sich i18next durch eine 
 flexible Konfiguration und eine größere Community aus. react-intl ist 
 eng an den ECMAScript Internationalization Standard gebunden und eignet 
 sich besonders für Web-Anwendungen, bietet jedoch weniger Flexibilität 
-bei der Integration in React Native \cite{i18n-explanation}.
+bei der Integration in React Native \cite{i18n-docs}.
 
 Die Wahl fiel auf i18next, da es sich als Standardlösung im React 
 Native Ökosystem etabliert hat und die automatische Anpassung an die 
