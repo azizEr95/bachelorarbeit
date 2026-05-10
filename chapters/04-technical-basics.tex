@@ -4,13 +4,17 @@ Aufbauend auf der im vorherigen Kapitel erarbeiteten Konzeption werden
 in diesem Kapitel die technischen Grundlagen erläutert, die für die 
 Umsetzung von petappoint eingesetzt werden.
 
-\section{Übersicht verwendeter Technologien}
+\section{Technologien im bereits bestehenden Backend}
 
-Die Tabelle gibt zunächst einen Überblick über alle relevanten Technologien, unterteilt in den bestehenden Backend-Stack sowie den im Rahmen dieser Arbeit entwickelten Frontend-Stack. Die nachfolgenden Abschnitte erläutern die einzelnen Technologien.
+Das Backend von petappoint wurde im Rahmen eines vorangegangenen 
+Projektmoduls entwickelt und bildet die technische Grundlage für die in dieser Arbeit umgesetzte mobile Anwendung. Es basiert auf Node.js und Express, die gemeinsam eine REST-API bereitstellen, über die das Frontend sämtliche Daten abruft und verwaltet \cite{nodejs-docs, express-docs}. Als Datenbank kommt PostgreSQL zum Einsatz, das die ACID-Eigenschaften gewährleistet. ACID steht 
+für Atomicity, Consistency, Isolation und Durability und beschreibt 
+die Anforderungen an sichere und zuverlässige Datenbanktransaktionen. 
+Jegliche angefragte Änderungen werden entweder vollständig oder gar nicht ausgeführt, die Datenkonsistenz bleibt stets gewahrt, parallele Transaktionen 
+beeinflussen sich nicht gegenseitig und abgeschlossene Transaktionen bleiben dauerhaft gespeichert \cite{postgresql_about}. Die Geschäftslogik ist durchgängig in TypeScript implementiert, wodurch Typsicherheit über alle Schichten der Anwendung sichergestellt wird \cite{typescript-docs}. Eingehende API-Anfragen werden mithilfe von Zod validiert \cite{zod-docs}. Für den automatisierten Versand von Buchungsbestätigungen und -erinnerungen wird Brevo als transaktionaler E-Mail-Dienst eingesetzt \cite{brevo-docs}.
 
-\textbf{bestehende Datenbank und Backend}
-
-\begin{tabular}{|p{5cm}|p{9,2cm}|}
+\begin{table}[h]
+\begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \textbf{Technologie} & \textbf{Zweck} \\
 \hline
@@ -27,293 +31,299 @@ Zod & Schema-Validierung für Anfragen und Antworten \\
 Brevo & Transaktionaler E-Mail-Dienst \\
 \hline
 \end{tabular}
+\caption{Technologien im Backend}
+\end{table}
 
-\textbf{Frontend}
+\section{Plattformübergreifende Frameworks für mobile Anwendungen}
 
-\begin{tabular}{|p{5cm}|p{9,2cm}|}
-\hline
-\textbf{Technologie} & \textbf{Zweck} \\
-\hline
-React Native & Plattformübergreifendes mobiles Framework \\
-\hline
-Expo & Entwicklungsplattform und natives Build-Tooling \\
-\hline
-Expo Router & Dateibasiertes Navigations-/Routing-System \\
-\hline
-expo-secure-store & Sicherer lokaler Speicher \\
-\hline
-TypeScript & Statische Typisierung \\
-\hline
-TanStack Query & Server-State / Datenabruf \& Caching \\
-\hline
-Gluestack UI & Styling mit UI Komponentenbibliothek \\
-\hline
-i18next & Internationalisierung (Mehrsprachigkeit) \\
-\hline
-Zod & Laufzeit-Schema-Validierung \\
-\hline
-\end{tabular}
-
-\section{Technologien in der Datenbankschicht}
-
-Die Datenbankschicht bildet die Grundlage für die Speicherung der Anwendungsdaten, sodass der Verlust jeglicher Daten vermieden wird. Die Daten in einer Datenbank werden anhand des Datenbankmodells geordnet und nach einem vordefinierten Schema strukturiert. In diesen werden einzelne Entitäten und ihre Beziehungen zueinander beschrieben. Diese Sammlung wird üblicherweise von einem Datenbankmanagementsystem (DBMS) verwaltet. Zusammen werden die Daten und das DBMS als Datenbanksystem bezeichnet. Die üblicherweise verwendete Datenbank ist die Relationale Datenbank \cite[S.~4]{halvorsen2017database}. In der relationalen Datenbank werden die Entitäten in Form von Tabellen beschrieben. Jede Entität besitzt einen einzigartigen Primärschlüssel, und dieser Primärschlüssel kann sich in anderen Entitäten wiederfinden. Dieser heißt in der Tabelle Fremsdchlüssel und zeigt auf einer abstrakten Ebene die Beziehung zwischen zwei oder mehreren Tabellen. Dadurch lassen sich Daten ohne Duplikation organisieren \cite{relational_database_explanation}.
-
-\subsubsection{PostgreSQL}
-
-PostgreSQL ist eine relationale Datenbank, die die ACID-Eigenschaften 
-(Atomicity, Consistency, Isolation, Durability) gewährleistet und damit 
-die Grundlage für sichere und zuverlässige Transaktionen bildet 
-\cite{postgresql_about}. Darüber hinaus unterstützt PostgreSQL 
-Multi-Table-Transaktionen: Änderungen an mehreren Tabellen werden dabei als eine atomare Einheit ausgeführt. Schlägt eine dieser Änderungen 
-eingesetzt, wenn mehrere Entitäten gleichzeitig erstellt, geändert 
-fehl, wird die gesamte Transaktion zurückgenommen \cite{postgresql_transactions}.
-
-\section{Technologien in der Backendschicht}
-Die Backendschicht dient als zentrale Schnittstelle zwischen Frontend und 
-Datenbank. Sie beinhaltet die Geschäftslogik, verarbeitet eingehende 
-Anfragen und sorgt für Sicherheit durch Authentifizierung und 
-Autorisierung \cite{backend_explanation}.
-
-\subsubsection{Node.js}
-Node.js ist eine asynchrone, ereignisgesteuerte JavaScript-Laufzeitumgebung, die für die Entwicklung skalierbarer Netzwerkanwendungen ausgelegt ist. Eingehende Anfragen werden dabei nicht blockierend verarbeitet, sodass mehrere Anfragen gleichzeitig abgearbeitet werden können \cite{nodejs-docs}. 
-
-\subsubsection{Express}
-Express ergänzt Node.js um Routing und Middleware und ermöglicht damit 
-die strukturierte Verarbeitung von HTTP-Anfragen \cite{express-docs}. 
-Gemeinsam bilden Node.js und Express die REST-API, über die das Frontend 
-sämtliche Daten abruft und verwaltet.
-
-\subsubsection{TypeScript}
-TypeScript ist eine auf JavaScript aufbauende Sprache, die statische Typprüfung für Programme bereitstellt. Im Unterschied zu reinem JavaScript bietet TypeScript Typsicherung und somit eine frühzeitige Fehlererkennung während der Entwicklung \cite{typescript-docs}. Die Typisierung verbessert die Wartbarkeit und reduziert Fehler bei wachsendem Projektumfang.
-
-\subsubsection{Zod}
-Zod ist eine Validierungsbibliothek, die deklarative Schemata für 
-Datenstrukturen definiert und diese zur Laufzeit überprüft. Sie ist 
-eng mit TypeScript verzahnt und stellt sicher, dass alle eingehenden 
-API-Anfragen dem erwarteten Format entsprechen \cite{zod-docs}.
-
-\subsubsection{Brevo}
-Brevo ist ein Dienst für den automatisierten Versand transaktionaler 
-E-Mails über eine API \cite{brevo-docs}. In petappoint wird Brevo 
-für den Versand von Buchungsbestätigungen und -erinnerungen eingesetzt.
-
-\section{Technologien in der Frontendschicht}
-
-Die Frontendschicht stellt die Benutzerschnittstelle der Anwendung dar 
-und ermöglicht die Interaktion zwischen Nutzer und System. Sie ist 
-dafür verantwortlich, Informationen visuell darzustellen und 
-Benutzereingaben entgegenzunehmen \cite{frontend_explanation}. 
-Im Gegensatz zu den bereits im vorangegangenen Projektmodul 
-festgelegten Backend-Technologien wurden die im Folgenden beschriebenen 
-Frontend-Technologien im Rahmen dieser Arbeit eigenständig ausgewählt 
-und begründet.
-
-latex\subsection{React Native}
+\subsection{React Native}
 
 React Native ist ein von Meta entwickeltes Open-Source-Framework, das 
 die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von 
-JavaScript bzw. TypeScript ermöglicht. Im Unterschied zu hybriden 
-Ansätzen wie Ionic, die auf WebViews setzen, rendert React Native echte 
-native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen 
-Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis 
-gewährleisten \cite{react-native-docs}.
+JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche, wie Buttons, Textelemente oder Eingabefelder, die von der jeweiligen Plattform nativ bereitgestellt werden. Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten 
+App mit iOS oder Android.
 
-Ein zentrales Merkmal von React Native ist die sogenannte New 
-Architecture, die die interne Kommunikation zwischen JavaScript und 
-der nativen Ebene grundlegend überarbeitet hat und ab Version 0.82 
-standardmäßig aktiviert ist. Durch das JavaScript Interface (JSI), das neue Rendering-System Fabric sowie lazy geladene TurboModules wird die 
-Startzeit, der Speicherverbrauch und die Reaktionsfähigkeit der 
-Anwendung spürbar verbessert \cite{react-native-new-arch}.
+Ein Vorteil von React Native ist die Verwendung von JavaScript bzw. 
+TypeScript, wodurch Entwickler mit bestehenden Webkenntnissen direkt 
+in die mobile Entwicklung einsteigen können. Darüber hinaus ermöglicht 
+eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, 
+was den Entwicklungsaufwand erheblich reduziert. Da React Native auf 
+denselben Konzepten wie React aufbaut, können Kenntnisse und 
+Codestrukturen zwischen Web und Mobile geteilt werden.
 
-\subsection{Alternativen zu React Native}
+Als Nachteil ist zu nennen, dass React Native für sehr 
+performance-kritische Anwendungen wie aufwendige Animationen oder 
+Spiele an seine Grenzen stoßen kann, da die Kommunikation zwischen 
+JavaScript und der nativen Ebene einen gewissen Overhead mit sich 
+bringt.
 
-\subsubsection{Flutter}
+\subsection{Flutter}
 
 Flutter ist ein von Google entwickeltes Open-Source-Framework für die 
 plattformübergreifende Entwicklung mobiler Anwendungen. Es basiert auf 
 der Programmiersprache Dart und verwendet eine eigene Rendering-Engine 
-namens Impeller, die UI-Elemente unabhängig von nativen Komponenten 
-direkt auf einem Canvas zeichnet. Dies ermöglicht ein konsistentes 
-Erscheinungsbild über alle Plattformen hinweg, bedeutet jedoch 
-gleichzeitig, dass das plattformspezifische Look \& Feel nicht 
-automatisch übernommen wird \cite{flutter-docs}.
+namens Impeller, die alle UI-Elemente auf einem Canvas (digitalen Zeichenfläche) selbst Pixel für Pixel zeichnet, anstatt die vom 
+Betriebssystem bereitgestellten nativen Komponenten zu verwenden 
+\cite{flutter-docs}. Ein Vorteil von Flutter ist die vollständige Kontrolle über das Erscheinungsbild der Anwendung, was für Produkte mit einem eigenen 
+Design-System von Vorteil sein kann. Darüber hinaus unterstützt Flutter 
+neben iOS und Android auch Web und Desktop aus einer einzigen Codebasis. Als Nachteil erfordert Flutter die Verwendung von Dart, die zwingend erforderlich ist und nicht durch JavaScript oder TypeScript ersetzt werden kann. Zudem entsprechen UI-Elemente nicht dem plattformspezifischen Design des Betriebssystems, da Flutter alles selbst zeichnet.
 
-\subsubsection{Xamarin / .NET MAUI}
+\subsection{Xamarin}
 
 Xamarin ist ein von Microsoft entwickeltes Framework für die 
 plattformübergreifende mobile Entwicklung auf Basis von C\# und dem 
 .NET-Ökosystem. Mit .NET MAUI wurde Xamarin als Nachfolger 
-weiterentwickelt und auf weitere Plattformen ausgedehnt. Beide 
-Lösungen ermöglichen die Nutzung nativer UI-Komponenten und sind 
-eng in die Microsoft-Entwicklungsumgebung Visual Studio integriert 
-\cite{maui-docs}.
+weiterentwickelt und auf weitere Plattformen ausgedehnt 
+\cite{maui-docs}. Ein Vorteil von Xamarin ist die Nutzung nativer UI-Komponenten, sodass die Anwendung auf jeder Plattform dem vertrauten Design des Betriebssystems entspricht. Für Entwickler die bereits Erfahrung mit 
+C\# und dem .NET-Ökosystem haben, bietet Xamarin zudem den Vorteil, 
+bestehende Kenntnisse direkt in der mobilen Entwicklung einsetzen 
+zu können. Als Nachteil erfordert Xamarin wie Flutter einen vollständigen 
+Sprachwechsel zu C\#, was für Teams ohne .NET-Erfahrung einen 
+erheblichen Einarbeitungsaufwand bedeutet.
 
-\subsection{Auswertung und Begründung}
+\subsection{Auswertung und Begründung der Wahl von React Native}
 
-Wie zu sehen ist, bieten die vorgestellten Frameworks alle ihre Vor- 
-und Nachteile. Flutter überzeugt durch ein konsistentes 
-plattformübergreifendes Erscheinungsbild, setzt jedoch Dart als 
-Programmiersprache voraus, mit der im Rahmen des Studiums und des 
-Projektkontexts keine Vorerfahrung bestand. Xamarin bzw. .NET MAUI 
-schied aus denselben Gründen aus, da weder C\# noch das 
-Microsoft-Ökosystem im Projektverlauf eine Rolle gespielt hatten.
+React Native wurde als Framework für petappoint gewählt, da es die 
+Anforderungen des Projekts in mehrfacher Hinsicht optimal erfüllt. 
+Da das Backend bereits in TypeScript implementiert ist, ermöglicht 
+React Native eine durchgängige Verwendung derselben Sprache über alle 
+Schichten der Anwendung hinweg. Dadurch können Typdefinitionen und 
+Validierungslogiken zwischen Backend und Frontend geteilt werden, was 
+die Konsistenz der Codebasis erhöht und Fehlerquellen reduziert.
 
-Die Wahl fiel auf React Native, da bereits im Studium sowie im 
-vorangegangenen Projektmodul mit React gearbeitet wurde. Da React 
-Native auf denselben Konzepten aufbaut, entfiel ein Großteil der 
-Einarbeitungszeit. Darüber hinaus wurde für die Desktopansicht von 
-petappoint ebenfalls React eingesetzt, sodass Kenntnisse, 
-Typdefinitionen und Codestrukturen direkt übertragen werden konnten.
+Ein weiterer entscheidender Faktor ist die Wiederverwendung bestehender 
+React-Kenntnisse. Da React Native auf denselben Konzepten wie React 
+aufbaut, entfällt ein vollständiger Technologiewechsel, was den 
+Entwicklungsaufwand deutlich senkt. Im Vergleich zu Flutter, das die 
+Verwendung von Dart voraussetzt, und Xamarin, das C\# und das 
+.NET-Ökosystem erfordert, stellt React Native für JavaScript- und 
+TypeScript-erfahrene Entwickler die niedrigste Einstiegshürde dar.
 
-\subsection{Expo}
+Da petappoint eine Terminbuchungs-App ist und keine aufwendigen 
+Animationen oder grafikintensive Inhalte erfordert, spielen die 
+performance-kritischen Grenzen von React Native in diesem Kontext 
+keine entscheidende Rolle. Die nativen UI-Komponenten von React Native 
+gewährleisten zudem ein plattformkonformes Nutzererlebnis auf iOS und 
+Android, was für eine produktiv eingesetzte Anwendung von Bedeutung ist.
 
-Expo ist ein Open-Source-Framework, das auf React Native aufbaut und 
-die plattformübergreifende Entwicklung für iOS, Android und Web 
-vereinfacht. Es abstrahiert die Komplexität nativer Build-Konfigurationen 
-und stellt standardisierte Schnittstellen für den Zugriff auf 
-gerätespezifische Hardware-Funktionalitäten wie Kamera, Biometrie oder 
-sicheren Speicher bereit \cite{expo-docs}. Die offizielle React Native 
-Dokumentation empfiehlt Expo ausdrücklich als Einstiegspunkt für neue 
-Projekte \cite{react-native-docs}.
+\section{Expo als Entwicklungsplattform und Routing-System für React Native}
 
-Ein zentraler Bestandteil von Expo sind die Expo Application Services 
-(EAS), die einen cloudbasierten Build- und Deployment-Prozess 
-ermöglichen. Dadurch können native App-Binaries für iOS und Android 
-erstellt werden, ohne dass eine lokale Konfiguration von Xcode oder 
-Android Studio erforderlich ist \cite{expo-service}.
+Expo ist eine Open-Source-Plattform, die auf React Native aufbaut und 
+die Entwicklung, das Testen und die Veröffentlichung mobiler Anwendungen 
+vereinfacht. Sie stellt eine Sammlung von vorkonfigurierten Tools, 
+Bibliotheken und Diensten bereit, die den Einstieg in die 
+React-Native-Entwicklung erheblich erleichtern \cite{expo-docs}. Expo 
+abstrahiert dabei viele der komplexen nativen Konfigurationsschritte 
+und bietet stattdessen eine einheitliche Entwicklungsumgebung für 
+iOS und Android.
 
-\subsection{Alternativen zu Expo}
+Für das Testen auf einem physischen Gerät wurde in dieser Arbeit ein 
+Development Build eingesetzt. Dabei wird ein individuell konfigurierter 
+nativer Build der Anwendung erstellt, der den Expo Dev Client enthält 
+und direkt auf dem Gerät installiert wird \cite{expo-docs}. Im Gegensatz 
+zur Expo Go App erlaubt der Development Build die Verwendung beliebiger 
+nativer Module und spiegelt das Verhalten der finalen Produktionsanwendung 
+deutlich genauer wider. Darüber hinaus bietet das Expo SDK eine 
+umfangreiche Sammlung an vorgefertigten Modulen für den Zugriff auf 
+native Gerätefunktionen wie Kamera, Standort oder Benachrichtigungen 
+\cite{expo-docs}.
 
-\subsubsection{Bare React Native}
+Expo beinhaltet mit Expo Router ein dateibasiertes Navigations- und 
+Routing-System, das speziell für React Native Anwendungen entwickelt 
+wurde. Die Navigationsstruktur der Anwendung wird dabei direkt über 
+das Dateiverzeichnis abgebildet, wobei jede Datei im \texttt{app}-Verzeichnis 
+automatisch einer Route entspricht. Dieses Konzept ist an das Routing 
+von Next.js angelehnt und ermöglicht eine intuitive und 
+nachvollziehbare Projektstruktur \cite{expo-router}.
 
-Bare React Native bezeichnet die Verwendung von React Native ohne 
-Expo, also ohne das darüberliegende Framework. Dabei hat das 
-Entwicklungsteam vollständige Kontrolle über den nativen Code und 
-kann plattformspezifische Anpassungen direkt in Xcode bzw. Android 
-Studio vornehmen. Dies geht jedoch mit einem deutlich höheren 
-Konfigurationsaufwand einher, da sämtliche native Abhängigkeiten 
-manuell verwaltet werden müssen \cite{expo-docs}.
+Für die Speicherung sicherheitsrelevanter Daten, wie beispielsweise 
+Authentifizierungstokens, stellt das Expo SDK mit expo-secure-store 
+eine integrierte Lösung bereit. Die Bibliothek legt Daten verschlüsselt 
+als Key-Value-Paare ab und greift dabei direkt auf die systemeigenen 
+Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain 
+oder den Android-KeyStore \cite{expo-secure-store-docs}.
 
-\subsection{Auswertung und Begründung}
+\subsection{Auswertung und Begründung der Wahl von Expo}
 
-Da die Wahl bereits auf React Native gefallen war, stellte sich 
-lediglich die Frage, ob Expo oder Bare React Native verwendet werden 
-soll. Expo wurde gewählt, da es von der offiziellen React Native 
-Dokumentation empfohlen wird und den Einstieg in die native 
-App-Entwicklung erheblich vereinfacht. Der Managed Workflow von Expo 
-eliminiert die Notwendigkeit, Xcode oder Android Studio manuell zu 
-konfigurieren, was für ein kleines Entwicklungsteam einen erheblichen 
-Zeitvorteil darstellt. Darüber hinaus bietet das Expo SDK eine 
-Sammlung geprüfter Bibliotheken für häufig benötigte 
-Gerätfunktionalitäten, die ohne zusätzlichen Konfigurationsaufwand 
-eingesetzt werden können. Die Expo Application Services ermöglichen 
-zudem einen cloudbasierten Build-Prozess, sodass native App-Binaries 
-erstellt werden können, ohne auf eine vollständig eingerichtete native 
-Entwicklungsumgebung angewiesen zu sein.
+Expo wurde als Entwicklungsplattform für petappoint gewählt, da es 
+nicht wirklich eine Alternative zu Expo gibt und der Entwicklungsprozess 
+in mehrfacher Hinsicht vereinfacht wird. Durch die Abstraktion nativer 
+Konfigurationsschritte kann der Fokus vollständig auf die Implementierung 
+der Anwendungslogik gelegt werden. Diese Wahl wird zudem durch die 
+offizielle React Native Dokumentation gestützt, die Expo ausdrücklich 
+als empfohlenen Weg für die Entwicklung neuer React-Native-Anwendungen 
+bezeichnet \cite{react-native-docs}. Da die Wahl bereits auf Expo 
+gefallen war, ergab sich Expo Router als konsequente Folgeentscheidung, 
+da es von Expo als offizielles Navigationssystem empfohlen wird 
+\cite{expo-router} und die Nachvollziehbarkeit der Navigationslogik 
+erhöht, indem die Ordnerstruktur direkt die Struktur der App widerspiegelt.
 
-\subsection{Expo Router}
-
-Expo Router ist ein dateibasiertes Navigations- und Routing-System, 
-das speziell für React Native Anwendungen mit Expo entwickelt wurde. 
-Die Navigationsstruktur der Anwendung wird dabei direkt über das 
-Dateiverzeichnis abgebildet — jede Datei im \texttt{app}-Verzeichnis 
-entspricht automatisch einer Route. Dieses Konzept ist an das Routing 
-von Next.js angelehnt und ermöglicht eine intuitive und nachvollziehbare 
-Projektstruktur \cite{expo-router}.
-
-Da die Wahl bereits auf Expo gefallen war, ergab sich Expo Router als 
-konsequente Folgeentscheidung. Expo Router ist tief in das Expo-Ökosystem 
-integriert und wird von Expo als offizielles Navigationssystem empfohlen. 
-Die dateibasierte Struktur reduziert den Konfigurationsaufwand für die 
-Navigation erheblich und erhöht die Nachvollziehbarkeit der 
-Navigationslogik, da die Ordnerstruktur direkt die Struktur der App 
-widerspiegelt.
+\section{Server-State-Management und Datenabruf}
 
 \subsection{TanStack Query}
 
-TanStack Query ist eine Bibliothek für das Management von Server State 
-in React- und React-Native-Anwendungen. Sie übernimmt das Abrufen, 
-Cachen und Synchronisieren von Serverdaten und reduziert dabei den 
-Boilerplate-Code, der bei einer manuellen Implementierung dieser 
-Funktionen anfallen würde \cite{tanstack-docs}.
+TanStack Query, früher bekannt als React Query, ist eine Bibliothek 
+für das Management von Server-State in React- und React-Native-Anwendungen. 
+Sie abstrahiert die Logik für das Abrufen, Caching, Synchronisieren und 
+Aktualisieren von Serverdaten und ersetzt damit manuell verwaltete 
+Ladezustände und Fehlerbehandlungen \cite{tanstack-query-docs}. 
+Server-State bezeichnet dabei Daten, die auf einem externen Server 
+gespeichert sind und über eine API abgerufen werden, im Gegensatz zum 
+Client-State, der lokal in der Anwendung verwaltet wird.
 
-\subsection{Alternativen zu TanStack Query}
+Ein Vorteil von TanStack Query ist die automatische Verwaltung von 
+Ladezuständen, Fehlerzuständen und dem Cache der abgerufenen Daten. 
+Einmal abgerufene Daten werden zwischengespeichert und bei erneuten 
+Anfragen direkt aus dem Cache zurückgegeben, bevor im Hintergrund eine 
+Aktualisierung stattfindet. Dieses Verhalten wird als 
+Stale-While-Revalidate bezeichnet und sorgt für eine reaktionsschnelle 
+Benutzeroberfläche \cite{tanstack-query-docs}. Darüber hinaus reduziert 
+TanStack Query den manuellen Implementierungsaufwand erheblich, da 
+wiederkehrende Muster wie Fehlerbehandlung und Ladezustände nicht 
+selbst implementiert werden müssen.
 
-\subsubsection{Redux Toolkit Query}
+Als Nachteil ist zu nennen, dass TanStack Query ausschließlich für 
+Server-State konzipiert ist und keine Lösung für die Verwaltung von 
+lokalem Client-State bietet. Für Anwendungen, die sowohl umfangreichen 
+Server-State als auch komplexen Client-State verwalten müssen, ist 
+daher eine zusätzliche State-Management-Lösung erforderlich.
 
-Redux Toolkit Query ist die datenverwaltende Erweiterung von Redux 
-Toolkit und bietet ebenfalls Funktionen für das Abrufen und Cachen 
-von Serverdaten. Es ist eng in das Redux-Ökosystem integriert und 
-eignet sich besonders für Anwendungen, die bereits Redux für das 
-State Management einsetzen. Der Einstieg ist jedoch mit einem höheren 
-Konfigurationsaufwand und mehr Boilerplate verbunden \cite{redux-docs}.
+\subsection{Redux Toolkit}
 
-\subsubsection{Zustand}
+Redux Toolkit ist die offizielle, empfohlene Variante zur Verwendung 
+von Redux, einer weit verbreiteten Bibliothek für das globale 
+State-Management in React-Anwendungen \cite{redux-toolkit-docs}. 
+Redux verwaltet den gesamten Anwendungszustand in einem zentralen Store, auf den alle Komponenten zugreifen können.
 
-Zustand ist eine schlanke State-Management-Bibliothek für React, die 
-sich durch eine einfache API und minimalen Boilerplate auszeichnet. 
-Sie eignet sich gut für lokalen UI-State, bietet jedoch keine 
-spezialisierte Unterstützung für Server State Management oder 
-automatisches Caching \cite{zustand-docs}.
+Ein Vorteil von Redux Toolkit ist die große Community und die weite 
+Verbreitung in bestehenden Projekten. Zudem bietet Redux Toolkit mit ihrem "RTK Query" eine integrierte Lösung für den Datenabruf und das Caching 
+von Serverdaten, wodurch sowohl Client-State als auch Server-State 
+in einem einzigen Tool verwaltet werden können.
 
-\subsection{Auswertung und Begründung}
+Als Nachteil gilt der vergleichsweise hohe Boilerplate-Aufwand, auch 
+in der Toolkit-Variante. Für kleinere Projekte kann der konfigurationsintensive 
+Ansatz von Redux im Verhältnis zum tatsächlichen Nutzen unverhältnismäßig 
+aufwendig sein.
+
+\subsection{Zustand}
+
+Zustand ist eine minimalistische State-Management-Bibliothek für React, 
+die ohne viel Boilerplate auskommt und einen einfachen, flexiblen Ansatz für die Verwaltung von globalem Client-State bietet \cite{zustand-docs}.
+
+Ein Vorteil von Zustand ist die geringe Einstiegshürde und die schlanke 
+API, die eine schnelle Integration in bestehende Projekte ermöglicht. 
+Im Vergleich zu Redux Toolkit erfordert Zustand deutlich weniger 
+Konfigurationsaufwand und eignet sich daher besonders für kleinere 
+bis mittelgroße Anwendungen.
+
+Als Nachteil ist zu nennen, dass Zustand wie Redux primär für 
+Client-State ausgelegt ist und keine eingebauten Mechanismen für 
+Caching oder Synchronisierung von Serverdaten bietet. Für den 
+Datenabruf ist daher stets eine zusätzliche Lösung erforderlich.
+
+\subsection{Auswertung und Begründung der Wahl von TanStack Query}
 
 Die Wahl fiel auf TanStack Query, da die Bibliothek bereits im 
-vorangegangenen Projektmodul eingesetzt wurde und damit Vorerfahrung 
+vorangegangenen Projektmodul eingesetzt wurde und somit Vorerfahrung 
 im Umgang damit vorhanden war. Darüber hinaus wurde TanStack Query 
 vom betreuenden Professor empfohlen. Technisch überzeugt die 
-Bibliothek durch ihr spezialisiertes Server State Management und die 
+Bibliothek durch ihr spezialisiertes Server-State-Management und die 
 deutliche Reduzierung von Boilerplate-Code gegenüber einer manuellen 
-Implementierung. Redux Toolkit Query schied aus, da es einen höheren 
-Konfigurationsaufwand mit sich bringt und kein Redux bereits im 
-Projekt eingesetzt wurde. Zustand wurde nicht gewählt, da es primär 
-für lokalen State ausgelegt ist und keine spezialisierte 
-Unterstützung für Server State bietet.
+Implementierung. Da petappoint eine datengetriebene Anwendung ist, 
+die primär Serverdaten abruft und anzeigt, ist eine spezialisierte 
+Server-State-Lösung einer allgemeinen State-Management-Bibliothek 
+vorzuziehen \cite{tanstack-query-docs}.
 
-\subsection{NativeWind, Tailwind CSS und Gluestack UI}
+Redux Toolkit schied aus, da es einen höheren Konfigurationsaufwand 
+mit sich bringt und Redux nicht bereits im Projekt eingesetzt wurde, 
+wodurch kein Mehrwert gegenüber TanStack Query entstanden wäre. 
+Zustand wurde nicht gewählt, da es primär für lokalen Client-State 
+ausgelegt ist und keine spezialisierte Unterstützung für Server-State 
+bietet.
 
-Gluestack UI ist eine Komponentenbibliothek für React Native, die 
-vorgefertigte, plattformoptimierte UI-Komponenten bereitstellt und 
-Design-Themen sowie Dark-Mode-Unterstützung mitbringt 
-\cite{gluestack-explanation}. Als Styling-System empfiehlt Gluestack 
-UI die Kombination aus NativeWind und Tailwind CSS. NativeWind 
-überträgt das Utility-Class-System von Tailwind CSS auf React Native 
-und ermöglicht damit ein einheitliches Styling über alle Komponenten 
-hinweg \cite{nativewind-explanation}. Tailwind CSS selbst stellt 
-dabei die Utility-Klassen bereit, mit denen UI-Elemente direkt im 
-Markup gestylt werden können, ohne zwischen separaten Stylesheet-Dateien 
-wechseln zu müssen \cite{tailwind-explanation}.
+\section{UI-Komponentenbibliotheken}
 
-\subsection{Alternativen zu NativeWind, Tailwind CSS und Gluestack UI}
+\subsection{Gluestack UI}
 
-\subsubsection{React Native Paper}
+Gluestack UI ist eine komponentenbasierte UI-Bibliothek für React 
+Native, die eine Sammlung von vordefinierten, zugänglichen und 
+anpassbaren Komponenten bereitstellt. Die Bibliothek basiert auf 
+einem Token-basierten Design-System, bei dem Farben, Abstände und 
+Typografie über zentrale Design-Tokens definiert und konsistent in 
+der gesamten Anwendung verwendet werden \cite{gluestack-docs}. 
+Gluestack UI unterstützt sowohl React Native als auch React im Web, 
+wodurch Komponenten plattformübergreifend eingesetzt werden können.
 
-React Native Paper ist eine Komponentenbibliothek für React Native, 
-die auf dem Material Design von Google basiert. Sie bietet eine 
-Sammlung vorgefertigter Komponenten und unterstützt Theming sowie 
-Dark Mode \cite{react-native-paper-docs}.
+Ein Vorteil von Gluestack UI ist die umfangreiche Sammlung an 
+vorgefertigten Komponenten, die direkt eingesetzt und an das 
+eigene Design angepasst werden können. Das Token-basierte 
+Design-System ermöglicht eine konsistente visuelle Gestaltung 
+der gesamten Anwendung ohne redundante Styling-Definitionen. 
+Darüber hinaus sind alle Komponenten auf Barrierefreiheit 
+ausgelegt und folgen den gängigen Accessibility-Standards.
 
-\subsubsection{StyleSheet}
+Als Nachteil ist zu nennen, dass Gluestack UI eine verhältnismäßig 
+junge Bibliothek ist und sich die API zwischen Versionen teils 
+erheblich verändert hat, was zu Migrationsaufwand führen kann. 
+Zudem ist die Community im Vergleich zu etablierteren Bibliotheken 
+wie React Native Paper noch kleiner, weshalb die Dokumentation 
+in manchen Bereichen weniger ausführlich ist.
 
-StyleSheet ist das in React Native integrierte Styling-System. Es 
-ermöglicht die Definition von Stilen direkt in JavaScript ohne 
-zusätzliche Abhängigkeiten, bietet jedoch keine vorgefertigten 
-Komponenten und erfordert bei wachsendem Projektumfang einen höheren 
-manuellen Aufwand \cite{react-native-docs}.
+\subsection{React Native Paper}
 
-\subsection{Auswertung und Begründung}
+React Native Paper ist eine weit verbreitete UI-Komponentenbibliothek 
+für React Native, die auf den Material Design Richtlinien von Google 
+basiert \cite{react-native-paper-docs}. Sie stellt eine Vielzahl 
+von vorgefertigten Komponenten bereit, die dem Material Design 
+Erscheinungsbild entsprechen und auf beiden Plattformen konsistent 
+aussehen.
 
-Die Wahl fiel auf Gluestack UI, da die Bibliothek vom betreuenden 
-Professor empfohlen wurde. Da Gluestack UI selbst NativeWind und 
-Tailwind CSS als Styling-System empfiehlt, ergab sich die Kombination 
-der drei Technologien als logische Einheit. React Native Paper schied 
-aus, da es an das Material Design gebunden ist und damit weniger 
-Flexibilität in der visuellen Gestaltung bietet. Das integrierte 
-StyleSheet-System wurde nicht gewählt, da es keine vorgefertigten 
-Komponenten mitbringt und der manuelle Aufwand für ein konsistentes 
-UI-Design deutlich höher gewesen wäre.
+Ein Vorteil von React Native Paper ist die große Community und die 
+ausgereifte, stabile API, die sich über mehrere Jahre bewährt hat. 
+Die Bibliothek ist gut dokumentiert und bietet eine zuverlässige 
+Grundlage für Anwendungen, die dem Material Design folgen sollen.
 
-\subsection{i18next}
+Als Nachteil ist zu nennen, dass React Native Paper stark an das 
+Material Design gebunden ist, was die gestalterische Freiheit 
+einschränkt. Anwendungen, die ein eigenes Design-System oder ein 
+plattformkonformes iOS-Design anstreben, stoßen mit React Native 
+Paper schnell an ihre Grenzen.
+
+\subsection{StyleSheet}
+
+StyleSheet ist die in React Native integrierte Lösung für das Styling 
+von Komponenten \cite{react-native-docs}. Es handelt sich dabei um 
+keine externe Bibliothek, sondern um eine native API, die CSS-ähnliche 
+Styling-Eigenschaften in JavaScript-Objekte übersetzt und diese 
+optimiert an die native Rendering-Ebene weitergibt.
+
+Ein Vorteil von StyleSheet ist, dass keine zusätzliche Abhängigkeit 
+eingebunden werden muss, da es direkt in React Native enthalten ist. 
+Die Performance ist durch die native Optimierung der Styles 
+vergleichsweise hoch.
+
+Als Nachteil ist zu nennen, dass StyleSheet keine vorgefertigten 
+Komponenten bereitstellt. Sämtliche UI-Elemente müssen von Grund 
+auf selbst implementiert werden, was den Entwicklungsaufwand 
+erheblich erhöht. Zudem fehlen ein einheitliches Design-System 
+und Mechanismen für die konsistente Verwaltung von Design-Tokens.
+
+\subsection{Auswertung und Begründung der Wahl von Gluestack UI}
+
+Gluestack UI wurde als UI-Komponentenbibliothek für petappoint gewählt, 
+da es eine umfangreiche Sammlung anpassbarer Komponenten mit einem 
+konsistenten Token-basierten Design-System vereint. Im Vergleich zu 
+StyleSheet entfällt der Aufwand, alle UI-Elemente von Grund auf selbst 
+zu implementieren, was die Entwicklungsgeschwindigkeit erheblich 
+steigert. Gegenüber React Native Paper bietet Gluestack UI mehr 
+gestalterische Freiheit, da es nicht an ein spezifisches Design-System 
+wie Material Design gebunden ist und somit ein individuelles 
+Erscheinungsbild der Anwendung ermöglicht \cite{gluestack-docs}.
+
+\section{TypeScript und Zod}
+Da TypeScript bereits im Backend eingesetzt wird, entstand durch die Verwendung im Frontend eine konsistente Typisierung über alle Schichten der Anwendung hinweg. Dasselbe gilt für Zod, da es ebenfalls bereits im Backend eingesetzt wird, können Schemata zwischen Backend und Frontend geteilt werden, was die Konsistenz der Datenvalidierung über die gesamte Anwendung hinweg gewährleistet.
+
+\section{Internationalisierung mit i18next}
 
 i18next ist eine Internationalisierungsbibliothek für JavaScript, die 
 in Kombination mit react-i18next für React Native Anwendungen eingesetzt 
@@ -333,42 +343,60 @@ Native Ökosystem etabliert hat und die automatische Anpassung an die
 Systemsprache des Geräts ohne zusätzlichen Konfigurationsaufwand 
 ermöglicht.
 
-\subsection{TypeScript und Zod}
-Da TypeScript bereits im Backend eingesetzt wird, entstand durch die Verwendung im Frontend eine konsistente Typisierung über alle Schichten der Anwendung hinweg. Dasselbe gilt für Zod, da es ebenfalls bereits im Backend eingesetzt wird, können Schemata zwischen Backend und Frontend geteilt werden, was die Konsistenz der Datenvalidierung über die gesamte Anwendung hinweg gewährleistet.
+\section{Gesamtauswertung der Technologieauswahl}
 
-\subsubsection{Expo Secure Store}
-Für die Speicherung sicherheitsrelevanter Daten, wie beispielsweise Authentifizierungstokens, nutzt petappoint expo-secure-store. Die Bibliothek legt Daten verschlüsselt als Key-Value-Paare ab und greift dafür direkt auf die systemeigenen Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain oder den Android-KeyStore. Das stellt sicher, dass sensible Informationen lokal auf dem Gerät geschützt bleiben und der Zugriff durch unbefugte Dritte effektiv unterbunden wird \cite{expo-secure-store-docs}.
+Die Wahl der eingesetzten Technologien orientierte sich sowohl an 
+technischen als auch an projektspezifischen Anforderungen. Mit React 
+Native und Expo wurde eine Kombination gewählt, die von der offiziellen 
+React Native Dokumentation ausdrücklich empfohlen wird und die 
+plattformübergreifende Entwicklung für iOS und Android aus einer 
+einzigen Codebasis ermöglicht. Da das Backend bereits in TypeScript 
+implementiert ist, konnte durch die Wahl von React Native eine 
+durchgängige Verwendung derselben Sprache über alle Schichten der 
+Anwendung hinweg sichergestellt werden.
 
-\section{Auswertung und Begründung der Technologischen Auswahl}
+TanStack Query wurde aufgrund von Vorerfahrung aus dem vorangegangenen 
+Projektmodul sowie der Empfehlung des betreuenden Professors gewählt. 
+Technisch überzeugt die Bibliothek durch ihr spezialisiertes 
+Server-State-Management, das den Anforderungen einer datengetriebenen 
+Terminbuchungs-App wie petappoint optimal entspricht. Gluestack UI 
+ermöglicht eine konsistente und anpassbare Gestaltung der 
+Benutzeroberfläche ohne Bindung an ein spezifisches Design-System 
+wie Material Design. TypeScript und Zod werden durchgängig im Frontend 
+eingesetzt und ermöglichen die gemeinsame Nutzung von Typdefinitionen 
+und Validierungsschemata mit dem Backend. i18next stellt die 
+Mehrsprachigkeit der Anwendung sicher und passt die Sprache der 
+Oberfläche automatisch an die Systemsprache des Geräts an.
 
-Die gewählte Technologiekombination ergibt sich nicht aus isolierten 
-Einzelentscheidungen, sondern aus einem zusammenhängenden Stack, dessen 
-Komponenten sich gegenseitig ergänzen und verstärken. Grundlage aller 
-Entscheidungen war die Anforderung, eine plattformübergreifende mobile 
-Anwendung mit einem kleinen Entwicklungsteam umzusetzen.
+Insgesamt wurde bei der Technologieauswahl darauf geachtet, bewährte 
+und gut dokumentierte Lösungen einzusetzen, die sich im React Native 
+Ökosystem etabliert haben und den Entwicklungsaufwand durch hohe 
+Abstraktion und vorgefertigte Funktionalitäten minimieren.
 
-React Native bildet das Fundament des Stacks und erfüllt diese 
-Anforderung direkt, indem eine einzige Codebasis sowohl für iOS als 
-auch für Android genutzt wird. Expo baut darauf auf und reduziert den 
-nativen Konfigurationsaufwand erheblich, sodass der Fokus auf die 
-eigentliche Anwendungsentwicklung gelegt werden konnte. Expo Router 
-ergibt sich als konsequente Folgeentscheidung aus der Expo-Wahl und 
-sorgt für eine nachvollziehbare Navigationsstruktur.
+Die folgende Tabelle gibt einen abschließenden Überblick über alle 
+eingesetzten Technologien und deren Funktion in der Anwendung.
 
-Ein zentrales Merkmal des Stacks ist die durchgängige Verwendung von 
-TypeScript und Zod über alle Schichten der Anwendung hinweg. Da beide 
-Technologien bereits im Backend eingesetzt werden, konnten Typen und 
-Schemata zwischen Backend und Frontend geteilt werden. Dies reduziert 
-Redundanz und stellt die Konsistenz der Datenstrukturen über die 
-gesamte Anwendung sicher.
-
-Darüber hinaus basiert ein Großteil der Technologieentscheidungen auf 
-bereits vorhandener Erfahrung. React Native, TanStack Query und 
-TypeScript wurden bereits im vorangegangenen Projektmodul eingesetzt, 
-sodass die Einarbeitungszeit minimiert werden konnte. Gluestack UI 
-und TanStack Query wurden zusätzlich vom betreuenden Professor 
-empfohlen, was die Entscheidungssicherheit weiter erhöhte.
-
-Insgesamt bildet der gewählte Stack eine konsistente, 
-wartbare und für ein kleines Entwicklungsteam effizient handhabbare 
-Grundlage für die Umsetzung von petappoint.
+\begin{table}[h]
+\begin{tabular}{|p{5cm}|p{9cm}|}
+\hline
+\textbf{Technologie} & \textbf{Zweck} \\
+\hline
+React Native & Plattformübergreifendes mobiles Framework \\
+\hline
+Expo & Entwicklungsplattform und natives Build-Tooling \\
+\hline
+Expo Router & Dateibasiertes Navigations-/Routing-System \\
+\hline
+TypeScript & Statische Typisierung \\
+\hline
+TanStack Query & Server-State / Datenabruf \& Caching \\
+\hline
+Gluestack UI & Styling mit UI Komponentenbibliothek \\
+\hline
+i18next & Internationalisierung (Mehrsprachigkeit) \\
+\hline
+Zod & Laufzeit-Schema-Validierung \\
+\hline
+\end{tabular}
+\caption{Technologien im Frontend}
+\end{table}
