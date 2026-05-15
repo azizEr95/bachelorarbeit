@@ -44,56 +44,34 @@ Perspektive beider Zielgruppen abgeleitet:
 
 \begin{itemize}
     \item \textbf{FA\#01} Die mobile Anwendung \textbf{muss} Nutzenden 
-    ermöglichen, sich mit einer E-Mail-Adresse oder Telefonnummer sowie 
-    einem Passwort zu registrieren und anzumelden.
+    ermöglichen, sich zu registrieren und anzumelden.
 
-    \item \textbf{FA\#02} Die mobile Anwendung \textbf{muss} eine Anmeldung per biometrischer Authentifizierung (Face~ID / Fingerabdruck) unterstützen.
+    \item \textbf{FA\#02} Die mobile Anwendung \textbf{muss} Nutzenden 
+    ermöglichen, Haustierprofile zu erstellen und zu verwalten.
 
     \item \textbf{FA\#03} Die mobile Anwendung \textbf{muss} Nutzenden 
-    ermöglichen, Haustierprofile mit Attributen wie Name, Tierart, Rasse 
-    und Geburtsdatum zu erstellen, zu bearbeiten und zu löschen.
+    ermöglichen, Tierarztpraxen zu suchen und zu filtern.
 
-    \item \textbf{FA\#04} Die mobile Anwendung \textbf{muss} das Hochladen 
-    von Profilbildern direkt über die Gerätekamera oder Galerie ermöglichen.
+    \item \textbf{FA\#04} Die mobile Anwendung \textbf{muss} Nutzenden 
+    ermöglichen, verfügbare Termine einzusehen und zu buchen.
 
     \item \textbf{FA\#05} Die mobile Anwendung \textbf{muss} Nutzenden 
-    ermöglichen, Tierarztpraxen anhand von Standort, Tierart oder Behandlung zu suchen und zu filtern.
+    ermöglichen, gebuchte Termine einzusehen und zu stornieren.
 
-    \item \textbf{FA\#06} Die mobile Anwendung \textbf{muss} Nutzenden 
-    ermöglichen, freie Terminslots in einer scrollbaren Kalenderansicht 
-    einzusehen.
-
-    \item \textbf{FA\#07} Die mobile Anwendung \textbf{muss} Nutzenden 
-    ermöglichen, einen freien Terminslot unter Angabe von Behandlungsart 
-    und Haustier zu buchen.
-
-    \item \textbf{FA\#08} Die mobile Anwendung \textbf{muss} Nutzenden 
-    ermöglichen, gebuchte Termine einzusehen, zu stornieren und umzubuchen.
-
-    \item \textbf{FA\#09} Die mobile Anwendung \textbf{muss} Nutzende 
-    per Push-Benachrichtigung über Änderungen oder Stornierungen 
-    gebuchter Termine informieren.
-
-    \item \textbf{FA\#10} Die mobile Anwendung \textbf{muss} Nutzenden 
-    automatische Terminerinnerungen per E-Mail und Push-Benachrichtigung zusenden.
+    \item \textbf{FA\#06} Die mobile Anwendung \textbf{muss} Nutzende 
+    über Änderungen an ihren Terminen benachrichtigen.
 \end{itemize}
 
 \textbf{Tierarztpraxen}
+
 \begin{itemize}
-    \item \textbf{FA\#11} Die mobile Anwendung \textbf{muss} Tierarztpraxen ermöglichen, Stammdaten, Öffnungszeiten, behandelte Tierarten und Spezialisierungen eigenständig zu verwalten.
+    \item \textbf{FA\#07} Die mobile Anwendung \textbf{muss} 
+    Tierarztpraxen ermöglichen, ihr Profil und ihre Verfügbarkeiten 
+    zu verwalten.
 
-    \item \textbf{FA\#12} Die mobile Anwendung \textbf{muss} Tierarztpraxen ermöglichen, verfügbare Terminslots über eine Kalenderoberfläche zu definieren und Zeiträume zu sperren.
-
-    \item \textbf{FA\#13} Die mobile Anwendung \textbf{muss} Praxen 
-    ermöglichen, alle Buchungen in einer Tages- und 
-    Wochenansicht einzusehen.
-
-    \item \textbf{FA\#14} Die mobile Anwendung \textbf{muss} Praxen 
-    ermöglichen, Termine abzusagen.
-
-    \item \textbf{FA\#15} Die mobile Anwendung \textbf{muss} betroffene 
-    Tierhalter bei einer Terminabsage durch die Praxis automatisch per 
-    Push-Benachrichtigung und E-Mail benachrichtigen.
+    \item \textbf{FA\#08} Die mobile Anwendung \textbf{muss} 
+    Tierarztpraxen ermöglichen, eingehende Buchungen einzusehen 
+    und zu verwalten.
 \end{itemize}
 
 \section{Nicht funktionale Anforderungen}
@@ -102,36 +80,9 @@ Nicht funktionale Anforderungen sind Qualitätsanforderungen, die sich auf
 die Qualitätsmerkmale des Systems beziehen \cite[S.~4] {pohl2021}.
 
 \begin{itemize}
-    \item \textbf{NFA\#01} Die mobile Anwendung \textbf{muss} Seiteninhalte unter Normallast in unter drei Sekunden laden, gemessen unter einer 4G-Mobilfunkverbindung (LTE).
-
-    \item \textbf{NFA\#02} Die mobile Anwendung \textbf{muss} eine 
-    Verfügbarkeit von mindestens 99{,}5 Prozent gewährleisten, einschließlich der zugehörigen Backend-Dienste und APIs.
-
-    \item \textbf{NFA\#03} Die mobile Anwendung \textbf{muss} alle 
-    Datenübertragungen per Hypertext Transfer Protocol Secure (HTTPS) verschlüsseln.
-
-    \item \textbf{NFA\#04} Die mobile Anwendung \textbf{muss} Passwörter 
-    ausschließlich in gehashter Form speichern und sensible Daten nicht im Klartext auf dem Gerät ablegen.
-
-    \item \textbf{NFA\#05} Die mobile Anwendung \textbf{muss} 
-    personenbezogene Daten in Übereinstimmung mit der 
-    Datenschutz-Grundverordnung (DSGVO) verarbeiten.
-
-    \item \textbf{NFA\#06} Die mobile Anwendung \textbf{muss} vor dem 
-    Zugriff auf Gerätedaten eine explizite Einwilligung der Nutzenden einholen.
-
-    \item \textbf{NFA\#07} Die mobile Anwendung \textbf{muss} den 
-    Buchungsvorgang in maximal fünf Schritten abschließbar machen, die 
-    jeweils ohne horizontales Scrollen darstellbar sind.
-
-    \item \textbf{NFA\#08} Die mobile Anwendung \textbf{muss} auf 
-    Endgeräten mit einer Mindestbildschirmbreite von 320 Pixeln 
-    vollständig nutzbar sein.
-
-    \item \textbf{NFA\#09} Alle interaktiven Elemente \textbf{müssen} 
-    eine Mindestgröße von 44\,×\,44\,px (iOS) bzw. 48\,×\,48\,dp 
-    (Android) aufweisen.
+    \item \textbf{NFA\#01} Die mobile Anwendung muss auf gängigen iOS- und Android-Geräten nutzbar sein.
 \end{itemize}
+
 \section{Use Cases}
 
 Use Cases stellen das Verhalten eines Systems aus dem Blickwinkel der Nutzenden dar. Sie beschreiben, wie das System auf eine Interaktion reagiert, welche Ziele damit verfolgt werden und welche alternativen Abläufe dabei auftreten können \cite[S.~15]{cockburn2001}. Aufgrund ihrer textuellen Form eignen sie sich besonders zur klaren und verständlichen Beschreibung funktionaler Anforderungen und ermöglichen eine verständliche Kommunikation ohne besondere fachliche Vorkenntnisse \cite[S.~15]{cockburn2001}. Zur besseren Dokumentation und zur Vollständigkeit werden Sie im Folgenden durch ein Use-Case-Diagramm ergänzt \cite[S.~75]{pohl2021}.
