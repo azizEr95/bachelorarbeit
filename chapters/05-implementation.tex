@@ -1,1 +1,551 @@
 \chapter{Implementierung}
+
+Aufbauend auf den im vorherigen Kapitel erläuterten technischen Grundlagen beschreibt dieses Kapitel die konkrete Umsetzung der mobilen Anwendung von petappoint. Der Fokus liegt dabei ausschließlich auf der Tierhalter Rolle, da nur diese im Rahmen dieser Arbeit implementiert wurde.
+
+\section{Projektstruktur}
+
+Das Wurzelverzeichnis der mobilen Anwendung trägt den Namen \texttt{frontend-app} und enthält neben dem Quellcode-Ordner \texttt{src/} eine Reihe von Konfigurationsdateien, die den Build- und Entwicklungsprozess steuern. 
+
+\subsection{Aufbau des \texttt{src/}-Verzeichnisses}
+
+Die eigentliche Anwendungslogik ist im Verzeichnis \texttt{src/} nach ihren Zuständigkeiten gegliedert. Diese Trennung entspricht dem im Komponentendiagramm beschriebenen Schichtenmodell und stellt sicher, dass Präsentationslogik, Geschäftslogik und Datenzugriff klar voneinander getrennt sind. Tabelle~\ref{tab:src-structure} beschreibt die einzelnen Unterordner.
+
+\begin{table}[ht]
+\begin{tabular}{|p{4,5cm}|p{9,2cm}|}
+\hline
+\textbf{Unterordner} & \textbf{Beschreibung} \\
+\hline
+\texttt{app/}                  & Dateibasiertes Routing über Expo Router (Screens \& Layouts) \\
+\hline
+\texttt{api/}                  & REST-API-Client-Funktionen, nach Domäne aufgeteilt \\
+\hline
+\texttt{hooks/}                & Custom React Hooks für Datenabruf und Mutationen \\
+\hline
+\texttt{stores/}               & Globaler Anwendungszustand mit Zustand \\
+\hline
+\texttt{custom-components/}    & Wiederverwendbare UI-Komponenten \\
+\hline
+\texttt{gluestack-components/} & Angepasste Gluestack-UI-Komponentenbibliothek \\
+\hline
+\texttt{i18n/}                 & Internationalisierung (Konfiguration \& Übersetzungsdateien) \\
+\hline
+\texttt{constants/}            & App-weite Konstanten (Farben, typsichere Routen) \\
+\hline
+\texttt{providers/}            & Query Provider von Tanstack Query \\
+\hline
+\end{tabular}
+\caption{Unterordner des \texttt{src/}-Verzeichnisses}
+\label{tab:src-structure}
+\end{table}
+
+\subsection{Gemeinsames Typpaket}
+
+Die mobile Anwendung ist Teil eines Monorepos und teilt gemeinsame Typdefinitionen und Validierungsschemata mit dem Backend über das lokale Paket \texttt{petappoint-shared}, welches in der \texttt{tsconfig.json} auf den shared Ordner verweist.
+
+\begin{lstlisting}[captionpos=b, caption={Path Alias für petappoint-shared in tsconfig.json}]
+"petappoint-shared/*": [
+  "../shared/src/*"
+]
+\end{lstlisting}
+
+Dadurch ist die konsistente Typisierung über alle Schichten der Anwendung gewährleistet und es werden redundante Definitionen vermieden. 
+
+\section{Umsetzung der Navigationsstruktur mit Expo Router}
+
+Die Navigationsstruktur von petappoint basiert auf Expo Router und wird vollständig über die Ordnerstruktur des \texttt{app}-Verzeichnisses abgebildet. 
+\vspace{0.5em}
+\dirtree{%
+  .1 app/.
+  .2 \_layout.tsx.
+  .2 index.tsx.
+  .2 +not-found.tsx.
+  .2 (auth)/.
+  .3 \_layout.tsx.
+  .3 login.tsx.
+  .3 register.tsx.
+  .3 verify-email.tsx.
+  .3 forgot-password.tsx.
+  .3 reset-password.tsx.
+  .2 (tabs)/.
+  .3 \_layout.tsx.
+  .3 home.tsx.
+  .3 appointment.tsx.
+  .3 pets.tsx.
+  .3 profile.tsx.
+  .2 (modals)/.
+  .3 search.tsx.
+  .3 result.tsx.
+  .3 practice.tsx.
+  .3 process.tsx.
+  .3 booking-confirmation.tsx.
+  .3 add-pet.tsx.
+  .3 edit-pet.tsx.
+  .3 edit-profile.tsx.
+  .3 favorite-practices.tsx.
+  .3 language.tsx.
+}
+\vspace{0.5em}
+Jede Layout-Datei \texttt{\_layout.tsx} definiert dabei den Navigationscontainer für die jeweilige Routengruppe.
+
+\subsection{Root Layout}
+
+Das Root Layout in \texttt{app/\_layout.tsx} bildet den Einstiegspunkt der gesamten Anwendung und entspricht konzeptionell der \texttt{App.tsx} in einer klassischen React-Anwendung. Es stellt und initialisiert die globale Provider und Konfigurationen für alle untergeordneten Komponenten bereit, bevor die eigentliche Navigation gestartet wird. Diese werden in den nächsten Abschnitten nochmal detaillierter erklärt.
+
+Der Root-Stack registriert alle Routengruppen und modalen Screens der Anwendung. Ein Modal Screen bezeichnet ein temporäres Layout, das sich über den Hauptbildschirm legt und eine Benutzerinteraktion erfordert, bevor die Anwendung fortgesetzt werden kann \cite{expo-modals}. Die Modal Screens werden dabei direkt im Root-Stack als \texttt{fullScreenModal} registriert, damit die Navigation zwischen Modals und Tab-Screens korrekt unterscheiden und navigieren kann:
+
+\begin{lstlisting}[captionpos=b, caption={Registrierung der Routengruppen und der Modal Screens im Root-Stack}]
+...
+        {/* Haupt Stack mit Tabs und Modals */}
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          {/* Authentication screens */}
+          <Stack.Screen name="(auth)"/>
+
+          {/* Tabs */}
+          <Stack.Screen name="(tabs)"/>
+
+          {/* Modals */}
+          <Stack.Screen name="(modals)/search" options={{ presentation: 'fullScreenModal' }}/>
+          <Stack.Screen name="(modals)/result" options={{ presentation: 'fullScreenModal' }}/>
+          ...
+        </Stack>
+...
+\end{lstlisting}
+
+\subsection{Authentication Stack}
+
+Der Authentication Stack ist in der Datei \texttt{app/(auth)/\_layout.tsx} definiert und kapselt alle Screens des Authentifizierungsbereichs in einer Stack-Navigation. Er umfasst die fünf Screens Login, Registrierung, E-Mail-Verifizierung, Passwort-vergessen und Passwort-zurücksetzen.
+
+\begin{lstlisting}
+export default function AuthLayout() {
+  return (
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='login' />
+      <Stack.Screen name='register' />
+      <Stack.Screen name='verify-email' />
+      <Stack.Screen name='forgot-password' />
+      <Stack.Screen name='reset-password' />
+    </Stack>
+  )
+}
+\end{lstlisting}
+
+\subsection{Tab Navigation}
+
+Die Tab Navigation ist in \texttt{app/(tabs)/\_layout.tsx} definiert und bildet den zentralen Navigationsbereich der Anwendung nach erfolgreicher Authentifizierung. Sie stellt vier Tab-Screens bereit: Home, Termine, Haustiere und Profil. Jeder Tab-Screen ist mit einem Icon aus der FontAwesome-Bibliothek sowie einem übersetzten Titel versehen, der über i18next aus den Übersetzungsdateien geladen wird:
+
+\begin{lstlisting}[captionpos=b, caption={Definition eines Tab-Screens mit Icon und Übersetzung}]
+<Tabs.Screen
+  name="home"
+  options={{
+    title: t('tabs.home'),
+    tabBarIcon: ({ color }) => (
+      <FontAwesomeIcon 
+        name="home" 
+        color={color} 
+        size={homeIconSize} 
+      />
+    ),
+  }}
+/>
+\end{lstlisting}
+
+\subsection{Modal Screens}
+
+Die modalen Screens der Anwendung sind im Verzeichnis \texttt{app/(modals)/} abgelegt und werden als \texttt{fullScreenModal} präsentiert. Diese Präsentationsform überlagert die gesamte Tab-Navigation und ermöglicht kontextabhängige Abläufe wie den Buchungsprozess, die Tier- und Profilverwaltung sowie die Sprachauswahl. Da die Modal Screens direkt im Root-Stack registriert sind, kann die Navigation zwischen ihnen und der Tab-Navigation über \texttt{router.navigate()} gesteuert werden, ohne dass die Tab Navigation dabei neu initialisiert wird.
+
+\section{Umsetzung der Authentifizierung mit Expo Secure Store}
+\label{sec:auth}
+
+Die Authentifizierung in petappoint gliedert sich in vier Bereiche: die sichere Speicherung des Zugriffstokens, die Verwaltung des Authentifizierungszustands zur Laufzeit, die automatische Token-Übermittlung bei API-Aufrufen sowie die Validierung einer bestehenden Sitzung beim Backend.
+
+\subsection{Tokenspeicherung mit Expo Secure Store}
+
+Für die persistente Speicherung des Zugriffstokens wird \texttt{expo-secure-store} eingesetzt, das auf iOS den Keychain und auf Android den Keystore des Betriebssystems nutzt und damit sicherstellt, dass das Token nicht im Klartext im Dateisystem abgelegt wird. Da \texttt{expo-secure-store} ausschließlich auf nativen Plattformen verfügbar ist, wird ein plattformabhängiger \texttt{storage}-Wrapper verwendet, der auf der Web-Plattform auf \texttt{localStorage} zurückfällt:
+
+\begin{lstlisting}[captionpos=b, caption={Plattformabhängiger Storage-Wrapper in authStore.ts}]
+const storage = {
+  async getItem(key: string): Promise<string | null> {
+    if (Platform.OS === 'web') return localStorage.getItem(key)
+    return SecureStore.getItemAsync(key)
+  },
+  async setItem(key: string, value: string): Promise<void> {
+    if (Platform.OS === 'web') {
+      localStorage.setItem(key, value)
+      return
+    }
+    await SecureStore.setItemAsync(key, value)
+  },
+  async deleteItem(key: string): Promise<void> {
+    if (Platform.OS === 'web') {
+      localStorage.removeItem(key)
+      return
+    }
+    await SecureStore.deleteItemAsync(key)
+  },
+}
+\end{lstlisting}
+
+Der Token wird unter dem festen Schlüssel \texttt{access\_token} gespeichert. Durch die
+Kapselung in diesem Wrapper bleibt der restliche Anwendungscode plattformunabhängig und
+muss nicht zwischen nativer und Web-Umgebung unterscheiden.
+
+\subsection{Zustandsverwaltung mit useAuthStore}
+
+Der globale Authentifizierungszustand wird mit Zustand in \texttt{useAuthStore} verwaltet.
+Der Store hält den aktuellen Nutzer (\texttt{user}), das Zugriffstoken (\texttt{token}) sowie einen Ladezustand (\texttt{isLoading}) und stellt vier Methoden bereit.
+
+\texttt{hydrateFromStorage} wird beim Start der Anwendung im Root Layout aufgerufen und liest
+das gespeicherte Token und das Nutzerobjekt aus dem \texttt{storage}-Wrapper. Damit steht der Authentifizierungszustand
+bereits vor dem ersten Rendern der Navigationsweiche zur Verfügung. Solange dieser Vorgang
+läuft, ist \texttt{isLoading} auf \texttt{true} gesetzt:
+
+\begin{lstlisting}[captionpos=b, caption={Hydration des Authentifizierungszustands beim App-Start}]
+  hydrateFromStorage: async () => {
+    const [token, userJson] = await Promise.all([
+        storage.getItem(TOKEN_KEY),
+        storage.getItem(USER_KEY),                  
+        ])                                            
+    const user: LoginType | null = userJson ? JSON.parse(userJson) : null 
+    set({ token: token ?? null, user, isLoading: false })
+  },                                           
+  \end{lstlisting}
+
+\texttt{setAuth} wird nach einer erfolgreichen Anmeldung aufgerufen. Es speichert das Token und Nutzerobjekt
+persistent über den \texttt{storage}-Wrapper und aktualisiert gleichzeitig den In-Memory-Zustand:
+
+\begin{lstlisting}[captionpos=b, caption={Speichern des Tokens und Nutzerobjekt nach erfolgreicher Anmeldung}]
+setAuth: async (user, token) => {
+    await storage.setItem(TOKEN_KEY, token)
+    set({ user, token })
+},
+\end{lstlisting}
+
+\texttt{clearAuth} wird bei der Abmeldung oder bei einem ungültigen Token aufgerufen. Es
+entfernt das Token und den Nutzerobjekt aus dem persistenten Speicher und setzt den Store-Zustand zurück:
+
+\begin{lstlisting}[captionpos=b, caption={Löschen des Tokens und Nutzerobjekt bei Abmeldung}]
+clearAuth: async () => {
+    await Promise.all([
+        storage.deleteItem(TOKEN_KEY),
+        storage.deleteItem(USER_KEY),
+    ])
+    set({ user: null, token: null })
+},
+\end{lstlisting}
+
+\texttt{setVerified} wird nach erfolgreicher E-Mail-Verifizierung aufgerufen und aktualisiert
+das \texttt{verified}-Flag im Nutzerobjekt, ohne einen erneuten API-Aufruf durchführen zu müssen.
+
+\begin{lstlisting}[captionpos=b, caption={Verified-Flag im Nutzerobjekt setzen}]
+setVerified: () => {
+    set((state) => ({
+        user: state.user ? { ...state.user, verified: true } : null,
+    }))
+},
+\end{lstlisting}
+
+\subsection{API-Client mit automatischer Token-Übermittlung}
+
+Alle API-Aufrufe der Anwendung laufen über die zentrale Funktion \texttt{apiRequest} in
+\texttt{src/api/client.ts}. Sie übernimmt zwei Aufgaben automatisch, sodass diese nicht
+in jedem einzelnen API-Aufruf wiederholt werden müssen.
+
+Erstens liest \texttt{apiRequest} das aktuelle Token synchron aus dem Store über
+\texttt{useAuthStore.getState().token} und setzt es als \texttt{Authorization: Bearer}-Header.
+Da \texttt{getState()} außerhalb des React-Renderzyklus aufgerufen wird, ist kein Hook
+notwendig und die Funktion kann direkt als  async-Funktion verwendet werden:
+
+\begin{lstlisting}[captionpos=b, caption={Token-Injection und 401-Handling in apiRequest}]
+export async function apiRequest<T>(
+  path: string,
+  options: RequestInit = {}
+): Promise<T> {
+    const token = useAuthStore.getState().token
+
+    const headers: HeadersInit = {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        ...(options.headers ?? {}),
+    }
+
+    const res = await fetch(`${BASE_URL}${path}`, { ...options, headers })
+
+    if (res.status === 401) {
+        await useAuthStore.getState().clearAuth()
+        throw new ApiError(401, 'Unauthorized')
+    }
+    ...
+}
+\end{lstlisting}
+
+Zweitens behandelt \texttt{apiRequest} HTTP-401-Antworten zentral: Gibt das Backend einen
+401-Statuscode zurück wird \texttt{clearAuth()}
+automatisch aufgerufen. Der Token wird aus dem Store entfernt wird und leitet den Nutzer beim nächsten Render automatisch zum Login-Screen weiter.
+
+\subsection{Login- und Logout-Flow}
+
+Der Login-Flow wird über den Custom Hook \texttt{useLogin} abgewickelt, der eine TanStack
+Query Mutation kapselt. Nach einem erfolgreichen Login-Aufruf werden die Nutzerdaten und
+das Token über \texttt{setAuth} im Store und im persistenten Speicher abgelegt. Anschließend
+navigiert der Hook abhängig vom Verifizierungsstatus entweder zur Home-Ansicht oder zum
+E-Mail-Verifizierungsscreen:
+
+\begin{lstlisting}[captionpos=b, caption={Login-Flow in useLogin.ts}]
+return useMutation({
+  mutationFn: loginApi,
+  onSuccess: async (data, variables) => {
+    await setAuth(
+      { id: data.id, role: data.role,
+        verified: data.verified, exp: data.exp },
+      data.token,
+    )
+    if (!data.verified) {
+      router.replace({ pathname: routes.auth.verifyEmail,
+        params: { email: variables.email } })
+    } else {
+      router.replace(routes.tabs.home)
+    }
+  },
+})
+\end{lstlisting}
+
+Der Logout-Flow wird über \texttt{useLogout} abgewickelt. Anders als beim Login wird hier
+\texttt{onSettled} statt \texttt{onSuccess} verwendet, sodass der lokale Zustand auch dann
+bereinigt wird, wenn der serverseitige Logout-Aufruf fehlschlägt. Nach dem Aufruf von
+\texttt{clearAuth} wird zusätzlich der TanStack Query Cache geleert, um sicherzustellen,
+dass keine zwischengespeicherten Daten des abgemeldeten Nutzers erhalten bleiben:
+
+\begin{lstlisting}[captionpos=b, caption={Logout-Flow in useLogout.ts}]
+return useMutation({
+  mutationFn: logoutApi,
+  onSettled: async () => {
+    await clearAuth()
+    queryClient.clear()
+    router.replace(routes.auth.login)
+  },
+})
+\end{lstlisting}
+
+\subsection{Sitzungsvalidierung mit useSession}
+
+Der Custom Hook \texttt{useSession} validiert beim App-Start eine bereits vorhandene Sitzung
+beim Backend. Er kapselt einen TanStack Query-Aufruf und wird nur dann ausgeführt, wenn ein
+Token im Store vorhanden ist, ansonsten bleibt die Anfrage inaktiv:
+
+\begin{lstlisting}[captionpos=b, caption={useSession Hook}]
+export function useSession() {
+  const token = useAuthStore((s) => s.token)
+
+  return useQuery({
+    queryKey: ['session'],
+    queryFn: getSessionApi,
+    enabled: !!token,
+    retry: false,
+    staleTime: 1000 * 60 * 5,
+  })
+}
+\end{lstlisting}
+
+Mit \texttt{retry: false} wird verhindert, dass TanStack Query den Aufruf bei einem Fehler
+wiederholt, dass heißt ein ungültiges Token soll sofort zur Abmeldung führen. Die \texttt{staleTime}
+von fünf Minuten bedeutet, dass die Daten nach diesem Zeitraum als veraltet markiert werden.
+
+\section{Umsetzung der API-Anbindung mit TanStack Query}
+
+\subsection{Konfiguration mit QueryProvider}
+
+Der \texttt{QueryClient} wird in \texttt{src/providers/QueryProvider.tsx} instanziiert und
+mit globalen Standardwerten konfiguriert, die für sämtliche Queries und Mutations der
+Anwendung gelten, sofern sie nicht auf Ebene des jeweiligen Hooks überschrieben werden:
+
+\begin{lstlisting}[captionpos=b, caption={QueryClient-Konfiguration in QueryProvider.tsx}]
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      staleTime: 1000 * 60 * 5,
+    },
+    mutations: {
+      retry: 0,
+    },
+  },
+})
+\end{lstlisting}
+
+Für Queries ist ein einzelner Wiederholungsversuch bei fehlgeschlagenen Anfragen konfiguriert
+sowie eine globale \texttt{staleTime} von fünf Minuten. Für Mutations hingegen sind
+Wiederholungsversuche deaktiviert, da Schreiboperationen im Fehlerfall nicht automatisch erneut ausgeführt werden sollen. Das \texttt{queryClient}-Objekt wird darüber hinaus exportiert, um außerhalb des
+React-Renderzyklus auf den Cache zugreifen zu können. Dies ist insbesondere beim Abmeldevorgang
+erforderlich, bei dem der gesamte Cache über \texttt{queryClient.clear()} geleert wird,
+um sicherzustellen, dass keine nutzerspezifischen Daten im Speicher verbleiben.
+
+\subsection{Query-Hooks}
+
+Sämtliche Datenabruf-Operationen der Anwendung sind in Custom Hooks gekapselt, die jeweils einen \texttt{useQuery}-Aufruf mit der zugehörigen API-Funktion aus dem \texttt{src/api/}-Verzeichnis verbinden. Das grundlegende Muster ist dabei einheitlich
+aufgebaut:
+
+\begin{lstlisting}[captionpos=b, caption={Einfacher Query-Hook am Beispiel useAllPractices}]
+export function useAllPractices() {
+  return useQuery({
+    queryKey: ['practices'],
+    queryFn: getAllPractices,
+  })
+}
+\end{lstlisting}
+
+Für statische Referenzdaten, deren Inhalt sich zur Laufzeit nicht verändert wird \texttt{staleTime: Infinity} gesetzt. Dadurch gelten diese Daten nach dem initialen Abruf für die gesamte Laufzeit der Anwendung als aktuell und werden nicht erneut vom Backend angefordert.
+
+Für Screens, die mehrere zusammengehörige Datensätze erfordern, werden mehrere Queries innerhalb eines einzigen Hooks zusammengefasst und parallel ausgeführt. Der Hook \texttt{usePracticeDetails} bündelt beispielsweise drei Queries für die Stammdaten, die verfügbaren Leistungen sowie die freien Termine einer Tierarztpraxis:
+
+\begin{lstlisting}[captionpos=b, caption={Parallele Queries in usePracticeDetails}]
+export function usePracticeDetails(id: number) {
+  const practice = useQuery({
+    queryKey: ['practice', id],
+    queryFn: () => getPractice(id),
+    enabled: !!id,
+  })
+  const services = useQuery({
+    queryKey: ['practice', id, 'services'],
+    queryFn: () => getPracticeServices(id),
+    enabled: !!id,
+  })
+  const appointments = useQuery({
+    queryKey: ['practice', id, 'appointments', 'available'],
+    queryFn: () => getPracticeAvailableAppointments(id),
+    enabled: !!id,
+  })
+  return { practice, services, appointments }
+}
+\end{lstlisting}
+
+Durch diese Bündelung erhalten Komponenten sämtliche benötigten Daten über einen einzigen Hook-Aufruf.
+
+\subsection{Query-Key-Hierarchie}
+
+Sämtliche Query-Keys der Anwendung folgen einer einheitlichen hierarchischen Struktur,
+die eine präzise und gezielte Cache-Invalidierung ermöglicht:
+
+\begin{lstlisting}[captionpos=b, caption={Query-Key-Hierarchie der Anwendung}]
+'session'
+'person'         -> [userId]
+'myAnimals'      -> [userId]
+'animalTypes'    (statisch)
+'appointments'   -> ['future'|'past'] -> [userId]
+'practice'       -> [id] -> ['services'] | ['appointments', 'available']
+'practices'      (alle)
+'practiceSearch' -> [params-Objekt]
+'favorites'      -> [userId]
+\end{lstlisting}
+
+Die hierarchische Struktur ermöglicht es, im Rahmen einer Invalidierung wahlweise einen
+einzelnen Cache-Eintrag oder eine gesamte Gruppe verwandter Einträge zu invalidieren. Eine
+Invalidierung des Keys \texttt{['practice', id]} erfasst dabei automatisch alle untergeordneten Keys, darunter \texttt{['practice', id, 'services']} und \texttt{['practice', id, 'appointments', 'available']}. Nutzerspezifische Daten wie Termine
+oder Tiere enthalten die \texttt{userId} als Bestandteil des Keys, wodurch ausgeschlossen wird, dass bei einem Nutzerwechsel Daten eines anderen Nutzers aus dem Cache ausgelesen werden. Als ergänzende Maßnahme wird bei nutzerspezifischen Queries \texttt{enabled: !!user?.id}
+gesetzt, sodass diese Anfragen nicht ausgeführt werden, solange kein authentifizierter Nutzer vorhanden ist.
+
+\subsection{Mutations und Cache-Invalidierung}
+
+Schreiboperationen werden über \texttt{useMutation}-Hooks abgewickelt. Nach erfolgreichem Abschluss einer Mutation werden die betroffenen Queries gezielt invalidiert, um die Konsistenz zwischen dem lokalen Cache und dem Serverzustand sicherzustellen. Im Fall der Terminstornierung wird nach erfolgreicher Operation ausschließlich die Liste der
+zukünftigen Termine des Nutzers invalidiert:
+
+\begin{lstlisting}[captionpos=b, caption={Cache-Invalidierung nach Stornierung in useCancelAppointment}]
+return useMutation({
+  mutationFn: (appointmentId: number) => cancelAppointment(appointmentId),
+  onSuccess: () => {
+    queryClient.invalidateQueries({
+      queryKey: ['appointments', 'future', user?.id],
+    })
+  },
+})
+\end{lstlisting}
+
+Bei Operationen mit weiterreichenden Auswirkungen auf den Datenbestand werden mehrere Queries simultan invalidiert. Dadurch wird gewährleistet, dass stets ausschließlich die tatsächlich betroffenen Daten neu vom Backend aufgefordert werden.
+
+\section{Umsetzung der Screens der Tierhalter-Rolle}
+
+\subsection{Komponentenstruktur mit Gluestack UI}
+
+Sämtliche Screens der Anwendung sind aus Komponenten der Gluestack-UI-Bibliothek aufgebaut,
+die als typsichere Abstraktionsschicht über den nativen React Native Komponenten fungieren.
+Anstelle von \texttt{View} und \texttt{StyleSheet} werden semantisch benannte Komponenten
+wie \texttt{Box}, \texttt{VStack}, \texttt{HStack}, \texttt{Text} oder \texttt{Pressable}
+eingesetzt, die das Layout der Benutzeroberfläche vereinheitlichen. Der Home Screen veranschaulicht den grundlegenden strukturellen Aufbau eines Screens:
+
+\begin{lstlisting}[captionpos=b, caption={Aufbau des Home Screens}]
+export default function Home() {
+  const { t } = useTranslation()
+
+  return (
+    <Box className='h-full bg-background-100'>
+      <ScrollView>
+        <Header />
+        <Box className='px-5 -mt-4'>
+          <SearchApt />
+          <UpcomingApt />
+          <FavoritePractices />
+          <Box className='mb-3'>
+            <Text className='text-typography-700 font-semibold text-lg'>
+              {t('home.nearby_practices')}
+            </Text>
+          </Box>
+          <NearbyPractices />
+        </Box>
+      </ScrollView>
+    </Box>
+  )
+}
+\end{lstlisting}
+
+Der Screen selbst beschränkt sich auf die Komposition der Teilkomponenten; die Datenabruf- und Darstellungslogik ist vollständig in die jeweiligen Unterkomponenten wie \texttt{SearchApt}, \texttt{UpcomingApt} oder \texttt{NearbyPractices} ausgelagert. Diese klare Trennung trägt zur besseren Wartbarkeit der Codebasis bei.
+
+Das Styling sämtlicher Komponenten erfolgt über das \texttt{className}-Prop mittels NativeWind, das die Tailwind-CSS-Syntax auf die React Native Laufzeitumgebung überträgt.
+
+\subsection{Light- und Dark-Theme mit semantischen Tokens}
+
+Die Unterstützung von Light- und Dark-Theme basiert auf dem von Gluestack UI bereitgestellten Token-System. 
+
+Die Farbwerte der beiden Paletten wurden in \texttt{config.ts} projektspezifisch angepasst, wobei die numerische Skala im Dark-Mode invertiert wird, sodass ein Token wie \texttt{typography-700} im Light-Mode einem dunklen Grauton entspricht und im Dark-Mode einem hellen.
+
+\begin{lstlisting}[captionpos=b, caption={Farbtoken fuer Light- und Dark-Mode in config.ts}]
+// Light Mode
+'--color-background-100': '242 241 241',  // fast weiss
+'--color-typography-700': '82 82 82',     // dunkelgrau
+
+// Dark Mode
+'--color-background-100': '65 64 64',     // dunkelgrau
+'--color-typography-700': '219 219 220',  // fast weiss
+\end{lstlisting}
+
+Der \texttt{GluestackUIProvider} im Root Layout wird mit dem \texttt{themeStore} verbunden, der drei Modi unterstützt: Light, Dark sowie einen systemgesteuerten Modus, der das Farbschema des Betriebssystems übernimmt. Bei einem Themewechsel aktualisiert Gluestack UI die CSS-Variablen automatisch, wodurch alle Komponenten die korrekten Farbwerte übernehmen, ohne dass Anpassungen im Komponentencode erforderlich sind.
+
+Eine Ausnahme bilden FontAwesome-Icons, da diese das \texttt{className}-Prop nicht
+unterstützen und Farbwerte ausschließlich über ein explizites \texttt{color}-Prop
+entgegennehmen. Um zu vermeiden, dass jede Komponente den aktiven Farbmodus manuell
+abfragen muss, wurde diese Logik in den \texttt{FontAwesomeIcon}-Wrapper zentralisiert:
+
+\begin{lstlisting}[captionpos=b, caption={Zentralisierte Theme-Logik im FontAwesomeIcon-Wrapper}]
+export function FontAwesomeIcon(props: {
+  name: ComponentProps<typeof FontAwesome>['name']
+  color?: string
+  size: number
+}) {
+  const { colorScheme } = useColorScheme()
+  const color = props.color ?? (colorScheme === 'dark' ? '#d1d5db' : '#374151')
+  return <FontAwesome {...props} color={color} />
+}
+\end{lstlisting}
+
+Das \texttt{color}-Prop ist optional. Wird kein Wert übergeben, greift automatisch der
+theme-abhängige Standardwert. Icons mit abweichender Farbe, etwa ein rotes Herz-Icon,
+überschreiben diesen Standardwert weiterhin explizit:
+
+\begin{lstlisting}[captionpos=b, caption={Explizite Farbangabe bei abweichenden Icon-Farben}]
+<FontAwesomeIcon name='heart' color='#ef4444' size={16} />
+\end{lstlisting}
+
+Dies ist die einzige Stelle in der gesamten Anwendung, an der eine Fallunterscheidung
+zwischen Light- und Dark-Mode im Code vorgenommen wird.
