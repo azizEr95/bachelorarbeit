@@ -8,10 +8,10 @@ Das Wurzelverzeichnis der mobilen Anwendung trägt den Namen \texttt{frontend-ap
 
 \subsection{Aufbau des \texttt{src/}-Verzeichnisses}
 
-Die eigentliche Anwendungslogik ist im Verzeichnis \texttt{src/} nach ihren Zuständigkeiten gegliedert. Diese Trennung entspricht dem im Komponentendiagramm beschriebenen Schichtenmodell und stellt sicher, dass Präsentationslogik, Geschäftslogik und Datenzugriff klar voneinander getrennt sind. Tabelle~\ref{tab:src-structure} beschreibt die einzelnen Unterordner.
+Die eigentliche Anwendungslogik ist im Verzeichnis \texttt{src/} nach ihren Zuständigkeiten gegliedert. Diese Trennung entspricht dem im Komponentendiagramm beschriebenen Schichtenmodell und stellt sicher, dass Präsentationslogik, Geschäftslogik und Datenzugriff klar voneinander getrennt sind. Die Tabelle beschreibt die einzelnen Unterordner.
 
-\begin{table}[ht]
-\begin{tabular}{|p{4,5cm}|p{9,2cm}|}
+\begin{table}[!ht]
+\begin{tabular}{|p{4.5cm}|p{9.2cm}|}
 \hline
 \textbf{Unterordner} & \textbf{Beschreibung} \\
 \hline
@@ -36,56 +36,11 @@ Die eigentliche Anwendungslogik ist im Verzeichnis \texttt{src/} nach ihren Zust
 \end{tabular}
 \caption{Unterordner des \texttt{src/}-Verzeichnisses}
 \label{tab:src-structure}
-\end{table}
-
-\subsection{Gemeinsames Typpaket}
-
-Die mobile Anwendung ist Teil eines Monorepos und teilt gemeinsame Typdefinitionen und Validierungsschemata mit dem Backend über das lokale Paket \texttt{petappoint-shared}, welches in der \texttt{tsconfig.json} auf den shared Ordner verweist.
-
-\begin{lstlisting}[captionpos=b, caption={Path Alias für petappoint-shared in tsconfig.json}]
-"petappoint-shared/*": [
-  "../shared/src/*"
-]
-\end{lstlisting}
-
-Dadurch ist die konsistente Typisierung über alle Schichten der Anwendung gewährleistet und es werden redundante Definitionen vermieden. 
+\end{table} 
 
 \section{Umsetzung der Navigationsstruktur mit Expo Router}
 
-Die Navigationsstruktur von petappoint basiert auf Expo Router und wird vollständig über die Ordnerstruktur des \texttt{app}-Verzeichnisses abgebildet. 
-\vspace{0.5em}
-\dirtree{%
-  .1 app/.
-  .2 \_layout.tsx.
-  .2 index.tsx.
-  .2 +not-found.tsx.
-  .2 (auth)/.
-  .3 \_layout.tsx.
-  .3 login.tsx.
-  .3 register.tsx.
-  .3 verify-email.tsx.
-  .3 forgot-password.tsx.
-  .3 reset-password.tsx.
-  .2 (tabs)/.
-  .3 \_layout.tsx.
-  .3 home.tsx.
-  .3 appointment.tsx.
-  .3 pets.tsx.
-  .3 profile.tsx.
-  .2 (modals)/.
-  .3 search.tsx.
-  .3 result.tsx.
-  .3 practice.tsx.
-  .3 process.tsx.
-  .3 booking-confirmation.tsx.
-  .3 add-pet.tsx.
-  .3 edit-pet.tsx.
-  .3 edit-profile.tsx.
-  .3 favorite-practices.tsx.
-  .3 language.tsx.
-}
-\vspace{0.5em}
-Jede Layout-Datei \texttt{\_layout.tsx} definiert dabei den Navigationscontainer für die jeweilige Routengruppe.
+Die Navigationsstruktur von petappoint basiert auf Expo Router und wird vollständig über die Ordnerstruktur des \texttt{app}-Verzeichnisses abgebildet. Jede Layout-Datei \texttt{\_layout.tsx} definiert dabei den Navigationscontainer für die jeweilige Routengruppe.
 
 \subsection{Root Layout}
 

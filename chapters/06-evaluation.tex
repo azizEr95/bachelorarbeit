@@ -1,54 +1,51 @@
 \chapter{Evaluation}
+Aufbauend auf der im vorherigen Kapitel beschriebenen Implementierung der mobilen 
+Anwendung petappoint wird in diesem Kapitel die entwickelte Lösung evaluiert. Ziel der Evaluation ist es, zu überprüfen, inwieweit die in Kapitel 2 definierten funktionalen und nicht-funktionalen Anforderungen erfüllt werden und wie die 
+Gebrauchstauglichkeit der Anwendung aus Nutzerperspektive bewertet wird. Dazu werden zunächst die angewandte Methodik sowie das Studiendesign erläutert, gefolgt von der Darstellung der Ergebnisse und abschließender Diskussion.
 
 \section{Methodik}
 
 \subsection{Studiendesign}
-Zur Evaluation der entwickelten Anwendung \textit{petappoint} wurde 
-eine quantitative Nutzerstudie durchgeführt. Als Messinstrument wurde 
-die System Usability Scale (SUS) eingesetzt, die von John Brooke
-entwickelt wurde \cite{brooke} und bis heute zu den am häufigsten eingesetzten 
-Methoden zur Erfassung der wahrgenommenen Gebrauchstauglichkeit zählt 
-\cite{sus}. Der SUS-Fragebogen umfasst zehn standardisierte Aussagen, die auf einer fünfstufigen Likert-Skala bewertet werden und als Ergebnis einen Score zwischen 0 und 100 liefern \cite{sus}.
+Zur Beantwortung des evaluativen Teils der Forschungsfrage, inwiefern die 
+entwickelte Anwendung hinsichtlich ihrer Funktionalität und Usability evaluiert 
+werden kann, wurde eine empirische, aufgabenbasierte Nutzerstudie durchgeführt. 
+Die Studie fand vor Ort statt und umfasste insgesamt 20 Teilnehmende, die 
+gleichmäßig auf zwei Plattformen aufgeteilt wurden. 10 Personen testeten die 
+Anwendung auf einem iPhone 13 Pro und 10 Personen auf einem Xiaomi Redmi Note 
+13 Pro. Die Wahl realer Geräte erfolgte bewusst, um einen plattformübergreifenden 
+Vergleich unter realistischen Bedingungen zu ermöglichen.
 
-Die Wahl des SUS begründet sich durch mehrere Faktoren: Erstens ist der Fragebogen technologieunabhängig und damit für mobile Anwendungen gleichermaßen geeignet wie für Webanwendungen. Zweitens ermöglicht 
-der standardisierte Charakter des Instruments einen Vergleich der 
-Ergebnisse mit bestehenden Benchmarks. Drittens ist der Fragebogen mit zehn Fragen bewusst kurz gehalten, was eine hohe Teilnahmebereitschaft begünstigt \cite{brooke}.
+Die Teilnehmenden bearbeiteten drei aufgabenbasierte Szenarien, die die Kernfunktionen der Tierhalter-Rolle abdecken. Dabei umfasste die erste Aufgabe 
+das Anlegen eines Haustieres sowie das Buchen eines Termins, die zweite Aufgabe das Bearbeiten eines bestehenden Termins und die dritte Aufgabe das Stornieren eines Termins. Für jede Aufgabe wurde die benötigte Bearbeitungszeit erfasst, um Rückschlüsse auf die Effizienz der Bedienung zu ermöglichen.
 
-Ergänzt wurde der SUS-Fragebogen um einen weiteren Abschnitt zur plattformübergreifenden Wahrnehmung der Anwendung. Da \textit{petappoint} 
-als plattformübergreifende mobile Anwendung konzipiert wurde und die Kompatibilität mit iOS und Android eine zentrale nicht-funktionale Anforderung darstellt (vgl. NFA\#01), zielt dieser Abschnitt darauf 
-ab, die subjektiv wahrgenommene Qualität der Anwendung auf beiden Plattformen zu erfassen und gegenüberzustellen.
-
-Die Studie richtet sich ausschließlich an Tierhalter, da diese die primäre Zielgruppe der Anwendung darstellen und den Buchungsprozess als Kernfunktion von \textit{petappoint} aktiv nutzen. Voraussetzung für die Teilnahme war, dass die Probanden die Anwendung zuvor 
-eigenständig getestet hatten.
+Im Anschluss an die Aufgaben füllten die Teilnehmenden einen Fragebogen mit 
+insgesamt 33 Fragen aus. Dieser gliedert sich in allgemeine Fragen zur 
+App-Erfahrung, aufgabenbezogene Fragen, den standardisierten System Usability 
+Scale (SUS), Fragen zur Plattformwahrnehmung sowie offene Fragen. Der SUS wurde 
+als etabliertes Instrument zur Messung der Gebrauchstauglichkeit eingesetzt.
 
 \subsection{Beschreibung der Datenerhebung}
+Die Datenerhebung erfolgte im Rahmen der vor Ort durchgeführten Nutzerstudie und umfasste sowohl quantitative als auch qualitative Daten. Die 20 Teilnehmenden wiesen ein Alter zwischen 16 und 54 Jahren auf, mit einem Durchschnittsalter von 31 Jahren. Da die Rekrutierung der Teilnehmenden aus dem persönlichen Umfeld des Autors erfolgte, waren die Berufsgruppen nicht gezielt ausgewählt, bildeten jedoch ein heterogenes Spektrum ab, das von Schülerinnen und Schülern über Studierende 
+und Auszubildende bis hin zu Fachkräften aus verschiedenen Bereichen reichte.
 
-Die Datenerhebung erfolgte mithilfe eines Online-Fragebogens, der über die Plattform Google Forms bereitgestellt wurde. Google Forms wurde aufgrund seiner einfachen Handhabung und der automatisierten Erfassung und Speicherung der Antworten gewählt.
+Während der Aufgabenbearbeitung wurde für jede der vier Aufgaben die Bearbeitungszeit in Sekunden manuell erfasst und überprüft, ob Sie die Aufgabe erfolgreich abgeschlossen haben.
 
-HIER FEHLT DER PART WIE ICH DIE EVALUATION MACHE. ÜBER MOBILE WEB APP ODER ALS NATIVE MOBILE APP ÜBER 2 Smartphones.
-
-Probanden bewusst gleichmäßig auf beide Plattformen aufgeteilt. 10 Personen testeten die Anwendung auf einem Android-Gerät und 
-10 Personen auf einem iOS-Gerät. Im Anschluss an den Test wurde der Fragebogen den Probanden persönlich über einen QR-Code 
-zugänglich gemacht, der auf den Google-Forms-Fragebogen verlinkte.
-
-Die Teilnahme an der Studie war freiwillig und anonym. Es wurden keine personenbezogenen Daten wie Name oder E-Mail-Adresse erhoben. Die erfassten Daten wurden ausschließlich für wissenschaftliche 
-Zwecke im Rahmen dieser Bachelorarbeit verwendet.
+Im Anschluss an die Aufgaben füllten die Teilnehmenden einen digitalen Fragebogen 
+über Google Forms aus. Der Fragebogen erfasste zunächst allgemeine Informationen 
+zur App-Erfahrung der Teilnehmenden. Darauf folgten aufgabenbezogene Fragen, die gezielt die Erfahrungen bei der Bearbeitung der einzelnen Aufgaben erhoben. 
+Zur Messung der Gebrauchstauglichkeit wurde der standardisierte System Usability Scale eingesetzt. Ergänzend wurden Fragen zur Plattformwahrnehmung gestellt, um plattformspezifische Unterschiede zwischen iOS und Android zu erfassen. Abschließend enthielt der Fragebogen offene Fragen, die den Teilnehmenden die Möglichkeit gaben, freies Feedback zu geben.
 
 \subsection{Auswertungsverfahren}
 
-Die Auswertung der erhobenen Daten erfolgt in drei Schritten: 
-der Berechnung des SUS-Scores, dem Plattformvergleich zwischen 
-iOS und Android sowie der qualitativen Auswertung der offenen 
+Die Auswertung der erhobenen Daten erfolgt in drei Schritten: der Berechnung des SUS-Scores, dem Plattformvergleich zwischen iOS und Android sowie der qualitativen Auswertung der offenen 
 Frage.
 
 \subsubsection{SUS-Score}
 
 Zur Berechnung des SUS-Scores wird die standardisierte Formel nach Brooke~\cite{brooke} angewendet. Dabei werden die Antworten der zehn SUS-Fragen wie folgt verarbeitet: Bei ungeraden Fragen (1, 3, 5, 7, 9) wird vom jeweiligen Antwortwert 
-der Wert 1 subtrahiert. Bei geraden Fragen (2, 4, 6, 8, 10) wird der Antwortwert von 5 subtrahiert. Die so berechneten 
-Teilwerte werden anschließend summiert und mit dem Faktor 2.5 multipliziert, woraus ein Gesamtscore zwischen 0 und 100 resultiert.
+der Wert 1 subtrahiert. Bei geraden Fragen (2, 4, 6, 8, 10) wird der Antwortwert von 5 subtrahiert. Die so berechneten Teilwerte werden anschließend summiert und mit dem Faktor 2.5 multipliziert, woraus ein Gesamtscore zwischen 0 und 100 resultiert.
 
-Die Interpretation des SUS-Scores erfolgt anhand der Bewertungsskala 
-nach Sauro~\cite{sauro-interpretation}, der die Ergebnisse in 
+Die Interpretation des SUS-Scores erfolgt anhand der Bewertungsskala nach Sauro~\cite{sauro-interpretation}, der die Ergebnisse in 
 Schulnoten einteilt:
 
 \begin{itemize}
@@ -59,7 +56,7 @@ Schulnoten einteilt:
     \item $\leq$ 25: Note F (Ungenügend)
 \end{itemize}
 
-Zur Auswertung wird zunächst der Durchschnitts-SUS-Score aller 20 Teilnehmer berechnet. Darüber hinaus werden die Scores der iOS- und Android-Nutzer getrennt ausgewertet und miteinander verglichen.
+Zur Auswertung wird zunächst der Durchschnitts-SUS-Score aller 20 Teilnehmenden berechnet. Darüber hinaus werden die Scores der iOS- und Android-Nutzenden getrennt ausgewertet und miteinander verglichen.
 
 \subsubsection{Plattformvergleich}
 
@@ -70,6 +67,178 @@ Um die plattformübergreifende Qualität von \textit{petappoint} zu bewerten, we
 Die Antworten auf die offene Frage werden thematisch gruppiert und auf wiederkehrende Muster untersucht. Ziel ist es, qualitative Erkenntnisse über Verbesserungspotenziale und Nutzerwünsche zu gewinnen, die durch die quantitativen SUS-Daten nicht erfasst werden.
 
 \section{Ergebnisse}
+
+\subsection{Demografische Daten und App-Erfahrung}
+Die 20 Teilnehmenden wiesen ein Alter zwischen 16 und 54 Jahren auf, mit einem Durchschnittsalter von 31 Jahren. Die Berufsgruppen waren heterogen und umfassten unter anderem Schülerinnen und Schüler, 
+Studierende, Auszubildende sowie Fachkräfte aus verschiedenen Bereichen wie dem Ingenieurwesen, der Medizin und dem Handel.
+
+Hinsichtlich der Erfahrung mit Smartphone-Apps gaben 55~\% der 
+Teilnehmenden an, erfahren im Umgang mit Apps und neuen Technologien 
+zu sein. 25~\% bezeichneten sich als fortgeschritten und 20~\% als 
+Anfänger. Insgesamt verfügten somit 80~\% der Teilnehmenden über 
+eine solide Vorerfahrung im Umgang mit mobilen Anwendungen, was 
+bei der Interpretation der Usability-Ergebnisse zu berücksichtigen ist.
+
+\subsection{Aufgabenauswertung}
+Im Rahmen der Nutzerstudie wurden vier Aufgaben ausgewertet, die die 
+Kernfunktionen der Tierhalter-Rolle abdecken. Die Auswertung umfasst 
+die Erfolgsrate, die aufgabenbezogenen Bewertungen der Teilnehmenden 
+sowie die gemessenen Bearbeitungszeiten.
+
+Alle 20 Teilnehmenden haben sämtliche vier Aufgaben erfolgreich 
+abgeschlossen, was einer Erfolgsrate von 100~\% entspricht.
+
+Die Teilnehmenden bewerteten die Benutzerfreundlichkeit der einzelnen 
+Funktionen auf einer Skala von 1 bis 5. Das Anlegen eines Haustieres 
+sowie der Ablauf der Terminbuchung wurden mit einem Durchschnittswert 
+von jeweils 4,75 bewertet. Die Suche nach einer Tierarztpraxis, das 
+Bearbeiten sowie das Stornieren eines Termins erreichten jeweils einen 
+Durchschnittswert von 4,85. Damit wurden alle Funktionen von den 
+Teilnehmenden als einfach bis sehr einfach eingestuft.
+
+Hinsichtlich der Bearbeitungszeiten benötigten die Teilnehmenden für 
+das Anlegen eines Haustieres durchschnittlich 64,4 Sekunden, mit einem 
+Minimum von 24 und einem Maximum von 169 Sekunden. Die Terminbuchung 
+war mit durchschnittlich 89,6 Sekunden die zeitaufwändigste Aufgabe 
+(Min: 38s, Max: 217s). Das Bearbeiten eines Termins wurde im 
+Durchschnitt in 33,2 Sekunden abgeschlossen (Min: 12s, Max: 90s), 
+während das Stornieren mit durchschnittlich 22,2 Sekunden die kürzeste 
+Aufgabe darstellte (Min: 7s, Max: 51s). Die durchschnittliche 
+Gesamtzeit über alle vier Aufgaben betrug 209,5 Sekunden, mit einem 
+Minimum von 133 und einem Maximum von 378 Sekunden.
+
+\subsection{Aufgabenauswertung}
+Im Rahmen der Nutzerstudie wurden vier Aufgaben ausgewertet, die die 
+Kernfunktionen der Tierhalter-Rolle abdecken. Die Auswertung umfasst 
+die Erfolgsrate, die aufgabenbezogenen Bewertungen der Teilnehmenden 
+sowie die gemessenen Bearbeitungszeiten.
+
+Alle 20 Teilnehmenden haben sämtliche vier Aufgaben erfolgreich 
+abgeschlossen, was einer Erfolgsrate von 100~\% entspricht.
+
+Die Teilnehmenden bewerteten die Benutzerfreundlichkeit der einzelnen Funktionen auf einer Skala von 1 bis 5. Das Anlegen eines Haustieres sowie der Ablauf der Terminbuchung wurden mit einem Durchschnittswert von jeweils 4,75 bewertet. Die Suche nach einer Tierarztpraxis, das 
+Bearbeiten sowie das Stornieren eines Termins erreichten jeweils einen Durchschnittswert von 4,85. Damit wurden alle Funktionen von den Teilnehmenden als einfach bis sehr einfach eingestuft.
+
+Abbildung~\ref{fig:boxplot_aufgaben} zeigt die Verteilung der Bearbeitungszeiten je Aufgabe. Das Anlegen eines Haustieres dauerte durchschnittlich 64,4 Sekunden (Min: 24s, Max: 169s). Die Terminbuchung war mit durchschnittlich 89,6 Sekunden die zeitaufwändigste Aufgabe (Min: 38s, Max: 217s), was sich auch in der größten Streuung widerspiegelt. Das Bearbeiten eines Termins wurde im Durchschnitt in 33,2 Sekunden abgeschlossen (Min: 12s, Max: 90s), während das Stornieren mit durchschnittlich 22,2 Sekunden die kürzeste 
+Aufgabe darstellte (Min: 7s, Max: 51s).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figures/boxplot_aufgaben.png}
+    \caption{Verteilung der Bearbeitungszeiten je Aufgabe}
+    \label{fig:boxplot_aufgaben}
+\end{figure}
+
+\subsection{SUS-Score und Interpretation}
+Zur Bewertung der Gebrauchstauglichkeit von petappoint wurde der 
+System Usability Scale ausgewertet. Abbildung~\ref{fig:sus_scores} 
+zeigt die SUS-Scores aller 20 Teilnehmenden im Überblick.
+
+Der Durchschnitts-SUS-Score über alle 20 Teilnehmenden beträgt 92,12, 
+was nach der Bewertungsskala nach Sauro~\cite{sauro-interpretation} 
+der Note A (Sehr gut) entspricht. Bei der Auswertung fällt auf, dass 
+Testperson Nr.~14 mit einem Score von 50 deutlich von den übrigen 
+Ergebnissen abweicht. Eine Analyse der Einzelantworten legt nahe, 
+dass diese Person die Formulierung der negativ formulierten SUS-Fragen 
+missverstanden hat, da durchgehend der höchste Wert vergeben wurde. 
+Dieser Datensatz wird daher als Ausreißer behandelt. Ohne diesen 
+Ausreißer ergibt sich ein bereinigter Durchschnittswert von 94,34, 
+der ebenfalls der Note A entspricht.
+
+Die übrigen 19 Teilnehmenden erzielten Scores zwischen 77,5 und 100, 
+was auf eine durchgehend hohe wahrgenommene Gebrauchstauglichkeit 
+der Anwendung hindeutet.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figures/sus_scores.png}
+    \caption{SUS-Scores der Teilnehmenden}
+    \label{fig:sus_scores}
+\end{figure}
+
+\subsection{Plattformvergleich iOS vs. Android}
+Zur Bewertung der plattformübergreifenden Qualität von petappoint 
+wurden die SUS-Scores sowie die Bearbeitungszeiten der iOS- und 
+Android-Gruppe getrennt ausgewertet und gegenübergestellt.
+
+Wie in Abbildung~\ref{fig:sus_plattformvergleich} dargestellt, 
+erzielte die iOS-Gruppe einen durchschnittlichen SUS-Score von 94,75 
+und die Android-Gruppe ohne den Ausreißer einen Wert von 93,89. 
+Beide Werte liegen deutlich oberhalb der Note-A-Grenze von 80 und 
+deuten auf eine vergleichbar hohe wahrgenommene Gebrauchstauglichkeit 
+auf beiden Plattformen hin.
+
+Hinsichtlich der Bearbeitungszeiten zeigt 
+Abbildung~\ref{fig:plattformvergleich} teilweise Unterschiede zwischen 
+den beiden Gruppen. Bei Aufgabe 1 (Haustier anlegen) benötigte die 
+Android-Gruppe mit durchschnittlich 80,0 Sekunden deutlich länger als 
+die iOS-Gruppe mit 48,8 Sekunden. Auch bei Aufgabe 2 (Termin buchen) 
+war die Android-Gruppe mit 96,0 Sekunden etwas langsamer als die 
+iOS-Gruppe mit 83,2 Sekunden. Bei Aufgabe 3 (Termin bearbeiten) 
+verhielt es sich umgekehrt: die Android-Gruppe war mit 28,9 Sekunden 
+schneller als die iOS-Gruppe mit 37,6 Sekunden. Bei Aufgabe 4 
+(Termin stornieren) waren die Zeiten mit 21,4 Sekunden (iOS) und 
+23,1 Sekunden (Android) nahezu identisch.
+
+Die Unterschiede in den Bearbeitungszeiten lassen sich weniger auf 
+plattformspezifische Darstellungsprobleme zurückführen, sondern sind 
+vermutlich auf individuelle Unterschiede der Teilnehmenden 
+zurückzuführen.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/sus_plattformvergleich.png}
+    \caption{Durchschnittlicher SUS-Score iOS vs. Android}
+    \label{fig:sus_plattformvergleich}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{figures/plattformvergleich-zeit.png}
+    \caption{Plattformvergleich: Bearbeitungszeiten iOS vs. Android}
+    \label{fig:plattformvergleich}
+\end{figure}
+
+\subsection{Darstellungsfehler und qualitatives Feedback}
+Ergänzend zu den quantitativen Auswertungen wurden die qualitativen 
+Rückmeldungen der Teilnehmenden ausgewertet. Diese umfassen 
+Darstellungsfehler, aufgabenbezogene Probleme, weitere gemeldete 
+Fehler sowie Verbesserungswünsche.
+
+Hinsichtlich der Darstellungsfehler gab lediglich eine Person 
+(Nr.~18, Android) an, vereinzelte visuelle Probleme wahrgenommen 
+zu haben. Alle übrigen 19 Teilnehmenden verneinten das Auftreten 
+von Darstellungsfehlern.
+
+Bei den aufgabenbezogenen Rückmeldungen zeigten sich vereinzelte 
+Schwierigkeiten. Beim Anlegen eines Haustieres berichtete eine 
+Person (Nr.~4, iOS) von Problemen bei der Eingabe des 
+Geburtsdatums. Im Bereich der Terminbuchung schilderte eine Person 
+(Nr.~2, iOS) Schwierigkeiten beim Filtern der Praxissuche, während 
+eine weitere Person (Nr.~9, iOS) anmerkte, dass die ursprünglich 
+gebuchte Uhrzeit bei der Umbuchung nicht sichtbar war. Beim 
+Bearbeiten eines Termins empfand eine Person (Nr.~20, Android) die 
+obere Suchzeile als unklar. Beim Stornieren eines Termins wurden 
+keine Probleme gemeldet.
+
+Darüber hinaus meldete eine Person (Nr.~8, iOS) mehrere 
+funktionale Fehler: Die Eingabe eines Geburtsdatums in der Zukunft 
+war möglich, Termine konnten nicht direkt von der Startseite 
+bearbeitet werden und es erschienen unerwartet zusätzliche Termine.
+
+Die Verbesserungswünsche lassen sich in zwei Kategorien einteilen. 
+Funktionale Wünsche umfassten das Hinzufügen einer Notizfunktion 
+beim Termin, die Möglichkeit Termine direkt von der Startseite zu 
+bearbeiten, sowie die Angabe von Tierspezifikationen und 
+Versicherungsinformationen. Gestalterische Wünsche betrafen die 
+Möglichkeit, Farben für Tierprofile individuell auszuwählen, sowie 
+eine ansprechendere App-Gestaltung allgemein.
+
+
+
+
+
+
 \subsection{Anforderungsabdeckung der funktionalen und 
 nicht-funktionalen Anforderungen}
 
@@ -77,56 +246,131 @@ Im Folgenden wird dargelegt, inwieweit die in Kapitel~2 Anforderungsermittlung
 definierten funktionalen und nicht-funktionalen Anforderungen in der entwickelten Anwendung \textit{petappoint} umgesetzt wurden. Die Überprüfung erfolgt auf Basis der implementierten 
 Funktionen der Anwendung.
 
-\subsubsection{Funktionale Anforderungen}
+\subsection{Anforderungsabdeckung}
+Abschließend wird überprüft, inwieweit die in Kapitel 2 definierten 
+funktionalen und nicht-funktionalen Anforderungen durch die 
+Implementierung und die Evaluationsergebnisse abgedeckt werden.
 
-\textbf{Tierhalter}
+Tabelle~\ref{tab:fa} gibt einen Überblick über die funktionalen 
+Anforderungen. Die Anforderungen FA\#01 bis FA\#05, die ausschließlich 
+die Tierhalter-Rolle betreffen, wurden vollständig implementiert und 
+im Rahmen der Nutzerstudie erfolgreich getestet. Die Anforderungen 
+FA\#06 und FA\#07, die die Tierarztpraxis-Rolle betreffen, lagen 
+außerhalb des Implementierungsumfangs dieser Arbeit und wurden 
+daher nicht umgesetzt.
 
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{|p{2cm}|p{3cm}|p{8cm}|}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{7cm}|c|}
 \hline
-\textbf{ID} & \textbf{Status} & \textbf{Anmerkung} \\
+\textbf{ID} & \textbf{Anforderung} & \textbf{Status} \\
 \hline
-FA\#01 & Umgesetzt & Registrierung und Anmeldung über 
-E-Mail und Passwort. \\
-\hline
-FA\#02 & Umgesetzt & Haustierprofile können angelegt, 
-bearbeitet und gelöscht werden. \\
-\hline
-FA\#03 & Umgesetzt & Suche und Filterung nach 
-Behandlungsart und Tierart möglich. \\
-\hline
-FA\#04 & Umgesetzt & Verfügbare Terminslots sind in einer 
-Kalenderansicht einsehbar und buchbar. \\
-\hline
-FA\#05 & Umgesetzt & Gebuchte Termine sind einsehbar 
-und können storniert werden. \\
+FA\#01 & Registrierung und Anmeldung & Ja \\
+FA\#02 & Haustierprofile erstellen und verwalten & Ja \\
+FA\#03 & Tierarztpraxen suchen und filtern & Ja \\
+FA\#04 & Verfügbare Termine einsehen und buchen & Ja \\
+FA\#05 & Gebuchte Termine einsehen und stornieren & Ja \\
+FA\#06 & Profil und Verfügbarkeiten verwalten (Praxis) & Nein \\
+FA\#07 & Eingehende Buchungen verwalten (Praxis) & Nein \\
 \hline
 \end{tabular}
+\caption{Abdeckung der funktionalen Anforderungen}
+\label{tab:fa}
+\end{table}
 
-\textbf{Tierarztpraxen}
-
-\begin{tabular}{|p{2cm}|p{3cm}|p{8cm}|}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{7cm}|c|}
 \hline
-\textbf{ID} & \textbf{Status} & \textbf{Anmerkung} \\
+\textbf{ID} & \textbf{Anforderung} & \textbf{Status} \\
 \hline
-FA\#07 & Nicht umgesetzt & Die Verwaltung des Praxisprofils 
-sowie das Anlegen, Bearbeiten und Sperren von Terminslots 
-wurden nicht implementiert. \\
-\hline
-FA\#08 & Nicht umgesetzt & Die Einsicht gebuchter Termine 
-in einer Tages- und Wochenansicht wurde nicht 
-implementiert. \\
+NFA\#01 & Nutzbar auf iOS und Android & Ja \\
+NFA\#02 & Intuitive Bedienbarkeit ohne Einarbeitung & Ja \\
+NFA\#03 & Light- und Dark-Theme & Ja \\
+NFA\#04 & Verfügbarkeit in Deutsch und Englisch & Ja \\
+NFA\#05 & Statusmeldungen bei abgeschlossenen Aktionen & Ja \\
 \hline
 \end{tabular}
+\caption{Abdeckung der nicht-funktionalen Anforderungen}
+\label{tab:nfa}
+\end{table}
 
-\subsubsection{Zusammenfassung}
-
-Die Analyse zeigt, dass alle funktionalen Anforderungen der Zielgruppe der Tierhalter vollständig umgesetzt wurden. Die funktionalen Anforderungen FA\#07 und FA\#08, die sich an Tierarztpraxen richten, wurden hingegen nicht implementiert und stellen ein Verbesserungspotenzial für die zukünftige Entwicklung dar. 
-
-\subsection{SUS-Score und Interpretation}
-\subsection{Plattformvergleich iOS vs. Android}
-\subsection{Darstellungsfehler und qualitatives Feedback}
+Tabelle~\ref{tab:nfa} zeigt die Bewertung der nicht-funktionalen 
+Anforderungen. NFA\#01 wurde durch den Plattformvergleich bestätigt, 
+da die Anwendung auf beiden Plattformen stabil lief und vergleichbare 
+SUS-Scores erzielte. NFA\#02 wird durch den durchschnittlichen 
+SUS-Score von 94,34 sowie die Likert-Werte zwischen 4,75 und 4,85 
+gestützt. NFA\#03 bis NFA\#05 wurden im Rahmen der Implementierung 
+umgesetzt und während der Nutzerstudie nicht negativ erwähnt.
 
 \section{Diskussion}
-  \subsection{Interpretation der Ergebnisse}
-  \subsection{Limitationen}
+\subsection{Interpretation der Ergebnisse}
+Die Ergebnisse der Nutzerstudie liefern eine differenzierte Grundlage 
+zur Beantwortung des evaluativen Teils der Forschungsfrage, inwiefern 
+die entwickelte Anwendung hinsichtlich ihrer Funktionalität und 
+Usability überzeugt.
+
+Der durchschnittliche SUS-Score von 94,34 liegt deutlich oberhalb 
+der Note-A-Grenze von 80 und weist auf eine sehr hohe wahrgenommene 
+Gebrauchstauglichkeit hin. Dies deutet darauf hin, dass die 
+Anwendung ohne nennenswerte Einarbeitungszeit bedienbar ist und die 
+Kernfunktionen der Tierhalter-Rolle intuitiv zugänglich sind.
+
+Der Plattformvergleich zeigt, dass die Anwendung auf beiden 
+Plattformen vergleichbar gut bewertet wurde. Die SUS-Scores von 
+94,75 (iOS) und 93,89 (Android) unterscheiden sich nur minimal, 
+was darauf hindeutet, dass die plattformübergreifende Umsetzung 
+mit React Native erfolgreich war. Die Unterschiede in den 
+Bearbeitungszeiten sind gering und lassen sich eher auf individuelle 
+Unterschiede der Teilnehmenden als auf plattformspezifische Probleme 
+zurückführen.
+
+Die hohe Erfolgsrate von 100~\% bei allen vier Aufgaben sowie die 
+Likert-Werte zwischen 4,75 und 4,85 bestätigen, dass die 
+implementierten Funktionen verständlich und zuverlässig nutzbar sind. 
+Die gemessenen Bearbeitungszeiten deuten darauf hin, dass die 
+Kernfunktionen effizient erreichbar sind.
+
+Das qualitative Feedback offenbart vereinzelte Verbesserungspotenziale. 
+Die gemeldeten Fehler, insbesondere die fehlende Validierung des 
+Geburtsdatums und die eingeschränkte Bearbeitbarkeit von der 
+Startseite, stellen konkrete Ansatzpunkte für zukünftige 
+Weiterentwicklungen dar. Die Verbesserungswünsche der Teilnehmenden 
+deuten zudem auf ein Interesse an erweiterten Funktionen hin, die 
+über den ursprünglichen Anforderungsumfang hinausgehen.
+
+Hinsichtlich der Anforderungsabdeckung wurden alle funktionalen 
+Anforderungen der Tierhalter-Rolle vollständig erfüllt. Die 
+nicht-funktionalen Anforderungen wurden sowohl durch die 
+Implementierung als auch durch die Evaluationsergebnisse bestätigt.
+
+\subsection{Limitationen}
+Die vorliegende Evaluation unterliegt mehreren Einschränkungen, 
+die bei der Interpretation der Ergebnisse berücksichtigt werden 
+sollten.
+
+Die Rekrutierung der Teilnehmenden erfolgte ausschließlich aus dem 
+persönlichen Umfeld des Autors. Dies stellt keine repräsentative 
+Zufallsstichprobe der tatsächlichen Zielgruppe dar und kann zu 
+einer Verzerrung der Ergebnisse führen, da Teilnehmende aus dem 
+persönlichen Umfeld möglicherweise eine wohlwollendere Bewertung 
+abgeben als unbekannte Nutzerinnen und Nutzer.
+
+Darüber hinaus wurde die Studie mit nur zwei Geräten durchgeführt, 
+einem iPhone 13 Pro für iOS und einem Xiaomi Redmi Note 13 Pro 
+für Android. Die Ergebnisse lassen daher keine Aussagen über die 
+Darstellung und das Verhalten der Anwendung auf anderen Geräten 
+oder Bildschirmgrößen zu.
+
+Der Implementierungsumfang dieser Arbeit beschränkte sich auf die 
+Tierhalter-Rolle. Die Anforderungen der Tierarztpraxis-Rolle 
+(FA\#06 und FA\#07) wurden nicht umgesetzt und konnten daher auch 
+nicht evaluiert werden. Eine vollständige Bewertung der Anwendung 
+setzt die Implementierung beider Rollen voraus.
+
+Schließlich hat eine Person (Nr.~14) den SUS-Fragebogen 
+offensichtlich missverstanden, indem durchgehend der höchste Wert 
+vergeben wurde, auch bei negativ formulierten Aussagen. Dieser 
+Datensatz wurde als Ausreißer behandelt und aus der bereinigten 
+Auswertung ausgeschlossen, was die effektive Stichprobengröße 
+für den SUS auf 19 Teilnehmende reduziert.

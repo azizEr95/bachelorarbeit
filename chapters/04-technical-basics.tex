@@ -31,8 +31,7 @@ Brevo & Transaktionaler E-Mail-Dienst \\
 
 \subsection{React Native}
 
-React Native ist ein von Meta entwickeltes Open-Source-Framework, das die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von 
-JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren UI-Elementen \cite{ui-elements} Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten Anwendung mit iOS oder Android. Da das Backend bereits in TypeScript implementiert ist, ermöglicht React Native zudem eine durchgängige Verwendung derselben Sprache über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand erheblich reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden\cite{react-native-docs}.
+React Native ist ein von Meta entwickeltes Open-Source-Framework, das die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren UI-Elementen \cite{ui-elements} Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten Anwendung mit iOS oder Android. Da das Backend bereits in TypeScript implementiert ist, ermöglicht React Native zudem eine durchgängige Verwendung derselben Sprache über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand erheblich reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden\cite{react-native-docs}.
 
 Als Nachteil älterer Versionen ist zu nennen, dass React Native Anwendungen mit hohen aufwendigen Animationen oder Spielen an seine Grenzen stoßen konnte, da die Kommunikation zwischen 
 JavaScript und der nativen Ebene einen gewissen Aufwand mit sich brachte. Mit der neuen Architektur in der das JavaScript Interface (JSI) hinzukam, wurde dieses Problem jedoch 
@@ -40,10 +39,7 @@ deutlich reduziert~\cite{react-native-new-arch}.
 
 \subsection{Flutter}
 
-Flutter ist ein von Google entwickeltes Open-Source-Framework für die plattformübergreifende Entwicklung mobiler Anwendungen. Es basiert auf 
-der Programmiersprache Dart und verwendet eine eigene Rendering-Engine namens Impeller, die alle UI-Elemente auf einem Canvas (digitalen Zeichenfläche) selbst Pixel für Pixel zeichnet, anstatt die vom Betriebssystem bereitgestellten nativen Komponenten zu verwenden 
-\cite{flutter-docs}. Ein weiterer Vorteil von Flutter ist die vollständige Kontrolle über das Erscheinungsbild der Anwendung, was für Produkte mit einem eigenen Design-System von Vorteil sein kann. Darüber hinaus unterstützt Flutter 
-neben iOS und Android auch Web und Desktop aus einer einzigen Codebasis. 
+Flutter ist ein von Google entwickeltes Open-Source-Framework für die plattformübergreifende Entwicklung mobiler Anwendungen. Es basiert auf der Programmiersprache Dart und verwendet eine eigene Rendering-Engine namens Impeller, die alle UI-Elemente auf einem Canvas (digitalen Zeichenfläche) selbst Pixel für Pixel zeichnet, anstatt die vom Betriebssystem bereitgestellten nativen Komponenten zu verwenden \cite{flutter-docs}. Ein weiterer Vorteil von Flutter ist die vollständige Kontrolle über das Erscheinungsbild der Anwendung, was für Produkte mit einem eigenen Design-System von Vorteil sein kann. Darüber hinaus unterstützt Flutter neben iOS und Android auch Web und Desktop aus einer einzigen Codebasis. 
 
 Als Nachteil erfordert Flutter die Verwendung von Dart, die zwingend erforderlich ist und nicht durch JavaScript oder TypeScript ersetzt werden kann. Zudem entsprechen UI-Elemente nicht dem plattformspezifischen Design des Betriebssystems, da Flutter alles selbst zeichnet \cite{flutter-docs}.
 
@@ -109,23 +105,20 @@ daher eine zusätzliche State-Management-Lösung erforderlich \cite{tanstack-que
 Stale-While-Revalidate (SWR) ist eine von Vercel entwickelte Bibliothek für das Server-State-Management in React- und React-Native-Anwendungen. Der Name leitet sich von
 Stale-While-Revalidate-Prinzip ab, das auch SWR zugrunde liegt. Das Prinzip funktioniert so, dass Gecachte Daten werden sofort zurückgegeben, während im Hintergrund eine Aktualisierung stattfindet \cite{swr-docs}.
 
-Ein Vorteil von SWR ist die schlanke API und die geringe Paketgröße, was eine schnelle Integration in bestehende Projekte ermöglicht. Für einfachere Anwendungen mit überschaubaren Datenanforderungen 
-bietet SWR eine leichtgewichtige Alternative zu TanStack Query.
+Ein Vorteil von SWR ist die schlanke API und die geringe Paketgröße, was eine schnelle Integration in bestehende Projekte ermöglicht. Für einfachere Anwendungen mit überschaubaren Datenanforderungen bietet SWR eine leichtgewichtige Alternative zu TanStack Query.
 
 Als Nachteil bietet SWR einen deutlich kleineren Funktionsumfang als TanStack Query. Fortgeschrittene Features wie optimistische Updates, unendliches Scrollen oder die detaillierte Konfiguration von Cache-Strategien sind bei SWR weniger ausgereift oder nicht vorhanden 
 \cite{swr-docs}.
 
 \subsection{Redux Toolkit Query}
 
-Redux Toolkit Query (RTK Query) ist eine integrierte Lösung für den Datenabruf und das Caching von Serverdaten \cite{redux-toolkit-docs}. 
-Sie kombiniert Server-State-Management und Client-State-Management in einem einzigen Tool und ist damit eng mit dem globalen Redux Store 
+Redux Toolkit Query (RTK Query) ist eine integrierte Lösung für den Datenabruf und das Caching von Serverdaten \cite{redux-toolkit-docs}. Sie kombiniert Server-State-Management und Client-State-Management in einem einzigen Tool und ist damit eng mit dem globalen Redux Store 
 verknüpft.
 
 Ein Vorteil von RTK Query ist die enge Integration mit Redux, wodurch Server- und Client-State zentral in einem Store verwaltet werden können. Für Projekte, die bereits Redux einsetzen, entfällt durch RTK Query 
 eine zusätzliche Abhängigkeit.
 
-Als Nachteil setzt RTK Query die Verwendung von Redux voraus, was einen erheblichen Konfigurationsaufwand mit sich bringt. Für Projekte 
-ohne bestehende Redux-Integration ist dieser Aufwand im Verhältnis zum Nutzen unverhältnismäßig hoch \cite{redux-toolkit-docs}.
+Als Nachteil setzt RTK Query die Verwendung von Redux voraus, was einen erheblichen Konfigurationsaufwand mit sich bringt. Für Projekte ohne bestehende Redux-Integration ist dieser Aufwand im Verhältnis zum Nutzen unverhältnismäßig hoch \cite{redux-toolkit-docs}.
 
 \subsection{Begründung der Wahl von TanStack Query}
 
@@ -135,45 +128,24 @@ TanStack Query wurde als Server-State-Lösung für petappoint gewählt, da es du
 
 \subsection{Zustand}
 
-Zustand ist eine minimalistische State-Management-Bibliothek für React, 
-die ohne viel Boilerplate auskommt und einen einfachen, flexiblen Ansatz 
-für die Verwaltung von globalem Client-State bietet \cite{zustand-docs}.
+Zustand ist eine minimalistische State-Management-Bibliothek für React, die ohne viel Boilerplate auskommt und einen einfachen, flexiblen Ansatz für die Verwaltung von globalem Client-State bietet \cite{zustand-docs}.
 
-Ein Vorteil von Zustand ist die geringe Einstiegshürde und die schlanke 
-API, die eine schnelle Integration in bestehende Projekte ermöglicht. 
-Im Vergleich zu Redux Toolkit erfordert Zustand deutlich weniger 
-Konfigurationsaufwand und eignet sich daher besonders für kleinere 
-bis mittelgroße Anwendungen.
+Ein Vorteil von Zustand ist die geringe Einstiegshürde und die schlanke API, die eine schnelle Integration in bestehende Projekte ermöglicht. Im Vergleich zu Redux Toolkit erfordert Zustand deutlich weniger Konfigurationsaufwand und eignet sich daher besonders für kleinere bis mittelgroße Anwendungen.
 
-Als Nachteil ist zu nennen, dass Zustand keine eingebauten Mechanismen 
-für Caching oder Synchronisierung von Serverdaten bietet. Für den 
-Datenabruf ist daher stets eine zusätzliche Lösung erforderlich 
+Als Nachteil ist zu nennen, dass Zustand keine eingebauten Mechanismen für Caching oder Synchronisierung von Serverdaten bietet. Für den Datenabruf ist daher stets eine zusätzliche Lösung erforderlich 
 \cite{zustand-docs}.
 
 \subsection{Redux Toolkit}
 
-Redux Toolkit ist die offizielle, empfohlene Variante zur Verwendung 
-von Redux, einer weit verbreiteten Bibliothek für das globale 
-State-Management in React-Anwendungen \cite{redux-toolkit-docs}. 
-Redux verwaltet den gesamten Anwendungszustand in einem zentralen 
-Store, auf den alle Komponenten zugreifen können.
+Redux Toolkit ist die offizielle, empfohlene Variante zur Verwendung von Redux, einer weit verbreiteten Bibliothek für das globale State-Management in React-Anwendungen \cite{redux-toolkit-docs}. Redux verwaltet den gesamten Anwendungszustand in einem zentralen Store, auf den alle Komponenten zugreifen können.
 
-Ein Vorteil von Redux Toolkit ist die große Community und die weite 
-Verbreitung in bestehenden Projekten. Für sehr große Anwendungen mit 
-komplexem globalem State bietet Redux Toolkit durch seinen strukturierten 
-Ansatz eine robuste und gut skalierbare Lösung.
+Ein Vorteil von Redux Toolkit ist die große Community und die weite Verbreitung in bestehenden Projekten. Für sehr große Anwendungen mit komplexem globalem State bietet Redux Toolkit durch seinen strukturierten Ansatz eine robuste und gut skalierbare Lösung.
 
-Als Nachteil gilt der vergleichsweise hohe Boilerplate-Aufwand, auch 
-in der Toolkit-Variante. Für kleinere Projekte kann der 
-konfigurationsintensive Ansatz von Redux im Verhältnis zum tatsächlichen 
-Nutzen unverhältnismäßig aufwendig sein \cite{redux-toolkit-docs}.
+Als Nachteil gilt der vergleichsweise hohe Boilerplate-Aufwand, auch in der Toolkit-Variante. Für kleinere Projekte kann der konfigurationsintensive Ansatz von Redux im Verhältnis zum tatsächlichen Nutzen unverhältnismäßig aufwendig sein \cite{redux-toolkit-docs}.
 
 \subsection{Begründung der Wahl von Zustand}
 
-Zustand wurde als Client-State-Lösung für petappoint gewählt, da es 
-durch seine schlanke API und den geringen Konfigurationsaufwand optimal 
-zur Größe und Komplexität der Anwendung passt. Gegenüber Redux Toolkit 
-entfällt der hohe Boilerplate-Aufwand, was für eine mittelgroße Anwendung wie petappoint verhältnismäßiger ist. Da petappoint primär Serverdaten verwaltet und nur wenig lokalen Client-State benötigt, ist eine schlanke Lösung wie Zustand einer umfangreichen Bibliothek 
+Zustand wurde als Client-State-Lösung für petappoint gewählt, da es durch seine schlanke API und den geringen Konfigurationsaufwand optimal zur Größe und Komplexität der Anwendung passt. Gegenüber Redux Toolkit entfällt der hohe Boilerplate-Aufwand, was für eine mittelgroße Anwendung wie petappoint verhältnismäßiger ist. Da petappoint primär Serverdaten verwaltet und nur wenig lokalen Client-State benötigt, ist eine schlanke Lösung wie Zustand einer umfangreichen Bibliothek 
 wie Redux Toolkit vorzuziehen.
 
 \section{UI-Komponentenbibliotheken}
