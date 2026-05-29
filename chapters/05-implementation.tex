@@ -48,7 +48,8 @@ Das Root Layout in \texttt{app/\_layout.tsx} bildet den Einstiegspunkt der gesam
 
 Der Root-Stack registriert alle Routengruppen und modalen Screens der Anwendung. Ein Modal Screen bezeichnet ein temporäres Layout, das sich über den Hauptbildschirm legt und eine Benutzerinteraktion erfordert, bevor die Anwendung fortgesetzt werden kann \cite{expo-modals}. Die Modal Screens werden dabei direkt im Root-Stack als \texttt{fullScreenModal} registriert, damit die Navigation zwischen Modals und Tab-Screens korrekt unterscheiden und navigieren kann:
 
-\begin{lstlisting}[captionpos=b, caption={Registrierung der Routengruppen und der Modal Screens im Root-Stack}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 ...
         {/* Haupt Stack mit Tabs und Modals */}
         <Stack
@@ -58,23 +59,25 @@ Der Root-Stack registriert alle Routengruppen und modalen Screens der Anwendung.
         >
           {/* Authentication screens */}
           <Stack.Screen name="(auth)"/>
-
           {/* Tabs */}
           <Stack.Screen name="(tabs)"/>
-
           {/* Modals */}
           <Stack.Screen name="(modals)/search" options={{ presentation: 'fullScreenModal' }}/>
           <Stack.Screen name="(modals)/result" options={{ presentation: 'fullScreenModal' }}/>
           ...
         </Stack>
 ...
-\end{lstlisting}
+\end{minted}
+\caption{Registrierung der Routengruppen und der Modal Screens im Root-Stack}
+\label{lst:root-stack}
+\end{listing}
 
 \subsection{Authentication Stack}
 
 Der Authentication Stack ist in der Datei \texttt{app/(auth)/\_layout.tsx} definiert und kapselt alle Screens des Authentifizierungsbereichs in einer Stack-Navigation. Er umfasst die fünf Screens Login, Registrierung, E-Mail-Verifizierung, Passwort-vergessen und Passwort-zurücksetzen.
 
-\begin{lstlisting}
+\begin{listing}[H]
+\begin{minted}{tsx}
 export default function AuthLayout() {
   return (
     <Stack screenOptions={{ headerShown: false }}>
@@ -86,13 +89,17 @@ export default function AuthLayout() {
     </Stack>
   )
 }
-\end{lstlisting}
+\end{minted}
+\caption{Authentication Stack in app/(auth)/\_layout.tsx}
+\label{lst:auth-layout}
+\end{listing}
 
 \subsection{Tab Navigation}
 
 Die Tab Navigation ist in \texttt{app/(tabs)/\_layout.tsx} definiert und bildet den zentralen Navigationsbereich der Anwendung nach erfolgreicher Authentifizierung. Sie stellt vier Tab-Screens bereit: Home, Termine, Haustiere und Profil. Jeder Tab-Screen ist mit einem Icon aus der FontAwesome-Bibliothek sowie einem übersetzten Titel versehen, der über i18next aus den Übersetzungsdateien geladen wird:
 
-\begin{lstlisting}[captionpos=b, caption={Definition eines Tab-Screens mit Icon und Übersetzung}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 <Tabs.Screen
   name="home"
   options={{
@@ -106,7 +113,10 @@ Die Tab Navigation ist in \texttt{app/(tabs)/\_layout.tsx} definiert und bildet 
     ),
   }}
 />
-\end{lstlisting}
+\end{minted}
+\caption{Definition eines Tab-Screens mit Icon und Übersetzung}
+\label{lst:tab-screen}
+\end{listing}
 
 \subsection{Modal Screens}
 
@@ -121,7 +131,8 @@ Die Authentifizierung in petappoint gliedert sich in vier Bereiche: die sichere 
 
 Für die persistente Speicherung des Zugriffstokens wird \texttt{expo-secure-store} eingesetzt, das auf iOS den Keychain und auf Android den Keystore des Betriebssystems nutzt und damit sicherstellt, dass das Token nicht im Klartext im Dateisystem abgelegt wird. Da \texttt{expo-secure-store} ausschließlich auf nativen Plattformen verfügbar ist, wird ein plattformabhängiger \texttt{storage}-Wrapper verwendet, der auf der Web-Plattform auf \texttt{localStorage} zurückfällt:
 
-\begin{lstlisting}[captionpos=b, caption={Plattformabhängiger Storage-Wrapper in authStore.ts}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 const storage = {
   async getItem(key: string): Promise<string | null> {
     if (Platform.OS === 'web') return localStorage.getItem(key)
@@ -142,7 +153,10 @@ const storage = {
     await SecureStore.deleteItemAsync(key)
   },
 }
-\end{lstlisting}
+\end{minted}
+\caption{Plattformabhängiger Storage-Wrapper in authStore.ts}
+\label{lst:storage-wrapper}
+\end{listing}
 
 Der Token wird unter dem festen Schlüssel \texttt{access\_token} gespeichert. Durch die
 Kapselung in diesem Wrapper bleibt der restliche Anwendungscode plattformunabhängig und
@@ -158,50 +172,66 @@ das gespeicherte Token und das Nutzerobjekt aus dem \texttt{storage}-Wrapper. Da
 bereits vor dem ersten Rendern der Navigationsweiche zur Verfügung. Solange dieser Vorgang
 läuft, ist \texttt{isLoading} auf \texttt{true} gesetzt:
 
-\begin{lstlisting}[captionpos=b, caption={Hydration des Authentifizierungszustands beim App-Start}]
-  hydrateFromStorage: async () => {
-    const [token, userJson] = await Promise.all([
-        storage.getItem(TOKEN_KEY),
-        storage.getItem(USER_KEY),                  
-        ])                                            
-    const user: LoginType | null = userJson ? JSON.parse(userJson) : null 
-    set({ token: token ?? null, user, isLoading: false })
-  },                                           
-  \end{lstlisting}
+\begin{listing}[H]
+\begin{minted}{tsx}
+hydrateFromStorage: async () => {
+  const [token, userJson] = await Promise.all([
+    storage.getItem(TOKEN_KEY),
+    storage.getItem(USER_KEY),                  
+  ])                                            
+  const user: LoginType | null = userJson ? JSON.parse(userJson) : null 
+  set({ token: token ?? null, user, isLoading: false })
+},
+\end{minted}
+\caption{Hydration des Authentifizierungszustands beim App-Start}
+\label{lst:hydrate}
+\end{listing}
 
 \texttt{setAuth} wird nach einer erfolgreichen Anmeldung aufgerufen. Es speichert das Token und Nutzerobjekt
 persistent über den \texttt{storage}-Wrapper und aktualisiert gleichzeitig den In-Memory-Zustand:
 
-\begin{lstlisting}[captionpos=b, caption={Speichern des Tokens und Nutzerobjekt nach erfolgreicher Anmeldung}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 setAuth: async (user, token) => {
-    await storage.setItem(TOKEN_KEY, token)
-    set({ user, token })
+  await storage.setItem(TOKEN_KEY, token)
+  set({ user, token })
 },
-\end{lstlisting}
+\end{minted}
+\caption{Speichern des Tokens und Nutzerobjekt nach erfolgreicher Anmeldung}
+\label{lst:set-auth}
+\end{listing}
 
 \texttt{clearAuth} wird bei der Abmeldung oder bei einem ungültigen Token aufgerufen. Es
 entfernt das Token und den Nutzerobjekt aus dem persistenten Speicher und setzt den Store-Zustand zurück:
 
-\begin{lstlisting}[captionpos=b, caption={Löschen des Tokens und Nutzerobjekt bei Abmeldung}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 clearAuth: async () => {
-    await Promise.all([
-        storage.deleteItem(TOKEN_KEY),
-        storage.deleteItem(USER_KEY),
-    ])
-    set({ user: null, token: null })
+  await Promise.all([
+    storage.deleteItem(TOKEN_KEY),
+    storage.deleteItem(USER_KEY),
+  ])
+  set({ user: null, token: null })
 },
-\end{lstlisting}
+\end{minted}
+\caption{Löschen des Tokens und Nutzerobjekt bei Abmeldung}
+\label{lst:clear-auth}
+\end{listing}
 
 \texttt{setVerified} wird nach erfolgreicher E-Mail-Verifizierung aufgerufen und aktualisiert
 das \texttt{verified}-Flag im Nutzerobjekt, ohne einen erneuten API-Aufruf durchführen zu müssen.
 
-\begin{lstlisting}[captionpos=b, caption={Verified-Flag im Nutzerobjekt setzen}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 setVerified: () => {
-    set((state) => ({
-        user: state.user ? { ...state.user, verified: true } : null,
-    }))
+  set((state) => ({
+    user: state.user ? { ...state.user, verified: true } : null,
+  }))
 },
-\end{lstlisting}
+\end{minted}
+\caption{Verified-Flag im Nutzerobjekt setzen}
+\label{lst:set-verified}
+\end{listing}
 
 \subsection{API-Client mit automatischer Token-Übermittlung}
 
@@ -214,28 +244,29 @@ Erstens liest \texttt{apiRequest} das aktuelle Token synchron aus dem Store übe
 Da \texttt{getState()} außerhalb des React-Renderzyklus aufgerufen wird, ist kein Hook
 notwendig und die Funktion kann direkt als  async-Funktion verwendet werden:
 
-\begin{lstlisting}[captionpos=b, caption={Token-Injection und 401-Handling in apiRequest}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 export async function apiRequest<T>(
   path: string,
   options: RequestInit = {}
 ): Promise<T> {
-    const token = useAuthStore.getState().token
-
-    const headers: HeadersInit = {
-        'Content-Type': 'application/json',
-        ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        ...(options.headers ?? {}),
-    }
-
-    const res = await fetch(`${BASE_URL}${path}`, { ...options, headers })
-
-    if (res.status === 401) {
-        await useAuthStore.getState().clearAuth()
-        throw new ApiError(401, 'Unauthorized')
-    }
-    ...
+  const token = useAuthStore.getState().token
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    ...(options.headers ?? {}),
+  }
+  const res = await fetch(`${BASE_URL}${path}`, { ...options, headers })
+  if (res.status === 401) {
+    await useAuthStore.getState().clearAuth()
+    throw new ApiError(401, 'Unauthorized')
+  }
+  ...
 }
-\end{lstlisting}
+\end{minted}
+\caption{Token-Injection und 401-Handling in apiRequest}
+\label{lst:api-request}
+\end{listing}
 
 Zweitens behandelt \texttt{apiRequest} HTTP-401-Antworten zentral: Gibt das Backend einen
 401-Statuscode zurück wird \texttt{clearAuth()}
@@ -249,7 +280,8 @@ das Token über \texttt{setAuth} im Store und im persistenten Speicher abgelegt.
 navigiert der Hook abhängig vom Verifizierungsstatus entweder zur Home-Ansicht oder zum
 E-Mail-Verifizierungsscreen:
 
-\begin{lstlisting}[captionpos=b, caption={Login-Flow in useLogin.ts}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 return useMutation({
   mutationFn: loginApi,
   onSuccess: async (data, variables) => {
@@ -266,7 +298,10 @@ return useMutation({
     }
   },
 })
-\end{lstlisting}
+\end{minted}
+\caption{Login-Flow in useLogin.ts}
+\label{lst:use-login}
+\end{listing}
 
 Der Logout-Flow wird über \texttt{useLogout} abgewickelt. Anders als beim Login wird hier
 \texttt{onSettled} statt \texttt{onSuccess} verwendet, sodass der lokale Zustand auch dann
@@ -274,7 +309,8 @@ bereinigt wird, wenn der serverseitige Logout-Aufruf fehlschlägt. Nach dem Aufr
 \texttt{clearAuth} wird zusätzlich der TanStack Query Cache geleert, um sicherzustellen,
 dass keine zwischengespeicherten Daten des abgemeldeten Nutzers erhalten bleiben:
 
-\begin{lstlisting}[captionpos=b, caption={Logout-Flow in useLogout.ts}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 return useMutation({
   mutationFn: logoutApi,
   onSettled: async () => {
@@ -283,7 +319,10 @@ return useMutation({
     router.replace(routes.auth.login)
   },
 })
-\end{lstlisting}
+\end{minted}
+\caption{Logout-Flow in useLogout.ts}
+\label{lst:use-logout}
+\end{listing}
 
 \subsection{Sitzungsvalidierung mit useSession}
 
@@ -291,10 +330,10 @@ Der Custom Hook \texttt{useSession} validiert beim App-Start eine bereits vorhan
 beim Backend. Er kapselt einen TanStack Query-Aufruf und wird nur dann ausgeführt, wenn ein
 Token im Store vorhanden ist, ansonsten bleibt die Anfrage inaktiv:
 
-\begin{lstlisting}[captionpos=b, caption={useSession Hook}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 export function useSession() {
   const token = useAuthStore((s) => s.token)
-
   return useQuery({
     queryKey: ['session'],
     queryFn: getSessionApi,
@@ -303,7 +342,10 @@ export function useSession() {
     staleTime: 1000 * 60 * 5,
   })
 }
-\end{lstlisting}
+\end{minted}
+\caption{useSession Hook}
+\label{lst:use-session}
+\end{listing}
 
 Mit \texttt{retry: false} wird verhindert, dass TanStack Query den Aufruf bei einem Fehler
 wiederholt, dass heißt ein ungültiges Token soll sofort zur Abmeldung führen. Die \texttt{staleTime}
@@ -317,7 +359,8 @@ Der \texttt{QueryClient} wird in \texttt{src/providers/QueryProvider.tsx} instan
 mit globalen Standardwerten konfiguriert, die für sämtliche Queries und Mutations der
 Anwendung gelten, sofern sie nicht auf Ebene des jeweiligen Hooks überschrieben werden:
 
-\begin{lstlisting}[captionpos=b, caption={QueryClient-Konfiguration in QueryProvider.tsx}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -329,7 +372,10 @@ export const queryClient = new QueryClient({
     },
   },
 })
-\end{lstlisting}
+\end{minted}
+\caption{QueryClient-Konfiguration in QueryProvider.tsx}
+\label{lst:query-client}
+\end{listing}
 
 Für Queries ist ein einzelner Wiederholungsversuch bei fehlgeschlagenen Anfragen konfiguriert
 sowie eine globale \texttt{staleTime} von fünf Minuten. Für Mutations hingegen sind
@@ -343,20 +389,25 @@ um sicherzustellen, dass keine nutzerspezifischen Daten im Speicher verbleiben.
 Sämtliche Datenabruf-Operationen der Anwendung sind in Custom Hooks gekapselt, die jeweils einen \texttt{useQuery}-Aufruf mit der zugehörigen API-Funktion aus dem \texttt{src/api/}-Verzeichnis verbinden. Das grundlegende Muster ist dabei einheitlich
 aufgebaut:
 
-\begin{lstlisting}[captionpos=b, caption={Einfacher Query-Hook am Beispiel useAllPractices}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 export function useAllPractices() {
   return useQuery({
     queryKey: ['practices'],
     queryFn: getAllPractices,
   })
 }
-\end{lstlisting}
+\end{minted}
+\caption{Einfacher Query-Hook am Beispiel useAllPractices}
+\label{lst:use-all-practices}
+\end{listing}
 
 Für statische Referenzdaten, deren Inhalt sich zur Laufzeit nicht verändert wird \texttt{staleTime: Infinity} gesetzt. Dadurch gelten diese Daten nach dem initialen Abruf für die gesamte Laufzeit der Anwendung als aktuell und werden nicht erneut vom Backend angefordert.
 
 Für Screens, die mehrere zusammengehörige Datensätze erfordern, werden mehrere Queries innerhalb eines einzigen Hooks zusammengefasst und parallel ausgeführt. Der Hook \texttt{usePracticeDetails} bündelt beispielsweise drei Queries für die Stammdaten, die verfügbaren Leistungen sowie die freien Termine einer Tierarztpraxis:
 
-\begin{lstlisting}[captionpos=b, caption={Parallele Queries in usePracticeDetails}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 export function usePracticeDetails(id: number) {
   const practice = useQuery({
     queryKey: ['practice', id],
@@ -375,7 +426,10 @@ export function usePracticeDetails(id: number) {
   })
   return { practice, services, appointments }
 }
-\end{lstlisting}
+\end{minted}
+\caption{Parallele Queries in usePracticeDetails}
+\label{lst:use-practice-details}
+\end{listing}
 
 Durch diese Bündelung erhalten Komponenten sämtliche benötigten Daten über einen einzigen Hook-Aufruf.
 
@@ -384,7 +438,8 @@ Durch diese Bündelung erhalten Komponenten sämtliche benötigten Daten über e
 Sämtliche Query-Keys der Anwendung folgen einer einheitlichen hierarchischen Struktur,
 die eine präzise und gezielte Cache-Invalidierung ermöglicht:
 
-\begin{lstlisting}[captionpos=b, caption={Query-Key-Hierarchie der Anwendung}]
+\begin{listing}[H]
+\begin{minted}{text}
 'session'
 'person'         -> [userId]
 'myAnimals'      -> [userId]
@@ -394,7 +449,10 @@ die eine präzise und gezielte Cache-Invalidierung ermöglicht:
 'practices'      (alle)
 'practiceSearch' -> [params-Objekt]
 'favorites'      -> [userId]
-\end{lstlisting}
+\end{minted}
+\caption{Query-Key-Hierarchie der Anwendung}
+\label{lst:query-keys}
+\end{listing}
 
 Die hierarchische Struktur ermöglicht es, im Rahmen einer Invalidierung wahlweise einen
 einzelnen Cache-Eintrag oder eine gesamte Gruppe verwandter Einträge zu invalidieren. Eine
@@ -407,7 +465,8 @@ gesetzt, sodass diese Anfragen nicht ausgeführt werden, solange kein authentifi
 Schreiboperationen werden über \texttt{useMutation}-Hooks abgewickelt. Nach erfolgreichem Abschluss einer Mutation werden die betroffenen Queries gezielt invalidiert, um die Konsistenz zwischen dem lokalen Cache und dem Serverzustand sicherzustellen. Im Fall der Terminstornierung wird nach erfolgreicher Operation ausschließlich die Liste der
 zukünftigen Termine des Nutzers invalidiert:
 
-\begin{lstlisting}[captionpos=b, caption={Cache-Invalidierung nach Stornierung in useCancelAppointment}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 return useMutation({
   mutationFn: (appointmentId: number) => cancelAppointment(appointmentId),
   onSuccess: () => {
@@ -416,7 +475,10 @@ return useMutation({
     })
   },
 })
-\end{lstlisting}
+\end{minted}
+\caption{Cache-Invalidierung nach Stornierung in useCancelAppointment}
+\label{lst:cancel-appointment}
+\end{listing}
 
 Bei Operationen mit weiterreichenden Auswirkungen auf den Datenbestand werden mehrere Queries simultan invalidiert. Dadurch wird gewährleistet, dass stets ausschließlich die tatsächlich betroffenen Daten neu vom Backend aufgefordert werden.
 
@@ -430,10 +492,10 @@ Anstelle von \texttt{View} und \texttt{StyleSheet} werden semantisch benannte Ko
 wie \texttt{Box}, \texttt{VStack}, \texttt{HStack}, \texttt{Text} oder \texttt{Pressable}
 eingesetzt, die das Layout der Benutzeroberfläche vereinheitlichen. Der Home Screen veranschaulicht den grundlegenden strukturellen Aufbau eines Screens:
 
-\begin{lstlisting}[captionpos=b, caption={Aufbau des Home Screens}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 export default function Home() {
   const { t } = useTranslation()
-
   return (
     <Box className='h-full bg-background-100'>
       <ScrollView>
@@ -453,7 +515,10 @@ export default function Home() {
     </Box>
   )
 }
-\end{lstlisting}
+\end{minted}
+\caption{Aufbau des Home Screens}
+\label{lst:home-screen}
+\end{listing}
 
 Der Screen selbst beschränkt sich auf die Komposition der Teilkomponenten; die Datenabruf- und Darstellungslogik ist vollständig in die jeweiligen Unterkomponenten wie \texttt{SearchApt}, \texttt{UpcomingApt} oder \texttt{NearbyPractices} ausgelagert. Diese klare Trennung trägt zur besseren Wartbarkeit der Codebasis bei.
 
@@ -465,15 +530,18 @@ Die Unterstützung von Light- und Dark-Theme basiert auf dem von Gluestack UI be
 
 Die Farbwerte der beiden Paletten wurden in \texttt{config.ts} projektspezifisch angepasst, wobei die numerische Skala im Dark-Mode invertiert wird, sodass ein Token wie \texttt{typography-700} im Light-Mode einem dunklen Grauton entspricht und im Dark-Mode einem hellen.
 
-\begin{lstlisting}[captionpos=b, caption={Farbtoken fuer Light- und Dark-Mode in config.ts}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 // Light Mode
 '--color-background-100': '242 241 241',  // fast weiss
 '--color-typography-700': '82 82 82',     // dunkelgrau
-
 // Dark Mode
 '--color-background-100': '65 64 64',     // dunkelgrau
 '--color-typography-700': '219 219 220',  // fast weiss
-\end{lstlisting}
+\end{minted}
+\caption{Farbtoken für Light- und Dark-Mode in config.ts}
+\label{lst:color-tokens}
+\end{listing}
 
 Der \texttt{GluestackUIProvider} im Root Layout wird mit dem \texttt{themeStore} verbunden, der drei Modi unterstützt: Light, Dark sowie einen systemgesteuerten Modus, der das Farbschema des Betriebssystems übernimmt. Bei einem Themewechsel aktualisiert Gluestack UI die CSS-Variablen automatisch, wodurch alle Komponenten die korrekten Farbwerte übernehmen, ohne dass Anpassungen im Komponentencode erforderlich sind.
 
@@ -482,7 +550,8 @@ unterstützen und Farbwerte ausschließlich über ein explizites \texttt{color}-
 entgegennehmen. Um zu vermeiden, dass jede Komponente den aktiven Farbmodus manuell
 abfragen muss, wurde diese Logik in den \texttt{FontAwesomeIcon}-Wrapper zentralisiert:
 
-\begin{lstlisting}[captionpos=b, caption={Zentralisierte Theme-Logik im FontAwesomeIcon-Wrapper}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 export function FontAwesomeIcon(props: {
   name: ComponentProps<typeof FontAwesome>['name']
   color?: string
@@ -492,15 +561,22 @@ export function FontAwesomeIcon(props: {
   const color = props.color ?? (colorScheme === 'dark' ? '#d1d5db' : '#374151')
   return <FontAwesome {...props} color={color} />
 }
-\end{lstlisting}
+\end{minted}
+\caption{Zentralisierte Theme-Logik im FontAwesomeIcon-Wrapper}
+\label{lst:fontawesome-wrapper}
+\end{listing}
 
 Das \texttt{color}-Prop ist optional. Wird kein Wert übergeben, greift automatisch der
 theme-abhängige Standardwert. Icons mit abweichender Farbe, etwa ein rotes Herz-Icon,
 überschreiben diesen Standardwert weiterhin explizit:
 
-\begin{lstlisting}[captionpos=b, caption={Explizite Farbangabe bei abweichenden Icon-Farben}]
+\begin{listing}[H]
+\begin{minted}{tsx}
 <FontAwesomeIcon name='heart' color='#ef4444' size={16} />
-\end{lstlisting}
+\end{minted}
+\caption{Explizite Farbangabe bei abweichenden Icon-Farben}
+\label{lst:icon-color}
+\end{listing}
 
 Dies ist die einzige Stelle in der gesamten Anwendung, an der eine Fallunterscheidung
 zwischen Light- und Dark-Mode im Code vorgenommen wird.

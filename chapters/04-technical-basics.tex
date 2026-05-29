@@ -6,7 +6,7 @@ Aufbauend auf der im vorherigen Kapitel erarbeiteten Konzeption werden in diesem
 
 Das Backend von petappoint wurde im Rahmen eines vorangegangenen Projektmoduls entwickelt und bildet die technische Grundlage für die in dieser Arbeit umgesetzte mobile Anwendung. Es basiert auf Node.js und Express, die gemeinsam eine REST-API bereitstellen, über die das Frontend sämtliche Daten abruft und verwaltet \cite{nodejs-docs, express-docs}. Als Datenbank kommt PostgreSQL zum Einsatz, das die ACID-Eigenschaften gewährleistet. ACID steht für Atomicity, Consistency, Isolation und Durability und beschreibt die Anforderungen an sichere und zuverlässige Datenbanktransaktionen \cite{postgresql_transactions}. Jegliche angefragte Änderungen werden entweder vollständig oder gar nicht ausgeführt, die Datenkonsistenz bleibt stets gewahrt, parallele Transaktionen beeinflussen sich nicht gegenseitig und abgeschlossene Transaktionen bleiben dauerhaft gespeichert \cite{postgresql_about}. Die Geschäftslogik ist durchgängig in TypeScript implementiert, wodurch Typsicherheit über alle Schichten der Anwendung sichergestellt wird \cite{typescript-docs}. Eingehende API-Anfragen werden mithilfe von Zod validiert \cite{zod-docs}. Für den automatisierten Versand von Buchungsbestätigungen und -erinnerungen wird Brevo als transaktionaler E-Mail-Dienst eingesetzt \cite{brevo-docs}.
 
-\begin{table}[h]
+\begin{table}[H]
 \begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \textbf{Technologie} & \textbf{Zweck} \\
@@ -318,7 +318,7 @@ synergetisch zusammenwirken.
 
 Die folgende Tabelle gibt einen abschließenden Überblick über alle eingesetzten Technologien und deren Funktion in der Anwendung.
 
-\begin{table}[h]
+\begin{table}[H]
 \begin{tabular}{|p{5cm}|p{9cm}|}
 \hline
 \textbf{Technologie} & \textbf{Zweck} \\
