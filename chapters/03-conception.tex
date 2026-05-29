@@ -26,21 +26,19 @@ Die Schichtenarchitektur gliedert sich in drei Schichten:
 Die mobile Anwendung wird in der Präsentationsschicht ergänzt und ist somit ausschließlich für die Darstellung und Nutzerinteraktion zuständig. Da das 
 Backend von \textit{petappoint} im Rahmen eines vorangegangenen Projektmoduls bereits entwickelt wurde, beschränkt sich der Fokus auf die Konzeption und Umsetzt der Präsentationsschicht. Abbildung~\ref{fig:softwarearchitecture} veranschaulicht den beschriebenen Aufbau grafisch.
 
-\begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=0.8\linewidth]{figures/software-architecture.svg}
+    \includesvg[width=1\linewidth]{figures/software-architecture.svg}
     \caption{Schichtenarchitektur von petappoint}
     \label{fig:softwarearchitecture}
 \end{figure}
-\end{landscape}
 
 \subsection{Bestehende Backend-Architektur als Grundlage}
 
 Das Backend von \textit{petappoint} wurde im Rahmen eines vorangegangenen Projektmoduls entwickelt und bildet die technische Grundlage dieser Arbeit. Es stellt sämtliche Geschäftslogik und Datenhaltung bereit, auf die die mobile Anwendung über die REST-API zugreift.
 
 Die zugrunde liegende Datenbankstruktur ist in Abbildung~\ref{fig:erdiagramm} als ER-Diagramm dargestellt. Ein Entity-Relationship-Diagramm (ER-Diagramm) ist eine grafische Methode zur Darstellung der logischen Struktur einer Datenbank. Das Modell basiert auf drei Grundkonzepten: Entitäten repräsentieren reale Objekte oder Konzepte, 
-Attribute beschreiben deren Eigenschaften, und Beziehungen stellen die  Verbindungen zwischen den Entitäten dar~\cite[S.~29]{watt2014dbdesign}. Die Kardinalitäten geben dabei an, wie viele Instanzen einer Entität mit wie vielen Instanzen einer anderen Entität in Beziehung stehen können und werden in der Krähenfuß-Notation durch spezielle Symbole dargestellt, wie in Abbildung~\ref{fig:crowsfoot} gezeigt. 
+Attribute beschreiben deren Eigenschaften, und Beziehungen stellen die  Verbindungen zwischen den Entitäten dar~\cite[S.~29]{watt2014dbdesign}. Die Kardinalitäten geben dabei an, wie viele Instanzen einer Entität mit wie vielen Instanzen einer anderen Entität in Beziehung stehen können und werden in der Krähenfuß-Notation durch spezielle Symbole dargestellt, wie in Abbildung~\ref{fig:erdiagramm} als Legende gezeigt. 
 
 Das Schema umfasst die zentralen Entitäten \textit{persons}, \textit{animals} und \textit{veterinarypractices}, die den Kern der Anwendungslogik bilden. Tierhalter werden als \textit{persons} erfasst und können keine oder mehrere Tiere (\textit{animals}) anlegen, aber ein Tier kann nicht ohne eine Person exitieren, sodass eine $1{:}n$-Beziehung zwischen \textit{persons} und \textit{animals} besteht. Jedes Tier ist dabei genau einem Tiertyp (\textit{animal\_types}) zugeordnet und ein Tiertyp kann vielen Tieren zugeordnet werden. 1 Tiertyp kann wiederum mehrere Rassen (\textit{animal\_races}) umfassen, aber mehrere 1 Rassen entstehen aus 1 Tiertyp, was einer $1{:}n$-Beziehung zwischen \textit{animal\_types} und \textit{animal\_races} entspricht.
 
@@ -51,22 +49,12 @@ $0{:}n$-Beziehung zu diesen Entitäten entspricht. Ein Termin kann allerdings ni
 Darüber hinaus enthält das Schema eine Favoritenfunktion, die über die 
 Relationstabelle \textit{person\_has\_favorized\_veterinarypractice} abgebildet wird. Da ein Tierhalter mehrere Praxen als Favoriten speichern kann und eine Praxis gleichzeitig von mehreren Tierhaltern favorisiert werden kann, liegt hier eine $n{:}m$-Beziehung vor.
 
-\begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[inkscapelatex=false, width=0.8\linewidth]{figures/ER-Diagramm-petappoint.svg}
+    \includesvg[inkscapelatex=false, width=1.0\linewidth]{figures/er-diagram.svg}
     \caption{ER-Diagramm der Datenbankstruktur von petappoint}
     \label{fig:erdiagramm}
 \end{figure}
-\end{landscape}
-\begin{landscape}
-\begin{figure}[H]
-    \centering
-    \includesvg[width=0.4\linewidth]{figures/kraehenfuß-notation.svg}
-    \caption{genutze Krähenfuß-Notationen}
-    \label{fig:crowsfoot}
-\end{figure}
-\end{landscape}
 
 \subsection{Kritische Betrachtung der Backend-Infrastruktur}
 Das bestehende Backend bildet eine solide Grundlage für die Entwicklung der mobilen Anwendung, weist jedoch einige Schwachstellen auf, die im Rahmen einer Weiterentwicklung berücksichtigt werden sollten.
@@ -100,14 +88,12 @@ Die \textbf{Datenzugriffsschicht} besteht aus spezialisierten API-Modulen, die j
 REST-API des Backends weiterleitet und die Antworten an die jeweiligen API-Module zurückgibt. Durch diese zentrale Stelle lassen sich übergreifende Aspekte wie Fehlerbehandlung einheitlich verwalten.
 
 \clearpage
-\begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=1.0\linewidth]{figures/komponentendiagramm.svg}
+    \includesvg[width=1.0\linewidth]{figures/component-diagram.svg}
     \caption{Komponentendiagramm des Frontends}
     \label{fig:komponentendiagramm}
 \end{figure}
-\end{landscape}
 
 \section{Navigationskonzeptdiagramme des Frontends}
 
@@ -134,23 +120,19 @@ dient der Verwaltung des eigenen Terminangebots, wobei neue Slots
 angelegt sowie bestehende Termine bearbeitet oder storniert werden 
 können.
 
-\begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=0.6\linewidth]{figures/Tierhalter-navigationsdiagramm.svg}
+    \includesvg[width=1.0\linewidth]{figures/petowner-navigation-diagram.svg}
     \caption{Navigationsdiagramm der Tierhalter-Rolle}
     \label{fig:nav-tierhalter}
 \end{figure}
-\end{landscape}
 
-\begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=0.6\linewidth]{figures/Tierarztpraxis-navigationsdiagramm.svg}
+    \includesvg[width=1.0\linewidth]{figures/vetpractice-navigation-diagram.svg}
     \caption{Navigationsdiagramm der Tierarztpraxis-Rolle}
     \label{fig:nav-tierarzt}
 \end{figure}
-\end{landscape}
 
 \section{Mockups zu Darstellung des User Interface}
 
@@ -167,15 +149,14 @@ Registrierungspfad folgt anschließend entweder der
 E-Mail-Verifizierungs- oder der Telefonnummer-Verifizierungsscreen, auf dem der Nutzer einen zugesandten Code eingeben muss, um seine 
 Identität zu bestätigen.
 
-\begin{landscape}
+\clearpage
 \begin{figure}[H]
     \centering
-    \includesvg[width=1.0\linewidth]{figures/mockups-authentication}
+    \includesvg[width=1.0\linewidth]{figures/mockups-authentication.svg}
     \caption{Mockups für die Authentifizierung}
     \label{fig:mockup-auth}
 \end{figure}
-\end{landscape}
-
+\clearpage
 \subsection{Tab-Ansichten der Tierhalter}
 
 Abbildung~\ref{fig:mockup-tabs-tierhalter} zeigt die vier Tab-Screens der Tierhalter-Rolle. Ein persistenter Suchbutton zur gezielten Suche nach einer Tierarztpraxis ist auf allen Screens verfügbar und ermöglicht den schnellen Zugang zum Buchungsfluss. Am unteren Bildschirmrand ist 
@@ -189,14 +170,12 @@ Der \textit{Haustiere}-Screen zeigt eine Übersicht aller angelegten Tiere mit d
 
 Der Profil-Screen zeigt dem Nutzer zunächst eine Kurzübersicht mit der Anzahl seiner Termine und Haustiere. Darunter befindet sich eine Liste mit Einstellungsbereichen.
 
-\begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=0.7\linewidth]{figures/mockups-tabs-tierhalter}
+    \includesvg[width=1.0\linewidth]{figures/mockups-tabs-petowner.svg}
     \caption{Mockups der Tab-Ansichten des Tierhalters}
     \label{fig:mockup-tabs-tierhalter}
 \end{figure}
-\end{landscape}
 
 \subsection{Buchungsprozess}
 
@@ -210,14 +189,13 @@ angebotene Leistungen, verfügbare Tierärzte sowie ein Kalender zur Auswahl ein
 
 Nach der Auswahl von Datum und Uhrzeit wird dem Nutzer eine Buchungsübersicht präsentiert, die die gewählte Praxis, das betreffende Tier sowie die gewünschte Behandlung zusammenfasst. Tier und Behandlung können an dieser Stelle noch nachträglich angepasst werden. Nach dem Bestätigen der Buchung erscheint abschließend der Buchungsbestätigungsscreen mit einer Zusammenfassung aller relevanten Termininformationen.
 
-\begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=1.0\linewidth]{figures/mockups-buchungsprozess}
+    \includesvg[width=1.0\linewidth]{figures/mockups-booking-process.svg}
     \caption{Mockups des Buchungsprozesses}
     \label{fig:mockup-buchung}
 \end{figure}
-\end{landscape}
+\clearpage
 
 \subsection{Tab-Ansichten der Tierarztpraxis}
 
@@ -231,18 +209,17 @@ Der \textit{Terminslots}-Screen zeigt die Terminslots des aktuellen Tages in ein
 vor- und zurückblättern lässt. Für jeden Slot stehen die Aktionen Bearbeiten und Löschen zur Verfügung. Zudem können neue Slots hinzugefügt werden. Jede dieser Aktionen öffnet einen eigenen 
 modalen Screen, über den die jeweilige Operation durchgeführt wird.
 
-\begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=1.0\linewidth]{figures/mockups-tierarztpraxis}
+    \includesvg[width=1.0\linewidth]{figures/mockups-vetpractices.svg}
     \caption{Mockups der Tierarztpraxis}
     \label{fig:mockup-tierarzt}
 \end{figure}
-\end{landscape}
+\clearpage
 
 \section{Aktivitätsdiagramm der Terminbuchung}
 
-Das Aktivitätsdiagramm in Abbildung~\ref{fig:aktivitaet-buchung} 
+Das Aktivitätsdiagramm in Abbildung~\ref{fig:aktivitaet-buchung-1} und Abbildung~\ref{fig:aktivitaet-buchung-2} 
 beschreibt den vollständigen Ablauf des Terminbuchungsprozesses aus Sicht des Tierhalters. Der Prozess beginnt mit dem Öffnen des Suchscreens, auf dem der Nutzer zwischen drei Suchmöglichkeiten 
 wählen kann: der Suche nach Standort, nach einer konkreten Tierarztpraxis oder nach einem Tierarzt beziehungsweise einer Behandlung. Auf Basis der eingegebenen Suchkriterien werden die entsprechenden Tierarztpraxen als Ergebnisliste angezeigt, aus der der Nutzer eine Praxis auswählt. Optional kann die Praxis an dieser Stelle favorisiert werden.
 
@@ -254,11 +231,21 @@ Nach der Tierauswahl wird dem Nutzer eine Terminzusammenfassung präsentiert, di
 Stelle die Möglichkeit, Behandlung, Termin oder Tier nachträglich zu bearbeiten, woraufhin der jeweilige Auswahlschritt erneut durchlaufen wird. Bestätigt der Nutzer die Zusammenfassung, wird 
 die Buchung abgeschlossen und er wird zur Terminübersicht weitergeleitet. Der Prozess kann zu jedem Zeitpunkt abgebrochen werden, wodurch der Buchungsvorgang beendet und der Nutzer ebenfalls zur Terminübersicht zurückgeführt wird.
 
+
 \begin{landscape}
 \begin{figure}[H]
     \centering
-    \includesvg[width=1.0\linewidth]{figures/aktivitaetsdiagramm.svg}
-    \caption{Aktivitätsdiagramm des Terminbuchungsprozesses}
-    \label{fig:aktivitaet-buchung}
+    \includesvg[inkscapelatex=false, width=1.0\linewidth]{figures/activity-diagram1.svg}
+    \caption{Aktivitätsdiagramm des Terminbuchungsprozesses (Teil 1)}
+    \label{fig:aktivitaet-buchung-1}
+\end{figure}
+\end{landscape}
+\clearpage
+\begin{landscape}
+\begin{figure}[H]
+    \centering
+    \includesvg[inkscapelatex=false, width=1.0\linewidth]{figures/activity-diagram2.svg}
+    \caption{Aktivitätsdiagramm des Terminbuchungsprozesses (Teil 2)}
+    \label{fig:aktivitaet-buchung-2}
 \end{figure}
 \end{landscape}
