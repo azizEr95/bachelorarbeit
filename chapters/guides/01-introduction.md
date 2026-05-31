@@ -11,8 +11,8 @@ Lies sie vollständig bevor du schreibst, prüfst oder überarbeitest.
 
 - Textentwürfe für einzelne Abschnitte auf Basis von Stichpunkten ausformulieren
 - Bestehende Abschnitte auf Stil, Wissenschaftlichkeit und Konsistenz prüfen
-- Den fehlenden „Aufbau der Arbeit"-Absatz am Ende von §1.6 ausformulieren (siehe unten)
 - Begriffsfehler und stilistische Mängel auf Anfrage korrigieren
+- Überprüfe ob gewiße Aussagen ohne Quelle getroffen worden sind
 
 Warte auf konkrete Aufgaben. Arbeite immer nur am angefragten Abschnitt.
 
@@ -25,48 +25,34 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 **Digitalisierung allgemein → Veterinärmarkt → Problemlücke → bestehende Systeme → Abgrenzung petappoint → Forschungsfrage**
 
-### §1.1 Hintergrund und Motivation
+### Abschnitt 1.1 Hintergrund und Motivation
 - Stelle sicher, dass der Abschnitt vom Allgemeinen (Digitalisierung, Humanmedizin) zum Konkreten (Veterinärmarkt) führt.
 - Alle Marktdaten müssen mit `\cite{}` belegt sein. Keine unbelegten Zahlen einfügen.
-- Doctolib dient als Vergleichsreferenz für den Reifegrad digitaler Terminlösungen in der Humanmedizin — nicht als Vorbild für petappoint.
+- Doctolib dient als Vergleichsreferenz für den Reifegrad digitaler Terminlösungen in der Humanmedizin und nicht als Vorbild für petappoint.
 
-### §1.2 Problemstellung
+### Abschnitt 1.2 Problemstellung
 - Stelle sicher, dass die Problemlücke explizit benannt wird: Es fehlt eine fokussierte, plattformübergreifende Terminverwaltungslösung im Veterinärbereich.
-- Der Abschnitt darf keine Lösung vorwegnehmen — keine Erwähnung von petappoint hier.
-- Verwende ausschließlich `.NET MAUI`, nicht `Xamarin` (veraltet). Falls `Xamarin` im Text vorkommt, ersetze es durch `.NET MAUI`.
+- Der Abschnitt darf keine Lösung vorwegnehmen. Keine Erwähnung von petappoint hier!
 
-### §1.3 Terminverwaltungen im Veterinärbereich
+### Abschnitt 1.3 Terminverwaltungen im Veterinärbereich
 - Stelle sicher, dass die zwei Markttypen klar unterschieden werden: reine Buchungslösungen vs. vollständige Praxismanagementsysteme.
-- Keine Detailbeschreibungen einzelner Systeme hier — diese folgen in §1.4.
+- Keine Detailbeschreibungen einzelner Systeme hier, denn diese folgen in Abschnitt 1.4.
 
-### §1.4 Ausgewählte Systeme im Vergleich (§1.4.1–1.4.3)
-- Halte die Reihenfolge ein: petsXL (§1.4.1) → Petleo (§1.4.2) → vetpraxis (§1.4.3).
+### Abschnitt 1.4 Ausgewählte Systeme im Vergleich (Abschnitt 1.4.1–1.4.3)
+- Halte die Reihenfolge ein: petsXL (Abschnitt 1.4.1) → Petleo (Abschnitt 1.4.2) → vetpraxis (Abschnitt 1.4.3).
 - Beschreibe jedes System sachlich und belegt. Keine wertenden Adjektive wie „leistungsstark" oder „modern".
 - Jedes System muss mit seinem `\cite{}`-Key referenziert werden (siehe Quellentabelle unten).
 
-### §1.5 Abgrenzung petappoint
+### Abschnitt 1.5 Abgrenzung petappoint
 - Stelle sicher, dass die drei Alleinstellungsmerkmale von petappoint klar benannt werden: (1) Fokus ausschließlich auf Terminverwaltung, (2) Softwareunabhängigkeit, (3) kostenlose Nutzung für beide Seiten.
-- Keine Implementierungsdetails — diese folgen in Kap. 5.
-- Verwende `\textit{petappoint}` bei der ersten Nennung im Abschnitt.
+- Keine Implementierungsdetails, denn diese folgen in Kapitel. 5.
+- Verwende bei der Nennung von petappoint diesen Still `\textit{petappoint}` im ganzen Kapitel.
 
-### §1.6 Zielsetzung
-- Stelle sicher, dass die Forschungsfrage **ausschließlich hier** wörtlich zitiert wird — nicht in anderen Abschnitten.
+### Abschnitt 1.6 Zielsetzung
+- Stelle sicher, dass die Forschungsfrage **ausschließlich hier** wörtlich zitiert wird und nicht in anderen Abschnitten.
 - DSR nach Hevner 2004 muss explizit genannt und kurz begründet werden.
 - Der Scope muss klar abgegrenzt werden: Eigenleistung umfasst Frontend + Backend-Integration; das Backend war eine Vorleistung aus einem vorangegangenen Projektmodul.
-- Am Ende von §1.6 fehlt noch der „Aufbau der Arbeit"-Absatz (siehe TODO unten).
-
----
-
-## Offene Aufgaben
-
-### Aufgabe 1 – „Aufbau der Arbeit"-Absatz (§1.6, Ende)
-Wenn du gebeten wirst, diesen Absatz zu schreiben, formuliere eine kurze Kapitelübersicht mit je einem Satz pro Kapitel (Kap. 1–7). Entnimm die Kapitelinhalte aus der Kapitelstruktur der Master-Datei. Der Absatz endet mit dem Satz: „…womit die Forschungsfrage abschließend beantwortet wird."
-
-### Aufgabe 2 – Begriffsfehler
-Im Fließtext kommt einmalig „Tierbesitzern" vor. Ersetze es durch „Tierhaltern" wenn du auf Anfrage den betreffenden Abschnitt überarbeitest.
-
-### Aufgabe 3 – Stilredundanz
-Im Text kommt die Formulierung „Als Basis dieser Arbeit basiert das Backend…" vor. Formuliere sie auf Anfrage um, z.B.: „Das Backend von petappoint, das im Rahmen eines vorangegangenen Projektmoduls in Teamarbeit entwickelt wurde, bildet die technische Grundlage dieser Arbeit."
+- Am Ende von Abschnitt 1.6 fehlt noch der „Aufbau der Arbeit"-Absatz (siehe TODO unten).
 
 ---
 
@@ -121,5 +107,5 @@ Prüfe bei jeder Überarbeitung, ob folgende DSR-Kriterien erfüllt sind:
   - **Konzipieren** → Marktlücke belegt, Abgrenzung definiert
   - **Umsetzen** → Plattformübergreifender Bedarf begründet
   - **Evaluieren** → Nutzerwunsch nach Benutzerfreundlichkeit als Qualitätskriterium erkennbar
-- DSR nach Hevner 2004 wird in §1.6 explizit eingeführt und begründet.
+- DSR nach Hevner 2004 wird in Abschnitt 1.6 explizit eingeführt und begründet.
 - Das Artefakt (petappoint) wird benannt, aber noch nicht definiert — das folgt in Kap. 3–5.

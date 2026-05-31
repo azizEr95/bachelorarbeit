@@ -2,7 +2,7 @@
 
 \section{Hintergrund und Motivation}
 
-Die Digitalisierung ist heute allgegenwärtig und stellt einen unverzichtbaren Bestandteil der Kommunikation zwischen Unternehmen und Kunden dar. Insbesondere im Bereich der Humanmedizin wird deutlich, wie digitale Technologien im Kontext der Kommunikation einen Vorteil bieten. Unternehmen wie Doctolib haben sich früh zum Ziel gesetzt, die Terminverwaltung zwischen Arztpraxen und Patienten durch den Einsatz digitaler Terminverwaltungssysteme effizienter und nutzerfreundlicher zu gestalten. Durch die Corona-Pandemie als Katalysator konnten DoctoLib dieses Ziel weitgehend erreichen \cite{doctolibreport}. In der aktuellen Zeit ist die digitale Terminbuchung nicht mehr wegzudenken, sodass viele Patienten sie als entscheidenden Faktor für die Inanspruchnahme ärztlicher Leistungen ansehen.
+Die Digitalisierung ist heute allgegenwärtig und stellt einen unverzichtbaren Bestandteil der Kommunikation zwischen Unternehmen und Kunden dar. Insbesondere im Bereich der Humanmedizin wird deutlich, wie digitale Technologien im Kontext der Kommunikation einen Vorteil bieten. Unternehmen wie Doctolib haben sich früh zum Ziel gesetzt, die Terminverwaltung zwischen Arztpraxen und Patienten durch den Einsatz digitaler Terminverwaltungssysteme effizienter und nutzerfreundlicher zu gestalten. Durch die Corona-Pandemie als Katalysator konnte Doctolib dieses Ziel weitgehend erreichen \cite{doctolibreport}. In der aktuellen Zeit ist die digitale Terminbuchung nicht mehr wegzudenken, sodass viele Patienten sie als entscheidenden Faktor für die Inanspruchnahme ärztlicher Leistungen ansehen.
 
 Vor diesem Hintergrund stellt sich die Frage, wie die Situation im veterinärmedizinischen Bereich aussieht. Die Anzahl der tierärztlich Tätigen in Deutschland ist auf 34.364 gestiegen \cite{btk2025}. Viele Tierarztpraxen nutzen bereits Praxisverwaltungssoftware, um interne Aufgaben wie Terminplanung, Abrechnung und Dokumentation zu organisieren. Allerdings existiert bisher kein etabliertes Unternehmen, das den Markt für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen ähnlich beherrscht wie etwa Doctolib in der Humanmedizin.
 
@@ -15,23 +15,23 @@ Daraus ergibt sich für Terminverwaltungslösungen im Veterinärbereich die Anfo
 
 Die Entwicklung nativer Apps für beide Plattformen sollte jedoch nicht mit doppeltem Aufwand verbunden sein. Eine einheitliche Codebase sollte ausreichen, sodass die Anwendung auf beiden Plattformen läuft. Andernfalls würde dies für ein kleines Entwicklungsteam eine große Herausforderung darstellen, da Ressourcen und Zeit begrenzt sind. Hier könnten React Native, Flutter oder .NET MAUI als plattformübergreifende Frameworks eine Rolle spielen.
 
-Daraus ergibt sich die Frage, wie eine mobile Anwendung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen konzipiert und umgesetzt werden kann, die plattformübergreifend nutzbar ist und eine hohe Benutzerfreundlichkeit aufweist, sodass sowohl Tierhaltern die Terminbuchung als auch Tierarztpraxen die Terminverwaltung leicht fällt.
+Daraus ergibt sich die Frage, wie eine mobile Anwendung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen konzipiert und umgesetzt werden kann, die plattformübergreifend nutzbar ist und eine hohe Benutzerfreundlichkeit aufweist, sodass die Terminbuchung für Tierhalter sowie die Terminverwaltung für Tierarztpraxen vereinfacht wird.
 
-\section{Terminverwaltungen im Veterinärbereich}
-Im Folgenden werden bestehende Lösungen im Veterinärbereich betrachtet. Dabei lassen sich zwei Typen von Terminverwaltungssystemen auf dem Markt unterscheiden. Zum einen sind es vorhandene Online-Terminlösungen wie Petleo~\cite{petleo-info} oder
-petsXL~\cite{petsxl-info}, die vor allem die Onlinebuchung und die
+\section{Terminverwaltung im Veterinärbereich}
+Im Folgenden werden bestehende Lösungen im Veterinärbereich betrachtet. Dabei lassen sich zwei Typen von Terminverwaltungssystemen auf dem Markt unterscheiden. Zum einen sind es vorhandene Online-Terminlösungen wie petsXL~\cite{petsxl-info} oder
+Petleo~\cite{petleo-info}, die vor allem die Onlinebuchung und die
 Kommunikation mit Tierhaltern abdecken. Zum anderen gibt es vollständige Praxismanagement-Softwarelösungen wie vetpraxis~\cite{vetpraxis-info}, die neben Terminverwaltung auch Patientenakten, Abrechnung und Ressourcenmanagement abbilden.
 
 \section{Ausgewählte Systeme im Vergleich}
-
-\subsection{Petleo}
-Petleo~\cite{petleo-info} ist eine Terminbuchungslösung, die sich als Ergänzung zu bestehenden Praxismanagementsystemen positioniert. Die Plattform ermöglicht es Tierarztpraxen, bei Neukunden eine digitale Patientenaufnahme anzustoßen, sodass alle relevanten Daten bereits vor dem Termin erfasst sind. Für Tierhalter steht eine mobile App bereit, über die Termine verwaltet und digitale Gesundheitsakten mit den relevantesten Informationen zentral gespeichert werden können. Für Tierarztpraxen ist die Nutzung kostenpflichtig und startet ab 49~€ pro Monat~\cite{petleo-info}.
 
 \subsection{petsXL}
 petsXL~\cite{petsxl-info} ist eine mobile Anwendung der VetZ GmbH, die neben petsXL auch die Praxismanagement-Software easyVET entwickelt. petsXL ist eng mit easyVET verzahnt und ermöglicht Tierhaltern eine digitale Verbindung zu ihrer Tierarztpraxis. Neben der
 Online-Terminvereinbarung bietet petsXL einen kontaktlosen Check-in per QR-Code sowie die Möglichkeit, direkt in der App zu bezahlen.
 Darüber hinaus umfasst die Anwendung eine digitale Behandlungsakte, die von der Tierarztpraxis direkt aus easyVET in die App übermittelt werden kann. Für Tierhalter ist die App kostenlos, für Tierarztpraxen
 wird ein nutzungsabhängiges Modell von 0,25~€ pro Tier pro Monat berechnet~\cite{petsxl-info}.
+
+\subsection{Petleo}
+Petleo~\cite{petleo-info} ist eine Terminbuchungslösung, die sich als Ergänzung zu bestehenden Praxismanagementsystemen positioniert. Die Plattform ermöglicht es Tierarztpraxen, bei Neukunden eine digitale Patientenaufnahme anzustoßen, sodass alle relevanten Daten bereits vor dem Termin erfasst sind. Für Tierhalter steht eine mobile App bereit, über die Termine verwaltet und digitale Gesundheitsakten mit den relevantesten Informationen zentral gespeichert werden können. Für Tierarztpraxen ist die Nutzung kostenpflichtig und startet ab 49~€ pro Monat~\cite{petleo-info}.
 
 \subsection{vetpraxis}
 vetpraxis~\cite{vetpraxis-info} ist eine vollständige
@@ -40,9 +40,9 @@ und ist über eine mobile Version auch bei Haus- und Hofbesuchen nutzbar. Der in
 monatliche Flatrate von 99~€ berechnet, in der sämtliche Funktionen ohne zusätzliche Kosten pro Mitarbeiter oder Patient enthalten
 sind~\cite{vetpraxis-info}.
 
-\section{Abgrenzung der zu entwickelnden Anwendung namens \textit{petappoint}}
+\section{Abgrenzung zur eigenen Anwendung}
 Die vorgestellten Softwarelösungen verdeutlichen als Beispiele, dass der Markt im Veterinärbereich entweder auf umfassende Praxismanagementsysteme wie vetpraxis oder auf breit aufgestellte Tierhalter-Apps wie Petleo und petsXL setzt, die neben der Terminverwaltung auch Funktionen wie Gesundheitsdokumentation, Telesprechstunden oder bargeldloses Bezahlen
-integrieren. Die Anwendung namens \textit{petappoint}, die in dieser Arbeit umgesetzt werden soll, verfolgt hingegen einen fokussierten Ansatz. Im Mittelpunkt steht ausschließlich die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen. Funktionen wie die Dokumentation von Gesundheitsdaten, Telesprechstunden oder die Abwicklung von Zahlungen sind nicht Bestandteil der Anwendung. Darüber hinaus ist die Anwendung unabhängig von einer bestimmten Praxissoftware und damit für Tierarztpraxen unabhängig von deren bestehender IT-Infrastruktur nutzbar. Nicht zuletzt ist petappoint sowohl für Tierhalter als auch für Tierarztpraxen kostenlos nutzbar und senkt damit die Einstiegshürde für die Digitalisierung der Terminverwaltung erheblich.
+integrieren. Die Anwendung \textit{petappoint}, , die in dieser Arbeit umgesetzt werden soll, verfolgt hingegen einen fokussierten Ansatz. Im Mittelpunkt steht ausschließlich die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen. Funktionen wie die Dokumentation von Gesundheitsdaten, Telesprechstunden oder die Abwicklung von Zahlungen sind nicht Bestandteil der Anwendung. Darüber hinaus ist die Anwendung unabhängig von einer bestimmten Praxissoftware und damit für Tierarztpraxen unabhängig von deren bestehender IT-Infrastruktur nutzbar. Nicht zuletzt ist \textit{petappoint} sowohl für Tierhalter als auch für Tierarztpraxen kostenlos nutzbar und senkt damit die Einstiegshürde für die Digitalisierung der Terminverwaltung erheblich.
 
 Dieser bewusste Verzicht auf Zusatzfunktionen, die Softwareunabhängigkeit sowie die kostenlose Nutzung ermöglichen eine schlanke, nutzerfreundliche
 Lösung, die den Prozess der Terminbuchung in den Vordergrund stellt und sich damit klar von den bestehenden Lösungen abgrenzt.
@@ -54,15 +54,15 @@ Ausgehend von dieser Lücke im Markt zielt die vorliegende Arbeit darauf ab, ein
 
 Methodisch folgt die Arbeit dem Ansatz des Design Science Research nach \cite{hevner2004}, da im Mittelpunkt die Konstruktion einer Anwendung steht, die ein praxisrelevantes Problem löst.
 
-Das Backend von petappoint, das im Rahmen eines vorangegangenen Projektmoduls in Teamarbeit entwickelt wurde, bildet die technische Grundlage dieser Arbeit. Die Eigenleistung umfasst somit die gesamte mobile Anwendung sowie deren Integration in die bestehende Backend-Infrastruktur.
+Das Backend von \textit{petappoint}, das im Rahmen eines vorangegangenen Projektmoduls in Teamarbeit entwickelt wurde, bildet die technische Grundlage dieser Arbeit. Die Eigenleistung umfasst somit die gesamte mobile Anwendung sowie deren Integration in die bestehende Backend-Infrastruktur.
 
-Die Anwendung soll es Tierhaltern ermöglichen, Haustiere anzulegen, Tierarztpraxen in der Nähe zu suchen und Termine jederzeit ortsunabhängig online zu buchen sowie Tierarztpraxen die Möglichkeit bieten, gebuchte Termine auf mobilen Endgeräten einzusehen und zu verwalten. Der zentrale Mehrwert liegt in der flexiblen Online-Terminvergabe, die die Telefonlast für Praxen reduziert und Tierhaltern eine unkomplizierte Verwaltung ihrer Termine bietet. Im Vergleich zu bestehenden Lösungen konzentriert sich petappoint bewusst auf die Kernfunktion der Terminverwaltung und verzichtet auf Funktionen wie Onlineberatung oder Gesundheits-Tracking.
+Die Anwendung soll es Tierhaltern ermöglichen, Haustiere anzulegen, Tierarztpraxen in der Nähe zu suchen und Termine jederzeit ortsunabhängig online zu buchen sowie Tierarztpraxen die Möglichkeit bieten, gebuchte Termine auf mobilen Endgeräten einzusehen und zu verwalten. Der zentrale Mehrwert liegt in der flexiblen Online-Terminvergabe, die das Anrufvolumen in Tierarztpraxen reduziert und Tierhaltern eine strukturierte Verwaltung ihrer Termine ermöglicht. Im Vergleich zu bestehenden Lösungen konzentriert sich \textit{petappoint} bewusst auf die Kernfunktion der Terminverwaltung und verzichtet auf Funktionen wie Onlineberatung oder Gesundheits-Tracking.
 
 Die vorliegende Arbeit gliedert sich in sieben Kapitel.
 Kapitel~1 führt in das Thema ein, beleuchtet den Kontext der Digitalisierung im Veterinärbereich und leitet daraus die Forschungsfrage ab.
 Kapitel~2 erhebt die Anforderungen an die Anwendung, definiert die Zielgruppen sowie funktionale und nicht-funktionale Anforderungen und beschreibt die zugehörigen Use~Cases.
-Kapitel~3 beschreibt die Konzeption von petappoint, umfasst die Softwarearchitektur, Komponentendiagramme, das Navigationskonzept sowie Mockups der Benutzeroberfläche.
+Kapitel~3 beschreibt die Konzeption von \textit{petappoint}, umfasst die Softwarearchitektur, Komponentendiagramme, das Navigationskonzept sowie Mockups der Benutzeroberfläche.
 Kapitel~4 stellt die technischen Grundlagen dar, vergleicht plattformübergreifende Frameworks und begründet die Technologiewahl für Frontend-Entwicklung, State-Management und Internationalisierung.
 Kapitel~5 dokumentiert die Implementierung der Anwendung, von der Projektstruktur über die Navigationsarchitektur und Authentifizierung bis hin zur API-Anbindung und der Umsetzung der Screens.
 Kapitel~6 evaluiert die fertige Anwendung anhand einer Nutzerstudie und diskutiert die Ergebnisse hinsichtlich Funktionalität und Usability.
-Kapitel~7 fasst die Arbeit zusammen, beantwortet die Forschungsfrage und gibt einen Ausblick auf mögliche Weiterentwicklungen, womit die Forschungsfrage abschließend beantwortet wird.
+Kapitel~7 fasst die Arbeit zusammen, beantwortet die Forschungsfrage und gibt einen Ausblick auf mögliche Weiterentwicklungen.
