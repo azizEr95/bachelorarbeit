@@ -1,6 +1,6 @@
 \chapter{Anforderungsermittlung}
 
-In der Einleitung wurde deutlich, dass \textit{petappoint} eine fokussierte Lösung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen darstellt. Die in Kapitel~1 abgeleitete Forschungsfrage zielt darauf ab, eine solche Lösung zu konzipieren, umzusetzen und zu evaluieren. Um diese Lösung zielgerichtet umzusetzen, folgt die Anforderungsermittlung dieser Arbeit den Prinzipien des Requirements Engineering. Das ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Dazu zählen auch die Nutzenden von \textit{petappoint}. Eine Anforderung wird dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
+In der Einleitung wurde deutlich, dass \textit{petappoint} eine fokussierte Lösung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen darstellt. Die in Kapitel~1 abgeleitete Forschungsfrage zielt darauf ab, eine solche Lösung zu konzipieren, umzusetzen und zu evaluieren. Um diese Lösung zielgerichtet umzusetzen, folgt die Anforderungsermittlung dieser Arbeit den Prinzipien des Requirements Engineering. Requirements Engineering ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Dazu zählen auch die Nutzenden von \textit{petappoint}. Eine Anforderung wird dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
 
 Die Analyse der Anforderungen bildet die Grundlage für Konzeption und Entwicklung der vorliegenden Anwendung und Arbeit. Ziel dieses Kapitels ist es, ein vollständiges Bild der Anforderungen zu erarbeiten und diese strukturiert zu dokumentieren.
 
@@ -116,7 +116,7 @@ in der Anwendung an. \\
 \textbf{Akteure} & Tierhalter \\
 \hline
 \textbf{Vorbedingungen} & 
-Der Tierhalter ist eingeloggt. \\
+Der Tierhalter ist angemeldet. \\
 \hline
 \textbf{Auslösendes Ereignis} & Der Tierhalter möchte ein neues Haustier 
 in der Anwendung erfassen. \\
@@ -131,7 +131,7 @@ wählt ein Bild über die Gerätekamera oder Galerie aus. \newline
 6. Der Tierhalter tippt auf „Haustier anlegen". \newline
 7. Die Anwendung validiert die Daten. \newline
 8. Die Anwendung speichert das Haustier. \newline
-9. Der Tierhalter wird zum Tab 'Meine Haustiere' weitergeleitet. \\
+9. Der Tierhalter wird zum Tab „Meine Haustiere" weitergeleitet. \\
 \hline
 \textbf{Alternativszenario} &
 1. Pflichtfelder sind leer $\rightarrow$ Der Button bleibt deaktiviert. \newline
@@ -156,7 +156,7 @@ bestehenden Haustierprofils. \\
 \textbf{Akteure} & Tierhalter \\
 \hline
 \textbf{Vorbedingungen} & 
-Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter ist angemeldet. \newline
 Der Tierhalter hat mindestens ein Haustier angelegt. \\
 \hline
 \textbf{Auslösendes Ereignis} & Der Tierhalter möchte die Daten eines 
@@ -201,7 +201,7 @@ Haustierprofil aus der Anwendung. \\
 \textbf{Akteure} & Tierhalter \\
 \hline
 \textbf{Vorbedingungen} & 
-Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter ist angemeldet. \newline
 Der Tierhalter hat mindestens ein Haustier angelegt. \\
 \hline
 \textbf{Auslösendes Ereignis} & Der Tierhalter möchte ein Haustierprofil 
@@ -239,7 +239,7 @@ Tierarztpraxis für sein Haustier. \\
 \textbf{Akteure} & Tierhalter \\
 \hline
 \textbf{Vorbedingungen} & 
-Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter ist angemeldet. \newline
 Der Tierhalter hat mindestens ein Haustier angelegt. \\
 \hline
 \textbf{Auslösendes Ereignis} & Der Tierhalter möchte einen Tierarzttermin 
@@ -260,7 +260,7 @@ in einer scrollbaren Kalenderansicht. \newline
 9. Die Anwendung zeigt eine Buchungsübersicht. \newline
 10. Der Tierhalter tippt auf „Termin buchen". \newline
 11. Die Anwendung speichert den Termin. \newline
-12. Der Tierhalter erhält eine Push-Benachrichtigung als 
+12. Der Tierhalter erhält eine Benachrichtigung als 
 Buchungsbestätigung. \newline
 13. Der Tierhalter wird zum Tab „Meine Termine" weitergeleitet. \\
 \hline
@@ -289,7 +289,7 @@ gebuchten Termin. \\
 \textbf{Akteure} & Tierhalter \\
 \hline
 \textbf{Vorbedingungen} & 
-Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter ist angemeldet. \newline
 Der Tierhalter hat mindestens einen gebuchten Termin. \\
 \hline
 \textbf{Auslösendes Ereignis} & Der Tierhalter möchte Datum, Uhrzeit 
@@ -307,7 +307,7 @@ scrollbaren Kalenderansicht. \newline
 7. Die Anwendung validiert die Daten. \newline
 8. Die Anwendung speichert die Änderungen und leitet zurück 
 zu „Meine Termine". \newline
-9. Der Tierhalter erhält eine Push-Benachrichtigung als 
+9. Der Tierhalter erhält eine Benachrichtigung als 
 Bestätigung der Änderung. \\
 \hline
 \textbf{Alternativszenario} &
@@ -333,7 +333,7 @@ gebuchten Termin. \\
 \textbf{Akteure} & Tierhalter \\
 \hline
 \textbf{Vorbedingungen} & 
-Der Tierhalter ist eingeloggt. \newline
+Der Tierhalter ist angemeldet. \newline
 Der Tierhalter hat mindestens einen gebuchten Termin. \\
 \hline
 \textbf{Auslösendes Ereignis} & Der Tierhalter möchte einen gebuchten 
@@ -348,7 +348,7 @@ einer Warnmeldung. \newline
 5. Der Tierhalter bestätigt die Stornierung. \newline
 6. Die Anwendung hebt die Buchungsverbindung auf und gibt 
 den Termin frei. \newline
-7. Der Tierhalter erhält eine Push-Benachrichtigung als 
+7. Der Tierhalter erhält eine Benachrichtigung als 
 Bestätigung der Stornierung. \newline
 8. Der Tierhalter wird zum Tab „Meine Termine" weitergeleitet. \\
 \hline
@@ -373,7 +373,7 @@ Termine in einer Tages- und Wochenansicht ein. \\
 \textbf{Akteure} & Tierarztpraxis \\
 \hline
 \textbf{Vorbedingungen} & 
-Die Tierarztpraxis ist eingeloggt. \\
+Die Tierarztpraxis ist angemeldet. \\
 \hline
 \textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte einen 
 Überblick über alle anstehenden Buchungen erhalten. \\
@@ -410,7 +410,7 @@ verfügbaren Terminslot in der Anwendung an. \\
 \textbf{Akteure} & Tierarztpraxis \\
 \hline
 \textbf{Vorbedingungen} & 
-Die Tierarztpraxis ist eingeloggt. \\
+Die Tierarztpraxis ist angemeldet. \\
 \hline
 \textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte einen 
 neuen Terminslot für Tierhalter verfügbar machen. \\
@@ -449,7 +449,7 @@ bestehenden Terminslot oder sperrt einen Zeitraum. \\
 \textbf{Akteure} & Tierarztpraxis \\
 \hline
 \textbf{Vorbedingungen} & 
-Die Tierarztpraxis ist eingeloggt. \newline
+Die Tierarztpraxis ist angemeldet. \newline
 Es existiert mindestens ein Terminslot. \\
 \hline
 \textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte einen 
@@ -481,7 +481,7 @@ Daten angezeigt. \\
 \hline
 \end{tabular}
 
-\subsection{gebuchten Termin absagen}
+\subsection{Gebuchten Termin absagen}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|p{5cm}|p{9.2cm}|}
 \hline
@@ -493,7 +493,7 @@ Termin ab und der betroffene Tierhalter wird automatisch benachrichtigt. \\
 \textbf{Akteure} & Tierarztpraxis \\
 \hline
 \textbf{Vorbedingungen} & 
-Die Tierarztpraxis ist eingeloggt. \newline
+Die Tierarztpraxis ist angemeldet. \newline
 Es existiert mindestens ein gebuchter Termin. \\
 \hline
 \textbf{Auslösendes Ereignis} & Die Tierarztpraxis möchte einen 
@@ -508,7 +508,7 @@ einer Warnmeldung. \newline
 5. Die Tierarztpraxis bestätigt die Absage. \newline
 6. Die Anwendung gibt den Terminslot frei. \newline
 7. Die Anwendung benachrichtigt den betroffenen Tierhalter 
-automatisch per Push-Benachrichtigung und E-Mail. \\
+automatisch per Benachrichtigung. \\
 \hline
 \textbf{Alternativszenario} &
 1. Die Tierarztpraxis bricht den Bestätigungs-Bottom-Sheet ab 

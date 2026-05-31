@@ -1,6 +1,6 @@
 \chapter{Implementierung}
 
-Aufbauend auf den im vorherigen Kapitel erläuterten technischen Grundlagen beschreibt dieses Kapitel die konkrete Umsetzung der mobilen Anwendung von \textit{petappoint}. Der Fokus liegt dabei ausschließlich auf der Tierhalter Rolle, da nur diese im Rahmen dieser Arbeit implementiert wurde.
+Aufbauend auf den im vorherigen Kapitel erläuterten technischen Grundlagen beschreibt dieses Kapitel die konkrete Umsetzung der mobilen Anwendung von \textit{petappoint}. Der Fokus liegt dabei ausschließlich auf der Tierhalter-Rolle, da nur diese im Rahmen dieser Arbeit implementiert wurde.
 
 \section{Projektstruktur}
 
@@ -44,7 +44,7 @@ Die Navigationsstruktur von \textit{petappoint} basiert auf Expo Router und wird
 
 \subsection{Root Layout}
 
-Das Root Layout in \texttt{app/\_layout.tsx} bildet den Einstiegspunkt der gesamten Anwendung und entspricht konzeptionell der \texttt{App.tsx} in einer klassischen React-Anwendung. Es stellt und initialisiert die globale Provider und Konfigurationen für alle untergeordneten Komponenten bereit, bevor die eigentliche Navigation gestartet wird. Diese werden in den nächsten Abschnitten nochmal detaillierter erklärt.
+Das Root Layout in \texttt{app/\_layout.tsx} bildet den Einstiegspunkt der gesamten Anwendung und entspricht konzeptionell der \texttt{App.tsx} in einer klassischen React-Anwendung.Es stellt globale Provider und Konfigurationen bereit und initialisiert diese für alle untergeordneten Komponenten, bevor die eigentliche Navigation gestartet wird. Diese werden in den nächsten Abschnitten nochmal detaillierter erklärt.
 
 Der Root-Stack registriert alle Routengruppen und modalen Screens der Anwendung. Ein Modal Screen bezeichnet ein temporäres Layout, das sich über den Hauptbildschirm legt und eine Benutzerinteraktion erfordert, bevor die Anwendung fortgesetzt werden kann \cite{expo-modals}. Die Modal Screens werden dabei direkt im Root-Stack als \texttt{fullScreenModal} registriert, damit die Navigation zwischen Modals und Tab-Screens korrekt unterscheiden und navigieren kann:
 
@@ -268,9 +268,7 @@ export async function apiRequest<T>(
 \label{lst:api-request}
 \end{listing}
 
-Zweitens behandelt \texttt{apiRequest} HTTP-401-Antworten zentral: Gibt das Backend einen
-401-Statuscode zurück wird \texttt{clearAuth()}
-automatisch aufgerufen. Der Token wird aus dem Store entfernt wird und leitet den Nutzer beim nächsten Render automatisch zum Login-Screen weiter.
+Zweitens behandelt \texttt{apiRequest} HTTP-401-Antworten zentral: Gibt das Backend einen 401-Statuscode zurück wird \texttt{clearAuth()} automatisch aufgerufen. Der Token wird aus dem Store entfernt und leitet den Nutzenden beim nächsten Render automatisch zum Login-Screen weiter.
 
 \subsection{Login- und Logout-Flow}
 
@@ -348,7 +346,7 @@ export function useSession() {
 \end{listing}
 
 Mit \texttt{retry: false} wird verhindert, dass TanStack Query den Aufruf bei einem Fehler
-wiederholt, dass heißt ein ungültiges Token soll sofort zur Abmeldung führen. Die \texttt{staleTime}
+wiederholt. Das heißt, ein ungültiges Token führt sofort zur Abmeldung. Die \texttt{staleTime}
 von fünf Minuten bedeutet, dass die Daten nach diesem Zeitraum als veraltet markiert werden.
 
 \section{Umsetzung der API-Anbindung mit TanStack Query}
@@ -402,7 +400,7 @@ export function useAllPractices() {
 \label{lst:use-all-practices}
 \end{listing}
 
-Für statische Referenzdaten, deren Inhalt sich zur Laufzeit nicht verändert wird \texttt{staleTime: Infinity} gesetzt. Dadurch gelten diese Daten nach dem initialen Abruf für die gesamte Laufzeit der Anwendung als aktuell und werden nicht erneut vom Backend angefordert.
+Für statische Referenzdaten, deren Inhalt sich zur Laufzeit nicht verändert, wird \texttt{staleTime: Infinity} gesetzt. Dadurch gelten diese Daten nach dem initialen Abruf für die gesamte Laufzeit der Anwendung als aktuell und werden nicht erneut vom Backend angefordert.
 
 Für Screens, die mehrere zusammengehörige Datensätze erfordern, werden mehrere Queries innerhalb eines einzigen Hooks zusammengefasst und parallel ausgeführt. Der Hook \texttt{usePracticeDetails} bündelt beispielsweise drei Queries für die Stammdaten, die verfügbaren Leistungen sowie die freien Termine einer Tierarztpraxis:
 
