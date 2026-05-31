@@ -31,7 +31,7 @@ Brevo & Transaktionaler E-Mail-Dienst \\
 
 \subsection{React Native}
 
-React Native ist ein von Meta entwickeltes Open-Source-Framework, das die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren UI-Elementen \cite[S.~4]{galitz2002} Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten Anwendung mit iOS oder Android. Da das Backend bereits in TypeScript implementiert ist, ermöglicht React Native zudem eine durchgängige Verwendung derselben Sprache über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand erheblich reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden\cite{react-native-docs}.
+React Native ist ein von Meta entwickeltes Open-Source-Framework, das die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren UI-Elementen \cite[S.~4]{galitz2002}. Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten Anwendung mit iOS oder Android. Da das Backend bereits in TypeScript implementiert ist, ermöglicht React Native zudem eine durchgängige Verwendung derselben Sprache über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand erheblich reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden \cite{react-native-docs}.
 
 Als Nachteil älterer Versionen ist zu nennen, dass React Native Anwendungen mit hohen aufwendigen Animationen oder Spielen an seine Grenzen stoßen konnte, da die Kommunikation zwischen 
 JavaScript und der nativen Ebene einen gewissen Aufwand mit sich brachte. Mit der neuen Architektur in der das JavaScript Interface (JSI) hinzukam, wurde dieses Problem jedoch 
@@ -65,7 +65,7 @@ Expo wurde als Entwicklungsplattform für \textit{petappoint} gewählt, da die o
 Da die Wahl dadurch bereits gefallen war, ergab sich Expo Router als konsequente Folgeentscheidung, 
 da es von Expo als offizielles Navigationssystem empfohlen wird \cite{expo-router}. Die Navigationsstruktur der Anwendung wird dabei direkt über das Dateiverzeichnis abgebildet, wobei jede Datei im \texttt{app}-Verzeichnis automatisch einer Route entspricht. Dadurch wird Nachvollziehbarkeit der Navigationslogik erhöht, indem die Ordnerstruktur direkt die Struktur der App widerspiegelt. 
 
-Um weiterhin in der Entwicklungsumgebung von Expo zu bleiben wurde die Anwendung für das Testen auf einem physischen Gerät durch ein Development Build eingesetzt. Dabei wird ein individuell konfigurierter nativer Build der Anwendung erstellt, der den Expo Dev Client enthält und direkt auf dem Gerät installiert wird \cite{expo-build}. Daduch wird die Verwendung beliebiger nativer Module erlaubt und spiegelt das Verhalten der finalen Produktionsanwendung deutlich genauer wider. Das Expo Software Development Kit (Expo SDK) bietet darüber hinaus eine Sammlung an vorgefertigten Modulen für den Zugriff auf native Gerätefunktionen wie Kamera, Standort oder Benachrichtigungen \cite{expo-build}.
+Um weiterhin in der Entwicklungsumgebung von Expo zu bleiben wurde die Anwendung für das Testen auf einem physischen Gerät durch ein Development Build eingesetzt. Dabei wird ein individuell konfigurierter nativer Build der Anwendung erstellt, der den Expo Dev Client enthält und direkt auf dem Gerät installiert wird \cite{expo-build}. Dadurch wird die Verwendung beliebiger nativer Module erlaubt und spiegelt das Verhalten der finalen Produktionsanwendung deutlich genauer wider. Das Expo Software Development Kit (Expo SDK) bietet darüber hinaus eine Sammlung an vorgefertigten Modulen für den Zugriff auf native Gerätefunktionen wie Kamera, Standort oder Benachrichtigungen \cite{expo-build}.
 
 
 Für die Speicherung sicherheitsrelevanter Daten, wie beispielsweise Authentifizierungstokens, stellt das Expo SDK mit expo-secure-store eine integrierte Lösung bereit. Die Bibliothek legt Daten verschlüsselt als Key-Value-Paare ab und greift dabei direkt auf die systemeigenen Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain oder den Android-KeyStore \cite{expo-service}.
@@ -100,10 +100,10 @@ lokalem Client-State bietet. Für Anwendungen, die sowohl umfangreichen
 Server-State als auch komplexen Client-State verwalten müssen, ist 
 daher eine zusätzliche State-Management-Lösung erforderlich \cite{tanstack-query-docs}.
 
-\subsection{Stale-While-Revalidate}
+\subsection{SWR (Stale-While-Revalidate)}
 
 Stale-While-Revalidate (SWR) ist eine von Vercel entwickelte Bibliothek für das Server-State-Management in React- und React-Native-Anwendungen. Der Name leitet sich von
-Stale-While-Revalidate-Prinzip ab, das auch SWR zugrunde liegt. Das Prinzip funktioniert so, dass Gecachte Daten werden sofort zurückgegeben, während im Hintergrund eine Aktualisierung stattfindet \cite{swr-docs}.
+Stale-While-Revalidate-Prinzip ab, das auch SWR zugrunde liegt. Das Prinzip funktioniert so, dass gecachte Daten sofort zurückgegeben werden, während im Hintergrund eine Aktualisierung stattfindet \cite{swr-docs}.
 
 Ein Vorteil von SWR ist die schlanke API und die geringe Paketgröße, was eine schnelle Integration in bestehende Projekte ermöglicht. Für einfachere Anwendungen mit überschaubaren Datenanforderungen bietet SWR eine leichtgewichtige Alternative zu TanStack Query.
 
@@ -227,7 +227,7 @@ gestalterische Freiheit, da es nicht an ein spezifisches Design-System
 wie Material Design gebunden ist und somit ein individuelles 
 Erscheinungsbild der Anwendung ermöglicht \cite{gluestack-docs}.
 
-\section{Internationalisierung mit i18next}
+\section{Internationalisierung}
 
 \subsection{i18next}
 
@@ -301,8 +301,8 @@ Server-State-Management mit automatischem Caching und
 Fehlermanagement, während Zustand den lokalen Client-State 
 schlank und ohne Boilerplate verwaltet. Da \textit{petappoint} eine 
 datengetriebene Anwendung ist, die primär Serverdaten abruft 
-und anzeigt, ist diese klare Trennung zwischen Server- und 
-Client-State besonders vorteilhaft.
+und anzeigt, ist diese Trennung zwischen Server- und
+Client-State konsequent umgesetzt.
 
 Gluestack UI und i18next vervollständigen den Stack auf der 
 Präsentationsebene: Gluestack UI stellt ein konsistentes 
@@ -313,8 +313,7 @@ Systemsprache des Geräts sicherstellt.
 
 Insgesamt wurde bei der Technologieauswahl darauf geachtet, 
 bewährte und gut dokumentierte Lösungen einzusetzen, die sich 
-im React Native Ökosystem etabliert haben und als Stack 
-synergetisch zusammenwirken.
+im React Native Ökosystem etabliert haben und komplementär zusammenwirken.
 
 Die folgende Tabelle gibt einen abschließenden Überblick über alle eingesetzten Technologien und deren Funktion in der Anwendung.
 

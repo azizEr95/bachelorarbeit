@@ -76,78 +76,46 @@ Jeder Vergleichsabschnitt folgt demselben Muster:
 
 ---
 
-## Bekannte Probleme
-
-### Problem 1 – Fehlender Punkt nach `\cite` (§4.2 / React Native)
-Im Text steht „bestehen aus mehreren UI-Elementen \cite[S.~4]{galitz2002} Dadurch" ohne Punkt.
-→ Ergänze: „\cite[S.~4]{galitz2002}. Dadurch"
-
-### Problem 2 – Fehlendes Leerzeichen vor `\cite` (§4.2 / React Native)
-Im Text steht „können\cite{react-native-docs}" ohne Leerzeichen.
-→ Ergänze: „können \cite{react-native-docs}"
-
-### Problem 3 – Tippfehler „Daduch" (§4.3)
-Im Text steht „Daduch wird die Verwendung beliebiger nativer Module erlaubt".
-→ Korrigiere auf: „Dadurch"
-
-### Problem 4 – Fehlende Quellenangabe (§4.3)
-Der letzte Satz über das Expo SDK in §4.3 hat kein `\cite{}`.
-→ Ergänze `\cite{expo-build}` oder den passenden Key.
-
-### Problem 5 – Grammatikalischer Fehler im SWR-Abschnitt (§4.4.2)
-Im Text steht: „Das Prinzip funktioniert so, dass Gecachte Daten werden sofort zurückgegeben"
-→ Korrigiere auf: „Gecachte Daten werden sofort zurückgegeben, während im Hintergrund eine Aktualisierung stattfindet."
-
-### Problem 6 – Großschreibung „Gecachte" (§4.4.2)
-„Gecachte" ist im Fließtext großgeschrieben — kein Nomen.
-→ Korrigiere auf: „gecachte"
-
-### Problem 7 – Abschnittsüberschrift SWR unklar (§4.4.2)
-Der Abschnitt heißt „Stale-While-Revalidate", beschreibt aber primär die SWR-Bibliothek von Vercel.
-→ Benenne auf Anfrage um in: „SWR (Stale-While-Revalidate)"
-
----
-
 ## Begriffe & Quellen
 
 ### Einheitliche Begriffe in diesem Kapitel
 
-| Falsch | Richtig |
-|---|---|
-| cross-platform | `plattformübergreifend` |
-| Nutzer | `Nutzende` |
-| Xamarin | Nur als Vorgänger von `.NET MAUI` erwähnen |
+| Falsch         | Richtig                                    |
+|----------------|--------------------------------------------|
+| cross-platform | `plattformübergreifend`                    |
+| Nutzer         | `Nutzende`                                 |
+| Xamarin        | Nur als Vorgänger von `.NET MAUI` erwähnen |
 
 ### Verwendete Quellen
 
 Entnimm alle konkreten Inhalte immer aus dem aktuellen `.tex`-Text. Die Cite-Keys dienen zur Orientierung:
 
-| Cite-Key | Inhalt |
-|---|---|
-| `\cite{nodejs-docs}` | Node.js Dokumentation |
-| `\cite{express-docs}` | Express Dokumentation |
-| `\cite{postgresql_transactions}` | PostgreSQL — ACID-Eigenschaften |
-| `\cite{postgresql_about}` | PostgreSQL — allgemeine Beschreibung |
-| `\cite{typescript-docs}` | TypeScript Dokumentation |
-| `\cite{zod-docs}` | Zod Dokumentation |
-| `\cite{brevo-docs}` | Brevo — E-Mail-Dienst |
-| `\cite{react-native-docs}` | React Native Dokumentation |
-| `\cite{react-native-new-arch}` | React Native neue Architektur / JSI |
-| `\cite{flutter-docs}` | Flutter Dokumentation |
-| `\cite{maui-docs}` | .NET MAUI Dokumentation |
-| `\cite{expo-docs}` | Expo Dokumentation |
-| `\cite{expo-router}` | Expo Router |
-| `\cite{expo-build}` | Expo Development Build / SDK |
-| `\cite{expo-service}` | Expo Secure Store |
-| `\cite{tanstack-query-docs}` | TanStack Query Dokumentation |
-| `\cite{swr-docs}` | SWR Dokumentation |
-| `\cite{redux-toolkit-docs}` | Redux Toolkit Dokumentation |
-| `\cite{zustand-docs}` | Zustand Dokumentation |
-| `\cite{gluestack-docs}` | Gluestack UI Dokumentation |
-| `\cite{react-native-paper-docs}` | React Native Paper Dokumentation |
-| `\cite{i18n-docs}` | i18next Dokumentation |
-| `\cite{react-intl-docs}` | react-intl Dokumentation |
-| `\cite{galitz2002}` | UI-Elemente — Definition |
+| Cite-Key                         | Inhalt                               |
+|----------------------------------|--------------------------------------|
+| `\cite{nodejs-docs}`             | Node.js Dokumentation                |
+| `\cite{express-docs}`            | Express Dokumentation                |
+| `\cite{postgresql_transactions}` | PostgreSQL — ACID-Eigenschaften      |
+| `\cite{postgresql_about}`        | PostgreSQL — allgemeine Beschreibung |
+| `\cite{typescript-docs}`         | TypeScript Dokumentation             |
+| `\cite{zod-docs}`                | Zod Dokumentation                    |
+| `\cite{brevo-docs}`              | Brevo — E-Mail-Dienst                |
+| `\cite{react-native-docs}`       | React Native Dokumentation           |
+| `\cite{react-native-new-arch}`   | React Native neue Architektur / JSI  |
+| `\cite{flutter-docs}`            | Flutter Dokumentation                |
+| `\cite{maui-docs}`               | .NET MAUI Dokumentation              |
+| `\cite{expo-docs}`               | Expo Dokumentation                   |
+| `\cite{expo-router}`             | Expo Router                          |
+| `\cite{expo-build}`              | Expo Development Build / SDK         |
+| `\cite{expo-service}`            | Expo Secure Store                    |
+| `\cite{tanstack-query-docs}`     | TanStack Query Dokumentation         |
+| `\cite{swr-docs}`                | SWR Dokumentation                    |
+| `\cite{redux-toolkit-docs}`      | Redux Toolkit Dokumentation          |
+| `\cite{zustand-docs}`            | Zustand Dokumentation                |
+| `\cite{gluestack-docs}`          | Gluestack UI Dokumentation           |
+| `\cite{react-native-paper-docs}` | React Native Paper Dokumentation     |
+| `\cite{i18n-docs}`               | i18next Dokumentation                |
+| `\cite{react-intl-docs}`         | react-intl Dokumentation             |
+| `\cite{galitz2002}`              | UI-Elemente — Definition             |
 
 ---
 
