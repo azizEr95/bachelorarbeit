@@ -109,12 +109,12 @@ In den Navigations- und Aktivitätsdiagramm-Abschnitten wird mehrfach „Nutzer"
 
 ### Einheitliche Begriffe in diesem Kapitel
 
-| Falsch | Richtig |
-|---|---|
-| Nutzer | `Nutzende` |
+| Falsch                          | Richtig                           |
+|---------------------------------|-----------------------------------|
+| Nutzer                          | `Nutzende`                        |
 | nicht funktionale Anforderungen | `Nicht-funktionale Anforderungen` |
-| Tierbesitzer | `Tierhalter` |
-| cross-platform | `plattformübergreifend` |
+| Tierbesitzer                    | `Tierhalter`                      |
+| cross-platform                  | `plattformübergreifend`           |
 
 ### Verwendete Quellen
 
