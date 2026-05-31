@@ -1,10 +1,10 @@
 \chapter{Technische Grundlagen}
 
-Aufbauend auf der im vorherigen Kapitel erarbeiteten Konzeption werden in diesem Kapitel die technischen Grundlagen erläutert, die für die Umsetzung von petappoint eingesetzt werden.
+Aufbauend auf der im vorherigen Kapitel erarbeiteten Konzeption werden in diesem Kapitel die technischen Grundlagen erläutert, die für die Umsetzung von \textit{petappoint} eingesetzt werden.
 
 \section{Technologien im bereits bestehenden Backend}
 
-Das Backend von petappoint wurde im Rahmen eines vorangegangenen Projektmoduls entwickelt und bildet die technische Grundlage für die in dieser Arbeit umgesetzte mobile Anwendung. Es basiert auf Node.js und Express, die gemeinsam eine REST-API bereitstellen, über die das Frontend sämtliche Daten abruft und verwaltet \cite{nodejs-docs, express-docs}. Als Datenbank kommt PostgreSQL zum Einsatz, das die ACID-Eigenschaften gewährleistet. ACID steht für Atomicity, Consistency, Isolation und Durability und beschreibt die Anforderungen an sichere und zuverlässige Datenbanktransaktionen \cite{postgresql_transactions}. Jegliche angefragte Änderungen werden entweder vollständig oder gar nicht ausgeführt, die Datenkonsistenz bleibt stets gewahrt, parallele Transaktionen beeinflussen sich nicht gegenseitig und abgeschlossene Transaktionen bleiben dauerhaft gespeichert \cite{postgresql_about}. Die Geschäftslogik ist durchgängig in TypeScript implementiert, wodurch Typsicherheit über alle Schichten der Anwendung sichergestellt wird \cite{typescript-docs}. Eingehende API-Anfragen werden mithilfe von Zod validiert \cite{zod-docs}. Für den automatisierten Versand von Buchungsbestätigungen und -erinnerungen wird Brevo als transaktionaler E-Mail-Dienst eingesetzt \cite{brevo-docs}.
+Das Backend von \textit{petappoint} wurde im Rahmen eines vorangegangenen Projektmoduls entwickelt und bildet die technische Grundlage für die in dieser Arbeit umgesetzte mobile Anwendung. Es basiert auf Node.js und Express, die gemeinsam eine REST-API bereitstellen, über die das Frontend sämtliche Daten abruft und verwaltet \cite{nodejs-docs, express-docs}. Als Datenbank kommt PostgreSQL zum Einsatz, das die ACID-Eigenschaften gewährleistet. ACID steht für Atomicity, Consistency, Isolation und Durability und beschreibt die Anforderungen an sichere und zuverlässige Datenbanktransaktionen \cite{postgresql_transactions}. Jegliche angefragte Änderungen werden entweder vollständig oder gar nicht ausgeführt, die Datenkonsistenz bleibt stets gewahrt, parallele Transaktionen beeinflussen sich nicht gegenseitig und abgeschlossene Transaktionen bleiben dauerhaft gespeichert \cite{postgresql_about}. Die Geschäftslogik ist durchgängig in TypeScript implementiert, wodurch Typsicherheit über alle Schichten der Anwendung sichergestellt wird \cite{typescript-docs}. Eingehende API-Anfragen werden mithilfe von Zod validiert \cite{zod-docs}. Für den automatisierten Versand von Buchungsbestätigungen und -erinnerungen wird Brevo als transaktionaler E-Mail-Dienst eingesetzt \cite{brevo-docs}.
 
 \begin{table}[H]
 \begin{tabular}{|p{5cm}|p{9cm}|}
@@ -53,14 +53,14 @@ erheblichen Einarbeitungsaufwand bedeutet~\cite{maui-docs}.
 
 \subsection{Begründung der Wahl von React Native}
 
-React Native wurde als Framework für petappoint gewählt, da es durch die gemeinsame Verwendung von TypeScript mit dem Backend eine konsistente Typisierung über alle Schichten der Anwendung ermöglicht. Dadurch können Typdefinitionen und 
-Validierungslogiken zwischen Backend und Frontend geteilt werden, was die Konsistenz der Codebasis erhöht und Fehlerquellen reduziert. Zudem entfällt durch die Nähe zu React ein vollständiger Technologiewechsel, was den Entwicklungsaufwand gegenüber Flutter und .NET MAUI deutlich senkt. Da petappoint keine aufwendigen Animationen erfordert, spielen die früheren performance-kritischen Grenzen von React Native keine entscheidende Rolle.
+React Native wurde als Framework für \textit{petappoint} gewählt, da es durch die gemeinsame Verwendung von TypeScript mit dem Backend eine konsistente Typisierung über alle Schichten der Anwendung ermöglicht. Dadurch können Typdefinitionen und 
+Validierungslogiken zwischen Backend und Frontend geteilt werden, was die Konsistenz der Codebasis erhöht und Fehlerquellen reduziert. Zudem entfällt durch die Nähe zu React ein vollständiger Technologiewechsel, was den Entwicklungsaufwand gegenüber Flutter und .NET MAUI deutlich senkt. Da \textit{petappoint} keine aufwendigen Animationen erfordert, spielen die früheren performance-kritischen Grenzen von React Native keine entscheidende Rolle.
 
 \section{Expo als empfohlene Entwicklungsplattform für React Native}
 
 Expo ist eine Open-Source-Plattform, die auf React Native aufbaut und die Entwicklung, das Testen und die Veröffentlichung mobiler Anwendungen vereinfacht. Sie stellt eine Sammlung von vorkonfigurierten Tools, Bibliotheken und Diensten bereit, die den Einstieg in die React Native Entwicklung erheblich erleichtern \cite{expo-docs}. Expo abstrahiert dabei viele der komplexen nativen Konfigurationsschritte und bietet stattdessen eine einheitliche Entwicklungsumgebung für iOS und Android.
 
-Expo wurde als Entwicklungsplattform für petappoint gewählt, da die offizielle React Native Dokumentation Expo ausdrücklich als empfohlenen Weg für die Entwicklung neuer React-Native-Anwendungen bezeichnet \cite{react-native-docs}. 
+Expo wurde als Entwicklungsplattform für \textit{petappoint} gewählt, da die offizielle React Native Dokumentation Expo ausdrücklich als empfohlenen Weg für die Entwicklung neuer React-Native-Anwendungen bezeichnet \cite{react-native-docs}. 
 
 Da die Wahl dadurch bereits gefallen war, ergab sich Expo Router als konsequente Folgeentscheidung, 
 da es von Expo als offizielles Navigationssystem empfohlen wird \cite{expo-router}. Die Navigationsstruktur der Anwendung wird dabei direkt über das Dateiverzeichnis abgebildet, wobei jede Datei im \texttt{app}-Verzeichnis automatisch einer Route entspricht. Dadurch wird Nachvollziehbarkeit der Navigationslogik erhöht, indem die Ordnerstruktur direkt die Struktur der App widerspiegelt. 
@@ -122,7 +122,7 @@ Als Nachteil setzt RTK Query die Verwendung von Redux voraus, was einen erheblic
 
 \subsection{Begründung der Wahl von TanStack Query}
 
-TanStack Query wurde als Server-State-Lösung für petappoint gewählt, da es durch sein spezialisiertes Server-State-Management und die automatische Verwaltung von Ladezuständen und Caching den Implementierungsaufwand erheblich reduziert. Gegenüber SWR bietet TanStack Query einen deutlich größeren Funktionsumfang, und gegenüber RTK Query entfällt der hohe Konfigurationsaufwand einer vollständigen Redux-Integration. Darüber hinaus war TanStack Query bereits im vorangegangenen Projektmodul im Einsatz, wodurch Vorerfahrung im Umgang mit der Bibliothek vorhanden war.
+TanStack Query wurde als Server-State-Lösung für \textit{petappoint} gewählt, da es durch sein spezialisiertes Server-State-Management und die automatische Verwaltung von Ladezuständen und Caching den Implementierungsaufwand erheblich reduziert. Gegenüber SWR bietet TanStack Query einen deutlich größeren Funktionsumfang, und gegenüber RTK Query entfällt der hohe Konfigurationsaufwand einer vollständigen Redux-Integration. Darüber hinaus war TanStack Query bereits im vorangegangenen Projektmodul im Einsatz, wodurch Vorerfahrung im Umgang mit der Bibliothek vorhanden war.
 
 \section{Client-State-Management}
 
@@ -145,7 +145,7 @@ Als Nachteil gilt der vergleichsweise hohe Boilerplate-Aufwand, auch in der Tool
 
 \subsection{Begründung der Wahl von Zustand}
 
-Zustand wurde als Client-State-Lösung für petappoint gewählt, da es durch seine schlanke API und den geringen Konfigurationsaufwand optimal zur Größe und Komplexität der Anwendung passt. Gegenüber Redux Toolkit entfällt der hohe Boilerplate-Aufwand, was für eine mittelgroße Anwendung wie petappoint verhältnismäßiger ist. Da petappoint primär Serverdaten verwaltet und nur wenig lokalen Client-State benötigt, ist eine schlanke Lösung wie Zustand einer umfangreichen Bibliothek 
+Zustand wurde als Client-State-Lösung für \textit{petappoint} gewählt, da es durch seine schlanke API und den geringen Konfigurationsaufwand optimal zur Größe und Komplexität der Anwendung passt. Gegenüber Redux Toolkit entfällt der hohe Boilerplate-Aufwand, was für eine mittelgroße Anwendung wie \textit{petappoint} verhältnismäßiger ist. Da \textit{petappoint} primär Serverdaten verwaltet und nur wenig lokalen Client-State benötigt, ist eine schlanke Lösung wie Zustand einer umfangreichen Bibliothek 
 wie Redux Toolkit vorzuziehen.
 
 \section{UI-Komponentenbibliotheken}
@@ -217,7 +217,7 @@ und Mechanismen für die konsistente Verwaltung von Design-Tokens.
 
 \subsection{Begründung der Wahl von Gluestack UI}
 
-Gluestack UI wurde als UI-Komponentenbibliothek für petappoint gewählt, 
+Gluestack UI wurde als UI-Komponentenbibliothek für \textit{petappoint} gewählt, 
 da es eine umfangreiche Sammlung anpassbarer Komponenten mit einem 
 konsistenten Token-basierten Design-System vereint. Im Vergleich zu 
 StyleSheet entfällt der Aufwand, alle UI-Elemente von Grund auf selbst 
@@ -269,7 +269,7 @@ zudem zusätzlichen Konfigurationsaufwand \cite{react-intl-docs}.
 
 \subsection{Begründung der Wahl von i18next}
 
-i18next wurde als Internationalisierungslösung für petappoint gewählt, 
+i18next wurde als Internationalisierungslösung für \textit{petappoint} gewählt, 
 da es sich als Standardlösung im React Native Ökosystem etabliert hat 
 und die automatische Anpassung an die Systemsprache des Geräts ohne 
 zusätzlichen Konfigurationsaufwand ermöglicht. Gegenüber react-intl 
@@ -299,7 +299,7 @@ Auf der Datenschicht ergänzen sich TanStack Query und Zustand
 komplementär: TanStack Query übernimmt das spezialisierte 
 Server-State-Management mit automatischem Caching und 
 Fehlermanagement, während Zustand den lokalen Client-State 
-schlank und ohne Boilerplate verwaltet. Da petappoint eine 
+schlank und ohne Boilerplate verwaltet. Da \textit{petappoint} eine 
 datengetriebene Anwendung ist, die primär Serverdaten abruft 
 und anzeigt, ist diese klare Trennung zwischen Server- und 
 Client-State besonders vorteilhaft.

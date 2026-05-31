@@ -10,7 +10,9 @@ Lies sie vollständig bevor du schreibst, prüfst oder überarbeitest.
 ## Aufgaben die du in diesem Kapitel übernimmst
 
 - Bestehende Abschnitte auf Stil, Konsistenz und korrekte Referenzierung prüfen
-- Bekannte Fehler auf Anfrage korrigieren
+- Stilmängel und Fehler korrigieren
+- Überprüfe ob gewiße Aussagen ohne Quelle getroffen worden sind
+- Verwende bei der Nennung von petappoint diesen Still `\textit{petappoint}` im ganzen Kapitel.
 
 Warte auf konkrete Aufgaben. Arbeite immer nur am angefragten Abschnitt.
 

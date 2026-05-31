@@ -11,7 +11,9 @@ Lies sie vollständig bevor du schreibst, prüfst oder überarbeitest.
 
 - Textentwürfe für einzelne Abschnitte auf Basis von Stichpunkten ausformulieren
 - Bestehende Abschnitte auf Stil, Wissenschaftlichkeit und Konsistenz prüfen
-- Bekannte Stilmängel und Fehler auf Anfrage korrigieren
+- Stilmängel und Fehler korrigieren
+- Überprüfe ob gewiße Aussagen ohne Quelle getroffen worden sind
+- Verwende bei der Nennung von petappoint diesen Still `\textit{petappoint}` im ganzen Kapitel.
 
 Warte auf konkrete Aufgaben. Arbeite immer nur am angefragten Abschnitt.
 
