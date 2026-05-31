@@ -11,7 +11,8 @@ Lies sie vollständig bevor du schreibst, prüfst oder überarbeitest.
 
 - Textentwürfe für einzelne Abschnitte auf Basis von Stichpunkten ausformulieren
 - Bestehende Abschnitte auf Stil, Wissenschaftlichkeit und Konsistenz prüfen
-- Bekannte Stilmängel und Fehler auf Anfrage korrigieren
+- Stilmängel und Fehler korrigieren
+- Überprüfe ob gewiße Aussagen ohne Quelle getroffen worden sind
 
 Warte auf konkrete Aufgaben. Arbeite immer nur am angefragten Abschnitt.
 
@@ -40,7 +41,7 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 #### §3.1.2 Bestehende Backend-Architektur als Grundlage
 - Stelle sicher, dass das ER-Diagramm korrekt referenziert wird (`\ref{fig:erdiagramm}`).
-- Prüfe auf Tippfehler: Im Text steht „ein Tier kann nicht ohne eine Person exitieren" → „existieren".
+- Prüfe auf Tippfehler Im Text steht zum Beispiel „ein Tier kann nicht ohne eine Person exitieren" → „existieren".
 - Prüfe auf grammatikalische Inkonsistenz: „1 Tiertyp kann wiederum mehrere Rassen umfassen, aber mehrere 1 Rassen entstehen aus 1 Tiertyp" — der Satz ist unklar. Formuliere ihn auf Anfrage um.
 - Beschreibe das ER-Diagramm sachlich und ohne Wertung.
 
@@ -119,17 +120,17 @@ In den Navigations- und Aktivitätsdiagramm-Abschnitten wird mehrfach „Nutzer"
 
 Entnimm alle konkreten Inhalte immer aus dem aktuellen `.tex`-Text. Die Cite-Keys dienen zur Orientierung:
 
-| Cite-Key | Inhalt |
-|---|---|
-| `\cite{richards2021}` | Softwarearchitektur — keine einheitliche Definition |
-| `\cite{gharbi2020}` | Softwarearchitektur — inhaltliche Definition |
-| `\cite{tanenbaum2007}` | Schichtenarchitektur, Client-Server, REST-API |
-| `\cite{watt2014}` | ER-Diagramm — Definition und Grundkonzepte |
-| `\cite{sparxsystems2026}` | Komponentendiagramm — Definition |
-| `\cite{sommerville2018}` | Austauschbarkeit von Schichten |
-| `\cite{pohl2021}` | Mockups als visuelle Grundlage |
-| `\cite{galitz2002}` | UI-Elemente — Definition |
-| `\cite{v0-vercel}` | v0 von Vercel — KI-gestütztes Prototyping-Tool |
+| Cite-Key                  | Inhalt                                              |
+|---------------------------|-----------------------------------------------------|
+| `\cite{richards2021}`     | Softwarearchitektur — keine einheitliche Definition |
+| `\cite{gharbi2020}`       | Softwarearchitektur — inhaltliche Definition        |
+| `\cite{tanenbaum2007}`    | Schichtenarchitektur, Client-Server, REST-API       |
+| `\cite{watt2014}`         | ER-Diagramm — Definition und Grundkonzepte          |
+| `\cite{sparxsystems2026}` | Komponentendiagramm — Definition                    |
+| `\cite{sommerville2018}`  | Austauschbarkeit von Schichten                      |
+| `\cite{pohl2021}`         | Mockups als visuelle Grundlage                      |
+| `\cite{galitz2002}`       | UI-Elemente — Definition                            |
+| `\cite{v0-vercel}`        | v0 von Vercel — KI-gestütztes Prototyping-Tool      |
 
 ---
 
