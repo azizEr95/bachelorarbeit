@@ -35,8 +35,7 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 ### §2.1 Zielgruppe
 - Stelle sicher, dass beide Zielgruppen klar unterschieden werden: **Tierhalter** und **Tierarztpraxen**.
-- Prüfe, ob der Verweis auf Kapitel 1 korrekt ist. Im Text steht „in Kapitel 2 wurde deutlich" — das ist falsch, da die Marktanalyse in Kapitel 1 stattfindet. Korrigiere auf „in Kapitel 1" wenn du den Abschnitt überarbeitest.
-- Verwende ausschließlich „Nutzende" statt „Nutzerinnen" oder „Nutzer".
+- Prüfe, ob der Verweis und Inhalt auf Kapitel 1 korrekt ist und übereinstimmt.
 - Der zusammenfassende Absatz am Ende des Abschnitts soll beide Perspektiven explizit benennen.
 
 ### §2.2 Funktionale Anforderungen
@@ -55,27 +54,6 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 - Halte die Tabellenstruktur aller Use Cases einheitlich: Name, Kurzbeschreibung, Akteure, Vorbedingungen, Auslösendes Ereignis, Hauptszenario, Alternativszenario, Nachbedingungen.
 - Prüfe bei jeder Use-Case-Tabelle, ob Akteur, Vorbedingungen und Nachbedingungen vollständig und konsistent sind.
 - UC-01 bis UC-06 betreffen die Tierhalter-Rolle, UC-07 bis UC-10 die Tierarztpraxis-Rolle. Halte diese Zuordnung konsistent!
-
----
-
-## Bekannte Probleme
-
-### Problem 1 – Falscher Kapitelreferenz
-Im Fließtext kommt die Formulierung „in Kapitel 2 wurde deutlich" vor, obwohl die Marktanalyse in Kapitel 1 stattfindet.
-→ Ersetze durch „in Kapitel 1 wurde deutlich" wenn du den Abschnitt überarbeitest.
-
-### Problem 2 – Fehlender Bindestrich
-„Nicht funktionale Anforderungen" erscheint ohne Bindestrich.
-→ Ersetze durch „Nicht-funktionale Anforderungen" überall im Kapitel.
-
-### Problem 3 – Fehlende Kennzeichnung nicht implementierter FAs
-FA#06 und FA#07 wurden definiert und konzipiert, aber nicht implementiert und evaluiert.
-→ Stelle sicher, dass dieser Scope-Hinweis im Text oder als Fußnote erkennbar ist, z.B.:
-„Die Anforderungen FA\#06 und FA\#07 wurden im Rahmen dieser Arbeit konzipiert, jedoch nicht implementiert."
-
-### Problem 4 – „Sie" statt „sie" (Großschreibung)
-Im Use-Cases-Einleitungsabsatz steht „werden Sie im Folgenden durch ein Use-Case-Diagramm ergänzt" — das „Sie" ist fälschlicherweise großgeschrieben.
-→ Ersetze durch „sie".
 
 ---
 

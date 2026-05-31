@@ -60,28 +60,28 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 ### Einheitliche Begriffe in diesem Kapitel
 
-| Falsch | Richtig |
-|---|---|
-| petAppoint, PetAppoint | `petappoint` |
-| Tierbesitzer, Haustierbesitzer | `Tierhalter` |
-| Appointment Management | `Terminverwaltung` |
-| Xamarin | `.NET MAUI` |
+| Falsch                         | Richtig              |
+|--------------------------------|----------------------|
+| petAppoint, PetAppoint         | `petappoint`         |
+| Tierbesitzer, Haustierbesitzer | `Tierhalter`         |
+| Appointment Management         | `Terminverwaltung`   |
+| Xamarin                        | `.NET MAUI`          |
 
 ### Verwendete Quellen
 
 Entnimm alle konkreten Zahlen und Fakten immer aus dem aktuellen `.tex`-Text, nicht aus dieser Datei. Die Cite-Keys dienen zur Orientierung:
 
-| Cite-Key | Inhalt |
-|---|---|
-| `\cite{doctolibreport}` | Doctolib Wachstumsbericht |
-| `\cite{btk2025}` | Bundestierärztekammer 2025 — Anzahl Tierärzte in Deutschland |
-| `\cite{vsmreport}` | Veterinary Software Market Report — Marktgröße + Wachstum |
-| `\cite{doctolib2020}` | Anteil mobiler Online-Buchungen |
-| `\cite{diez2023}` | Umfrage Tierhalter — Online-Präferenz + Wartezeiten (S. 69) |
-| `\cite{petleo-info}` | Petleo Produktinformation |
-| `\cite{petsxl-info}` | petsXL Produktinformation |
-| `\cite{vetpraxis-info}` | vetpraxis Produktinformation |
-| `\cite{hevner2004}` | Design Science Research Methodik |
+| Cite-Key                | Inhalt                                                       |
+|-------------------------|--------------------------------------------------------------|
+| `\cite{doctolibreport}` | Doctolib Wachstumsbericht                                    |
+| `\cite{btk2025}`        | Bundestierärztekammer 2025 — Anzahl Tierärzte in Deutschland |
+| `\cite{vsmreport}`      | Veterinary Software Market Report — Marktgröße + Wachstum    |
+| `\cite{doctolib2020}`   | Anteil mobiler Online-Buchungen                              |
+| `\cite{diez2023}`       | Umfrage Tierhalter — Online-Präferenz + Wartezeiten (S. 69)  |
+| `\cite{petleo-info}`    | Petleo Produktinformation                                    |
+| `\cite{petsxl-info}`    | petsXL Produktinformation                                    |
+| `\cite{vetpraxis-info}` | vetpraxis Produktinformation                                 |
+| `\cite{hevner2004}`     | Design Science Research Methodik                             |
 
 ---
 
