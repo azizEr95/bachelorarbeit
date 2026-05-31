@@ -1,20 +1,20 @@
 \chapter{Anforderungsermittlung}
 
-In der Einleitung wurde deutlich, dass \textit{petappoint} eine fokussierte Lösung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen darstellt. Um diese Lösung zielgerichtet umzusetzen, folgt die Anforderungsermittlung dieser Arbeit den Prinzipien des Requirements Engineering. Das ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Dazu zählen auch die Nutzenden von petappoint. Eine Anforderung wird dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
+In der Einleitung wurde deutlich, dass \textit{petappoint} eine fokussierte Lösung für die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen darstellt. Die in Kapitel~1 abgeleitete Forschungsfrage zielt darauf ab, eine solche Lösung zu konzipieren, umzusetzen und zu evaluieren. Um diese Lösung zielgerichtet umzusetzen, folgt die Anforderungsermittlung dieser Arbeit den Prinzipien des Requirements Engineering. Das ist eine Disziplin, deren Ziel es ist, die Wünsche und Bedürfnisse aller Stakeholder zu verstehen und zu dokumentieren \cite[S.~3]{pohl2021}. Stakeholder sind wiederum Personen oder Organisationen, die Einfluss auf die Anforderungen des Systems haben \cite[S.~2]{pohl2021}. Dazu zählen auch die Nutzenden von \textit{petappoint}. Eine Anforderung wird dabei als ein notwendiges Bedürfnis eines Stakeholders angesehen, die die Anwendung erfüllen muss \cite[S.~1]{pohl2021}.
 
 Die Analyse der Anforderungen bildet die Grundlage für Konzeption und Entwicklung der vorliegenden Anwendung und Arbeit. Ziel dieses Kapitels ist es, ein vollständiges Bild der Anforderungen zu erarbeiten und diese strukturiert zu dokumentieren.
 
-Zu Beginn wird die Zielgruppe der Anwendung identifiziert und charakterisiert. Darauf aufbauend werden die relevanten funktionalen sowie nicht funktionalen Anforderungen hergeleitet und gegliedert dargestellt. Abschließend werden ausgewählte Anforderungen durch Use Cases konkretisiert und in ihrem praktischen Kontext veranschaulicht.
+Zu Beginn wird die Zielgruppe der Anwendung identifiziert und charakterisiert. Darauf aufbauend werden die relevanten funktionalen sowie nicht-funktionalen Anforderungen hergeleitet und gegliedert dargestellt. Abschließend werden ausgewählte Anforderungen durch Use Cases konkretisiert und in ihrem praktischen Kontext veranschaulicht.
 
 \section{Zielgruppe}
-Die Anwendung richtet sich an zwei primäre Zielgruppen: Tierhalter sowie Tierarztpraxen. Im Rahmen der Analyse bestehender Softwarelösungen in Kapitel 2 wurde deutlich, dass in diesem Bereich keine spezialisierte Terminverwaltungslösung existiert, die beide gleichermaßen adressiert.
+Die Anwendung richtet sich an zwei primäre Zielgruppen: Tierhalter sowie Tierarztpraxen. Im Rahmen der Analyse bestehender Softwarelösungen in Kapitel 1 wurde deutlich, dass in diesem Bereich keine spezialisierte Terminverwaltungslösung existiert, die beide gleichermaßen adressiert.
 
 Die Anforderungen beider Zielgruppen lassen sich durch folgende Aspekte charakterisieren:
 
 \textbf{Tierhalter}
 
 \begin{itemize}
-    \item \textbf{Einfache Bedienbarkeit:} Da die Nutzende in der Regel über keine spezifischen technischen Vorkenntnisse verfügen, muss die Anwendung intuitiv bedienbar sein und ohne umfangreiche Einarbeitung genutzt werden können.
+    \item \textbf{Einfache Bedienbarkeit:} Da Nutzende in der Regel über keine spezifischen technischen Vorkenntnisse verfügen, muss die Anwendung intuitiv bedienbar sein und ohne umfangreiche Einarbeitung genutzt werden können.
     \item \textbf{Verfügbarkeit rund um die Uhr:} Da berufstätige Tierhalter häufig tagsüber keine Möglichkeit haben, telefonisch einen Termin zu vereinbaren, muss die Buchung zu jeder Tages- und Nachtzeit möglich sein.
     \item \textbf{Haustierzentrierte Verwaltung:} Die Anwendung muss die Anlage mehrerer Haustierprofile mit relevanten Informationen wie Tierart, Rasse und Geburtsdatum unterstützen.
     \item \textbf{Benachrichtigungen:} Automatische Erinnerungen vor bevorstehenden Terminen per E-Mail oder Push-Benachrichtigung sollen vergessene Arztbesuche reduzieren.
@@ -30,11 +30,11 @@ Die Anforderungen beider Zielgruppen lassen sich durch folgende Aspekte charakte
     \item \textbf{Plattformunabhängigkeit:} Die Anwendung soll über gängige Webbrowser nutzbar sein, ohne dass eine lokale Installation erforderlich ist.
 \end{itemize}
 
-Zusammenfassend zeigt die Zielgruppenanalyse, dass die Anwendung sowohl für nicht technische Nutzende auf der Seite der Tierhalter als auch für den professionellen Einsatz in tierärztlichen Praxen konzipiert werden muss. Die Berücksichtigung beider Perspektiven ist entscheidend für die Akzeptanz und den nachhaltigen Erfolg des Systems.
+Zusammenfassend zeigt die Zielgruppenanalyse, dass die Anwendung sowohl für nicht technisch versierte Nutzende auf der Seite der Tierhalter als auch für den professionellen Einsatz in Tierarztpraxen konzipiert werden muss. Die Berücksichtigung beider Perspektiven ist entscheidend für die Akzeptanz und den nachhaltigen Erfolg des Systems.
 
 \section{Funktionale Anforderungen}
 
-Grundlegend wird zwischen zwei Arten von Anforderungen unterschieden auf die man Einfluss hat: Funktionale Anforderungen und Nicht Funktionale Anforderungen. Funktionale Anforderungen (FA) beschreiben, welche Funktionen und Fähigkeiten das System den Nutzenden zur Verfügung stellen soll \cite[S.~3]{pohl2021}. Zur eindeutigen Formulierung der funktionalen Anforderungen werden 
+Im Requirements Engineering wird grundlegend zwischen funktionalen und nicht-funktionalen Anforderungen unterschieden. Funktionale Anforderungen (FA) beschreiben, welche Funktionen und Fähigkeiten das System den Nutzenden zur Verfügung stellen soll \cite[S.~3]{pohl2021}. Zur eindeutigen Formulierung der funktionalen Anforderungen werden 
 Satzschablonen eingesetzt. Eine Satzschablone ist ein Bauplan für die 
 syntaktische Struktur einer einzelnen Anforderung in natürlicher Sprache 
 \cite[S.~71]{pohl2021}. Die funktionalen Anforderungen wurden aus der 
@@ -66,15 +66,17 @@ Perspektive beider Zielgruppen abgeleitet:
     Tierarztpraxen ermöglichen, ihr Profil und ihre Verfügbarkeiten 
     zu verwalten.
 
-    \item \textbf{FA\#07} Die mobile Anwendung \textbf{muss} 
-    Tierarztpraxen ermöglichen, eingehende Buchungen einzusehen 
+    \item \textbf{FA\#07} Die mobile Anwendung \textbf{muss}
+    Tierarztpraxen ermöglichen, eingehende Buchungen einzusehen
     und zu verwalten.
 \end{itemize}
 
-\section{Nicht funktionale Anforderungen}
+Die Anforderungen FA\#06 und FA\#07 wurden im Rahmen dieser Arbeit konzipiert, jedoch nicht implementiert. Die Implementierung beschränkt sich auf die Tierhalter-Rolle (FA\#01--FA\#05).
 
-Nicht funktionale Anforderungen sind Qualitätsanforderungen, die sich auf 
-die Qualitätsmerkmale des Systems beziehen \cite[S.~4] {pohl2021}.
+\section{Nicht-funktionale Anforderungen}
+
+Nicht-funktionale Anforderungen sind Qualitätsanforderungen, die sich auf
+die Qualitätsmerkmale des Systems beziehen \cite[S.~4]{pohl2021}.
 
 \begin{itemize}
     \item \textbf{NFA\#01} Die mobile Anwendung muss auf gängigen iOS- und Android-Geräten nutzbar sein.
@@ -82,22 +84,22 @@ die Qualitätsmerkmale des Systems beziehen \cite[S.~4] {pohl2021}.
     \item \textbf{NFA\#02} Die mobile Anwendung muss ohne Einarbeitung 
     intuitiv bedienbar sein.
 
-    \item \textbf{NFA\#03} Die mobile Anwendung muss ein helles (Light) sowie ein dunkles (Dark) Farbschema unterstützen, das der Nutzende manuell über einen Schalter in der Anwendung wechseln kann.
+    \item \textbf{NFA\#03} Die mobile Anwendung muss ein helles (Light) sowie ein dunkles (Dark) Farbschema unterstützen, das von Nutzenden manuell über einen Schalter in der Anwendung gewechselt werden kann.
 
     \item \textbf{NFA\#04} Die mobile Anwendung muss in den Sprachen Deutsch und Englisch verfügbar sein.
 
-    \item \textbf{NFA\#05} Die Anwendung muss dem Nutzenden durch Statusmeldungen Rückmeldung über abgeschlossene Aktionen geben.
+    \item \textbf{NFA\#05} Die Anwendung muss Nutzenden durch Statusmeldungen Rückmeldung über abgeschlossene Aktionen geben.
 \end{itemize}
 
 \section{Use Cases}
 
-Use Cases stellen das Verhalten eines Systems aus dem Blickwinkel der Nutzenden dar. Sie beschreiben, wie das System auf eine Interaktion reagiert, welche Ziele damit verfolgt werden und welche alternativen Abläufe dabei auftreten können \cite[S.~15]{cockburn2001}. Aufgrund ihrer textuellen Form eignen sie sich besonders zur klaren und verständlichen Beschreibung funktionaler Anforderungen und ermöglichen eine verständliche Kommunikation ohne besondere fachliche Vorkenntnisse \cite[S.~15]{cockburn2001}. Zur besseren Dokumentation und zur Vollständigkeit werden Sie im Folgenden durch ein Use-Case-Diagramm ergänzt \cite[S.~75]{pohl2021}.
+Use Cases stellen das Verhalten eines Systems aus dem Blickwinkel der Nutzenden dar. Sie beschreiben, wie das System auf eine Interaktion reagiert, welche Ziele damit verfolgt werden und welche alternativen Abläufe dabei auftreten können \cite[S.~15]{cockburn2001}. Aufgrund ihrer textuellen Form eignen sie sich besonders zur klaren und verständlichen Beschreibung funktionaler Anforderungen und ermöglichen eine verständliche Kommunikation ohne besondere fachliche Vorkenntnisse \cite[S.~15]{cockburn2001}. Zur besseren Dokumentation und zur Vollständigkeit werden sie im Folgenden durch ein Use-Case-Diagramm ergänzt \cite[S.~75]{pohl2021}.
 
 \subsection{Use Case Diagramm}
 \begin{figure}[H]
     \centering
     \includesvg[width=0.8\linewidth]{figures/use-case-diagram.svg}
-    \caption{Use-Case-Diagramm petappoint}
+    \caption{Use-Case-Diagramm \textit{petappoint}}
     \label{fig:usecase-gesamt}
 \end{figure}
 
