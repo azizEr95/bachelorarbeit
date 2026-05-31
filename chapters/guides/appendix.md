@@ -51,26 +51,14 @@ Der Anhang gliedert sich in drei Kapitel:
 
 ---
 
-## Bekannte Probleme
-
-### Problem 1 – Begriffsfehler „Teilnehmer" (Anhang C)
-Im Text steht „SUS-Scores jedes einzelnen Teilnehmer".
-→ Korrigiere auf Anfrage: „SUS-Scores der einzelnen Teilnehmenden"
-
-### Problem 2 – Fehlende Abbildungsbeschriftungen (Anhang B)
-Die Fragebogen-Abbildungen haben keine `\caption` — sie sind daher nicht im Abbildungsverzeichnis gelistet.
-→ Das ist im Anhang akzeptabel, da der Fragebogen als Referenzmaterial dient, nicht als eigenständige Abbildung. Keine Änderung nötig, außer explizit gewünscht.
-
----
-
 ## Begriffe & Quellen
 
 ### Einheitliche Begriffe im Anhang
 
-| Falsch | Richtig |
-|---|---|
+| Falsch                    | Richtig        |
+|---------------------------|----------------|
 | Teilnehmer (ohne Kontext) | `Teilnehmende` |
-| Nutzer | `Nutzende` |
+| Nutzer                    | `Nutzende`     |
 
 ### Verwendete Quellen
 

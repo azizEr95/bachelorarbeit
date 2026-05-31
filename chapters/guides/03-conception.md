@@ -77,34 +77,6 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 ---
 
-## Bekannte Probleme
-
-### Problem 1 – Falsche REST-Operationsübersetzung (§3.1.1)
-Im Text steht „POST, PUT, GET und DELETE (Erstellen, Bearbeiten, Bearbeiten, Löschen)" — PUT wird zweimal als „Bearbeiten" übersetzt.
-→ Korrigiere auf: „POST, PUT, GET und DELETE (Erstellen, Aktualisieren, Abrufen, Löschen)"
-
-### Problem 2 – Tippfehler „exitieren" (§3.1.2)
-Im Text steht „ein Tier kann nicht ohne eine Person exitieren".
-→ Korrigiere auf: „existieren"
-
-### Problem 3 – Unklarer Satz Kardinalität (§3.1.2)
-Im Text steht: „1 Tiertyp kann wiederum mehrere Rassen umfassen, aber mehrere 1 Rassen entstehen aus 1 Tiertyp".
-→ Formuliere um auf Anfrage, z.B.: „Ein Tiertyp kann mehrere Rassen umfassen, wobei jede Rasse genau einem Tiertyp zugeordnet ist, was einer $1{:}n$-Beziehung zwischen \textit{animal\_types} und \textit{animal\_races} entspricht."
-
-### Problem 4 – Doppeltes Wort „zeigen zeigen" (§3.4)
-Im Einleitungsabsatz von §3.4 steht „zeigen  zeigen".
-→ Entferne die Dopplung.
-
-### Problem 5 – Fehlendes Leerzeichen (§3.4)
-Im Text steht „\cite[S.~112]{pohl2021}für" ohne Leerzeichen.
-→ Ergänze ein Leerzeichen: „\cite[S.~112]{pohl2021} für"
-
-### Problem 6 – „Nutzer" statt „Nutzende" (§3.3, §3.5)
-In den Navigations- und Aktivitätsdiagramm-Abschnitten wird mehrfach „Nutzer" verwendet.
-→ Ersetze durch „Nutzende" überall im Kapitel.
-
----
-
 ## Begriffe & Quellen
 
 ### Einheitliche Begriffe in diesem Kapitel

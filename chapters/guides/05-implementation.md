@@ -62,57 +62,25 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 ---
 
-## Bekannte Probleme
-
-### Problem 1 – Grammatikfehler §5.2.1
-Im Text steht „Es stellt und initialisiert die globale Provider und Konfigurationen bereit".
-→ Korrigiere auf: „Es stellt globale Provider und Konfigurationen für alle untergeordneten Komponenten bereit."
-
-### Problem 2 – „dass heißt" statt „das heißt" (§5.3.5)
-Im Text steht „dass heißt ein ungültiges Token soll sofort zur Abmeldung führen".
-→ Korrigiere auf: „das heißt, ein ungültiges Token führt sofort zur Abmeldung."
-
-### Problem 3 – Doppeltes „wird" (§5.3.3)
-Im Text steht „Der Token wird aus dem Store entfernt wird und leitet den Nutzer".
-→ Korrigiere auf: „Das Token wird aus dem Store entfernt und die Anwendung leitet Nutzende beim nächsten Render automatisch zum Login-Screen weiter."
-
-### Problem 4 – „Nutzer" statt „Nutzende" (§5.2, §5.3, §5.5)
-An mehreren Stellen steht „Nutzer" oder „den Nutzer".
-→ Ersetze durch „Nutzende" überall im Kapitel.
-
-### Problem 5 – Fehlender Punkt/Komma (§5.4)
-Im Text steht „für statische Referenzdaten, deren Inhalt sich zur Laufzeit nicht verändert wird \texttt{staleTime: Infinity} gesetzt" ohne Satzzeichen nach „verändert".
-→ Ergänze ein Komma: „…nicht verändert, wird \texttt{staleTime: Infinity} gesetzt."
-
-### Problem 6 – Wertende Formulierung (§5.5.1)
-Im Text steht „Diese klare Trennung trägt zur besseren Wartbarkeit der Codebasis bei."
-→ Korrigiere auf: „Diese Trennung erhöht die Wartbarkeit der Codebasis."
-
-### Problem 7 – Fehlender `\subsection` für Query-Hooks (§5.4)
-Im Fließtext wird ein Abschnitt zu Query-Hooks beschrieben, aber es fehlt möglicherweise der zugehörige `\subsection{Query-Hooks}`-Befehl.
-→ Prüfe und ergänze auf Anfrage.
-
----
-
 ## Begriffe & Quellen
 
 ### Einheitliche Begriffe in diesem Kapitel
 
-| Falsch | Richtig |
-|---|---|
-| Nutzer, den Nutzer | `Nutzende` |
-| Tierbesitzer | `Tierhalter` |
-| cross-platform | `plattformübergreifend` |
+| Falsch                      | Richtig                 |
+|-----------------------------|-------------------------|
+| Nutzer, den Nutzer          | `Nutzende`              |
+| Tierbesitzer                | `Tierhalter`            |
+| cross-platform              | `plattformübergreifend` |
 
 ### Verwendete Quellen
 
 Entnimm alle konkreten Inhalte immer aus dem aktuellen `.tex`-Text. Die Cite-Keys dienen zur Orientierung:
 
-| Cite-Key | Inhalt |
-|---|---|
-| `\cite{expo-modals}` | Expo — Modal Screens |
-| `\cite{expo-router}` | Expo Router |
-| `\cite{expo-service}` | Expo Secure Store — iOS Keychain / Android Keystore |
+| Cite-Key              | Inhalt                                               |
+|-----------------------|------------------------------------------------------|
+| `\cite{expo-modals}`  | Expo — Modal Screens                                 |
+| `\cite{expo-router}`  | Expo Router                                          |
+| `\cite{expo-service}` | Expo Secure Store — iOS Keychain / Android Keystore  |
 
 ---
 

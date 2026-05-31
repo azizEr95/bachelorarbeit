@@ -1,6 +1,6 @@
 \chapter{Implementierung}
 
-Aufbauend auf den im vorherigen Kapitel erläuterten technischen Grundlagen beschreibt dieses Kapitel die konkrete Umsetzung der mobilen Anwendung von petappoint. Der Fokus liegt dabei ausschließlich auf der Tierhalter Rolle, da nur diese im Rahmen dieser Arbeit implementiert wurde.
+Aufbauend auf den im vorherigen Kapitel erläuterten technischen Grundlagen beschreibt dieses Kapitel die konkrete Umsetzung der mobilen Anwendung von \textit{petappoint}. Der Fokus liegt dabei ausschließlich auf der Tierhalter Rolle, da nur diese im Rahmen dieser Arbeit implementiert wurde.
 
 \section{Projektstruktur}
 
@@ -40,7 +40,7 @@ Die eigentliche Anwendungslogik ist im Verzeichnis \texttt{src/} nach ihren Zust
 
 \section{Umsetzung der Navigationsstruktur mit Expo Router}
 
-Die Navigationsstruktur von petappoint basiert auf Expo Router und wird vollständig über die Ordnerstruktur des \texttt{app}-Verzeichnisses abgebildet. Jede Layout-Datei \texttt{\_layout.tsx} definiert dabei den Navigationscontainer für die jeweilige Routengruppe.
+Die Navigationsstruktur von \textit{petappoint} basiert auf Expo Router und wird vollständig über die Ordnerstruktur des \texttt{app}-Verzeichnisses abgebildet. Jede Layout-Datei \texttt{\_layout.tsx} definiert dabei den Navigationscontainer für die jeweilige Routengruppe.
 
 \subsection{Root Layout}
 
@@ -125,7 +125,7 @@ Die modalen Screens der Anwendung sind im Verzeichnis \texttt{app/(modals)/} abg
 \section{Umsetzung der Authentifizierung mit Expo Secure Store}
 \label{sec:auth}
 
-Die Authentifizierung in petappoint gliedert sich in vier Bereiche: die sichere Speicherung des Zugriffstokens, die Verwaltung des Authentifizierungszustands zur Laufzeit, die automatische Token-Übermittlung bei API-Aufrufen sowie die Validierung einer bestehenden Sitzung beim Backend.
+Die Authentifizierung in \textit{petappoint} gliedert sich in vier Bereiche: die sichere Speicherung des Zugriffstokens, die Verwaltung des Authentifizierungszustands zur Laufzeit, die automatische Token-Übermittlung bei API-Aufrufen sowie die Validierung einer bestehenden Sitzung beim Backend.
 
 \subsection{Tokenspeicherung mit Expo Secure Store}
 

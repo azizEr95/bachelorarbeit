@@ -36,7 +36,7 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 ### §7.2 Fazit
 - Stelle sicher, dass das Fazit über eine bloße Zusammenfassung hinausgeht: Es soll den wissenschaftlichen und praktischen Beitrag der Arbeit benennen.
-- Prüfe auf wertende Formulierung: Im Text steht „übertraf dabei die eigenen Erwartungen" — das ist subjektiv und ich-nah. Formuliere auf Anfrage um zu: „liegt deutlich oberhalb der Note-A-Grenze und belegt eine hohe wahrgenommene Gebrauchstauglichkeit."
+- Prüfe auf wertende Formulierung: Im Text steht „übertraf dabei die eigenen Erwartungen" — das ist subjektiv und ich-nah. Formuliere auf Anfrage um zu: „liegt deutlich oberhalb der Note-A-Grenze und belegt eine hohe wahrgenommene Benutzerfreundlichkeit."
 - Prüfe auf wertende Formulierung: Im Text steht „Diese Entscheidung erwies sich im Nachhinein als richtig" — subjektive Selbstbewertung. Formuliere auf Anfrage um zu: „Diese Eingrenzung des Implementierungsumfangs ermöglichte eine solide und getestete Grundlage für die Weiterentwicklung."
 - Prüfe auf Ich-nahe Formulierung: Im Text steht „Das langfristige Ziel ist es, petappoint um die Tierarztpraxis-Rolle zu erweitern" — klingt nach persönlichem Ziel des Autors. Formuliere auf Anfrage sachlicher: „Ein möglicher nächster Schritt ist die Erweiterung um die Tierarztpraxis-Rolle."
 - Verwende „Nutzende" statt „Nutzerzufriedenheit" → „Zufriedenheit der Nutzenden".
@@ -49,38 +49,14 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 ---
 
-## Bekannte Probleme
-
-### Problem 1 – Subjektive Formulierung „übertraf die eigenen Erwartungen" (§7.2)
-Im Text steht „Der durchschnittliche SUS-Score von 94,34 übertraf dabei die eigenen Erwartungen".
-→ Korrigiere auf Anfrage: „Der durchschnittliche SUS-Score von 94,34 liegt deutlich oberhalb der Note-A-Grenze und belegt eine hohe wahrgenommene Gebrauchstauglichkeit."
-
-### Problem 2 – Subjektive Selbstbewertung „erwies sich als richtig" (§7.2)
-Im Text steht „Diese Entscheidung erwies sich im Nachhinein als richtig".
-→ Korrigiere auf Anfrage: „Diese Eingrenzung des Implementierungsumfangs ermöglichte eine solide und getestete Grundlage für die Weiterentwicklung der Anwendung."
-
-### Problem 3 – Ich-nahe Zielformulierung (§7.2)
-Im Text steht „Das langfristige Ziel ist es, petappoint um die Tierarztpraxis-Rolle zu erweitern und die Anwendung als vollständige Lösung auf den Markt zu bringen."
-→ Korrigiere auf Anfrage: „Ein wesentlicher nächster Schritt wäre die Erweiterung um die Tierarztpraxis-Rolle, um petappoint als vollständige Terminverwaltungslösung einsetzen zu können."
-
-### Problem 4 – „Nutzerzufriedenheit" statt „Zufriedenheit der Nutzenden" (§7.3)
-Im Text steht „um die Nutzerzufriedenheit weiter zu steigern".
-→ Korrigiere auf Anfrage: „um die Zufriedenheit der Nutzenden weiter zu steigern."
-
-### Problem 5 – Wertende Formulierungen im Ausblick (§7.3)
-Im Text steht „ansprechendere App-Gestaltung" — subjektive Bewertung.
-→ Formuliere auf Anfrage sachlicher: „eine überarbeitete visuelle Gestaltung der Benutzeroberfläche."
-
----
-
 ## Begriffe & Quellen
 
 ### Einheitliche Begriffe in diesem Kapitel
 
-| Falsch | Richtig |
-|---|---|
+| Falsch                      | Richtig                                   |
+|-----------------------------|-------------------------------------------|
 | Nutzer, Nutzerzufriedenheit | `Nutzende`, `Zufriedenheit der Nutzenden` |
-| Tierbesitzer | `Tierhalter` |
+| Tierbesitzer                | `Tierhalter`                              |
 
 ### Verwendete Quellen
 

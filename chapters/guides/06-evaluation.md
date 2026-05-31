@@ -22,7 +22,7 @@ Warte auf konkrete Aufgaben. Arbeite immer nur am angefragten Abschnitt.
 ## Struktur & Funktion der Abschnitte
 
 Kapitel 6 umfasst S. 61–70 und bildet die DSR-Phase **Evaluate** ab.
-Es überprüft, inwieweit das entwickelte Artefakt (petappoint) die in Kap. 2 definierten Anforderungen erfüllt und wie die Gebrauchstauglichkeit aus Nutzendenperspektive bewertet wird.
+Es überprüft, inwieweit das entwickelte Artefakt (petappoint) die in Kap. 2 definierten Anforderungen erfüllt und wie die Benutzerfreundlichkeit aus Nutzendenperspektive bewertet wird.
 
 Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
@@ -71,56 +71,24 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 
 ---
 
-## Bekannte Probleme
-
-### Problem 1 – Inkonsistenz: drei vs. vier Aufgaben
-Im Einleitungsabsatz steht „drei aufgabenbasierte Szenarien", in §6.2.2 werden aber „vier Aufgaben" ausgewertet (Haustier anlegen, Termin buchen, Termin bearbeiten, Termin stornieren).
-→ Kläre auf Anfrage: Aufgabe 1 umfasste zwei Teilaufgaben (Haustier anlegen + Termin buchen), die separat gemessen wurden. Formuliere den Einleitungsabsatz entsprechend um: „drei Szenarien, die in vier Messaufgaben unterteilt wurden."
-
-### Problem 2 – Großschreibung „Sie" (§6.1.2)
-Im Text steht „ob Sie die Aufgabe erfolgreich abgeschlossen haben".
-→ Korrigiere auf: „ob sie die Aufgabe erfolgreich abgeschlossen haben."
-
-### Problem 3 – Doppelter demografischer Absatz (§6.1.2 und §6.2.1)
-Die demografischen Daten (Alter 16–54, Durchschnitt 31 Jahre, Berufsgruppen) erscheinen wortgleich in §6.1.2 und §6.2.1.
-→ Entferne auf Anfrage den Absatz in §6.1.2 und verweise stattdessen auf §6.2.1, oder kürze §6.2.1 auf einen Verweis.
-
-### Problem 4 – Doppelter Abschnitt §6.2.2 Aufgabenauswertung
-Der Abschnitt „Aufgabenauswertung" erscheint zweimal als `\subsection`.
-→ Fasse auf Anfrage beide Abschnitte zu einem einzigen zusammen, der sowohl Fließtext als auch die Boxplot-Abbildung enthält.
-
-### Problem 5 – Doppelter Abschnitt Anforderungsabdeckung
-Im Text existieren zwei aufeinanderfolgende `\subsection`-Abschnitte zur Anforderungsabdeckung: „Anforderungsabdeckung der funktionalen und nicht-funktionalen Anforderungen" (ohne Inhalt) und „Anforderungsabdeckung" (mit Inhalt).
-→ Entferne auf Anfrage den leeren ersten Abschnitt.
-
-### Problem 6 – Spekulativer Kausalschluss (§6.3.1)
-Im Text steht „lassen sich weniger auf plattformspezifische Darstellungsprobleme zurückführen, sondern sind vermutlich auf individuelle Unterschiede zurückzuführen."
-→ Formuliere auf Anfrage vorsichtiger: „Ein möglicher Erklärungsansatz für die Unterschiede in den Bearbeitungszeiten sind individuelle Unterschiede der Teilnehmenden."
-
-### Problem 7 – „Nutzerinnen und Nutzer" (§6.3.2)
-Im Limitationen-Abschnitt steht „unbekannte Nutzerinnen und Nutzer".
-→ Ersetze durch „unbekannte Nutzende."
-
----
-
 ## Begriffe & Quellen
 
 ### Einheitliche Begriffe in diesem Kapitel
 
-| Falsch | Richtig |
-|---|---|
-| Nutzer, Nutzerinnen und Nutzer | `Nutzende` |
-| Tierbesitzer | `Tierhalter` |
+| Falsch                                 | Richtig                                           |
+|----------------------------------------|---------------------------------------------------|
+| Nutzer, Nutzerinnen und Nutzer         | `Nutzende`                                        |
+| Tierbesitzer                           | `Tierhalter`                                      |
 | System Usability Scale (erste Nennung) | `System Usability Scale (SUS)` — danach nur `SUS` |
 
 ### Verwendete Quellen
 
 Entnimm alle konkreten Inhalte immer aus dem aktuellen `.tex`-Text. Die Cite-Keys dienen zur Orientierung:
 
-| Cite-Key | Inhalt |
-|---|---|
-| `\cite{brooke}` | SUS — Originalformel nach Brooke |
-| `\cite[S.~161]{susbenchmark2008}` | SUS-Bewertungsskala nach Sauro |
+| Cite-Key                          | Inhalt                           |
+|-----------------------------------|----------------------------------|
+| `\cite{brooke}`                   | SUS — Originalformel nach Brooke |
+| `\cite[S.~161]{susbenchmark2008}` | SUS-Bewertungsskala nach Sauro   |
 
 ---
 

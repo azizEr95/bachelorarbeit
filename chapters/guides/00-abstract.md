@@ -61,18 +61,6 @@ Entnimm alle Zahlen und Fakten aus dem aktuellen `.tex`-Text der Kapitel — nic
 
 ---
 
-## Bekannte Probleme im bestehenden Abstract
-
-### Problem 1 – Abstract ist noch ein Platzhalter
-Der aktuelle Abstract enthält ausschließlich den Hinweis des Betreuers sowie eine Beschreibung des LaTeX-Templates — kein inhaltlicher Abstract der Arbeit vorhanden.
-→ Der Abstract muss vollständig neu geschrieben werden. Schreibe ihn auf Anfrage auf Basis der fertigen Kapitel.
-
-### Problem 2 – KI-Tools in der Eigenständigkeitserklärung prüfen
-In der Eigenständigkeitserklärung steht „ChatGPT 5.2 (OpenAI), Claude Sonnet 4.5 (Anthropic) sowie NotebookLM (Google)".
-→ Prüfe ob die Versionsnummern korrekt und aktuell sind, bevor die Arbeit eingereicht wird. Passe auf Anfrage an.
-
----
-
 ## Eigenständigkeitserklärung
 
 Die Eigenständigkeitserklärung ist bereits vollständig formuliert und muss **nicht** überarbeitet werden, außer:
