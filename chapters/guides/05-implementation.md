@@ -108,3 +108,5 @@ Prüfe bei jeder Überarbeitung, ob folgende DSR-Kriterien erfüllt sind:
 - Code-Listings sind nicht selbsterklärend — jedes Listing muss im Fließtext eingeführt und erklärt werden.
 - Implementierungsentscheidungen (z.B. `onSettled` statt `onSuccess` beim Logout) müssen kurz begründet werden — das stärkt die wissenschaftliche Nachvollziehbarkeit.
 - Verweise auf Anhang-Abbildungen müssen korrekt gesetzt sein, da die Screenshots die einzige visuelle Dokumentation der implementierten Screens sind.
+
+@guides/stil.md

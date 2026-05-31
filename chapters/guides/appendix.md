@@ -71,3 +71,5 @@ Der Anhang enthält keine `\cite{}`-Referenzen. Externe Daten werden über URLs 
 Der Anhang enthält ausschließlich ergänzendes Material — keine inhaltlichen Aussagen oder Interpretationen. Füge keine neuen Argumente oder Schlussfolgerungen ein.
 
 Verweise aus dem Haupttext auf den Anhang erfolgen ausschließlich über `\ref{appendix:abbildungen}`, `\ref{appendix:fragebogen}` oder `\ref{appendix:rohdaten}`.
+
+@guides/stil.md

@@ -100,3 +100,5 @@ Prüfe bei jeder Überarbeitung, ob folgende DSR-Kriterien erfüllt sind:
 - Alle Anforderungen sind nachvollziehbar aus der Zielgruppenanalyse und der Problemstellung (Kap. 1) hergeleitet.
 - Der Scope ist transparent: FA#06 und FA#07 sind definiert aber nicht implementiert — das muss erkennbar sein.
 - Use Cases konkretisieren die funktionalen Anforderungen — jede FA sollte in mindestens einem Use Case abgebildet sein.
+
+@guides/stil.md

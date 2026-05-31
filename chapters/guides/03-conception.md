@@ -128,3 +128,5 @@ Prüfe bei jeder Überarbeitung, ob folgende DSR-Kriterien erfüllt sind:
 - Der Scope ist transparent: Der Fokus liegt auf der Präsentationsschicht, da das Backend als Vorleistung existiert.
 - Die kritische Betrachtung des Backends (§3.1.3) zeigt, dass Limitationen offen kommuniziert werden — das stärkt die wissenschaftliche Glaubwürdigkeit.
 - Mockups und Diagramme müssen als Designartefakte erkennbar sein, die direkt aus den Anforderungen abgeleitet wurden.
+
+@guides/stil.md

@@ -114,3 +114,5 @@ Prüfe bei jeder Überarbeitung, ob folgende DSR-Kriterien erfüllt sind:
 - Limitationen werden offen und sachlich kommuniziert — das stärkt die wissenschaftliche Glaubwürdigkeit.
 - Die Anforderungsabdeckungstabellen (FA#01–FA#07, NFA#01–NFA#05) stellen den direkten Bezug zu Kap. 2 her.
 - Der evaluative Teil der Forschungsfrage wird in §6.3.1 explizit adressiert.
+
+@guides/stil.md

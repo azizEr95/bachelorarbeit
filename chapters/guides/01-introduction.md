@@ -109,3 +109,5 @@ Prüfe bei jeder Überarbeitung, ob folgende DSR-Kriterien erfüllt sind:
   - **Evaluieren** → Nutzerwunsch nach Benutzerfreundlichkeit als Qualitätskriterium erkennbar
 - DSR nach Hevner 2004 wird in Abschnitt 1.6 explizit eingeführt und begründet.
 - Das Artefakt (petappoint) wird benannt, aber noch nicht definiert — das folgt in Kap. 3–5.
+
+@guides/stil.md

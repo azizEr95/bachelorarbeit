@@ -140,3 +140,5 @@ Prüfe bei jeder Überarbeitung, ob folgende DSR-Kriterien erfüllt sind:
 - Jede Technologieentscheidung ist explizit begründet — keine Auswahl ohne Argumentation.
 - Alle Begründungsabschnitte referenzieren die Anforderungen aus Kap. 2 oder die Konzeption aus Kap. 3 wo relevant.
 - §4.8 macht das Zusammenspiel als kohärenten Stack sichtbar — das stärkt die Nachvollziehbarkeit der Designentscheidungen.
+
+@guides/stil.md

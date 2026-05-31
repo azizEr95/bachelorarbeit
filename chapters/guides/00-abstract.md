@@ -85,3 +85,5 @@ Die Eigenständigkeitserklärung ist bereits vollständig formuliert und muss **
 - Präsens für allgemeine Aussagen: „zeigt", „belegt"
 - Keine wertenden Formulierungen wie „hervorragend" oder „übertraf die Erwartungen"
 - Fachbegriffe beim ersten Auftreten ausschreiben: „System Usability Scale (SUS)"
+
+@guides/stil.md

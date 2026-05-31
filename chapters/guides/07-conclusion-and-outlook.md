@@ -86,3 +86,5 @@ Prüfe bei jeder Überarbeitung, ob folgende DSR-Kriterien erfüllt sind:
 - §7.2 benennt den Beitrag der Arbeit für Wissenschaft und Praxis — nicht nur eine Zusammenfassung.
 - §7.3 leitet Weiterentwicklungen aus den Evaluationsergebnissen (Kap. 6) und der kritischen Betrachtung (Kap. 3) ab — keine unbegründeten Wünsche.
 - Keine subjektiven Selbstbewertungen — sachliche, passive Formulierungen durchgehend.
+
+@guides/stil.md
