@@ -40,7 +40,7 @@ Stelle sicher, dass der folgende logische Fluss erhalten bleibt:
 - Keine Detailbeschreibungen einzelner Systeme hier — diese folgen in §1.4.
 
 ### §1.4 Ausgewählte Systeme im Vergleich (§1.4.1–1.4.3)
-- Halte die Reihenfolge ein: petsXL (§1.4.1) → petLeo (§1.4.2) → vetpraxis (§1.4.3).
+- Halte die Reihenfolge ein: petsXL (§1.4.1) → Petleo (§1.4.2) → vetpraxis (§1.4.3).
 - Beschreibe jedes System sachlich und belegt. Keine wertenden Adjektive wie „leistungsstark" oder „modern".
 - Jedes System muss mit seinem `\cite{}`-Key referenziert werden (siehe Quellentabelle unten).
 
@@ -80,7 +80,6 @@ Im Text kommt die Formulierung „Als Basis dieser Arbeit basiert das Backend…
 | Tierbesitzer, Haustierbesitzer | `Tierhalter` |
 | Appointment Management | `Terminverwaltung` |
 | Xamarin | `.NET MAUI` |
-| Petleo | `petLeo` |
 
 ### Verwendete Quellen
 
@@ -93,7 +92,7 @@ Entnimm alle konkreten Zahlen und Fakten immer aus dem aktuellen `.tex`-Text, ni
 | `\cite{vsmreport}` | Veterinary Software Market Report — Marktgröße + Wachstum |
 | `\cite{doctolib2020}` | Anteil mobiler Online-Buchungen |
 | `\cite{diez2023}` | Umfrage Tierhalter — Online-Präferenz + Wartezeiten (S. 69) |
-| `\cite{petleo-info}` | petLeo Produktinformation |
+| `\cite{petleo-info}` | Petleo Produktinformation |
 | `\cite{petsxl-info}` | petsXL Produktinformation |
 | `\cite{vetpraxis-info}` | vetpraxis Produktinformation |
 | `\cite{hevner2004}` | Design Science Research Methodik |
