@@ -10,21 +10,21 @@ In Kapitel~3 wurde auf Basis der ermittelten Anforderungen die Konzeption der mo
 kritischen Betrachtung der bestehenden Backend-Infrastruktur wurden dabei mehrere Schwachstellen identifiziert, darunter die fehlende Rollentrennung, das Fehlen eines Statusattributs für Termine sowie das Fehlen einer Tabelle für Öffnungszeiten. Das Komponentendiagramm beschreibt den strukturellen Aufbau des Frontends in Präsentations-, Business- und Datenzugriffsschicht.
 Das Navigationskonzept legt die Struktur der Tab-Navigation sowie der modalen Screens für beide Rollen fest. Mockups veranschaulichen die geplante Benutzeroberfläche und ein Aktivitätsdiagramm beschreibt den vollständigen Ablauf des Terminbuchungsprozesses.
 
-Kapitel~4 legte die technischen Grundlagen der Implementierung dar. Im Rahmen von Technologievergleichen wurden React Native gegenüber Flutter und .NET MAUI, TanStack Query gegenüber SWR und RTK Query, Zustand gegenüber Redux Toolkit sowie Gluestack UI gegenüber React Native Paper und StyleSheet abgewogen. Die Entscheidungen wurden jeweils anhand projektspezifischer
+Kapitel~4 legte die technischen Grundlagen der Implementierung dar. Im Rahmen von Technologievergleichen wurden React Native gegenüber Flutter und .NET MAUI, TanStack Query gegenüber \gls{swr} und \gls{rtk}, Zustand gegenüber Redux Toolkit sowie Gluestack \gls{ui} gegenüber React Native Paper und StyleSheet abgewogen. Die Entscheidungen wurden jeweils anhand projektspezifischer
 Kriterien begründet. Ein zentrales Merkmal des gewählten Technologie-Stacks ist die durchgängige Verwendung von TypeScript über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. React Native und Expo bilden die plattformübergreifende Grundlage, ergänzt durch Expo Router für die dateibasierte Navigation,
-TanStack Query und Zustand für das komplementäre State-Management sowie Gluestack UI und i18next für die Präsentationsebene.
+TanStack Query und Zustand für das komplementäre State-Management sowie Gluestack \gls{ui} und i18next für die Präsentationsebene.
 
 Die Implementierung in Kapitel~5 setzte die erarbeitete Konzeption für die Tierhalter-Rolle um. Die Navigationsstruktur wurde vollständig über die Ordnerstruktur von Expo Router abgebildet und gliedert sich in einen Authentication Stack, eine Tab Navigation sowie modale Screens für kontextabhängige Abläufe. Die Authentifizierung basiert auf Expo
 SecureStore, der Authentifizierungstoken verschlüsselt auf dem Gerät
 ablegt, ergänzt durch einen globalen Zustand-Store und einen zentralen
-API-Client mit automatischer Token-Übermittlung. Die API-Anbindung erfolgt
+\gls{api}-Client mit automatischer Token-Übermittlung. Die \gls{api}-Anbindung erfolgt
 über TanStack Query mit einer einheitlichen Query-Key-Hierarchie, die eine
 gezielte Cache-Invalidierung nach Mutationen ermöglicht. Die Screens wurden
-mit Gluestack UI umgesetzt und unterstützen vollständig das Light- und
+mit Gluestack \gls{ui} umgesetzt und unterstützen vollständig das Light- und
 Dark-Theme über ein Token-basiertes Farbsystem.
 
 Die Evaluation der entwickelten Anwendung erfolgte anhand einer
-aufgabenbasierten Nutzerstudie mit 20 Teilnehmenden. Alle Teilnehmenden haben sämtliche Aufgaben erfolgreich abgeschlossen. Der durchschnittliche SUS-Score von 94,34 entspricht der Note A und belegt eine sehr hohe wahrgenommene Benutzerfreundlichkeit. Der Plattformvergleich bestätigte, dass die Anwendung auf iOS und
+aufgabenbasierten Nutzerstudie mit 20 Teilnehmenden. Alle Teilnehmenden haben sämtliche Aufgaben erfolgreich abgeschlossen. Der durchschnittliche \gls{sus}-Score von 94,34 entspricht der Note A und belegt eine sehr hohe wahrgenommene Benutzerfreundlichkeit. Der Plattformvergleich bestätigte, dass die Anwendung auf iOS und
 Android vergleichbar gut funktioniert. Damit kann die
 Forschungsfrage positiv beantwortet werden.
 

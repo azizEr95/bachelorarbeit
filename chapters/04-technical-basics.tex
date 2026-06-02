@@ -4,7 +4,7 @@ Aufbauend auf der im vorherigen Kapitel erarbeiteten Konzeption werden in diesem
 
 \section{Technologien im bereits bestehenden Backend}
 
-Das Backend von \textit{petappoint} wurde im Rahmen eines vorangegangenen Projektmoduls entwickelt und bildet die technische Grundlage für die in dieser Arbeit umgesetzte mobile Anwendung. Es basiert auf Node.js und Express, die gemeinsam eine REST-API bereitstellen, über die das Frontend sämtliche Daten abruft und verwaltet \cite{nodejs-docs, express-docs}. Als Datenbank kommt PostgreSQL zum Einsatz, das die ACID-Eigenschaften gewährleistet. ACID steht für Atomicity, Consistency, Isolation und Durability und beschreibt die Anforderungen an sichere und zuverlässige Datenbanktransaktionen \cite{postgresql_transactions}. Alle Änderungen werden entweder vollständig oder gar nicht ausgeführt, die Datenkonsistenz bleibt stets gewahrt, parallele Transaktionen beeinflussen sich nicht gegenseitig und abgeschlossene Transaktionen bleiben dauerhaft gespeichert \cite{postgresql_about}. Die Geschäftslogik ist durchgängig in TypeScript implementiert, wodurch Typsicherheit über alle Schichten der Anwendung sichergestellt wird \cite{typescript-docs}. Eingehende API-Anfragen werden mithilfe von Zod validiert \cite{zod-docs}. Für den automatisierten Versand von Buchungsbestätigungen und -erinnerungen wird Brevo als transaktionaler E-Mail-Dienst eingesetzt \cite{brevo-docs}.
+Das Backend von \textit{petappoint} wurde im Rahmen eines vorangegangenen Projektmoduls entwickelt und bildet die technische Grundlage für die in dieser Arbeit umgesetzte mobile Anwendung. Es basiert auf Node.js und Express, die gemeinsam eine \gls{rest}-\gls{api} bereitstellen, über die das Frontend sämtliche Daten abruft und verwaltet \cite{nodejs-docs, express-docs}. Als Datenbank kommt PostgreSQL zum Einsatz, das die \gls{acid}-Eigenschaften gewährleistet. \gls{acid} steht für Atomicity, Consistency, Isolation und Durability und beschreibt die Anforderungen an sichere und zuverlässige Datenbanktransaktionen \cite{postgresql_transactions}. Alle Änderungen werden entweder vollständig oder gar nicht ausgeführt, die Datenkonsistenz bleibt stets gewahrt, parallele Transaktionen beeinflussen sich nicht gegenseitig und abgeschlossene Transaktionen bleiben dauerhaft gespeichert \cite{postgresql_about}. Die Geschäftslogik ist durchgängig in TypeScript implementiert, wodurch Typsicherheit über alle Schichten der Anwendung sichergestellt wird \cite{typescript-docs}. Eingehende \gls{api}-Anfragen werden mithilfe von Zod validiert \cite{zod-docs}. Für den automatisierten Versand von Buchungsbestätigungen und -erinnerungen wird Brevo als transaktionaler E-Mail-Dienst eingesetzt \cite{brevo-docs}.
 
 \begin{table}[H]
 \begin{tabular}{|p{5cm}|p{9cm}|}
@@ -15,7 +15,7 @@ PostgreSQL 15 & Relationale Datenbank \\
 \hline
 Node.js & JavaScript-Laufzeitumgebung \\
 \hline
-Express & HTTP-Server / REST-API-Framework \\
+Express & \gls{http}-Server / \gls{rest}-\gls{api}-Framework \\
 \hline
 TypeScript & Statische Typisierung \\
 \hline
@@ -31,21 +31,21 @@ Brevo & Transaktionaler E-Mail-Dienst \\
 
 \subsection{React Native}
 
-React Native ist ein von Meta entwickeltes Open-Source-Framework, das die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren UI-Elementen \cite[S.~4]{galitz2002}. Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten Anwendung mit iOS oder Android. Da das Backend bereits in TypeScript implementiert ist, ermöglicht React Native zudem eine durchgängige Verwendung derselben Sprache über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden \cite{react-native-docs}.
+React Native ist ein von Meta entwickeltes Open-Source-Framework, das die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von JavaScript bzw. TypeScript ermöglicht. Es rendert echte native \gls{ui}-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. \gls{ui}-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren \gls{ui}-Elementen \cite[S.~4]{galitz2002}. Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten Anwendung mit iOS oder Android. Da das Backend bereits in TypeScript implementiert ist, ermöglicht React Native zudem eine durchgängige Verwendung derselben Sprache über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden \cite{react-native-docs}.
 
 Als Nachteil älterer Versionen ist zu nennen, dass React Native Anwendungen mit hohen aufwendigen Animationen oder Spielen an seine Grenzen stoßen konnte, da die Kommunikation zwischen 
-JavaScript und der nativen Ebene einen gewissen Aufwand mit sich brachte. Mit der neuen Architektur, in der das JavaScript Interface (JSI) 
+JavaScript und der nativen Ebene einen gewissen Aufwand mit sich brachte. Mit der neuen Architektur, in der das JavaScript Interface (\gls{jsi}) 
 eingeführt wurde, konnte dieses Problem deutlich reduziert werden~\cite{react-native-new-arch}.
 
 \subsection{Flutter}
 
-Flutter ist ein von Google entwickeltes Open-Source-Framework für die plattformübergreifende Entwicklung mobiler Anwendungen. Es basiert auf der Programmiersprache Dart und verwendet eine eigene Rendering-Engine namens Impeller, die alle UI-Elemente auf einem Canvas (digitalen Zeichenfläche) selbst Pixel für Pixel zeichnet, anstatt die vom Betriebssystem bereitgestellten nativen Komponenten zu verwenden \cite{flutter-docs}. Ein weiterer Vorteil von Flutter ist die vollständige Kontrolle über das Erscheinungsbild der Anwendung, was für Produkte mit einem eigenen Design-System von Vorteil sein kann. Darüber hinaus unterstützt Flutter neben iOS und Android auch Web und Desktop aus einer einzigen Codebasis. 
+Flutter ist ein von Google entwickeltes Open-Source-Framework für die plattformübergreifende Entwicklung mobiler Anwendungen. Es basiert auf der Programmiersprache Dart und verwendet eine eigene Rendering-Engine namens Impeller, die alle \gls{ui}-Elemente auf einem Canvas (digitalen Zeichenfläche) selbst Pixel für Pixel zeichnet, anstatt die vom Betriebssystem bereitgestellten nativen Komponenten zu verwenden \cite{flutter-docs}. Ein weiterer Vorteil von Flutter ist die vollständige Kontrolle über das Erscheinungsbild der Anwendung, was für Produkte mit einem eigenen Design-System von Vorteil sein kann. Darüber hinaus unterstützt Flutter neben iOS und Android auch Web und Desktop aus einer einzigen Codebasis. 
 
-Als Nachteil erfordert Flutter die Verwendung von Dart, die zwingend erforderlich ist und nicht durch JavaScript oder TypeScript ersetzt werden kann. Zudem entsprechen UI-Elemente nicht dem plattformspezifischen Design des Betriebssystems, da Flutter alles selbst zeichnet \cite{flutter-docs}.
+Als Nachteil erfordert Flutter die Verwendung von Dart, die zwingend erforderlich ist und nicht durch JavaScript oder TypeScript ersetzt werden kann. Zudem entsprechen \gls{ui}-Elemente nicht dem plattformspezifischen Design des Betriebssystems, da Flutter alles selbst zeichnet \cite{flutter-docs}.
 
 \subsection{.NET MAUI}
-.NET MAUI (Multi-platform App UI) ist ein von Microsoft entwickeltes Open-Source-Framework für die plattformübergreifende Entwicklung mobiler und Desktop-Anwendungen auf Basis von C\# und dem 
-.NET-Ökosystem~\cite{maui-docs}. Es ist der offizielle Nachfolger von Xamarin, dessen Support im Mai 2024 eingestellt wurde~\cite{maui-docs}. Ein Vorteil von .NET MAUI ist die Nutzung nativer UI-Komponenten, sodass die Anwendung auf jeder Plattform dem vertrauten Design des 
+.NET MAUI (Multi-platform App \gls{ui}) ist ein von Microsoft entwickeltes Open-Source-Framework für die plattformübergreifende Entwicklung mobiler und Desktop-Anwendungen auf Basis von C\# und dem 
+.NET-Ökosystem~\cite{maui-docs}. Es ist der offizielle Nachfolger von Xamarin, dessen Support im Mai 2024 eingestellt wurde~\cite{maui-docs}. Ein Vorteil von .NET MAUI ist die Nutzung nativer \gls{ui}-Komponenten, sodass die Anwendung auf jeder Plattform dem vertrauten Design des 
 Betriebssystems entspricht. Für Entwickler, die bereits Erfahrung mit C\# und dem .NET-Ökosystem haben, bietet .NET MAUI zudem den Vorteil, bestehende Kenntnisse direkt in der mobilen Entwicklung einsetzen zu können. 
 
 Als Nachteil erfordert .NET MAUI einen vollständigen Sprachwechsel zu C\#, was für Teams ohne .NET-Erfahrung einen 
@@ -65,11 +65,11 @@ Expo wurde als Entwicklungsplattform für \textit{petappoint} gewählt, da die o
 Da die Wahl dadurch bereits gefallen war, ergab sich Expo Router als konsequente Folgeentscheidung, 
 da es von Expo als offizielles Navigationssystem empfohlen wird \cite{expo-router}. Die Navigationsstruktur der Anwendung wird dabei direkt über das Dateiverzeichnis abgebildet, wobei jede Datei im \texttt{app}-Verzeichnis automatisch einer Route entspricht. Dadurch wird Nachvollziehbarkeit der Navigationslogik erhöht, indem die Ordnerstruktur direkt die Struktur der App widerspiegelt. 
 
-Um weiterhin in der Entwicklungsumgebung von Expo zu bleiben wurde die Anwendung für das Testen auf einem physischen Gerät durch ein Development Build eingesetzt. Dabei wird ein individuell konfigurierter nativer Build der Anwendung erstellt, der den Expo Dev Client enthält und direkt auf dem Gerät installiert wird \cite{expo-build}. Dadurch wird die Verwendung beliebiger nativer Module erlaubt und spiegelt das Verhalten der finalen Produktionsanwendung deutlich genauer wider. Das Expo Software Development Kit (Expo SDK) bietet darüber hinaus eine Sammlung an vorgefertigten Modulen für den Zugriff auf native  Gerätefunktionen wie Kamera, Standort oder Benachrichtigungen \cite{expo-build}. Die vom Expo SDK bereitgestellte Bibliothek \textit{expo-secure-store} legt sicherheitsrelevante Daten, wie 
+Um weiterhin in der Entwicklungsumgebung von Expo zu bleiben wurde die Anwendung für das Testen auf einem physischen Gerät durch ein Development Build eingesetzt. Dabei wird ein individuell konfigurierter nativer Build der Anwendung erstellt, der den Expo Dev Client enthält und direkt auf dem Gerät installiert wird \cite{expo-build}. Dadurch wird die Verwendung beliebiger nativer Module erlaubt und spiegelt das Verhalten der finalen Produktionsanwendung deutlich genauer wider. Das Expo Software Development Kit (Expo \gls{sdk}) bietet darüber hinaus eine Sammlung an vorgefertigten Modulen für den Zugriff auf native  Gerätefunktionen wie Kamera, Standort oder Benachrichtigungen \cite{expo-build}. Die vom Expo \gls{sdk} bereitgestellte Bibliothek \textit{expo-secure-store} legt sicherheitsrelevante Daten, wie 
 beispielsweise Authentifizierungstokens, verschlüsselt als Key-Value-Paare ab und greift dabei direkt auf die systemeigenen Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain oder den Android-KeyStore \cite{expo-service}.
 
 
-Für die Speicherung sicherheitsrelevanter Daten, wie beispielsweise Authentifizierungstokens, stellt das Expo SDK mit expo-secure-store eine integrierte Lösung bereit. Die Bibliothek legt Daten verschlüsselt als Key-Value-Paare ab und greift dabei direkt auf die systemeigenen Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain oder den Android-KeyStore \cite{expo-service}.
+Für die Speicherung sicherheitsrelevanter Daten, wie beispielsweise Authentifizierungstokens, stellt das Expo \gls{sdk} mit expo-secure-store eine integrierte Lösung bereit. Die Bibliothek legt Daten verschlüsselt als Key-Value-Paare ab und greift dabei direkt auf die systemeigenen Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain oder den Android-KeyStore \cite{expo-service}.
 
 \section{Server-State-Management und Datenabruf}
 
@@ -81,7 +81,7 @@ Sie abstrahiert die Logik für das Abrufen, Caching, Synchronisieren und
 Aktualisieren von Serverdaten und ersetzt damit manuell verwaltete 
 Ladezustände und Fehlerbehandlungen \cite{tanstack-query-docs}. 
 Server-State bezeichnet dabei Daten, die auf einem externen Server 
-gespeichert sind und über eine API abgerufen werden, im Gegensatz zum 
+gespeichert sind und über eine \gls{api} abgerufen werden, im Gegensatz zum 
 Client-State, der lokal in der Anwendung verwaltet wird.
 
 Ein Vorteil von TanStack Query ist die automatische Verwaltung von 
@@ -101,28 +101,28 @@ lokalem Client-State bietet. Für Anwendungen, die sowohl umfangreichen
 Server-State als auch komplexen Client-State verwalten müssen, ist 
 daher eine zusätzliche State-Management-Lösung erforderlich \cite{tanstack-query-docs}.
 
-\subsection{SWR (Stale-While-Revalidate)}
+\subsection{\glsentryshort{swr} (Stale-While-Revalidate)}
 
-Stale-While-Revalidate (SWR) ist eine von Vercel entwickelte Bibliothek für das Server-State-Management in React- und React-Native-Anwendungen. Der Name leitet sich vom Stale-While-Revalidate-Prinzip ab, das der Bibliothek zugrunde liegt. Das Prinzip funktioniert so, dass gecachte Daten sofort zurückgegeben werden, während im Hintergrund eine Aktualisierung stattfindet \cite{swr-docs}.
+Stale-While-Revalidate (\gls{swr}) ist eine von Vercel entwickelte Bibliothek für das Server-State-Management in React- und React-Native-Anwendungen. Der Name leitet sich vom Stale-While-Revalidate-Prinzip ab, das der Bibliothek zugrunde liegt. Das Prinzip funktioniert so, dass gecachte Daten sofort zurückgegeben werden, während im Hintergrund eine Aktualisierung stattfindet \cite{swr-docs}.
 
-Ein Vorteil von SWR ist die schlanke API und die geringe Paketgröße, was eine schnelle Integration in bestehende Projekte ermöglicht. Für einfachere Anwendungen mit überschaubaren Datenanforderungen bietet SWR eine leichtgewichtige Alternative zu TanStack Query.
+Ein Vorteil von \gls{swr} ist die schlanke \gls{api} und die geringe Paketgröße, was eine schnelle Integration in bestehende Projekte ermöglicht. Für einfachere Anwendungen mit überschaubaren Datenanforderungen bietet \gls{swr} eine leichtgewichtige Alternative zu TanStack Query.
 
-Als Nachteil bietet SWR einen deutlich kleineren Funktionsumfang als TanStack Query. Fortgeschrittene Features wie optimistische Updates, unendliches Scrollen oder die detaillierte Konfiguration von Cache-Strategien sind bei SWR weniger ausgereift oder nicht vorhanden 
+Als Nachteil bietet \gls{swr} einen deutlich kleineren Funktionsumfang als TanStack Query. Fortgeschrittene Features wie optimistische Updates, unendliches Scrollen oder die detaillierte Konfiguration von Cache-Strategien sind bei \gls{swr} weniger ausgereift oder nicht vorhanden
 \cite{swr-docs}.
 
 \subsection{Redux Toolkit Query}
 
-Redux Toolkit Query (RTK Query) ist eine integrierte Lösung für den Datenabruf und das Caching von Serverdaten \cite{redux-toolkit-docs}. Sie kombiniert Server-State-Management und Client-State-Management in einem einzigen Tool und ist damit eng mit dem globalen Redux Store 
+Redux Toolkit Query (\gls{rtk}) ist eine integrierte Lösung für den Datenabruf und das Caching von Serverdaten \cite{redux-toolkit-docs}. Sie kombiniert Server-State-Management und Client-State-Management in einem einzigen Tool und ist damit eng mit dem globalen Redux Store
 verknüpft.
 
-Ein Vorteil von RTK Query ist die enge Integration mit Redux, wodurch Server- und Client-State zentral in einem Store verwaltet werden können. Für Projekte, die bereits Redux einsetzen, entfällt durch RTK Query 
+Ein Vorteil von \gls{rtk} ist die enge Integration mit Redux, wodurch Server- und Client-State zentral in einem Store verwaltet werden können. Für Projekte, die bereits Redux einsetzen, entfällt durch \gls{rtk}
 eine zusätzliche Abhängigkeit.
 
-Als Nachteil setzt RTK Query die Verwendung von Redux voraus, was einen Konfigurationsaufwand mit sich bringt. Für Projekte ohne bestehende Redux-Integration ist dieser Aufwand im Verhältnis zum Nutzen unverhältnismäßig hoch \cite{redux-toolkit-docs}.
+Als Nachteil setzt \gls{rtk} die Verwendung von Redux voraus, was einen Konfigurationsaufwand mit sich bringt. Für Projekte ohne bestehende Redux-Integration ist dieser Aufwand im Verhältnis zum Nutzen unverhältnismäßig hoch \cite{redux-toolkit-docs}.
 
 \subsection{Begründung der Wahl von TanStack Query}
 
-TanStack Query wurde als Server-State-Lösung für \textit{petappoint} gewählt, da es durch sein spezialisiertes Server-State-Management und die automatische Verwaltung von Ladezuständen und Caching den Implementierungsaufwand reduziert. Gegenüber SWR bietet TanStack Query einen deutlich größeren Funktionsumfang, und gegenüber RTK Query entfällt der hohe Konfigurationsaufwand einer vollständigen Redux-Integration. Darüber hinaus weist TanStack Query eine aktiv gepflegte Community und eine umfangreiche Dokumentation auf.
+TanStack Query wurde als Server-State-Lösung für \textit{petappoint} gewählt, da es durch sein spezialisiertes Server-State-Management und die automatische Verwaltung von Ladezuständen und Caching den Implementierungsaufwand reduziert. Gegenüber \gls{swr} bietet TanStack Query einen deutlich größeren Funktionsumfang, und gegenüber \gls{rtk} entfällt der hohe Konfigurationsaufwand einer vollständigen Redux-Integration. Darüber hinaus weist TanStack Query eine aktiv gepflegte Community und eine umfangreiche Dokumentation auf.
 
 \section{Client-State-Management}
 
@@ -130,7 +130,7 @@ TanStack Query wurde als Server-State-Lösung für \textit{petappoint} gewählt,
 
 Zustand ist eine minimalistische State-Management-Bibliothek für React, die ohne viel Boilerplate (wiederkehrender Standardcode) auskommt und einen einfachen, flexiblen Ansatz für die Verwaltung von globalem Client-State bietet \cite{zustand-docs}.
 
-Ein Vorteil von Zustand ist die geringe Einstiegshürde und die schlanke API, die eine schnelle Integration in bestehende Projekte ermöglicht. Im Vergleich zu Redux Toolkit erfordert Zustand deutlich weniger Konfigurationsaufwand und eignet sich daher besonders für kleinere bis mittelgroße Anwendungen.
+Ein Vorteil von Zustand ist die geringe Einstiegshürde und die schlanke \gls{api}, die eine schnelle Integration in bestehende Projekte ermöglicht. Im Vergleich zu Redux Toolkit erfordert Zustand deutlich weniger Konfigurationsaufwand und eignet sich daher besonders für kleinere bis mittelgroße Anwendungen.
 
 Als Nachteil ist zu nennen, dass Zustand keine eingebauten Mechanismen für Caching oder Synchronisierung von Serverdaten bietet. Für den Datenabruf ist daher stets eine zusätzliche Lösung erforderlich 
 \cite{zustand-docs}.
@@ -145,23 +145,23 @@ Als Nachteil gilt der vergleichsweise hohe Boilerplate-Aufwand, auch in der Tool
 
 \subsection{Begründung der Wahl von Zustand}
 
-Zustand wurde als Client-State-Lösung für \textit{petappoint} gewählt, da es durch seine schlanke API und den geringen Konfigurationsaufwand optimal zur Größe und Komplexität der Anwendung passt. Gegenüber Redux Toolkit entfällt der hohe Boilerplate-Aufwand, was für eine mittelgroße Anwendung wie \textit{petappoint} verhältnismäßiger ist. Da \textit{petappoint} primär Serverdaten verwaltet und nur wenig lokalen Client-State benötigt, ist eine schlanke Lösung wie Zustand einer umfangreichen Bibliothek 
+Zustand wurde als Client-State-Lösung für \textit{petappoint} gewählt, da es durch seine schlanke \gls{api} und den geringen Konfigurationsaufwand optimal zur Größe und Komplexität der Anwendung passt. Gegenüber Redux Toolkit entfällt der hohe Boilerplate-Aufwand, was für eine mittelgroße Anwendung wie \textit{petappoint} verhältnismäßiger ist. Da \textit{petappoint} primär Serverdaten verwaltet und nur wenig lokalen Client-State benötigt, ist eine schlanke Lösung wie Zustand einer umfangreichen Bibliothek 
 wie Redux Toolkit vorzuziehen.
 
-\section{UI-Komponentenbibliotheken}
+\section{\gls{ui}-Komponentenbibliotheken}
 
-\subsection{Gluestack UI}
+\subsection{Gluestack \gls{ui}}
 
-Gluestack UI ist eine komponentenbasierte UI-Bibliothek für React 
+Gluestack \gls{ui} ist eine komponentenbasierte \gls{ui}-Bibliothek für React 
 Native, die eine Sammlung von vordefinierten, zugänglichen und 
 anpassbaren Komponenten bereitstellt. Die Bibliothek basiert auf 
 einem Token-basierten Design-System, bei dem Farben, Abstände und 
 Typografie über zentrale Design-Tokens (wiederverwendbare Variablen für Designwerte) definiert und konsistent in 
 der gesamten Anwendung verwendet werden \cite{gluestack-docs}. 
-Gluestack UI unterstützt sowohl React Native als auch React im Web, 
+Gluestack \gls{ui} unterstützt sowohl React Native als auch React im Web, 
 wodurch Komponenten plattformübergreifend eingesetzt werden können.
 
-Ein Vorteil von Gluestack UI ist die umfangreiche Sammlung an 
+Ein Vorteil von Gluestack \gls{ui} ist die umfangreiche Sammlung an 
 vorgefertigten Komponenten, die direkt eingesetzt und an das 
 eigene Design angepasst werden können. Das Token-basierte 
 Design-System ermöglicht eine konsistente visuelle Gestaltung 
@@ -169,8 +169,8 @@ der gesamten Anwendung ohne redundante Styling-Definitionen.
 Darüber hinaus sind alle Komponenten auf Barrierefreiheit 
 ausgelegt und folgen den gängigen Accessibility-Standards.
 
-Als Nachteil ist zu nennen, dass Gluestack UI eine verhältnismäßig 
-junge Bibliothek ist und sich die API zwischen Versionen teils 
+Als Nachteil ist zu nennen, dass Gluestack \gls{ui} eine verhältnismäßig 
+junge Bibliothek ist und sich die \gls{api} zwischen Versionen teils 
 verändert hat, was zu Migrationsaufwand führen kann. 
 Zudem ist die Community im Vergleich zu etablierteren Bibliotheken 
 wie React Native Paper noch kleiner, weshalb die Dokumentation 
@@ -178,7 +178,7 @@ in manchen Bereichen weniger ausführlich ist.
 
 \subsection{React Native Paper}
 
-React Native Paper ist eine weit verbreitete UI-Komponentenbibliothek 
+React Native Paper ist eine weit verbreitete \gls{ui}-Komponentenbibliothek 
 für React Native, die auf den Material Design Richtlinien von Google 
 basiert \cite{react-native-paper-docs}. Sie stellt eine Vielzahl 
 von vorgefertigten Komponenten bereit, die dem Material Design 
@@ -186,7 +186,7 @@ Erscheinungsbild entsprechen und auf beiden Plattformen konsistent
 aussehen.
 
 Ein Vorteil von React Native Paper ist die große Community und die 
-ausgereifte, stabile API, die sich über mehrere Jahre bewährt hat. 
+ausgereifte, stabile \gls{api}, die sich über mehrere Jahre bewährt hat. 
 Die Bibliothek ist gut dokumentiert und bietet eine zuverlässige 
 Grundlage für Anwendungen, die dem Material Design folgen sollen.
 
@@ -200,7 +200,7 @@ Paper schnell an ihre Grenzen.
 
 StyleSheet ist die in React Native integrierte Lösung für das Styling 
 von Komponenten \cite{react-native-docs}. Es handelt sich dabei um 
-keine externe Bibliothek, sondern um eine native API, die CSS-ähnliche 
+keine externe Bibliothek, sondern um eine native \gls{api}, die \gls{css}-ähnliche
 Styling-Eigenschaften in JavaScript-Objekte übersetzt und diese 
 optimiert an die native Rendering-Ebene weitergibt.
 
@@ -210,19 +210,19 @@ Die Performance ist durch die native Optimierung der Styles
 vergleichsweise hoch.
 
 Als Nachteil ist zu nennen, dass StyleSheet keine vorgefertigten 
-Komponenten bereitstellt. Sämtliche UI-Elemente müssen von Grund 
+Komponenten bereitstellt. Sämtliche \gls{ui}-Elemente müssen von Grund 
 auf selbst implementiert werden, was den Entwicklungsaufwand 
 erhöht. Zudem fehlen ein einheitliches Design-System 
 und Mechanismen für die konsistente Verwaltung von Design-Tokens.
 
-\subsection{Begründung der Wahl von Gluestack UI}
+\subsection{Begründung der Wahl von Gluestack \gls{ui}}
 
-Gluestack UI wurde als UI-Komponentenbibliothek für \textit{petappoint} gewählt, 
+Gluestack \gls{ui} wurde als \gls{ui}-Komponentenbibliothek für \textit{petappoint} gewählt, 
 da es eine umfangreiche Sammlung anpassbarer Komponenten mit einem 
 konsistenten Token-basierten Design-System vereint. Im Vergleich zu 
-StyleSheet entfällt der Aufwand, alle UI-Elemente von Grund auf selbst 
+StyleSheet entfällt der Aufwand, alle \gls{ui}-Elemente von Grund auf selbst 
 zu implementieren, was die Entwicklungsgeschwindigkeit 
-steigert. Gegenüber React Native Paper bietet Gluestack UI mehr 
+steigert. Gegenüber React Native Paper bietet Gluestack \gls{ui} mehr 
 gestalterische Freiheit, da es nicht an ein spezifisches Design-System 
 wie Material Design gebunden ist und somit ein individuelles 
 Erscheinungsbild der Anwendung ermöglicht \cite{gluestack-docs}.
@@ -304,8 +304,8 @@ datengetriebene Anwendung ist, die primär Serverdaten abruft
 und anzeigt, ist diese Trennung zwischen Server- und
 Client-State konsequent umgesetzt.
 
-Gluestack UI und i18next vervollständigen den Stack auf der 
-Präsentationsebene: Gluestack UI stellt ein konsistentes 
+Gluestack \gls{ui} und i18next vervollständigen den Stack auf der 
+Präsentationsebene: Gluestack \gls{ui} stellt ein konsistentes 
 Token-basiertes Design-System bereit, das ein individuelles 
 Erscheinungsbild ohne Bindung an Material Design ermöglicht, 
 während i18next die automatische Anpassung der Sprache an die 
@@ -332,7 +332,7 @@ TanStack Query & Server-State / Datenabruf \& Caching \\
 \hline
 Zustand & Client-State-Management \\
 \hline
-Gluestack UI & Styling mit UI Komponentenbibliothek \\
+Gluestack \gls{ui} & Styling mit \gls{ui} Komponentenbibliothek \\
 \hline
 i18next & Internationalisierung (Mehrsprachigkeit) \\
 \hline

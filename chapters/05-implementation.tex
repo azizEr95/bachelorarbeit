@@ -17,15 +17,15 @@ Die eigentliche Anwendungslogik ist im Verzeichnis \texttt{src/} nach ihren Zust
 \hline
 \texttt{app/}                  & Dateibasiertes Routing über Expo Router (Screens \& Layouts) \\
 \hline
-\texttt{api/}                  & REST-API-Client-Funktionen, nach Domäne aufgeteilt \\
+\texttt{api/}                  & \gls{rest}-\gls{api}-Client-Funktionen, nach Domäne aufgeteilt \\
 \hline
 \texttt{hooks/}                & Custom React Hooks für Datenabruf und Mutationen \\
 \hline
 \texttt{stores/}               & Globaler Anwendungszustand mit Zustand \\
 \hline
-\texttt{custom-components/}    & Wiederverwendbare UI-Komponenten \\
+\texttt{custom-components/}    & Wiederverwendbare \gls{ui}-Komponenten \\
 \hline
-\texttt{gluestack-components/} & Angepasste Gluestack-UI-Komponentenbibliothek \\
+\texttt{gluestack-components/} & Angepasste Gluestack-\gls{ui}-Komponentenbibliothek \\
 \hline
 \texttt{i18n/}                 & Internationalisierung (Konfiguration \& Übersetzungsdateien) \\
 \hline
@@ -125,7 +125,7 @@ Die modalen Screens der Anwendung sind im Verzeichnis \texttt{app/(modals)/} abg
 \section{Umsetzung der Authentifizierung mit Expo Secure Store}
 \label{sec:auth}
 
-Die Authentifizierung in \textit{petappoint} gliedert sich in vier Bereiche: die sichere Speicherung des Zugriffstokens, die Verwaltung des Authentifizierungszustands zur Laufzeit, die automatische Token-Übermittlung bei API-Aufrufen sowie die Validierung einer bestehenden Sitzung beim Backend.
+Die Authentifizierung in \textit{petappoint} gliedert sich in vier Bereiche: die sichere Speicherung des Zugriffstokens, die Verwaltung des Authentifizierungszustands zur Laufzeit, die automatische Token-Übermittlung bei \gls{api}-Aufrufen sowie die Validierung einer bestehenden Sitzung beim Backend.
 
 \subsection{Tokenspeicherung mit Expo Secure Store}
 
@@ -219,7 +219,7 @@ clearAuth: async () => {
 \end{listing}
 
 \texttt{setVerified} wird nach erfolgreicher E-Mail-Verifizierung aufgerufen und aktualisiert
-das \texttt{verified}-Flag im Nutzerobjekt, ohne einen erneuten API-Aufruf durchführen zu müssen.
+das \texttt{verified}-Flag im Nutzerobjekt, ohne einen erneuten \gls{api}-Aufruf durchführen zu müssen.
 
 \begin{listing}[H]
 \begin{minted}{tsx}
@@ -233,11 +233,11 @@ setVerified: () => {
 \label{lst:set-verified}
 \end{listing}
 
-\subsection{API-Client mit automatischer Token-Übermittlung}
+\subsection{\gls{api}-Client mit automatischer Token-Übermittlung}
 
-Alle API-Aufrufe der Anwendung laufen über die zentrale Funktion \texttt{apiRequest} in
+Alle \gls{api}-Aufrufe der Anwendung laufen über die zentrale Funktion \texttt{apiRequest} in
 \texttt{src/api/client.ts}. Sie übernimmt zwei Aufgaben automatisch, sodass diese nicht
-in jedem einzelnen API-Aufruf wiederholt werden müssen.
+in jedem einzelnen \gls{api}-Aufruf wiederholt werden müssen.
 
 Erstens liest \texttt{apiRequest} das aktuelle Token synchron aus dem Store über
 \texttt{useAuthStore.getState().token} und setzt es als \texttt{Authorization: Bearer}-Header.
@@ -268,7 +268,7 @@ export async function apiRequest<T>(
 \label{lst:api-request}
 \end{listing}
 
-Zweitens behandelt \texttt{apiRequest} HTTP-401-Antworten zentral: Gibt das Backend einen 401-Statuscode zurück, wird \texttt{clearAuth()} automatisch aufgerufen. Der Token wird aus dem Store entfernt und leitet den Nutzenden beim nächsten Render automatisch zum Login-Screen weiter.
+Zweitens behandelt \texttt{apiRequest} \gls{http}-401-Antworten zentral: Gibt das Backend einen 401-Statuscode zurück, wird \texttt{clearAuth()} automatisch aufgerufen. Der Token wird aus dem Store entfernt und leitet den Nutzenden beim nächsten Render automatisch zum Login-Screen weiter.
 
 \subsection{Login- und Logout-Flow}
 
@@ -349,7 +349,7 @@ Mit \texttt{retry: false} wird verhindert, dass TanStack Query den Aufruf bei ei
 wiederholt. Das heißt, ein ungültiges Token führt sofort zur Abmeldung. Die \texttt{staleTime}
 von fünf Minuten bedeutet, dass die Daten nach diesem Zeitraum als veraltet markiert werden.
 
-\section{Umsetzung der API-Anbindung mit TanStack Query}
+\section{Umsetzung der \gls{api}-Anbindung mit TanStack Query}
 
 \subsection{Konfiguration mit QueryProvider}
 
@@ -384,7 +384,7 @@ um sicherzustellen, dass keine nutzerspezifischen Daten im Speicher verbleiben.
 
 \subsection{Query-Hooks}
 
-Sämtliche Datenabruf-Operationen der Anwendung sind in Custom Hooks gekapselt, die jeweils einen \texttt{useQuery}-Aufruf mit der zugehörigen API-Funktion aus dem \texttt{src/api/}-Verzeichnis verbinden. Das grundlegende Muster ist dabei einheitlich
+Sämtliche Datenabruf-Operationen der Anwendung sind in Custom Hooks gekapselt, die jeweils einen \texttt{useQuery}-Aufruf mit der zugehörigen \gls{api}-Funktion aus dem \texttt{src/api/}-Verzeichnis verbinden. Das grundlegende Muster ist dabei einheitlich
 aufgebaut:
 
 \begin{listing}[H]
@@ -482,9 +482,9 @@ Bei Operationen mit weiterreichenden Auswirkungen auf den Datenbestand werden me
 
 \section{Umsetzung der Screens der Tierhalter-Rolle}
 
-\subsection{Komponentenstruktur mit Gluestack UI}
+\subsection{Komponentenstruktur mit Gluestack \gls{ui}}
 
-Sämtliche Screens der Anwendung sind aus Komponenten der Gluestack-UI-Bibliothek aufgebaut,
+Sämtliche Screens der Anwendung sind aus Komponenten der Gluestack-\gls{ui}-Bibliothek aufgebaut,
 die als typsichere Abstraktionsschicht über den nativen React Native Komponenten fungieren.
 Anstelle von \texttt{View} und \texttt{StyleSheet} werden semantisch benannte Komponenten
 wie \texttt{Box}, \texttt{VStack}, \texttt{HStack}, \texttt{Text} oder \texttt{Pressable}
@@ -520,11 +520,11 @@ export default function Home() {
 
 Der Screen selbst beschränkt sich auf die Komposition der Teilkomponenten; die Datenabruf- und Darstellungslogik ist vollständig in die jeweiligen Unterkomponenten wie \texttt{SearchApt}, \texttt{UpcomingApt} oder \texttt{NearbyPractices} ausgelagert. Durch diese Trennung wird die Wiederverwendbarkeit der Komponenten gefördert.
 
-Das Styling sämtlicher Komponenten erfolgt über das \texttt{className}-Prop mittels NativeWind, das die Tailwind-CSS-Syntax auf die React Native Laufzeitumgebung überträgt.
+Das Styling sämtlicher Komponenten erfolgt über das \texttt{className}-Prop mittels NativeWind, das die Tailwind-\gls{css}-Syntax auf die React Native Laufzeitumgebung überträgt.
 
 \subsection{Light- und Dark-Theme mit semantischen Tokens}
 
-Die Unterstützung von Light- und Dark-Theme basiert auf dem von Gluestack UI bereitgestellten Token-System. 
+Die Unterstützung von Light- und Dark-Theme basiert auf dem von Gluestack \gls{ui} bereitgestellten Token-System. 
 
 Die Farbwerte der beiden Paletten wurden in \texttt{config.ts} projektspezifisch angepasst, wobei die numerische Skala im Dark-Mode invertiert wird, sodass ein Token wie \texttt{typography-700} im Light-Mode einem dunklen Grauton entspricht und im Dark-Mode einem hellen.
 
@@ -541,7 +541,7 @@ Die Farbwerte der beiden Paletten wurden in \texttt{config.ts} projektspezifisch
 \label{lst:color-tokens}
 \end{listing}
 
-Der \texttt{GluestackUIProvider} im Root Layout wird mit dem \texttt{themeStore} verbunden, der drei Modi unterstützt: Light, Dark sowie einen systemgesteuerten Modus, der das Farbschema des Betriebssystems übernimmt. Bei einem Themewechsel aktualisiert Gluestack UI die CSS-Variablen automatisch, wodurch alle Komponenten die korrekten Farbwerte übernehmen, ohne dass Anpassungen im Komponentencode erforderlich sind.
+Der \texttt{GluestackUIProvider} im Root Layout wird mit dem \texttt{themeStore} verbunden, der drei Modi unterstützt: Light, Dark sowie einen systemgesteuerten Modus, der das Farbschema des Betriebssystems übernimmt. Bei einem Themewechsel aktualisiert Gluestack \gls{ui} die \gls{css}-Variablen automatisch, wodurch alle Komponenten die korrekten Farbwerte übernehmen, ohne dass Anpassungen im Komponentencode erforderlich sind.
 
 Eine Ausnahme bilden FontAwesome-Icons, da diese das \texttt{className}-Prop nicht
 unterstützen und Farbwerte ausschließlich über ein explizites \texttt{color}-Prop
