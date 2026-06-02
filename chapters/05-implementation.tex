@@ -44,7 +44,7 @@ Die Navigationsstruktur von \textit{petappoint} basiert auf Expo Router und wird
 
 \subsection{Root Layout}
 
-Das Root Layout in \texttt{app/\_layout.tsx} bildet den Einstiegspunkt der gesamten Anwendung und entspricht konzeptionell der \texttt{App.tsx} in einer klassischen React-Anwendung.Es stellt globale Provider und Konfigurationen bereit und initialisiert diese für alle untergeordneten Komponenten, bevor die eigentliche Navigation gestartet wird. Diese werden in den nächsten Abschnitten nochmal detaillierter erklärt.
+Das Root Layout in \texttt{app/\_layout.tsx} bildet den Einstiegspunkt der gesamten Anwendung und entspricht konzeptionell der \texttt{App.tsx} in einer klassischen React-Anwendung.Es stellt globale Provider und Konfigurationen bereit und initialisiert diese für alle untergeordneten Komponenten, bevor die eigentliche Navigation gestartet wird. Diese werden in den nachfolgenden Abschnitten detaillierter beschrieben.
 
 Der Root-Stack registriert alle Routengruppen und modalen Screens der Anwendung. Ein Modal Screen bezeichnet ein temporäres Layout, das sich über den Hauptbildschirm legt und eine Benutzerinteraktion erfordert, bevor die Anwendung fortgesetzt werden kann \cite{expo-modals}. Die Modal Screens werden dabei direkt im Root-Stack als \texttt{fullScreenModal} registriert, damit die Navigation zwischen Modals und Tab-Screens korrekt unterscheiden und navigieren kann:
 
@@ -268,7 +268,7 @@ export async function apiRequest<T>(
 \label{lst:api-request}
 \end{listing}
 
-Zweitens behandelt \texttt{apiRequest} HTTP-401-Antworten zentral: Gibt das Backend einen 401-Statuscode zurück wird \texttt{clearAuth()} automatisch aufgerufen. Der Token wird aus dem Store entfernt und leitet den Nutzenden beim nächsten Render automatisch zum Login-Screen weiter.
+Zweitens behandelt \texttt{apiRequest} HTTP-401-Antworten zentral: Gibt das Backend einen 401-Statuscode zurück, wird \texttt{clearAuth()} automatisch aufgerufen. Der Token wird aus dem Store entfernt und leitet den Nutzenden beim nächsten Render automatisch zum Login-Screen weiter.
 
 \subsection{Login- und Logout-Flow}
 
@@ -325,8 +325,8 @@ return useMutation({
 \subsection{Sitzungsvalidierung mit useSession}
 
 Der Custom Hook \texttt{useSession} validiert beim App-Start eine bereits vorhandene Sitzung
-beim Backend. Er kapselt einen TanStack Query-Aufruf und wird nur dann ausgeführt, wenn ein
-Token im Store vorhanden ist, ansonsten bleibt die Anfrage inaktiv:
+beim Backend. Ein TanStack Query-Aufruf wird dabei nur ausgeführt, wenn ein Token 
+im Store vorhanden ist; andernfalls bleibt die Anfrage inaktiv.
 
 \begin{listing}[H]
 \begin{minted}{tsx}
@@ -400,7 +400,7 @@ export function useAllPractices() {
 \label{lst:use-all-practices}
 \end{listing}
 
-Für statische Referenzdaten, deren Inhalt sich zur Laufzeit nicht verändert, wird \texttt{staleTime: Infinity} gesetzt. Dadurch gelten diese Daten nach dem initialen Abruf für die gesamte Laufzeit der Anwendung als aktuell und werden nicht erneut vom Backend angefordert.
+Für statische Referenzdaten, deren Inhalt sich zur Laufzeit nicht verändert, wird \texttt{staleTime: Infinity} gesetzt \cite{tanstack-query-docs}. Dadurch gelten diese Daten nach dem initialen Abruf für die gesamte Laufzeit der Anwendung als aktuell und werden nicht erneut vom Backend angefordert.
 
 Für Screens, die mehrere zusammengehörige Datensätze erfordern, werden mehrere Queries innerhalb eines einzigen Hooks zusammengefasst und parallel ausgeführt. Der Hook \texttt{usePracticeDetails} bündelt beispielsweise drei Queries für die Stammdaten, die verfügbaren Leistungen sowie die freien Termine einer Tierarztpraxis:
 
@@ -518,7 +518,7 @@ export default function Home() {
 \label{lst:home-screen}
 \end{listing}
 
-Der Screen selbst beschränkt sich auf die Komposition der Teilkomponenten; die Datenabruf- und Darstellungslogik ist vollständig in die jeweiligen Unterkomponenten wie \texttt{SearchApt}, \texttt{UpcomingApt} oder \texttt{NearbyPractices} ausgelagert. Diese klare Trennung trägt zur besseren Wartbarkeit der Codebasis bei.
+Der Screen selbst beschränkt sich auf die Komposition der Teilkomponenten; die Datenabruf- und Darstellungslogik ist vollständig in die jeweiligen Unterkomponenten wie \texttt{SearchApt}, \texttt{UpcomingApt} oder \texttt{NearbyPractices} ausgelagert. Durch diese Trennung wird die Wiederverwendbarkeit der Komponenten gefördert.
 
 Das Styling sämtlicher Komponenten erfolgt über das \texttt{className}-Prop mittels NativeWind, das die Tailwind-CSS-Syntax auf die React Native Laufzeitumgebung überträgt.
 

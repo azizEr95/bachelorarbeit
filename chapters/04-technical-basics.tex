@@ -31,11 +31,11 @@ Brevo & Transaktionaler E-Mail-Dienst \\
 
 \subsection{React Native}
 
-React Native ist ein von Meta entwickeltes Open-Source-Framework, das die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren UI-Elementen \cite[S.~4]{galitz2002}. Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten Anwendung mit iOS oder Android. Da das Backend bereits in TypeScript implementiert ist, ermöglicht React Native zudem eine durchgängige Verwendung derselben Sprache über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand erheblich reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden \cite{react-native-docs}.
+React Native ist ein von Meta entwickeltes Open-Source-Framework, das die Entwicklung mobiler Anwendungen für iOS und Android auf Basis von JavaScript bzw. TypeScript ermöglicht. Es rendert echte native UI-Komponenten, die direkt den nativen Komponenten der jeweiligen Plattform entsprechen und damit ein plattformkonformes Nutzererlebnis gewährleisten \cite{react-native-docs}. UI-Komponenten sind die grundlegenden Bausteine einer Benutzeroberfläche und bestehen aus mehreren UI-Elementen \cite[S.~4]{galitz2002}. Dadurch verhalten sich die Elemente einer React Native Anwendung genauso wie die einer nativ entwickelten Anwendung mit iOS oder Android. Da das Backend bereits in TypeScript implementiert ist, ermöglicht React Native zudem eine durchgängige Verwendung derselben Sprache über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. Darüber hinaus ermöglicht eine einzige Codebasis die Entwicklung für iOS und Android gleichzeitig, was den Entwicklungsaufwand reduziert. Da React Native auf denselben Konzepten wie React aufbaut, können Kenntnisse und Codestrukturen zwischen Web und Mobile geteilt werden \cite{react-native-docs}.
 
 Als Nachteil älterer Versionen ist zu nennen, dass React Native Anwendungen mit hohen aufwendigen Animationen oder Spielen an seine Grenzen stoßen konnte, da die Kommunikation zwischen 
-JavaScript und der nativen Ebene einen gewissen Aufwand mit sich brachte. Mit der neuen Architektur in der das JavaScript Interface (JSI) hinzukam, wurde dieses Problem jedoch 
-deutlich reduziert~\cite{react-native-new-arch}.
+JavaScript und der nativen Ebene einen gewissen Aufwand mit sich brachte. Mit der neuen Architektur, in der das JavaScript Interface (JSI) 
+eingeführt wurde, konnte dieses Problem deutlich reduziert werden~\cite{react-native-new-arch}.
 
 \subsection{Flutter}
 
@@ -49,23 +49,24 @@ Als Nachteil erfordert Flutter die Verwendung von Dart, die zwingend erforderlic
 Betriebssystems entspricht. Für Entwickler, die bereits Erfahrung mit C\# und dem .NET-Ökosystem haben, bietet .NET MAUI zudem den Vorteil, bestehende Kenntnisse direkt in der mobilen Entwicklung einsetzen zu können. 
 
 Als Nachteil erfordert .NET MAUI einen vollständigen Sprachwechsel zu C\#, was für Teams ohne .NET-Erfahrung einen 
-erheblichen Einarbeitungsaufwand bedeutet~\cite{maui-docs}.
+hohen Einarbeitungsaufwand bedeutet~\cite{maui-docs}.
 
 \subsection{Begründung der Wahl von React Native}
 
 React Native wurde als Framework für \textit{petappoint} gewählt, da es durch die gemeinsame Verwendung von TypeScript mit dem Backend eine konsistente Typisierung über alle Schichten der Anwendung ermöglicht. Dadurch können Typdefinitionen und 
-Validierungslogiken zwischen Backend und Frontend geteilt werden, was die Konsistenz der Codebasis erhöht und Fehlerquellen reduziert. Zudem entfällt durch die Nähe zu React ein vollständiger Technologiewechsel, was den Entwicklungsaufwand gegenüber Flutter und .NET MAUI deutlich senkt. Da \textit{petappoint} keine aufwendigen Animationen erfordert, spielen die früheren performance-kritischen Grenzen von React Native keine entscheidende Rolle.
+Validierungslogiken zwischen Backend und Frontend geteilt werden, was die Konsistenz der Codebasis erhöht und Fehlerquellen reduziert. Zudem entfällt durch die Nähe zu React ein vollständiger Technologiewechsel, wodurch der Entwicklungsaufwand gegenüber Flutter und .NET MAUI reduziert wird. Da \textit{petappoint} keine aufwendigen Animationen erfordert, spielen die früheren performance-kritischen Grenzen von React Native keine entscheidende Rolle.
 
 \section{Expo als empfohlene Entwicklungsplattform für React Native}
 
-Expo ist eine Open-Source-Plattform, die auf React Native aufbaut und die Entwicklung, das Testen und die Veröffentlichung mobiler Anwendungen vereinfacht. Sie stellt eine Sammlung von vorkonfigurierten Tools, Bibliotheken und Diensten bereit, die den Einstieg in die React Native Entwicklung erheblich erleichtern \cite{expo-docs}. Expo abstrahiert dabei viele der komplexen nativen Konfigurationsschritte und bietet stattdessen eine einheitliche Entwicklungsumgebung für iOS und Android.
+Expo ist eine Open-Source-Plattform, die auf React Native aufbaut und die Entwicklung, das Testen und die Veröffentlichung mobiler Anwendungen vereinfacht. Sie stellt eine Sammlung von vorkonfigurierten Tools, Bibliotheken und Diensten bereit, die den Einstieg in die React Native Entwicklung erleichtern \cite{expo-docs}. Expo abstrahiert dabei viele der komplexen nativen Konfigurationsschritte und bietet stattdessen eine einheitliche Entwicklungsumgebung für iOS und Android.
 
 Expo wurde als Entwicklungsplattform für \textit{petappoint} gewählt, da die offizielle React Native Dokumentation Expo ausdrücklich als empfohlenen Weg für die Entwicklung neuer React-Native-Anwendungen bezeichnet \cite{react-native-docs}. 
 
 Da die Wahl dadurch bereits gefallen war, ergab sich Expo Router als konsequente Folgeentscheidung, 
 da es von Expo als offizielles Navigationssystem empfohlen wird \cite{expo-router}. Die Navigationsstruktur der Anwendung wird dabei direkt über das Dateiverzeichnis abgebildet, wobei jede Datei im \texttt{app}-Verzeichnis automatisch einer Route entspricht. Dadurch wird Nachvollziehbarkeit der Navigationslogik erhöht, indem die Ordnerstruktur direkt die Struktur der App widerspiegelt. 
 
-Um weiterhin in der Entwicklungsumgebung von Expo zu bleiben wurde die Anwendung für das Testen auf einem physischen Gerät durch ein Development Build eingesetzt. Dabei wird ein individuell konfigurierter nativer Build der Anwendung erstellt, der den Expo Dev Client enthält und direkt auf dem Gerät installiert wird \cite{expo-build}. Dadurch wird die Verwendung beliebiger nativer Module erlaubt und spiegelt das Verhalten der finalen Produktionsanwendung deutlich genauer wider. Das Expo Software Development Kit (Expo SDK) bietet darüber hinaus eine Sammlung an vorgefertigten Modulen für den Zugriff auf native Gerätefunktionen wie Kamera, Standort oder Benachrichtigungen \cite{expo-build}.
+Um weiterhin in der Entwicklungsumgebung von Expo zu bleiben wurde die Anwendung für das Testen auf einem physischen Gerät durch ein Development Build eingesetzt. Dabei wird ein individuell konfigurierter nativer Build der Anwendung erstellt, der den Expo Dev Client enthält und direkt auf dem Gerät installiert wird \cite{expo-build}. Dadurch wird die Verwendung beliebiger nativer Module erlaubt und spiegelt das Verhalten der finalen Produktionsanwendung deutlich genauer wider. Das Expo Software Development Kit (Expo SDK) bietet darüber hinaus eine Sammlung an vorgefertigten Modulen für den Zugriff auf native  Gerätefunktionen wie Kamera, Standort oder Benachrichtigungen \cite{expo-build}. Die vom Expo SDK bereitgestellte Bibliothek \textit{expo-secure-store} legt sicherheitsrelevante Daten, wie 
+beispielsweise Authentifizierungstokens, verschlüsselt als Key-Value-Paare ab und greift dabei direkt auf die systemeigenen Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain oder den Android-KeyStore \cite{expo-service}.
 
 
 Für die Speicherung sicherheitsrelevanter Daten, wie beispielsweise Authentifizierungstokens, stellt das Expo SDK mit expo-secure-store eine integrierte Lösung bereit. Die Bibliothek legt Daten verschlüsselt als Key-Value-Paare ab und greift dabei direkt auf die systemeigenen Sicherheitsmechanismen der Endgeräte zurück, also die iOS-Keychain oder den Android-KeyStore \cite{expo-service}.
@@ -90,7 +91,7 @@ Anfragen direkt aus dem Cache zurückgegeben, bevor im Hintergrund eine
 Aktualisierung stattfindet. Dieses Verhalten wird als 
 Stale-While-Revalidate bezeichnet und sorgt für eine reaktionsschnelle 
 Benutzeroberfläche \cite{tanstack-query-docs}. Darüber hinaus reduziert 
-TanStack Query den manuellen Implementierungsaufwand erheblich, da 
+TanStack Query den manuellen Implementierungsaufwand, da 
 wiederkehrende Muster wie Fehlerbehandlung und Ladezustände nicht 
 selbst implementiert werden müssen.
 
@@ -117,17 +118,17 @@ verknüpft.
 Ein Vorteil von RTK Query ist die enge Integration mit Redux, wodurch Server- und Client-State zentral in einem Store verwaltet werden können. Für Projekte, die bereits Redux einsetzen, entfällt durch RTK Query 
 eine zusätzliche Abhängigkeit.
 
-Als Nachteil setzt RTK Query die Verwendung von Redux voraus, was einen erheblichen Konfigurationsaufwand mit sich bringt. Für Projekte ohne bestehende Redux-Integration ist dieser Aufwand im Verhältnis zum Nutzen unverhältnismäßig hoch \cite{redux-toolkit-docs}.
+Als Nachteil setzt RTK Query die Verwendung von Redux voraus, was einen Konfigurationsaufwand mit sich bringt. Für Projekte ohne bestehende Redux-Integration ist dieser Aufwand im Verhältnis zum Nutzen unverhältnismäßig hoch \cite{redux-toolkit-docs}.
 
 \subsection{Begründung der Wahl von TanStack Query}
 
-TanStack Query wurde als Server-State-Lösung für \textit{petappoint} gewählt, da es durch sein spezialisiertes Server-State-Management und die automatische Verwaltung von Ladezuständen und Caching den Implementierungsaufwand erheblich reduziert. Gegenüber SWR bietet TanStack Query einen deutlich größeren Funktionsumfang, und gegenüber RTK Query entfällt der hohe Konfigurationsaufwand einer vollständigen Redux-Integration. Darüber hinaus war TanStack Query bereits im vorangegangenen Projektmodul im Einsatz, wodurch Vorerfahrung im Umgang mit der Bibliothek vorhanden war.
+TanStack Query wurde als Server-State-Lösung für \textit{petappoint} gewählt, da es durch sein spezialisiertes Server-State-Management und die automatische Verwaltung von Ladezuständen und Caching den Implementierungsaufwand reduziert. Gegenüber SWR bietet TanStack Query einen deutlich größeren Funktionsumfang, und gegenüber RTK Query entfällt der hohe Konfigurationsaufwand einer vollständigen Redux-Integration. Darüber hinaus weist TanStack Query eine aktiv gepflegte Community und eine umfangreiche Dokumentation auf.
 
 \section{Client-State-Management}
 
 \subsection{Zustand}
 
-Zustand ist eine minimalistische State-Management-Bibliothek für React, die ohne viel Boilerplate auskommt und einen einfachen, flexiblen Ansatz für die Verwaltung von globalem Client-State bietet \cite{zustand-docs}.
+Zustand ist eine minimalistische State-Management-Bibliothek für React, die ohne viel Boilerplate (wiederkehrender Standardcode) auskommt und einen einfachen, flexiblen Ansatz für die Verwaltung von globalem Client-State bietet \cite{zustand-docs}.
 
 Ein Vorteil von Zustand ist die geringe Einstiegshürde und die schlanke API, die eine schnelle Integration in bestehende Projekte ermöglicht. Im Vergleich zu Redux Toolkit erfordert Zustand deutlich weniger Konfigurationsaufwand und eignet sich daher besonders für kleinere bis mittelgroße Anwendungen.
 
@@ -136,7 +137,7 @@ Als Nachteil ist zu nennen, dass Zustand keine eingebauten Mechanismen für Cach
 
 \subsection{Redux Toolkit}
 
-Redux Toolkit ist die offizielle, empfohlene Variante zur Verwendung von Redux, einer weit verbreiteten Bibliothek für das globale State-Management in React-Anwendungen \cite{redux-toolkit-docs}. Redux verwaltet den gesamten Anwendungszustand in einem zentralen Store, auf den alle Komponenten zugreifen können.
+Redux Toolkit ist die offizielle, empfohlene Variante zur Verwendung von Redux, einer weit verbreiteten Bibliothek für das globale State-Management in React-Anwendungen \cite{redux-toolkit-docs}. Redux verwaltet den gesamten Anwendungszustand in einem zentralen Speicher, auf den alle Komponenten zugreifen können.
 
 Ein Vorteil von Redux Toolkit ist die große Community und die weite Verbreitung in bestehenden Projekten. Für sehr große Anwendungen mit komplexem globalem State bietet Redux Toolkit durch seinen strukturierten Ansatz eine robuste und gut skalierbare Lösung.
 
@@ -155,7 +156,7 @@ Gluestack UI ist eine komponentenbasierte UI-Bibliothek für React
 Native, die eine Sammlung von vordefinierten, zugänglichen und 
 anpassbaren Komponenten bereitstellt. Die Bibliothek basiert auf 
 einem Token-basierten Design-System, bei dem Farben, Abstände und 
-Typografie über zentrale Design-Tokens definiert und konsistent in 
+Typografie über zentrale Design-Tokens (wiederverwendbare Variablen für Designwerte) definiert und konsistent in 
 der gesamten Anwendung verwendet werden \cite{gluestack-docs}. 
 Gluestack UI unterstützt sowohl React Native als auch React im Web, 
 wodurch Komponenten plattformübergreifend eingesetzt werden können.
@@ -170,7 +171,7 @@ ausgelegt und folgen den gängigen Accessibility-Standards.
 
 Als Nachteil ist zu nennen, dass Gluestack UI eine verhältnismäßig 
 junge Bibliothek ist und sich die API zwischen Versionen teils 
-erheblich verändert hat, was zu Migrationsaufwand führen kann. 
+verändert hat, was zu Migrationsaufwand führen kann. 
 Zudem ist die Community im Vergleich zu etablierteren Bibliotheken 
 wie React Native Paper noch kleiner, weshalb die Dokumentation 
 in manchen Bereichen weniger ausführlich ist.
@@ -211,7 +212,7 @@ vergleichsweise hoch.
 Als Nachteil ist zu nennen, dass StyleSheet keine vorgefertigten 
 Komponenten bereitstellt. Sämtliche UI-Elemente müssen von Grund 
 auf selbst implementiert werden, was den Entwicklungsaufwand 
-erheblich erhöht. Zudem fehlen ein einheitliches Design-System 
+erhöht. Zudem fehlen ein einheitliches Design-System 
 und Mechanismen für die konsistente Verwaltung von Design-Tokens.
 
 \subsection{Begründung der Wahl von Gluestack UI}
@@ -220,7 +221,7 @@ Gluestack UI wurde als UI-Komponentenbibliothek für \textit{petappoint} gewähl
 da es eine umfangreiche Sammlung anpassbarer Komponenten mit einem 
 konsistenten Token-basierten Design-System vereint. Im Vergleich zu 
 StyleSheet entfällt der Aufwand, alle UI-Elemente von Grund auf selbst 
-zu implementieren, was die Entwicklungsgeschwindigkeit erheblich 
+zu implementieren, was die Entwicklungsgeschwindigkeit 
 steigert. Gegenüber React Native Paper bietet Gluestack UI mehr 
 gestalterische Freiheit, da es nicht an ein spezifisches Design-System 
 wie Material Design gebunden ist und somit ein individuelles 
@@ -240,7 +241,7 @@ Ein Vorteil von i18next ist die flexible Konfiguration und die große
 Community, die sich als Standardlösung im React Native Ökosystem 
 etabliert hat. Die automatische Anpassung an die Systemsprache des 
 Geräts erfolgt ohne zusätzlichen Konfigurationsaufwand, was die 
-Integration erheblich vereinfacht.
+Integration vereinfacht.
 
 Als Nachteil ist zu nennen, dass i18next durch seinen großen 
 Funktionsumfang für einfache Anwendungsfälle überdimensioniert 
@@ -310,9 +311,7 @@ Erscheinungsbild ohne Bindung an Material Design ermöglicht,
 während i18next die automatische Anpassung der Sprache an die 
 Systemsprache des Geräts sicherstellt.
 
-Insgesamt wurde bei der Technologieauswahl darauf geachtet, 
-bewährte und gut dokumentierte Lösungen einzusetzen, die sich 
-im React Native Ökosystem etabliert haben und komplementär zusammenwirken.
+Die Technologieauswahl orientierte sich an technischen Anforderungen sowie der Verbreitung und Dokumentationsqualität der jeweiligen Bibliotheken im React Native Ökosystem.
 
 Die folgende Tabelle gibt einen abschließenden Überblick über alle eingesetzten Technologien und deren Funktion in der Anwendung.
 
