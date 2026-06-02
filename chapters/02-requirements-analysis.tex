@@ -52,26 +52,30 @@ Perspektive beider Zielgruppen abgeleitet:
     \item \textbf{FA\#03} Die mobile Anwendung \textbf{muss} Nutzenden 
     ermöglichen, Tierarztpraxen zu suchen und zu filtern.
 
-    \item \textbf{FA\#04} Die mobile Anwendung \textbf{muss} Nutzenden 
-    ermöglichen, verfügbare Termine einzusehen und zu buchen.
+    \item \textbf{FA\#04} Die mobile Anwendung \textbf{muss} Nutzenden ermöglichen, verfügbare Termine einzusehen und zu buchen.
 
-    \item \textbf{FA\#05} Die mobile Anwendung \textbf{muss} Nutzenden 
-    ermöglichen, gebuchte Termine einzusehen und zu stornieren.
+    \item \textbf{FA\#05} Die mobile Anwendung \textbf{muss} Nutzenden ermöglichen, gebuchte Termine einzusehen und zu bearbeiten.
+
+    \item \textbf{FA\#06} Die mobile Anwendung \textbf{muss} Nutzenden ermöglichen, gebuchte Termine einzusehen und zu stornieren.
 \end{itemize}
 
 \textbf{Tierarztpraxen}
 
 \begin{itemize}
-    \item \textbf{FA\#06} Die mobile Anwendung \textbf{muss} 
-    Tierarztpraxen ermöglichen, ihr Profil und ihre Verfügbarkeiten 
-    zu verwalten.
+    \item \textbf{FA\#07} Die mobile Anwendung \textbf{muss} 
+    Tierarztpraxen ermöglichen, eingehende Buchungen einzusehen.
 
-    \item \textbf{FA\#07} Die mobile Anwendung \textbf{muss}
-    Tierarztpraxen ermöglichen, eingehende Buchungen einzusehen
-    und zu verwalten.
+    \item \textbf{FA\#08} Die mobile Anwendung \textbf{muss}
+    Tierarztpraxen ermöglichen, Terminslots anzulegen.
+
+    \item \textbf{FA\#09} Die mobile Anwendung \textbf{muss}
+    Tierarztpraxen ermöglichen, Terminslots zu bearbeiten.
+
+    \item \textbf{FA\#10} Die mobile Anwendung \textbf{muss}
+    Tierarztpraxen ermöglichen, eingehende Buchungen zu stornieren.
 \end{itemize}
 
-Die Anforderungen FA\#06 und FA\#07 wurden im Rahmen dieser Arbeit konzipiert, jedoch nicht implementiert. Die Implementierung beschränkt sich auf die Tierhalter-Rolle (FA\#01--FA\#05).
+Die Anforderungen für die Tierarztpraxen (FA\#07 bis FA\#10) wurden im Rahmen dieser Arbeit konzipiert, jedoch nicht implementiert. Die Implementierung beschränkt sich auf die Tierhalter-Rolle (FA\#01--FA\#06).
 
 \section{Nicht-funktionale Anforderungen}
 
@@ -89,6 +93,13 @@ die Qualitätsmerkmale des Systems beziehen \cite[S.~4]{pohl2021}.
     \item \textbf{NFA\#04} Die mobile Anwendung muss in den Sprachen Deutsch und Englisch verfügbar sein.
 
     \item \textbf{NFA\#05} Die Anwendung muss Nutzenden durch Statusmeldungen Rückmeldung über abgeschlossene Aktionen geben.
+
+     \item \textbf{NFA\#06} Die mobile Anwendung muss bereits geladene Daten zwischenspeichern, sodass diese bei wiederholtem Zugriff ohne erneute Serveranfrage dargestellt werden können.
+
+    \item \textbf{NFA\#07} Die Benutzeroberfläche der mobilen Anwendung muss auf Nutzereingaben ohne wahrnehmbare Verzögerung oder Unterbrechung
+    reagieren.
+
+    \item \textbf{NFA\#08} Die mobile Anwendung muss Authentifizierungstoken ausschließlich in einem verschlüsselten, geräteseitigen Speicher ablegen.
 \end{itemize}
 
 \section{Use Cases}
