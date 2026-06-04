@@ -3,11 +3,10 @@
 \section{Fazit und Beantwortung der Forschungsfrage}
 Die Forschungsfrage dieser Arbeit lautete: \textit{Wie lässt sich eine plattformübergreifende Terminverwaltungsanwendung für Tierhalter im Kontext von Veterinärmedizinpraxen konzipieren, umsetzen und hinsichtlich ihrer Funktionalität und Usability evaluieren?}
 
-Im Rahmen der Anforderungsermittlung in Kapitel~2 wurden zunächst die Bedürfnisse beider Zielgruppen, Tierhalter und Tierarztpraxen, analysiert und strukturiert dokumentiert. Auf dieser Grundlage wurden zehn funktionale Anforderungen mithilfe von Satzschablonen eindeutig formuliert, wobei sich die Implementierung im nachhinein auf die sechs Anforderungen der Tierhalter-Rolle beschränkte. Ergänzend wurden acht nicht-funktionale Anforderungen definiert. Die Anforderungen wurden durch zehn Use Cases konkretisiert, die sowohl die Tierhalter- als auch die Tierarztpraxis-Rolle abbilden und den
+Im Rahmen der Anforderungsermittlung in Kapitel~2 wurden zunächst die Bedürfnisse beider Zielgruppen, Tierhalter und Tierarztpraxen, analysiert und strukturiert dokumentiert. Auf dieser Grundlage wurden zehn funktionale Anforderungen mithilfe von Satzschablonen eindeutig formuliert, wobei sich die Implementierung auf die sechs Anforderungen der Tierhalter-Rolle beschränkte. Ergänzend wurden acht nicht-funktionale Anforderungen definiert. Die Anforderungen wurden durch zehn Use Cases konkretisiert, die sowohl die Tierhalter- als auch die Tierarztpraxis-Rolle abbilden und den
 praktischen Kontext der Anwendung veranschaulichen.
 
-In Kapitel~3 wurde auf Basis der ermittelten Anforderungen die Konzeption der mobilen Anwendung erarbeitet. Die Softwarearchitektur folgt einem dreischichtigen Schichtenmodell, das Frontend, Backend und Datenbank klar voneinander trennt. Da das Backend im Rahmen eines vorangegangenen Projektmoduls bereits entwickelt worden war, konzentrierte sich die Konzeption ausschließlich auf die Präsentationsschicht. Im Rahmen einer
-kritischen Betrachtung der bestehenden Backend-Infrastruktur wurden dabei mehrere Schwachstellen identifiziert, darunter die fehlende Rollentrennung, das Fehlen eines Statusattributs für Termine sowie das Fehlen einer Tabelle für Öffnungszeiten. Das Komponentendiagramm beschreibt den strukturellen Aufbau des Frontends in Präsentations-, Business- und Datenzugriffsschicht.
+In Kapitel~3 wurde auf Basis der ermittelten Anforderungen die Konzeption der mobilen Anwendung erarbeitet. Die Softwarearchitektur folgt einem dreischichtigen Schichtenmodell, das Frontend, Backend und Datenbank klar voneinander trennt. Da das Backend im Rahmen eines vorangegangenen Projektmoduls bereits entwickelt worden war, konzentrierte sich die Konzeption ausschließlich auf die Präsentationsschicht. Im Rahmen einer kritischen Betrachtung der bestehenden Backend-Infrastruktur wurden mehrere Schwachstellen identifiziert (vgl. Abschnitt~\ref{sec:backend-kritik}). Das Komponentendiagramm beschreibt den strukturellen Aufbau des Frontends in Präsentations-, Business- und Datenzugriffsschicht.
 Das Navigationskonzept legt die Struktur der Tab-Navigation sowie der modalen Screens für beide Rollen fest. Mockups veranschaulichen die geplante Benutzeroberfläche und ein Aktivitätsdiagramm beschreibt den vollständigen Ablauf des Terminbuchungsprozesses.
 
 Kapitel~4 legte die technischen Grundlagen der Implementierung dar. Im Rahmen von Technologievergleichen wurden React Native gegenüber Flutter und .NET MAUI, TanStack Query gegenüber \gls{swr} und \gls{rtk}, Zustand gegenüber Redux Toolkit sowie Gluestack \gls{ui} gegenüber React Native Paper und StyleSheet abgewogen. Die Entscheidungen wurden jeweils anhand projektspezifischer
@@ -31,8 +30,7 @@ Forschungsfrage positiv beantwortet werden.
 
 \section{Kritische Auseinandersetzung}
 
-Die vorliegende Arbeit liefert einen fundierten Beitrag zur Konzeption,Umsetzung und Evaluation einer plattformübergreifenden
-Terminverwaltungsanwendung im veterinärmedizinischen Bereich, weist jedoch Einschränkungen auf, die einer kritischen Betrachtung bedürfen.
+Die vorliegende Arbeit liefert einen fundierten Beitrag zur Konzeption, Umsetzung und Evaluation einer plattformübergreifenden Terminverwaltungsanwendung im veterinärmedizinischen Bereich, weist jedoch Einschränkungen auf, die einer kritischen Betrachtung bedürfen.
 
 Hinsichtlich des Implementierungsumfangs beschränkte sich die Umsetzung bewusst auf die Tierhalter-Rolle. Die Anforderungen der
 Tierarztpraxis-Rolle (FA\#07 bis FA\#10) wurden zwar konzipiert und durch Use Cases konkretisiert, jedoch nicht implementiert. Damit stellt \textit{petappoint} in seinem aktuellen Zustand keine vollständige Terminverwaltungslösung dar, da eine funktionsfähige Anwendung das Zusammenspiel beider Rollen voraussetzt. Tierarztpraxen können derzeit weder Terminslots anlegen noch eingehende Buchungen verwalten, was den praktischen Einsatz der Anwendung in realen Praxisumgebungen einschränkt.
@@ -46,7 +44,7 @@ Einschränkungen. Die Registrierungsfunktion war nicht Bestandteil
 der Nutzerstudie, da die Teilnehmenden mit vorgegebenen Zugangsdaten
 arbeiteten, sodass FA\#01 nur teilweise belegt werden konnte. Die
 Rekrutierung der 20 Teilnehmenden erfolgte ausschließlich aus dem
-persönlichen Umfeld des Autors, was keine repräsentative
+persönlichen Umfeld des Verfassers, was keine repräsentative
 Zufallsstichprobe der tatsächlichen Zielgruppe darstellt. Darüber
 hinaus wurde die Studie mit nur zwei Geräten durchgeführt, sodass
 keine Aussagen über das Verhalten der Anwendung auf anderen Geräten oder Bildschirmgrößen getroffen werden können. Da zudem ausschließlich die Tierhalter-Rolle implementiert und evaluiert wurde, ist eine vollständige Beurteilung der Anwendung aus Sicht beider Zielgruppen nicht möglich.
