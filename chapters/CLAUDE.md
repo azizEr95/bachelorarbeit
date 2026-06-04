@@ -23,18 +23,19 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
 
 ### Kapitelstruktur
 
-- 1 Einleitung (S. 1–4)
+- 1 Einleitung
   - 1.1 Hintergrund und Motivation
   - 1.2 Problemstellung
-  - 1.3 Terminverwaltung im Veterinärbereich
+  - 1.3 Zielsetzung
+  - 1.3 Aktuelle Terminverwaltungsanwendungen im veterinärmedizinischen Bereich
   - 1.4 Ausgewählte Systeme im Vergleich
     - 1.4.1 petsXL
     - 1.4.2 petLeo
     - 1.4.3 vetpraxis
   - 1.5 Abgrenzung zur eigenen Anwendung
-  - 1.6 Zielsetzung
+  - 1.6 Aufbau der Arbeit
 
-- 2 Anforderungsanalyse (S. 5–18)
+- 2 Anforderungsanalyse
   - 2.1 Zielgruppe
   - 2.2 Funktionale Anforderungen
   - 2.3 Nicht-funktionale Anforderungen
@@ -51,7 +52,7 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
     - 2.4.10 Terminslot bearbeiten
     - 2.4.11 gebuchten Termin absagen
 
-- 3 Konzeption (S. 19–39)
+- 3 Konzeption
   - 3.1 Softwarearchitektur
     - 3.1.1 Architekturübersicht
     - 3.1.2 Bestehendes Backend Architektur als Grundlage
@@ -67,7 +68,7 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
     - 3.4.4 Tab Ansichten der Tierarztpraxis
   - 3.5 Aktivitätsdiagramm der Terminbuchung
 
-- 4 Technische Grundlagen (S. 40–48)
+- 4 Technische Grundlagen
   - 4.1 Technologien im bereits bestehenden Backend
   - 4.2 Plattformübergreifende Frameworks für mobile Anwendungen
     - 4.2.1 React Native
@@ -94,7 +95,7 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
     - 4.7.2 react-intl
   - 4.8 Zusammenspiel der gewählten Technologien
 
-- 5 Implementierung (S. 49–60)
+- 5 Implementierung
   - 5.1 Projektstruktur
     - 5.1.1 Aufbau des src-Verzeichnisses
   - 5.2 Navigationsstruktur mit Expo Router
@@ -116,7 +117,7 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
     - 5.5.1 Komponentenstruktur mit Gluestack UI
     - 5.5.2 Light- und Dark-Theme mit semantischen Tokens
     - 5.5.3 Übersicht der implementierten Screens
-- 6 Evaluation (S. 61–70)
+- 6 Evaluation
   - 6.1 Methodik
     - 6.1.1 Studiendesign
     - 6.1.2 Beschreibung der Datenerhebung
@@ -134,9 +135,9 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
   - 6.3 Diskussion
     - 6.3.1 Interpretation der Ergebnisse
     - 6.3.2 Limitationen
-- 7 Fazit & Ausblick (S. 71–72)
-  - 7.1 Beantwortung der Forschungsfrage
-  - 7.2 Fazit
+- 7 Fazit & Ausblick
+  - 7.1 Fazit und Beantwortung der Forschungsfrage
+  - 7.2 Kritische Auseinandersetzung
   - 7.3 Ausblick
 - appendix: 
   - Zusätzliche Abbildungen
@@ -155,75 +156,44 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
 | petAppoint, PetAppoint, pet-appoint | **petappoint**            | kein Bindestrich, kein Großbuchstabe       |
 | Tierbesitzer, Haustierbesitzer      | **Tierhalter**            | einheitliche Zielgruppenbezeichnung        |
 | Praxis (ohne Kontext)               | **Tierarztpraxis**        | immer ausgeschrieben                       |
-| cross-platform                      | **plattformübergreifend** | außer in technischen Codenamen             |
 | Nutzer, Nutzer und Nutzerinnen      | **Nutzende**              | geschlechtsneutral                         |
-| Appointment Management              | **Terminverwaltung**      | außer als Fachbegriff in Systemvergleichen |
 
 ### Anforderungs-IDs
 **Funktionale Anforderungen (Tierhalter-Rolle: als FAs ausformuliert, konzipiert, implementiert, evaluiert und ausgewertet):**
-- FA#01 Registrierung & Login
-- FA#02 Haustierprofile verwalten
-- FA#03 Tierarztpraxen suchen & filtern
-- FA#04 Termine einsehen & buchen
-- FA#05 Termine einsehen & stornieren
+- FA#01 Die mobile Anwendung muss Nutzenden ermöglichen, sich zu registrieren und anzumelden.
+- FA#02 Die mobile Anwendung muss Nutzenden ermöglichen, Haustierprofile zu erstellen und zu verwalten.
+- FA#03 Die mobile Anwendung muss Nutzenden ermöglichen, Tierarztpraxen zu suchen und zu filtern.
+- FA#04 Die mobile Anwendung muss Nutzenden ermöglichen, verfügbare Termine einzusehen und zu buchen.
+- FA#05 Die mobile Anwendung muss Nutzenden ermöglichen, gebuchte Termine einzusehen und zu bearbeiten.
+- FA#06 Die mobile Anwendung muss Nutzenden ermöglichen, gebuchte Termine einzusehen und zu stornieren.
 
 **Funktionale Anforderungen (Praxis-Rolle: als FAs ausformuliert und konzipiert aber nicht implementiert und evaluiert):**
-- FA#06 Praxisprofil & Verfügbarkeit verwalten
-- FA#07 Eingehende Buchungen verwalten
+- FA#07 Die mobile Anwendung muss Tierarztpraxen ermöglichen, eingehende Buchungen einzusehen.
+- FA#08 Die mobile Anwendung muss Tierarztpraxen ermöglichen, Terminslots anzulegen
+- FA#09 Die mobile Anwendung muss Tierarztpraxen ermöglichen, Terminslots zu bearbeiten.
+- FA#10 Die mobile Anwendung muss Tierarztpraxen ermöglichen, eingehende Buchungen zu stornieren.
 
 **Nicht-funktionale Anforderungen:**
-- NFA#01 iOS & Android
-- NFA#02 Intuitiv ohne Einarbeitung
-- NFA#03 Light & Dark Theme
-- NFA#04 Deutsch & Englisch
-- NFA#05 Statusmeldungen bei Aktionen
+- NFA#01 Die mobile Anwendung muss auf gängigen iOS- und Android-Geräten nutzbar sein.
+- NFA#03 Die mobile Anwendung muss ein helles (Light) sowie ein dunkles (Dark) Farbschema unterstützen, das von Nutzenden manuell über einen Schalter in der Anwendung gewechselt werden kann.
+- NFA#04 Die mobile Anwendung muss in den Sprachen Deutsch und Englisch verfügbar sein.
+- NFA#05 Die Anwendung muss Nutzenden durch Statusmeldungen Rückmeldung über abgeschlossene Aktionen geben.
+- NFA#06 Die mobile Anwendung muss bereits geladene Daten zwischenspeichern, sodass diese bei wiederholtem Zugriff ohne erneute Serveranfrage dargestellt werden können.
+- NFA#07 Die Benutzeroberfläche der mobilen Anwendung muss auf Nutzereingaben ohne wahrnehmbare Verzögerung oder Unterbrechung
+    reagieren.
+- NFA#08 Die mobile Anwendung muss Authentifizierungstoken ausschließlich in einem verschlüsselten, geräteseitigen Speicher ablegen.
 
-### DSR-Phasen (Design Science Research)
-Die Arbeit folgt dem DSR-Zyklus. Kapitel ordnen sich wie folgt ein:
+### Design Science Research Phasen
+Die Arbeit folgt dem Design Science Research-Zyklus. Kapitel ordnen sich wie folgt ein:
 - **Analyze** → Kap. 1 (Problem), Kap. 2 (Anforderungen)
 - **Design** → Kap. 3 (Konzeption), Kap. 4 (Technologieauswahl)
 - **Build** → Kap. 5 (Implementierung)
 - **Evaluate** → Kap. 6 (Evaluation)
 - **Reflect** → Kap. 7 (Fazit & Ausblick)
 
-## B. Akademische Stilregeln
-
-### VERBOTEN
-- Ich-Form: „Ich habe analysiert…" → Passiv verwenden: „Es wurde analysiert…"
-- Umgangssprache und wertende Formulierungen: „eigentlich", „quasi", „sozusagen"
-- Floskeln: „den Finger in die Wunde legen", „auf den Nägeln brennen"
-- Allgemeine Formulierungen: „wie allgemein bekannt", „es versteht sich von selbst"
-- Englischer Fachjargon (wenn ein deutsches Äquivalent existiert)
-- Überflüssige Abkürzungen
-- Gendern mit Doppelnennung: „Nutzerinnen und Nutzer"
-  → Stattdessen neutrale Formen verwenden: „Nutzende"
-- Gedankenstriche als Einschub im Satz: „Die Anwendung – die plattformübergreifend nutzbar ist – wurde evaluiert."
-  → Stattdessen Nebensatz oder Komma: „Die Anwendung, die plattformübergreifend nutzbar ist, wurde evaluiert."
-- Zu ausschweifende Erläuterungen. Aussagen knapp und präzise halten.
-- Unpräzise oder schlecht belegte Aussagen. Jede Behauptung muss belegt sein.
-
-### GEFORDERT
-- Sachlich-neutrale Sprache in Passivform
-- Faktenbasierte, stringente Argumentation mit klarem rotem Faden
-- Präzise, eindeutige Formulierungen
-- Fachbegriffe korrekt und einheitlich verwenden
-- Kompakte, klar strukturierte Sätze
-- Korrekte Quellenangaben (wenn vorhanden)
-- Geschlechterneutrale Sprache (z.B. „Nutzende" statt „Nutzer und Nutzerinnen")
-
-### Ausgabeformat
-- Immer als LaTeX-Fragment (kein vollständiges Dokument, kein Markdown)
-- Kein `\begin{document}`, kein `\documentclass`
-- Kommentare mit `%` wenn nötig
-
-## Wissenschaftliche Qualitätskriterien
-
-Prüfe zusätzlich auf:
-- **Systematik**: Klare Fragestellung, logischer Aufbau
-- **Objektivität**: Keine subjektiven Wertungen, Trennung von Beobachtung und Interpretation
-- **Nachvollziehbarkeit**: Transparente Argumentation, belegte Aussagen
-- **Kritische Reflexion**: Werden Grenzen der Aussagen benannt?
-
 ## C. Chapter-Guides
 
-@guides/stil.md
+@guides/style-rules.md
+@guides/references-rules.md
+@guides/gloassary.md
+@guides/open-todos.md
