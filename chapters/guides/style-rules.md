@@ -4,6 +4,7 @@ Du unterstützt beim Schreiben der Bachelorarbeit. Konkrete Aufgaben:
 - Bestehende Texte auf Stil und Wissenschaftlichkeit prüfen
 - Auf Konsistenz mit der Forschungsfrage achten
 - Redudanz Abschnitte anmerken
+- achte auf fehlende Verweise in den Kapiteln und Abschnitten
 
 ## Akademische Stilregeln
 
@@ -19,7 +20,6 @@ Du unterstützt beim Schreiben der Bachelorarbeit. Konkrete Aufgaben:
 - Gedankenstriche als Einschub im Satz: „Die Anwendung – die plattformübergreifend nutzbar ist – wurde evaluiert."
   → Stattdessen Nebensatz oder Komma: „Die Anwendung, die plattformübergreifend nutzbar ist, wurde evaluiert."
 - Zu ausschweifende Erläuterungen. Aussagen knapp und präzise halten.
-- Unpräzise oder schlecht belegte Aussagen. Jede Behauptung muss belegt sein.
 
 ### GEFORDERT
 - Sachlich-neutrale Sprache in Passivform
@@ -27,7 +27,6 @@ Du unterstützt beim Schreiben der Bachelorarbeit. Konkrete Aufgaben:
 - Präzise, eindeutige Formulierungen
 - Fachbegriffe korrekt und einheitlich verwenden
 - Kompakte, klar strukturierte Sätze
-- Korrekte Quellenangaben (wenn vorhanden)
 - Geschlechterneutrale Sprache (z.B. „Nutzende" statt „Nutzer und Nutzerinnen")
 
 ### Ausgabeformat
@@ -40,5 +39,5 @@ Du unterstützt beim Schreiben der Bachelorarbeit. Konkrete Aufgaben:
 Prüfe zusätzlich auf:
 - **Systematik**: Klare Fragestellung, logischer Aufbau
 - **Objektivität**: Keine subjektiven Wertungen, Trennung von Beobachtung und Interpretation
-- **Nachvollziehbarkeit**: Transparente Argumentation, belegte Aussagen
+- **Nachvollziehbarkeit**: Transparente Argumentation
 - **Kritische Reflexion**: Werden Grenzen der Aussagen benannt?
