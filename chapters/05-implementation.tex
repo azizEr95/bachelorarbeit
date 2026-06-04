@@ -233,7 +233,7 @@ setVerified: () => {
 \label{lst:set-verified}
 \end{listing}
 
-\subsection{\gls{api}-Client mit automatischer Token-Übermittlung}
+\subsection{API-Client mit automatischer Token-Übermittlung}
 
 Alle \gls{api}-Aufrufe der Anwendung laufen über die zentrale Funktion \texttt{apiRequest} in
 \texttt{src/api/client.ts}. Sie übernimmt zwei Aufgaben automatisch, sodass diese nicht
@@ -349,7 +349,7 @@ Mit \texttt{retry: false} wird verhindert, dass TanStack Query den Aufruf bei ei
 wiederholt. Das heißt, ein ungültiges Token führt sofort zur Abmeldung. Die \texttt{staleTime}
 von fünf Minuten bedeutet, dass die Daten nach diesem Zeitraum als veraltet markiert werden.
 
-\section{Umsetzung der \gls{api}-Anbindung mit TanStack Query}
+\section{Umsetzung der API-Anbindung mit TanStack Query}
 
 \subsection{Konfiguration mit QueryProvider}
 
@@ -482,7 +482,7 @@ Bei Operationen mit weiterreichenden Auswirkungen auf den Datenbestand werden me
 
 \section{Umsetzung der Screens der Tierhalter-Rolle}
 
-\subsection{Komponentenstruktur mit Gluestack \gls{ui}}
+\subsection{Komponentenstruktur mit Gluestack-UI}
 
 Sämtliche Screens der Anwendung sind aus Komponenten der Gluestack-\gls{ui}-Bibliothek aufgebaut,
 die als typsichere Abstraktionsschicht über den nativen React Native Komponenten fungieren.

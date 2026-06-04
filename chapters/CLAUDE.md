@@ -5,7 +5,6 @@
 Du unterstützt beim Schreiben der Bachelorarbeit. Konkrete Aufgaben:
 - Textentwürfe auf Basis von Stichpunkten ausformulieren
 - Bestehende Texte auf Stil und Wissenschaftlichkeit prüfen
-- Strukturvorschläge für einzelne Kapitel machen
 - Auf Konsistenz mit der Forschungsfrage achten
 
 Warte auf konkrete Aufgaben. Frag nach, wenn Kontext fehlt.
@@ -227,12 +226,4 @@ Prüfe zusätzlich auf:
 
 ## C. Chapter-Guides
 
-@guides/00-abstract.md
-@guides/01-introduction.md
-@guides/02-requirements-analysis.md
-@guides/03-conception.md
-@guides/04-technical-basics.md
-@guides/05-implementation.md
-@guides/06-evaluation.md
-@guides/07-conclusion-and-outlook.md
-@guides/appendix.md
+@guides/stil.md

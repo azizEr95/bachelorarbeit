@@ -34,13 +34,28 @@ der Wert 1 subtrahiert. Bei geraden Fragen (2, 4, 6, 8, 10) wird der Antwortwert
 
 Die Interpretation des \gls{sus}-Scores erfolgt anhand der Bewertungsskala nach Bangor et al.~\cite[S.~161]{susbenchmark2008}, der die Ergebnisse in Schulnoten einteilt:
 
-\begin{itemize}
-    \item 80--100: Note A (Sehr gut)
-    \item 68--79: Note B (Gut)
-    \item 51--67: Note C (Befriedigend)
-    \item 26--50: Note D (Ausreichend)
-    \item $\leq$ 25: Note F (Ungenügend)
-\end{itemize}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{System Usability Score} & \textbf{Note} \\
+\hline
+84{,}1--100{,}0 & A+ \\
+80{,}8--84{,}0  & A  \\
+78{,}9--80{,}7  & A- \\
+77{,}2--78{,}8  & B+ \\
+74{,}1--77{,}1  & B  \\
+72{,}6--74{,}0  & B- \\
+71{,}1--72{,}5  & C+ \\
+65{,}0--71{,}0  & C  \\
+62{,}7--64{,}9  & C- \\
+51{,}7--62{,}6  & D  \\
+0{,}0--51{,}6   & F  \\
+\hline
+\end{tabular}
+\caption{Bewertungsskala nach Sauro und Lewis \cite[S.~204]{susbenchmark2008}}
+\label{tab:sus-skala}
+\end{table}
 
 Zur Auswertung wird zunächst der Durchschnitts-\gls{sus}-Score aller 20 Teilnehmenden berechnet. Darüber hinaus werden die Scores der iOS- und Android-Nutzenden getrennt ausgewertet und miteinander verglichen. 
 
@@ -78,7 +93,7 @@ Abbildung~\ref{fig:boxplot_aufgaben} zeigt die Verteilung der Bearbeitungszeiten
     \label{fig:boxplot_aufgaben}
 \end{figure}
 
-\subsection{\gls{sus}-Score und Interpretation}
+\subsection{SUS-Score und Interpretation}
 Zur Bewertung der Benutzerfreundlichkeit von \textit{petappoint} wurde der \gls{sus} ausgewertet. Abbildung~\ref{fig:sus_scores} 
 zeigt die \gls{sus}-Scores aller 20 Teilnehmenden im Überblick.
 

@@ -148,20 +148,20 @@ Als Nachteil gilt der vergleichsweise hohe Boilerplate-Aufwand, auch in der Tool
 Zustand wurde als Client-State-Lösung für \textit{petappoint} gewählt, da es durch seine schlanke \gls{api} und den geringen Konfigurationsaufwand optimal zur Größe und Komplexität der Anwendung passt. Gegenüber Redux Toolkit entfällt der hohe Boilerplate-Aufwand, was für eine mittelgroße Anwendung wie \textit{petappoint} verhältnismäßiger ist. Da \textit{petappoint} primär Serverdaten verwaltet und nur wenig lokalen Client-State benötigt, ist eine schlanke Lösung wie Zustand einer umfangreichen Bibliothek 
 wie Redux Toolkit vorzuziehen.
 
-\section{\gls{ui}-Komponentenbibliotheken}
+\section{User Interface-Komponentenbibliotheken}
 
-\subsection{Gluestack \gls{ui}}
+\subsection{Gluestack-UI}
 
-Gluestack \gls{ui} ist eine komponentenbasierte \gls{ui}-Bibliothek für React 
+Gluestack-UI ist eine komponentenbasierte \gls{ui}-Bibliothek für React 
 Native, die eine Sammlung von vordefinierten, zugänglichen und 
 anpassbaren Komponenten bereitstellt. Die Bibliothek basiert auf 
 einem Token-basierten Design-System, bei dem Farben, Abstände und 
 Typografie über zentrale Design-Tokens (wiederverwendbare Variablen für Designwerte) definiert und konsistent in 
 der gesamten Anwendung verwendet werden \cite{gluestack-docs}. 
-Gluestack \gls{ui} unterstützt sowohl React Native als auch React im Web, 
+Gluestack-UI unterstützt sowohl React Native als auch React im Web, 
 wodurch Komponenten plattformübergreifend eingesetzt werden können.
 
-Ein Vorteil von Gluestack \gls{ui} ist die umfangreiche Sammlung an 
+Ein Vorteil von Gluestack-UI ist die umfangreiche Sammlung an 
 vorgefertigten Komponenten, die direkt eingesetzt und an das 
 eigene Design angepasst werden können. Das Token-basierte 
 Design-System ermöglicht eine konsistente visuelle Gestaltung 
@@ -169,7 +169,7 @@ der gesamten Anwendung ohne redundante Styling-Definitionen.
 Darüber hinaus sind alle Komponenten auf Barrierefreiheit 
 ausgelegt und folgen den gängigen Accessibility-Standards.
 
-Als Nachteil ist zu nennen, dass Gluestack \gls{ui} eine verhältnismäßig 
+Als Nachteil ist zu nennen, dass Gluestack-UI eine verhältnismäßig 
 junge Bibliothek ist und sich die \gls{api} zwischen Versionen teils 
 verändert hat, was zu Migrationsaufwand führen kann. 
 Zudem ist die Community im Vergleich zu etablierteren Bibliotheken 
@@ -215,14 +215,14 @@ auf selbst implementiert werden, was den Entwicklungsaufwand
 erhöht. Zudem fehlen ein einheitliches Design-System 
 und Mechanismen für die konsistente Verwaltung von Design-Tokens.
 
-\subsection{Begründung der Wahl von Gluestack \gls{ui}}
+\subsection{Begründung der Wahl von Gluestack-UI}
 
-Gluestack \gls{ui} wurde als \gls{ui}-Komponentenbibliothek für \textit{petappoint} gewählt, 
+Gluestack-UI wurde als \gls{ui}-Komponentenbibliothek für \textit{petappoint} gewählt, 
 da es eine umfangreiche Sammlung anpassbarer Komponenten mit einem 
 konsistenten Token-basierten Design-System vereint. Im Vergleich zu 
 StyleSheet entfällt der Aufwand, alle \gls{ui}-Elemente von Grund auf selbst 
 zu implementieren, was die Entwicklungsgeschwindigkeit 
-steigert. Gegenüber React Native Paper bietet Gluestack \gls{ui} mehr 
+steigert. Gegenüber React Native Paper bietet Gluestack-UI mehr 
 gestalterische Freiheit, da es nicht an ein spezifisches Design-System 
 wie Material Design gebunden ist und somit ein individuelles 
 Erscheinungsbild der Anwendung ermöglicht \cite{gluestack-docs}.
@@ -304,8 +304,8 @@ datengetriebene Anwendung ist, die primär Serverdaten abruft
 und anzeigt, ist diese Trennung zwischen Server- und
 Client-State konsequent umgesetzt.
 
-Gluestack \gls{ui} und i18next vervollständigen den Stack auf der 
-Präsentationsebene: Gluestack \gls{ui} stellt ein konsistentes 
+Gluestack-UI und i18next vervollständigen den Stack auf der 
+Präsentationsebene: Gluestack-UI stellt ein konsistentes 
 Token-basiertes Design-System bereit, das ein individuelles 
 Erscheinungsbild ohne Bindung an Material Design ermöglicht, 
 während i18next die automatische Anpassung der Sprache an die 
@@ -332,7 +332,7 @@ TanStack Query & Server-State / Datenabruf \& Caching \\
 \hline
 Zustand & Client-State-Management \\
 \hline
-Gluestack \gls{ui} & Styling mit \gls{ui} Komponentenbibliothek \\
+Gluestack-UI & Styling mit \gls{ui}-Komponentenbibliothek \\
 \hline
 i18next & Internationalisierung (Mehrsprachigkeit) \\
 \hline
