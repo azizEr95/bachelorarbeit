@@ -125,7 +125,7 @@ Gibt es keine bessere Quelle?
 
 ### GEFORDERT
 
-- Fachbegriffe bei Erstnennung immer mit Quelle belegen (REST, ORM, JWT, SUS, ...)
+- Fachbegriffe bei Erstnennung immer mit Quelle belegen (REST, SUS, ...)
 - Originalquellen bevorzugen (z.B. Brooke 1996 für SUS, Fielding 2000 für REST)
 - Normen und Standards direkt referenzieren (ISO 9241-11, RFC 7519)
 - Bei Technologievergleichen: Entscheidungskriterien mit Quelle begründen
