@@ -44,7 +44,7 @@ Die Navigationsstruktur von \textit{petappoint} basiert auf Expo Router und wird
 
 \subsection{Root Layout}
 
-Das Root Layout in \texttt{app/\_layout.tsx} bildet den Einstiegspunkt der gesamten Anwendung und entspricht konzeptionell der \texttt{App.tsx} in einer klassischen React-Anwendung.Es stellt globale Provider und Konfigurationen bereit und initialisiert diese für alle untergeordneten Komponenten, bevor die eigentliche Navigation gestartet wird. Diese werden in den nachfolgenden Abschnitten detaillierter beschrieben.
+Das Root Layout in \texttt{app/\_layout.tsx} bildet den Einstiegspunkt der gesamten Anwendung und entspricht konzeptionell der \texttt{App.tsx} in einer klassischen React-Anwendung. Es stellt globale Provider und Konfigurationen bereit und initialisiert diese für alle untergeordneten Komponenten, bevor die eigentliche Navigation gestartet wird. Diese werden in den nachfolgenden Abschnitten detaillierter beschrieben.
 
 Der Root-Stack registriert alle Routengruppen und modalen Screens der Anwendung. Ein Modal Screen bezeichnet ein temporäres Layout, das sich über den Hauptbildschirm legt und eine Benutzerinteraktion erfordert, bevor die Anwendung fortgesetzt werden kann \cite{expo-modals}. Die Modal Screens werden dabei direkt im Root-Stack als \texttt{fullScreenModal} registriert, damit die Navigation zwischen Modals und Tab-Screens korrekt unterscheiden und navigieren kann:
 
@@ -74,7 +74,7 @@ Der Root-Stack registriert alle Routengruppen und modalen Screens der Anwendung.
 
 \subsection{Authentication Stack}
 
-Der Authentication Stack ist in der Datei \texttt{app/(auth)/\_layout.tsx} definiert und kapselt alle Screens des Authentifizierungsbereichs in einer Stack-Navigation. Er umfasst die fünf Screens Login, Registrierung, E-Mail-Verifizierung, Passwort-vergessen und Passwort-zurücksetzen.
+Der Authentication Stack ist in der Datei \texttt{app/(auth)/\_layout.tsx} definiert und kapselt alle Screens des Authentifizierungsbereichs in einer Stack-Navigation. Er umfasst die fünf Screens Login, Registrierung, E-Mail-Verifizierung und Passwort-vergessen.
 
 \begin{listing}[H]
 \begin{minted}{tsx}
@@ -85,7 +85,6 @@ export default function AuthLayout() {
       <Stack.Screen name='register' />
       <Stack.Screen name='verify-email' />
       <Stack.Screen name='forgot-password' />
-      <Stack.Screen name='reset-password' />
     </Stack>
   )
 }
@@ -376,8 +375,7 @@ export const queryClient = new QueryClient({
 \end{listing}
 
 Für Queries ist ein einzelner Wiederholungsversuch bei fehlgeschlagenen Anfragen konfiguriert
-sowie eine globale \texttt{staleTime} von fünf Minuten. Für Mutations hingegen sind
-Wiederholungsversuche deaktiviert, da Schreiboperationen im Fehlerfall nicht automatisch erneut ausgeführt werden sollen. Das \texttt{queryClient}-Objekt wird darüber hinaus exportiert, um außerhalb des
+sowie eine globale \texttt{staleTime} von fünf Minuten. Für Mutations hingegen sind Wiederholungsversuche deaktiviert, da Schreiboperationen im Fehlerfall nicht automatisch erneut ausgeführt werden sollen. Das \texttt{queryClient}-Objekt wird darüber hinaus exportiert, um außerhalb des
 React-Renderzyklus auf den Cache zugreifen zu können. Dies ist insbesondere beim Abmeldevorgang
 erforderlich, bei dem der gesamte Cache über \texttt{queryClient.clear()} geleert wird,
 um sicherzustellen, dass keine nutzerspezifischen Daten im Speicher verbleiben.
@@ -478,7 +476,7 @@ return useMutation({
 \label{lst:cancel-appointment}
 \end{listing}
 
-Bei Operationen mit weiterreichenden Auswirkungen auf den Datenbestand werden mehrere Queries simultan invalidiert. Dadurch wird gewährleistet, dass stets ausschließlich die tatsächlich betroffenen Daten neu vom Backend aufgefordert werden.
+Bei Operationen mit weiterreichenden Auswirkungen auf den Datenbestand werden mehrere Queries simultan invalidiert.
 
 \section{Umsetzung der Screens der Tierhalter-Rolle}
 

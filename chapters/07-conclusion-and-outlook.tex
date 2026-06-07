@@ -3,74 +3,39 @@
 \section{Fazit und Beantwortung der Forschungsfrage}
 Die Forschungsfrage dieser Arbeit lautete: \textit{Wie lässt sich eine plattformübergreifende Terminverwaltungsanwendung für Tierhalter im Kontext von Veterinärmedizinpraxen konzipieren, umsetzen und hinsichtlich ihrer Funktionalität und Usability evaluieren?}
 
-Im Rahmen der Anforderungsermittlung in Kapitel~2 wurden zunächst die Bedürfnisse beider Zielgruppen, Tierhalter und Tierarztpraxen, analysiert und strukturiert dokumentiert. Auf dieser Grundlage wurden zehn funktionale Anforderungen mithilfe von Satzschablonen eindeutig formuliert, wobei sich die Implementierung auf die sechs Anforderungen der Tierhalter-Rolle beschränkte. Ergänzend wurden acht nicht-funktionale Anforderungen definiert. Die Anforderungen wurden durch zehn Use Cases konkretisiert, die sowohl die Tierhalter- als auch die Tierarztpraxis-Rolle abbilden und den
-praktischen Kontext der Anwendung veranschaulichen.
+Im Rahmen der Anforderungsermittlung in Kapitel~2 wurden zunächst die Bedürfnisse beider Zielgruppen, Tierhalter und Tierarztpraxen, analysiert und strukturiert dokumentiert. Auf dieser Grundlage wurden zehn funktionale Anforderungen mithilfe von Satzschablonen eindeutig formuliert, wobei sich die Implementierung auf die sechs Anforderungen der Tierhalter-Rolle beschränkte. Ergänzend wurden acht nicht-funktionale Anforderungen definiert. Die Anforderungen wurden durch zehn Use Cases konkretisiert, die sowohl die Tierhalter- als auch die Tierarztpraxis-Rolle abbilden und den praktischen Kontext der Anwendung veranschaulichen.
 
-In Kapitel~3 wurde auf Basis der ermittelten Anforderungen die Konzeption der mobilen Anwendung erarbeitet. Die Softwarearchitektur folgt einem dreischichtigen Schichtenmodell, das Frontend, Backend und Datenbank klar voneinander trennt. Da das Backend im Rahmen eines vorangegangenen Projektmoduls bereits entwickelt worden war, konzentrierte sich die Konzeption ausschließlich auf die Präsentationsschicht. Im Rahmen einer kritischen Betrachtung der bestehenden Backend-Infrastruktur wurden mehrere Schwachstellen identifiziert (vgl. Abschnitt~\ref{sec:backend-kritik}). Das Komponentendiagramm beschreibt den strukturellen Aufbau des Frontends in Präsentations-, Business- und Datenzugriffsschicht.
-Das Navigationskonzept legt die Struktur der Tab-Navigation sowie der modalen Screens für beide Rollen fest. Mockups veranschaulichen die geplante Benutzeroberfläche und ein Aktivitätsdiagramm beschreibt den vollständigen Ablauf des Terminbuchungsprozesses.
+In Kapitel~3 wurde auf Basis der ermittelten Anforderungen die Konzeption der mobilen Anwendung erarbeitet. Die Softwarearchitektur folgt einem dreischichtigen Schichtenmodell, das Frontend, Backend und Datenbank klar voneinander trennt. Da das Backend im Rahmen eines vorangegangenen Projektmoduls bereits entwickelt worden war, konzentrierte sich die Konzeption ausschließlich auf die Präsentationsschicht. Im Rahmen einer kritischen Betrachtung der bestehenden Backend-Infrastruktur wurden mehrere Schwachstellen identifiziert (vgl. Abschnitt~\ref{sec:backend-kritik}). Das Komponentendiagramm beschreibt den strukturellen Aufbau des Frontends in Präsentations-, Business- und Datenzugriffsschicht. Das Navigationskonzept legt die Struktur der Tab-Navigation sowie der modalen Screens für beide Rollen fest. Mockups veranschaulichen die geplante Benutzeroberfläche und ein Aktivitätsdiagramm beschreibt den vollständigen Ablauf des Terminbuchungsprozesses.
 
-Kapitel~4 legte die technischen Grundlagen der Implementierung dar. Im Rahmen von Technologievergleichen wurden React Native gegenüber Flutter und .NET MAUI, TanStack Query gegenüber \gls{swr} und \gls{rtk}, Zustand gegenüber Redux Toolkit sowie Gluestack \gls{ui} gegenüber React Native Paper und StyleSheet abgewogen. Die Entscheidungen wurden jeweils anhand projektspezifischer
-Kriterien begründet. Ein zentrales Merkmal des gewählten Technologie-Stacks ist die durchgängige Verwendung von TypeScript über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. React Native und Expo bilden die plattformübergreifende Grundlage, ergänzt durch Expo Router für die dateibasierte Navigation,
-TanStack Query und Zustand für das komplementäre State-Management sowie Gluestack \gls{ui} und i18next für die Präsentationsebene.
+Kapitel~4 legte die technischen Grundlagen der Implementierung dar. Im Rahmen von Technologievergleichen wurden React Native gegenüber Flutter und .NET MAUI, TanStack Query gegenüber \gls{swr} und \gls{rtk}, Zustand gegenüber Redux Toolkit sowie Gluestack \gls{ui} gegenüber React Native Paper und StyleSheet abgewogen. Die Entscheidungen wurden jeweils anhand projektspezifischer Kriterien begründet. Ein zentrales Merkmal des gewählten Technologie-Stacks ist die durchgängige Verwendung von TypeScript über alle Schichten der Anwendung hinweg, wodurch Typdefinitionen zwischen Backend und Frontend geteilt werden können. React Native und Expo bilden die plattformübergreifende Grundlage, ergänzt durch Expo Router für die dateibasierte Navigation, TanStack Query und Zustand für das komplementäre State-Management sowie Gluestack \gls{ui} und i18next für die Präsentationsebene.
 
 Die Implementierung in Kapitel~5 setzte die erarbeitete Konzeption für die Tierhalter-Rolle um. Die Navigationsstruktur wurde vollständig über die Ordnerstruktur von Expo Router abgebildet und gliedert sich in einen Authentication Stack, eine Tab Navigation sowie modale Screens für kontextabhängige Abläufe. Die Authentifizierung basiert auf Expo
-SecureStore, der Authentifizierungstoken verschlüsselt auf dem Gerät
-ablegt, ergänzt durch einen globalen Zustand-Store und einen zentralen
-\gls{api}-Client mit automatischer Token-Übermittlung. Die \gls{api}-Anbindung erfolgt
-über TanStack Query mit einer einheitlichen Query-Key-Hierarchie, die eine
-gezielte Cache-Invalidierung nach Mutationen ermöglicht. Die Screens wurden
-mit Gluestack \gls{ui} umgesetzt und unterstützen vollständig das Light- und
-Dark-Theme über ein Token-basiertes Farbsystem.
+SecureStore, der Authentifizierungstoken verschlüsselt auf dem Gerät ablegt, ergänzt durch einen globalen Zustand-Store und einen zentralen \gls{api}-Client mit automatischer Token-Übermittlung. Die \gls{api}-Anbindung erfolgt über TanStack Query mit einer einheitlichen Query-Key-Hierarchie, die eine gezielte Cache-Invalidierung nach Mutationen ermöglicht. Die Screens wurden mit Gluestack-UI umgesetzt und unterstützen vollständig das Light- und Dark-Theme über ein Token-basiertes Farbsystem.
 
-Die Evaluation der entwickelten Anwendung erfolgte anhand einer
-aufgabenbasierten Nutzerstudie mit 20 Teilnehmenden. Alle Teilnehmenden haben sämtliche Aufgaben erfolgreich abgeschlossen. Der durchschnittliche \gls{sus}-Score von 94,34 entspricht der Note A und belegt eine sehr hohe wahrgenommene Benutzerfreundlichkeit. Der Plattformvergleich bestätigte, dass die Anwendung auf iOS und
-Android vergleichbar gut funktioniert. Damit kann die
-Forschungsfrage positiv beantwortet werden.
+Die Evaluation der entwickelten Anwendung erfolgte anhand einer aufgabenbasierten Nutzerstudie mit 20 Teilnehmenden. Alle Teilnehmenden haben sämtliche Aufgaben erfolgreich abgeschlossen. Der durchschnittliche \gls{sus}-Score von 94,34 entspricht der Note A und belegt eine sehr hohe wahrgenommene Benutzerfreundlichkeit. Der Plattformvergleich bestätigte, dass die Anwendung auf iOS und Android vergleichbar gut funktioniert. Die Forschungsfrage kann auf Basis der Evaluationsergebnisse als beantwortet betrachtet werden.
 
 
 \section{Kritische Auseinandersetzung}
 
-Die vorliegende Arbeit liefert einen fundierten Beitrag zur Konzeption, Umsetzung und Evaluation einer plattformübergreifenden Terminverwaltungsanwendung im veterinärmedizinischen Bereich, weist jedoch Einschränkungen auf, die einer kritischen Betrachtung bedürfen.
+Die vorliegende Arbeit behandelt die Konzeption, Umsetzung und Evaluation einer plattformübergreifenden Terminverwaltungsanwendung im veterinärmedizinischen Bereich, weist jedoch Einschränkungen auf, die einer kritischen Betrachtung bedürfen.
 
-Hinsichtlich des Implementierungsumfangs beschränkte sich die Umsetzung bewusst auf die Tierhalter-Rolle. Die Anforderungen der
-Tierarztpraxis-Rolle (FA\#07 bis FA\#10) wurden zwar konzipiert und durch Use Cases konkretisiert, jedoch nicht implementiert. Damit stellt \textit{petappoint} in seinem aktuellen Zustand keine vollständige Terminverwaltungslösung dar, da eine funktionsfähige Anwendung das Zusammenspiel beider Rollen voraussetzt. Tierarztpraxen können derzeit weder Terminslots anlegen noch eingehende Buchungen verwalten, was den praktischen Einsatz der Anwendung in realen Praxisumgebungen einschränkt.
+Hinsichtlich des Implementierungsumfangs beschränkte sich die Umsetzung bewusst auf die Tierhalter-Rolle. Die Anforderungen der Tierarztpraxis-Rolle (FA\#07 bis FA\#10) wurden zwar konzipiert und durch Use Cases konkretisiert, jedoch nicht implementiert. Damit stellt \textit{petappoint} in seinem aktuellen Zustand keine vollständige Terminverwaltungslösung dar, da eine funktionsfähige Anwendung das Zusammenspiel beider Rollen voraussetzt. Tierarztpraxen können derzeit weder Terminslots anlegen noch eingehende Buchungen verwalten, was den praktischen Einsatz der Anwendung in realen Praxisumgebungen einschränkt.
 
-Ein weiterer Kritikpunkt betrifft die Backend-Infrastruktur. Wie in Kapitel~3 dargelegt, wurden mehrere Schwachstellen im bestehenden Datenbankschema identifiziert, darunter die fehlende Rollentrennung zwischen Tierärzten und Personen, das Fehlen eines Statusattributs für Termine sowie das Fehlen einer Tabelle für Öffnungszeiten der Praxen. Da die Behebung dieser Schwachstellen den definierten Umfang dieser Arbeit überschritten hätte, wurden sie lediglich dokumentiert und als Empfehlungen für eine zukünftige Weiterentwicklung festgehalten. Solange diese Schwachstellen bestehen, können bestimmte Funktionen,
-wie die automatische Validierung von Buchungen innerhalb der
-Öffnungszeiten, nicht vollständig implementiert werden.
+Ein weiterer Kritikpunkt betrifft die Backend-Infrastruktur. Wie in Kapitel~3 dargelegt, wurden mehrere Schwachstellen im bestehenden Datenbankschema identifiziert, darunter die fehlende Rollentrennung zwischen Tierärzten und Personen, das Fehlen eines Statusattributs für Termine sowie das Fehlen einer Tabelle für Öffnungszeiten der Praxen. Da die Behebung dieser Schwachstellen den definierten Umfang dieser Arbeit überschritten hätte, wurden sie lediglich dokumentiert und als Empfehlungen für eine zukünftige Weiterentwicklung festgehalten. Solange diese Schwachstellen bestehen, können bestimmte Funktionen, wie die automatische Validierung von Buchungen innerhalb der Öffnungszeiten, nicht vollständig implementiert werden.
 
-Die durchgeführte Evaluation unterliegt ebenfalls mehreren
-Einschränkungen. Die Registrierungsfunktion war nicht Bestandteil
-der Nutzerstudie, da die Teilnehmenden mit vorgegebenen Zugangsdaten
-arbeiteten, sodass FA\#01 nur teilweise belegt werden konnte. Die
-Rekrutierung der 20 Teilnehmenden erfolgte ausschließlich aus dem
-persönlichen Umfeld des Verfassers, was keine repräsentative
-Zufallsstichprobe der tatsächlichen Zielgruppe darstellt. Darüber
-hinaus wurde die Studie mit nur zwei Geräten durchgeführt, sodass
-keine Aussagen über das Verhalten der Anwendung auf anderen Geräten oder Bildschirmgrößen getroffen werden können. Da zudem ausschließlich die Tierhalter-Rolle implementiert und evaluiert wurde, ist eine vollständige Beurteilung der Anwendung aus Sicht beider Zielgruppen nicht möglich.
+Die durchgeführte Evaluation unterliegt ebenfalls mehreren Einschränkungen. Die Registrierungsfunktion war nicht Bestandteil der Nutzerstudie, da die Teilnehmenden mit vorgegebenen Zugangsdaten arbeiteten, sodass FA\#01 nur teilweise belegt werden konnte. Die Rekrutierung der 20 Teilnehmenden erfolgte ausschließlich aus dem persönlichen Umfeld des Verfassers, was keine repräsentative Zufallsstichprobe der tatsächlichen Zielgruppe darstellt. Darüber hinaus wurde die Studie mit nur zwei Geräten durchgeführt, sodass keine Aussagen über das Verhalten der Anwendung auf anderen Geräten oder Bildschirmgrößen getroffen werden können. Da zudem ausschließlich die Tierhalter-Rolle implementiert und evaluiert wurde, ist eine vollständige Beurteilung der Anwendung aus Sicht beider Zielgruppen nicht möglich.
 
 \section{Ausblick}
-Die vorliegende Arbeit bildet eine solide Grundlage für die
-Weiterentwicklung von \textit{petappoint}. Zunächst sollten die im Rahmen der Evaluation gemeldeten Fehler behoben werden, insbesondere die fehlende Validierung des Geburtsdatums, die eingeschränkte  Bearbeitbarkeit von der Startseite sowie das Auftreten  unerwarteter Termine.
+Die vorliegende Arbeit bildet eine dokumentierte und implementierte Grundlage für die Weiterentwicklung von \textit{petappoint}. Zunächst sollten die im Rahmen der Evaluation gemeldeten Fehler behoben werden, insbesondere die fehlende Validierung des Geburtsdatums, die eingeschränkte  Bearbeitbarkeit von der Startseite sowie das Auftreten  unerwarteter Termine.
 
 Neben der Frontend-Weiterentwicklung sollte auch die bestehende Backend-Infrastruktur überarbeitet werden. Die in der kritischen Auseinandersetzung dokumentierten Schwachstellen sollten dabei vorrangig adressiert werden.
 
-Ein wesentlicher nächster Schritt ist die Implementierung der 
-Tierarztpraxis-Rolle, um die Anforderungen FA\#07 bis FA\#10 zu 
-erfüllen und damit eine vollständige Nutzung der Anwendung durch 
-beide Rollen zu ermöglichen. Erst mit der Umsetzung beider Rollen 
-kann \textit{petappoint} als vollständige Terminverwaltungslösung eingesetzt werden.
+Ein wesentlicher nächster Schritt ist die Implementierung der Tierarztpraxis-Rolle, um die Anforderungen FA\#07 bis FA\#10 zu erfüllen und damit eine vollständige Nutzung der Anwendung durch beide Rollen zu ermöglichen. Erst mit der Umsetzung beider Rollen kann \textit{petappoint} als vollständige Terminverwaltungslösung eingesetzt werden.
 
-Darüber hinaus bietet die Terminverwaltung weiteres Ausbaupotenzial. So sollten Stornierungsfristen eingeführt werden, ab denen eine Absage nicht mehr über die App möglich ist. Ebenso wäre ein  Verschiebungslimit sinnvoll, das verhindert, dass Termine beliebig  oft umgebucht werden. Ergänzend könnte ein Strike-System eingeführt  werden, bei dem Tierhalter nach wiederholten kurzfristigen  Stornierungen vorübergehend keine neuen Termine bei der betroffenen  Praxis buchen können. Diese Maßnahmen würden die Verbindlichkeit der Buchungen erhöhen und den Praxisalltag entlasten.
+Darüber hinaus bietet die Terminverwaltung weiteres Ausbaupotenzial. So sollten Stornierungsfristen eingeführt werden, ab denen eine Absage nicht mehr über die App möglich ist. Ebenso könnte ein Verschiebungslimit eingeführt werden, das verhindert, dass Termine beliebig  oft umgebucht werden. Ergänzend könnte ein Strike-System eingeführt  werden, bei dem Tierhalter nach wiederholten kurzfristigen  Stornierungen vorübergehend keine neuen Termine bei der betroffenen  Praxis buchen können. Diese Maßnahmen könnte die Verbindlichkeit der Buchungen erhöhen und den Praxisalltag entlasten.
 
 Hinsichtlich funktionaler Erweiterungen wurden im Rahmen der Nutzerstudie folgende Verbesserungswünsche geäußert, wie eine Notizfunktion beim Termin, um den Grund des Besuchs im Vorfeld zu kommunizieren, die Möglichkeit, Tierversicherungen zu hinterlegen, erweiterte Tierspezifikationen, die Bearbeitbarkeit von Terminen direkt von der Startseite und ein Bewertungssystem für Tierarztpraxen. Zusätzlich sollten die Suchfilter um Öffnungszeiten am Wochenende erweitert werden, da dies von mehreren Teilnehmenden als Verbesserungswunsch genannt wurde.
 
-Aus technischer Sicht stellt die Integration von 
-Push-Benachrichtigungen direkt auf das Smartphone eine sinnvolle 
-Erweiterung dar, um Tierhalter automatisch an bevorstehende Termine 
-zu erinnern und über Buchungsbestätigungen oder Stornierungen 
-zu informieren. Dies würde die bereits im Backend vorhandene 
-E-Mail-Benachrichtigung durch einen direkteren Kommunikationskanal 
-ergänzen.
+Aus technischer Sicht stellt die Integration von Push-Benachrichtigungen direkt auf das Smartphone eine sinnvolle Erweiterung dar, um Tierhalter automatisch an bevorstehende Termine zu erinnern und über Buchungsbestätigungen oder Stornierungen zu informieren. Dies würde die bereits im Backend vorhandene E-Mail-Benachrichtigung durch einen direkteren Kommunikationskanal ergänzen.
 
-Abschließend bietet die gestalterische Weiterentwicklung der Anwendung weiteres Potenzial. Mit der vollständigen Umsetzung beider Rollen und der sukzessiven Erweiterung des Funktionsumfangs hat \textit{petappoint} das Potenzial, zu einer praxistauglichen Terminverwaltungslösung im veterinärmedizinischen Bereich weiterzuentwickeln.
+Abschließend bietet die gestalterische Weiterentwicklung der Anwendung weiteres Potenzial. Mit der vollständigen Umsetzung beider Rollen und der sukzessiven Erweiterung des Funktionsumfangs hat \textit{petappoint} das Potenzial, sich zu einer praxistauglichen Terminverwaltungslösung weiterzuentwickeln.
