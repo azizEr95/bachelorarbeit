@@ -28,7 +28,7 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
   - 1.2 Problemstellung
   - 1.3 Zielsetzung
   - 1.3 Aktuelle Terminverwaltungsanwendungen im veterinärmedizinischen Bereich
-  - 1.4 Ausgewählte Systeme im Vergleich
+  - 1.4 Ausgewählte Systeme im Überblick
     - 1.4.1 petsXL
     - 1.4.2 petLeo
     - 1.4.3 vetpraxis
