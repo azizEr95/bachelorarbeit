@@ -11,7 +11,7 @@ Das Wurzelverzeichnis der mobilen Anwendung trägt den Namen \texttt{frontend-ap
 
 Die eigentliche Anwendungslogik ist im Verzeichnis \texttt{src/} nach ihren Zuständigkeiten gegliedert. Diese Trennung entspricht dem im Komponentendiagramm beschriebenen Schichtenmodell und stellt sicher, dass Präsentationslogik, Geschäftslogik und Datenzugriff klar voneinander getrennt sind. Die Tabelle beschreibt die einzelnen Unterordner.
 
-\begin{table}[!ht]
+\begin{table}[H]
 \begin{tabular}{|p{4.5cm}|p{9.2cm}|}
 \hline
 \textbf{Unterordner} & \textbf{Beschreibung} \\
@@ -326,7 +326,7 @@ return useMutation({
 
 Der Custom Hook \texttt{useSession} validiert beim App-Start eine bereits vorhandene Sitzung
 beim Backend. Ein TanStack Query-Aufruf wird dabei nur ausgeführt, wenn ein Token 
-im Store vorhanden ist; andernfalls bleibt die Anfrage inaktiv.
+im Store vorhanden ist. Die Anfrage bleibt ansonsten inaktiv.
 
 \begin{listing}[H]
 \begin{minted}{tsx}
@@ -453,7 +453,7 @@ die eine präzise und gezielte Cache-Invalidierung ermöglicht:
 
 Die hierarchische Struktur ermöglicht es, im Rahmen einer Invalidierung wahlweise einen
 einzelnen Cache-Eintrag oder eine gesamte Gruppe verwandter Einträge zu invalidieren. Eine
-Invalidierung des Keys \texttt{['practice', id]} erfasst dabei automatisch alle untergeordneten Keys, darunter \texttt{['practice', id, 'services']} und \texttt{['practice', id, 'appointments', 'available']}. Nutzerspezifische Daten wie Termine
+Invalidierung des Keys ['practice', id] erfasst dabei automatisch alle untergeordneten Keys, darunter ['practice', id, 'services'] und['practice', id, 'appointments', 'available']. Nutzerspezifische Daten wie Termine
 oder Tiere enthalten die \texttt{userId} als Bestandteil des Keys, wodurch ausgeschlossen wird, dass bei einem Nutzerwechsel Daten eines anderen Nutzers aus dem Cache ausgelesen werden. Als ergänzende Maßnahme wird bei nutzerspezifischen Queries \texttt{enabled: !!user?.id}
 gesetzt, sodass diese Anfragen nicht ausgeführt werden, solange kein authentifizierter Nutzer vorhanden ist.
 

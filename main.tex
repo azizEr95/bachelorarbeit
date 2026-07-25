@@ -39,20 +39,31 @@
 \tableofcontents
 
 % Indexes
-
 \EnableTocSquares
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 \listoffigures
 \cleardoublepage
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 \listoftables
 \cleardoublepage
-
-% List of Abbreviations / Abkürzungsverzeichnis
+\addcontentsline{toc}{chapter}{Quellcodeverzeichnis}
+\makeatletter
+\def\listoflistings{%
+  \chapter*{Quellcodeverzeichnis}%
+  \@mkboth{QUELLCODEVERZEICHNIS}{QUELLCODEVERZEICHNIS}%
+  \def\l@listing{\@dottedtocline{1}{1.5em}{2.3em}}%
+  \@starttoc{lol}%
+}
+\makeatother
+\listoflistings
+\cleardoublepage
 \printglossaries
 \cleardoublepage
 
 % Main Content
 
 \pagenumbering{arabic}
+\include{chapters/ai-disclaimer}
 \include{chapters/01-introduction}
 \include{chapters/02-requirements-analysis}
 \include{chapters/03-conception}
@@ -61,13 +72,14 @@
 \include{chapters/06-evaluation}
 \include{chapters/07-conclusion-and-outlook}
 
-% Appendix
+% Bibliography
 \cleardoublepage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\printbibliography
+
+% Appendix
 \appendix
 \include{chapters/appendix}
 \cleardoublepage
 
-% Bibliography
-\addcontentsline{toc}{chapter}{Literaturverzeichnis}
-\printbibliography
 \end{document}

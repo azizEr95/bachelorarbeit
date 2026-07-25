@@ -1,9 +1,9 @@
 \chapter{Einleitung}
-\label{:chap:einleitung}
+\label{chap:einleitung}
 
 \section{Hintergrund und Motivation}
 
-Die Digitalisierung durchdringt zunehmend alle Bereiche der Kommunikation zwischen Unternehmen und Kunden. Insbesondere im Bereich der Humanmedizin wird deutlich, wie digitale Technologien die Terminverwaltung zwischen Arztpraxen und Patientschaft effizienter gestalten. Unternehmen wie Doctolib haben sich früh zum Ziel gesetzt, die Terminverwaltung zwischen Arztpraxen und der Patientschaft durch den Einsatz digitaler Terminverwaltungssysteme effizienter und nutzerfreundlicher zu gestalten \cite{doctolibreport}.. Im Zuge der Corona-Pandemie konnte Doctolib dieses Ziel weitgehend erreichen \cite{doctolibreport}. Laut einer Erhebung von Bitkom Research ist die digitale Terminvergabe für einen erheblichen Teil der Bevölkerung ein relevanter Faktor: 73\,\% der Befragten geben an, auf die Online-Terminvereinbarung nicht mehr verzichten zu wollen, und 27\,\% suchen Praxen gezielt danach aus, 
+Die Digitalisierung durchdringt zunehmend alle Bereiche der Kommunikation zwischen Unternehmen und Kunden. Insbesondere im Bereich der Humanmedizin wird deutlich, wie digitale Technologien die Terminverwaltung zwischen Arztpraxen und Patientschaft effizienter gestalten. Unternehmen wie Doctolib haben sich früh zum Ziel gesetzt, die Terminverwaltung zwischen Arztpraxen und der Patientschaft durch den Einsatz digitaler Terminverwaltungssysteme effizienter und nutzerfreundlicher zu gestalten \cite{doctolibreport}. Im Zuge der Corona-Pandemie konnte Doctolib dieses Ziel weitgehend erreichen \cite{doctolibreport}. Laut einer Erhebung von Bitkom Research ist die digitale Terminvergabe für einen erheblichen Teil der Bevölkerung ein relevanter Faktor: 73\,\% der Befragten geben an, auf die Online-Terminvereinbarung nicht mehr verzichten zu wollen, und 27\,\% suchen Praxen gezielt danach aus, 
 ob sie eine Online-Terminvereinbarung anbieten \cite{bitkom2024}.
 
 Vor diesem Hintergrund stellt sich die Frage, wie die Situation im veterinärmedizinischen Bereich aussieht. Die Anzahl der tierärztlich Tätigen in Deutschland ist auf 34.364 gestiegen \cite{btk2025}. Allerdings gibt es bisher keine repräsentativen Studien, die ermitteln, wie viele Tierarztpraxen bereits eine Terminverwaltungssoftware mit Online-Terminbuchung für Tierhalter in ihren Alltag integriert haben. Dennoch lassen Marktberichte darauf schließen, dass sich die Digitalisierung der Veterinärmedizin jener der Humanmedizin zunehmend annähert: Der globale Markt für Veterinärpraxis-Managementsoftware wird für 2023/24 auf etwa 1,8 bis 2,0~Milliarden US-Dollar geschätzt und soll bis etwa 2032 auf rund 3,2~Milliarden US-Dollar wachsen, mit einer jährlichen Wachstumsrate von etwa 6--7~\% \cite{vsmreport}. Auf dieser Grundlage lässt sich argumentieren, dass die Digitalisierung der Veterinärbranche sich in jeglichen digitalen Bereichen weiterentwickeln wird.
@@ -24,6 +24,16 @@ Methodisch folgt die Arbeit dem Ansatz des Design Science Research nach \cite{he
 Das Backend von \textit{petappoint}, das im Rahmen eines vorangegangenen Projektmoduls in Teamarbeit entwickelt wurde, bildet die technische Grundlage dieser Arbeit. Die Eigenleistung umfasst somit die gesamte mobile Anwendung sowie deren Integration in die bestehende Backend-Infrastruktur.
 
 Die Anwendung soll es Tierhaltern ermöglichen, Haustiere anzulegen, Tierarztpraxen in der Nähe zu suchen und Termine jederzeit ortsunabhängig online zu buchen sowie Tierarztpraxen die Möglichkeit bieten, gebuchte Termine auf mobilen Endgeräten einzusehen und zu verwalten. Der zentrale Mehrwert liegt in der flexiblen Online-Terminvergabe, die das Anrufvolumen in Tierarztpraxen reduziert und Tierhaltern eine strukturierte Verwaltung ihrer Termine ermöglicht.
+
+\section{Aufbau der Arbeit}
+Die vorliegende Arbeit gliedert sich in sieben Kapitel.
+Kapitel~\ref{chap:einleitung} führt in das Thema ein, beleuchtet den Kontext der Digitalisierung im Veterinärbereich und leitet daraus die Forschungsfrage ab. 
+Kapitel~\ref{chap:anforderungen} erhebt die Anforderungen an die Anwendung, definiert die Zielgruppen sowie funktionale und nicht-funktionale Anforderungen und beschreibt die zugehörigen Use~Cases.
+Kapitel~\ref{chap:konzeption} beschreibt die Konzeption von \textit{petappoint}, umfasst die Softwarearchitektur, Komponentendiagramme, das Navigationskonzept sowie Mockups der Benutzeroberfläche.
+Kapitel~\ref{chap:grundlagen} stellt die technischen Grundlagen dar, vergleicht plattformübergreifende Frameworks und begründet die Technologiewahl für Frontend-Entwicklung, State-Management und Internationalisierung.
+Kapitel~\ref{chap:implementierung} dokumentiert die Implementierung der Anwendung, von der Projektstruktur über die Navigationsarchitektur und Authentifizierung bis hin zur \gls{api}-Anbindung und der Umsetzung der Screens.
+Kapitel~\ref{chap:evaluation} evaluiert die fertige Anwendung anhand einer Nutzerstudie und diskutiert die Ergebnisse hinsichtlich Funktionalität und Usability.
+Kapitel~\ref{chap:fazit} fasst die Arbeit zusammen, beantwortet die Forschungsfrage und gibt einen Ausblick auf mögliche Weiterentwicklungen.
 
 \section{Aktuelle Terminverwaltungsanwendungen im veterinärmedizinischen Bereich}
 
@@ -50,13 +60,3 @@ sind.
 Die vorgestellten Softwarelösungen verdeutlichen als Beispiele, dass der Markt im Veterinärbereich entweder auf umfassende Praxismanagementsysteme wie vetpraxis oder auf breit aufgestellte Tierhalteranwendungen wie Petleo und petsXL setzt, die neben der Terminverwaltung auch Funktionen wie Gesundheitsdokumentation oder Zahlungsabwicklung integrieren. Die Anwendung \textit{petappoint}, die in dieser Arbeit umgesetzt werden soll, beschränkt sich auf die Kernfunktion der Terminverwaltung zwischen Tierhaltern und Tierarztpraxen. Im Mittelpunkt steht ausschließlich die Terminverwaltung zwischen Tierhaltern und Tierarztpraxen. Funktionen wie die Dokumentation von Gesundheitsdaten oder Zahlungsabwicklung sind nicht Bestandteil der Anwendung. Darüber hinaus ist die Anwendung unabhängig von einer bestimmten Praxissoftware und damit für Tierarztpraxen unabhängig von deren bestehender IT-Infrastruktur nutzbar. Nicht zuletzt ist \textit{petappoint} sowohl für Tierhalter als auch für Tierarztpraxen kostenlos nutzbar und senkt damit die Einstiegshürde für die Digitalisierung der Terminverwaltung.
 
 Dieser bewusste Verzicht auf Zusatzfunktionen, die Softwareunabhängigkeit sowie die kostenlose Nutzung ermöglichen eine Lösung, die den Funktionalität und Nutzerfreundlichkeit der Terminbuchung in den Vordergrund stellt und sich damit klar von den bestehenden Lösungen abgrenzt.
-
-\section{Aufbau der Arbeit}
-Die vorliegende Arbeit gliedert sich in sieben Kapitel.
-Kapitel~1 führte in das Thema ein, beleuchtete den Kontext der Digitalisierung im Veterinärbereich und leitete daraus die Forschungsfrage ab.
-Kapitel~\ref{chap:anforderungen} erhebt die Anforderungen an die Anwendung, definiert die Zielgruppen sowie funktionale und nicht-funktionale Anforderungen und beschreibt die zugehörigen Use~Cases.
-Kapitel~\ref{chap:konzeption} beschreibt die Konzeption von \textit{petappoint}, umfasst die Softwarearchitektur, Komponentendiagramme, das Navigationskonzept sowie Mockups der Benutzeroberfläche.
-Kapitel~\ref{chap:grundlagen} stellt die technischen Grundlagen dar, vergleicht plattformübergreifende Frameworks und begründet die Technologiewahl für Frontend-Entwicklung, State-Management und Internationalisierung.
-Kapitel~\ref{chap:implementierung} dokumentiert die Implementierung der Anwendung, von der Projektstruktur über die Navigationsarchitektur und Authentifizierung bis hin zur \gls{api}-Anbindung und der Umsetzung der Screens.
-Kapitel~\ref{chap:evaluation} evaluiert die fertige Anwendung anhand einer Nutzerstudie und diskutiert die Ergebnisse hinsichtlich Funktionalität und Usability.
-Kapitel~\ref{chap:fazit} fasst die Arbeit zusammen, beantwortet die Forschungsfrage und gibt einen Ausblick auf mögliche Weiterentwicklungen.
