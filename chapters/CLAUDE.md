@@ -12,7 +12,7 @@ Gib **keine ungebetenen Verbesserungsvorschläge** zu Kapiteln, die nicht angefr
 
 ## A. Thesis-Kontext
 
-**Titel:** Konzeption, Umsetzung und Evaluation einer mobilen Anwendung für Tierarztpraxen
+**Titel:** Konzeption, Umsetzung und Evaluation einer Terminverwaltungssoftware für Veterinärmedizin Praxen
 **Autor:** Aziz Erol
 **Studiengang:** Medieninformatik (B.Sc.), Fachbereich VI – Informatik und Medien, BHT Berlin
 **Betreuer:** Prof. Dr. Siamak Haschemi, Prof. Dr. Dragan Macos
